@@ -1,0 +1,937 @@
+<meta charset="utf-8">
+<title>Ghost Trader</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap">
+
+<style>
+  :root{
+    --paper:#EEF0F3;
+    --stage:#FBFCFD;
+    --ink:#10141A;
+    --ink-2:#39424E;
+    --muted:#6B7684;
+    --rule:#CDD4DC;
+    --rule-soft:#E3E7EC;
+    --accent:#B8500A;
+    --accent-ink:#8E3D06;
+    --accent-wash:#F6E7D9;
+    --gain:#0C6E4E;
+    --loss:#A62430;
+    --code-bg:#151A21;
+    --code-ink:#DCE3EB;
+    --code-dim:#7C8998;
+    --shadow:0 1px 2px rgba(16,20,26,.06), 0 12px 32px -12px rgba(16,20,26,.18);
+
+    --f-display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+    --f-body:"Source Serif 4",Georgia,"Times New Roman",serif;
+    --f-mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  }
+  @media (prefers-color-scheme:dark){
+    :root:not([data-theme="light"]){
+      --paper:#0B0E12;
+      --stage:#141920;
+      --ink:#E7ECF2;
+      --ink-2:#B6C0CC;
+      --muted:#7D8895;
+      --rule:#2B333E;
+      --rule-soft:#1D242C;
+      --accent:#E8944A;
+      --accent-ink:#F0AC70;
+      --accent-wash:#33200F;
+      --gain:#43C48D;
+      --loss:#EC6B76;
+      --code-bg:#080B0E;
+      --code-ink:#D6DEE7;
+      --code-dim:#6E7C8B;
+      --shadow:0 1px 2px rgba(0,0,0,.5), 0 14px 36px -14px rgba(0,0,0,.7);
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#0B0E12;
+    --stage:#141920;
+    --ink:#E7ECF2;
+    --ink-2:#B6C0CC;
+    --muted:#7D8895;
+    --rule:#2B333E;
+    --rule-soft:#1D242C;
+    --accent:#E8944A;
+    --accent-ink:#F0AC70;
+    --accent-wash:#33200F;
+    --gain:#43C48D;
+    --loss:#EC6B76;
+    --code-bg:#080B0E;
+    --code-ink:#D6DEE7;
+    --code-dim:#6E7C8B;
+    --shadow:0 1px 2px rgba(0,0,0,.5), 0 14px 36px -14px rgba(0,0,0,.7);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:var(--f-body); -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1240px; margin:0 auto; padding:18px 20px 40px; display:flex; flex-direction:column; gap:14px}
+
+  /* ---- top rail: the 0 -> 1 probability bar, which is also the progress bar ---- */
+  .rail{display:flex; align-items:center; gap:14px; font-family:var(--f-mono); font-size:11px; letter-spacing:.09em; text-transform:uppercase; color:var(--muted)}
+  .rail .slug{color:var(--ink); font-weight:700; letter-spacing:.14em}
+  .rail .track{flex:1; height:3px; background:var(--rule-soft); position:relative; border-radius:2px; overflow:hidden}
+  .rail .fill{position:absolute; inset:0 auto 0 0; background:var(--accent); width:9%; transition:width .28s cubic-bezier(.4,0,.2,1)}
+  .rail .clock{font-variant-numeric:tabular-nums; color:var(--ink-2)}
+
+  /* ---- stage ---- */
+  .stage{
+    position:relative; width:100%; aspect-ratio:16/9; min-height:380px;
+    background:var(--stage); border:1px solid var(--rule); border-radius:3px;
+    box-shadow:var(--shadow); container-type:inline-size; overflow:hidden;
+  }
+  .slide{
+    position:absolute; inset:0; padding:4cqi 4.6cqi 3.4cqi;
+    display:flex; flex-direction:column; gap:1.9cqi; overflow:hidden;
+  }
+  .slide[hidden]{display:none}
+  @media (prefers-reduced-motion:no-preference){
+    .slide{animation:rise .34s cubic-bezier(.2,.7,.3,1) both}
+    @keyframes rise{from{opacity:0; transform:translateY(7px)} to{opacity:1; transform:none}}
+  }
+
+  /* ---- type scale, all in container units so it tracks the stage ---- */
+  .eyebrow{
+    font-family:var(--f-mono); font-size:1.32cqi; font-weight:500; letter-spacing:.2em;
+    text-transform:uppercase; color:var(--accent); display:flex; gap:.9cqi; align-items:baseline; flex-wrap:wrap;
+  }
+  .eyebrow .sep{color:var(--rule)}
+  h1{font-family:var(--f-display); font-size:8.4cqi; line-height:.92; letter-spacing:-.035em; font-weight:800; margin:0; text-wrap:balance}
+  h2{font-family:var(--f-display); font-size:4.3cqi; line-height:1.03; letter-spacing:-.025em; font-weight:700; margin:0; text-wrap:balance; max-width:19ch}
+  h2.wide{max-width:28ch}
+  .lede{font-size:1.95cqi; line-height:1.42; color:var(--ink-2); max-width:58ch; margin:0}
+  .lede b{font-weight:600; color:var(--ink)}
+  p{margin:0}
+  .fine{font-family:var(--f-mono); font-size:1.22cqi; line-height:1.55; color:var(--muted); letter-spacing:.01em}
+  .fine b{color:var(--ink-2); font-weight:500}
+  em.q{font-style:italic; color:var(--ink)}
+  .up{color:var(--gain)} .down{color:var(--loss)} .acc{color:var(--accent)}
+  .num{font-family:var(--f-mono); font-variant-numeric:tabular-nums; font-weight:500}
+
+  /* The stage is a fixed 16:9 box, so the footer pins itself to the bottom via
+     auto margin rather than being pushed there by a flexible spacer -- a spacer
+     cannot go negative, so on a dense slide it let content run over the rule. */
+  .spacer{display:none}
+  .foot{
+    margin-top:auto; border-top:1px solid var(--rule-soft); padding-top:1.3cqi;
+    font-family:var(--f-mono); font-size:1.24cqi; color:var(--muted); letter-spacing:.02em;
+    display:flex; gap:1.3cqi; flex-wrap:wrap; align-items:baseline; flex:0 0 auto;
+  }
+  .foot b{color:var(--ink); font-weight:700}
+  .foot .sep{color:var(--rule)}
+
+  /* ---- title slide ---- */
+  .title-slide{justify-content:center; gap:3cqi}
+  .title-slide h1{font-size:11.5cqi}
+  .kicker{font-family:var(--f-body); font-style:italic; font-size:2.2cqi; color:var(--muted); margin:0}
+
+  /* ---- two column ----
+     Every track is minmax(0,Nfr): a bare `Nfr` floors at the item's min-content,
+     so a wide right column steals width and squeezes the left one down to a
+     single word per line instead of both sharing the shortfall. */
+  /* flex-shrink:0 so a too-tall column grows the slide's scrollHeight instead of
+     silently spilling out of a shrunk grid box and over the footer rule. */
+  .cols{display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:3.2cqi; align-items:start; flex-shrink:0}
+  .cols.lean{grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr)}
+  .cols.narrow-left{grid-template-columns:minmax(0,.74fr) minmax(0,1.26fr)}
+  .col{display:flex; flex-direction:column; gap:1.5cqi; min-width:0}
+
+  /* ---- stat tiles: used only where the figure IS the point ---- */
+  .tiles{display:grid; grid-template-columns:repeat(4,1fr); gap:0; border:1px solid var(--rule); border-radius:2px; overflow:hidden}
+  .tile{padding:1.7cqi 1.8cqi; border-right:1px solid var(--rule-soft); display:flex; flex-direction:column; gap:.4cqi}
+  .tile:last-child{border-right:0}
+  .tile .v{font-family:var(--f-mono); font-size:3.5cqi; font-weight:700; letter-spacing:-.03em; font-variant-numeric:tabular-nums; line-height:1}
+  .tile .k{font-family:var(--f-mono); font-size:1.15cqi; letter-spacing:.13em; text-transform:uppercase; color:var(--muted)}
+
+  /* ---- data table ---- */
+  table{border-collapse:collapse; width:100%; font-family:var(--f-mono); font-size:1.48cqi; font-variant-numeric:tabular-nums}
+  th,td{text-align:right; padding:.7cqi 1cqi; border-bottom:1px solid var(--rule-soft)}
+  th:first-child,td:first-child{text-align:left; color:var(--muted); font-weight:400; letter-spacing:.02em}
+  thead th{
+    font-size:1.18cqi; letter-spacing:.13em; text-transform:uppercase; color:var(--muted);
+    font-weight:500; border-bottom:1px solid var(--rule); padding-bottom:.7cqi;
+  }
+  thead th.mark{color:var(--ink)}
+  tbody tr:last-child td{border-bottom:0}
+  tr.verdict td{border-top:1px solid var(--rule); font-weight:700; font-size:1.6cqi; padding-top:.9cqi}
+  td.big{font-size:1.78cqi; font-weight:700}
+  col.hl{background:var(--accent-wash)}
+
+  /* ---- code ---- */
+  pre{
+    margin:0; background:var(--code-bg); color:var(--code-ink); border-radius:3px;
+    padding:1.7cqi 1.9cqi; overflow-x:auto; font-family:var(--f-mono);
+    font-size:1.42cqi; line-height:1.62; tab-size:2;
+  }
+  pre .c{color:var(--code-dim); font-style:italic}
+  pre .k{color:#E8944A}
+  pre .s{color:#8BC48A}
+  pre .n{color:#79B8E8}
+  pre .f{color:#E7ECF2; font-weight:700}
+  .codecap{font-family:var(--f-mono); font-size:1.18cqi; letter-spacing:.11em; text-transform:uppercase; color:var(--muted); display:flex; justify-content:space-between; gap:1cqi}
+
+  /* ---- pipeline diagram ---- */
+  .pipe{display:flex; align-items:stretch; gap:.7cqi; flex-wrap:nowrap}
+  .node{
+    flex:1; border:1px solid var(--rule); border-radius:2px; padding:1.3cqi 1.1cqi;
+    display:flex; flex-direction:column; gap:.45cqi; min-width:0; background:var(--stage);
+  }
+  .node.key{border-color:var(--accent); background:var(--accent-wash)}
+  .node .t{font-family:var(--f-mono); font-size:1.32cqi; font-weight:700; letter-spacing:-.01em; color:var(--ink)}
+  .node .d{font-size:1.32cqi; line-height:1.35; color:var(--muted); font-family:var(--f-body)}
+  .arrow{align-self:center; color:var(--rule); font-family:var(--f-mono); font-size:1.7cqi; flex:0 0 auto}
+
+  /* ---- fleet grid ---- */
+  .fleet{display:grid; grid-template-columns:repeat(5,1fr); gap:.5cqi}
+  .cell{
+    border:1px solid var(--rule-soft); border-radius:2px; padding:.85cqi .7cqi; text-align:center;
+    font-family:var(--f-mono); font-size:1.15cqi; color:var(--muted); letter-spacing:.02em; line-height:1.35;
+  }
+  .cell b{display:block; color:var(--ink); font-weight:700; font-size:1.3cqi}
+  .cell.ctl{border-color:var(--accent); background:var(--accent-wash); color:var(--accent-ink)}
+  .cell.ctl b{color:var(--accent-ink)}
+
+  /* ---- numbered findings / bug list ---- */
+  ol.steps{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:.95cqi; counter-reset:s; min-width:0}
+  ol.steps li{
+    display:grid; grid-template-columns:2.6cqi minmax(0,1fr); gap:1.1cqi; align-items:start;
+    font-size:1.46cqi; line-height:1.4; color:var(--ink-2); min-width:0;
+  }
+  ol.steps li::before{
+    counter-increment:s; content:counter(s,decimal-leading-zero);
+    font-family:var(--f-mono); font-size:1.28cqi; font-weight:700; color:var(--accent);
+    padding-top:.32cqi; letter-spacing:.02em;
+  }
+  ol.steps b{color:var(--ink); font-weight:600}
+  ol.steps li > span{min-width:0; overflow-wrap:break-word}
+  ol.steps .tag{font-family:var(--f-mono); font-size:1.12cqi; color:var(--muted); display:block; margin-top:.2cqi; letter-spacing:.02em; line-height:1.4}
+  code{font-family:var(--f-mono); font-size:.87em; background:var(--rule-soft); padding:.05em .35em; border-radius:2px; color:var(--ink)}
+
+  /* ---- pull quote ---- */
+  .pull{
+    border-left:2px solid var(--accent); padding:.3cqi 0 .3cqi 1.8cqi;
+    font-size:2.5cqi; line-height:1.28; font-weight:600; letter-spacing:-.01em; text-wrap:balance; max-width:30ch;
+  }
+
+  /* ---- charts ---- */
+  .chart{width:100%}
+  .chart svg{width:100%; height:auto; display:block; overflow:visible}
+  .chart .grid{stroke:var(--rule-soft); stroke-width:1}
+  .chart .zero{stroke:var(--rule); stroke-width:1.5; stroke-dasharray:3 3}
+  .chart .tick,.chart .cap,.chart .rn{font-family:var(--f-mono); font-size:12.5px; fill:var(--muted); letter-spacing:.06em}
+  .chart .cap{font-size:10.5px; letter-spacing:.14em; text-transform:uppercase}
+  .chart .cap.coin{fill:var(--ink-2)}
+  .chart .rlab{font-family:var(--f-mono); font-size:14px; fill:var(--ink); font-weight:500}
+  .chart .val{font-family:var(--f-mono); font-size:16.5px; font-weight:700; fill:var(--ink); font-variant-numeric:tabular-nums}
+  .chart .dot{fill:var(--ink-2); fill-opacity:.72; stroke:var(--stage); stroke-width:1}
+  .chart .bh{stroke:var(--accent); stroke-width:3; fill:none; stroke-linecap:round}
+  .chart .bar.up{fill:var(--gain); fill-opacity:.82}
+  .chart .bar.down{fill:var(--loss); fill-opacity:.82}
+  .legend{display:flex; gap:2cqi; font-family:var(--f-mono); font-size:1.2cqi; color:var(--muted); letter-spacing:.04em; flex-wrap:wrap}
+  .legend i{display:inline-block; width:1.2cqi; height:1.2cqi; border-radius:50%; margin-right:.5cqi; vertical-align:-.1cqi; background:var(--ink-2); opacity:.62}
+  .legend i.ctl{background:none; border:2px solid var(--accent); opacity:1}
+
+  /* ---- controls ---- */
+  .controls{display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+  button{
+    font-family:var(--f-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+    background:var(--stage); color:var(--ink); border:1px solid var(--rule); border-radius:2px;
+    padding:7px 12px; cursor:pointer; transition:background .15s, border-color .15s;
+  }
+  button:hover{border-color:var(--accent); color:var(--accent-ink)}
+  button[aria-pressed="true"]{background:var(--accent-wash); border-color:var(--accent); color:var(--accent-ink)}
+  button:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+  .dots{display:flex; gap:5px; margin-left:auto; flex-wrap:wrap}
+  .dots button{padding:0; width:22px; height:22px; border-radius:2px; font-size:10px; letter-spacing:0; color:var(--muted)}
+  .dots button[aria-current="true"]{background:var(--ink); color:var(--stage); border-color:var(--ink)}
+
+  /* ---- speaker notes ---- */
+  .notes{
+    border:1px solid var(--rule); border-left:2px solid var(--accent); border-radius:2px;
+    background:var(--stage); padding:16px 20px; display:flex; flex-direction:column; gap:9px;
+  }
+  .notes h3{
+    margin:0; font-family:var(--f-mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--muted); font-weight:500; display:flex; justify-content:space-between; gap:12px;
+  }
+  .notes h3 span{color:var(--accent-ink)}
+  .notes p{font-size:15.5px; line-height:1.62; color:var(--ink-2); max-width:76ch}
+  .notes p + p{margin-top:2px}
+  .notes b{color:var(--ink); font-weight:600}
+  .notes code{font-family:var(--f-mono); font-size:.88em; background:var(--rule-soft); padding:1px 5px; border-radius:2px; color:var(--ink)}
+
+  /* ---- document mode ---- */
+  body.doc .stage{aspect-ratio:auto; min-height:0; overflow:visible; margin-bottom:14px}
+  body.doc .slide{position:static; display:flex !important; animation:none; border-bottom:1px solid var(--rule-soft); min-height:min(78vh,640px)}
+  body.doc .slide[hidden]{display:flex !important}
+  body.doc .dots, body.doc .nav{display:none}
+  body.doc .notes{display:none}
+  body.doc .docnotes{display:flex}
+  .docnotes{display:none; flex-direction:column; gap:8px; padding:2.6cqi 5cqi 4cqi; border-top:1px solid var(--rule-soft); background:var(--paper)}
+  body.doc .docnotes h3{margin:0; font-family:var(--f-mono); font-size:1.15cqi; letter-spacing:.16em; text-transform:uppercase; color:var(--accent-ink); font-weight:500}
+  body.doc .docnotes p{font-size:1.62cqi; line-height:1.6; color:var(--ink-2); max-width:80ch}
+
+  @media (max-width:760px){
+    .wrap{padding:12px 12px 28px}
+    .stage{min-height:300px}
+    .notes p{font-size:14px}
+    .rail .clock{display:none}
+  }
+</style>
+
+<div class="wrap">
+
+  <div class="rail">
+    <span class="slug">Ghost&nbsp;Trader</span>
+    <span>0.00</span>
+    <span class="track"><span class="fill" id="fill"></span></span>
+    <span>1.00</span>
+    <span class="clock" id="clock">00:00 &rarr; 00:20</span>
+    <span class="num" id="counter">01/11</span>
+  </div>
+
+  <div class="stage" id="stage">
+
+    <!-- 1 ............................................................. -->
+    <section class="slide title-slide" data-time="00:00 &rarr; 00:20" data-title="Title">
+      <div class="eyebrow">
+        <span>Paper-trading experiment</span><span class="sep">/</span>
+        <span>80 bots</span><span class="sep">/</span>
+        <span>611 settled trades</span><span class="sep">/</span>
+        <span>$0 at risk</span>
+      </div>
+      <h1>Ghost Trader</h1>
+      <p class="lede" style="font-size:2.35cqi; max-width:52ch">
+        I gave 80 trading bots <b>$1,000 of imaginary money each</b>, pointed them at real live
+        markets, and let them disagree with each other for weeks. The goal was $10,000.
+      </p>
+      <p class="kicker">It did not get to $10,000. That turned out to be the interesting part.</p>
+      <div class="foot">
+        <span><b>6,270</b> lines of Python</span><span class="sep">/</span>
+        <span><b>170</b> tests</span><span class="sep">/</span>
+        <span><b>2</b> dependencies</span><span class="sep">/</span>
+        <span><b>5</b> markets</span><span class="sep">/</span>
+        <span>no real order was ever placed</span>
+      </div>
+    </section>
+
+    <!-- 2 ............................................................. -->
+    <section class="slide" data-time="00:20 &rarr; 00:50" data-title="The instrument &amp; the hypothesis">
+      <div class="eyebrow"><span>01</span><span class="sep">/</span><span>What we are betting on</span></div>
+      <h2 class="wide">On Polymarket, the price <em class="q">is</em> the probability.</h2>
+      <div class="cols lean">
+        <div class="col">
+          <p class="lede">
+            A share in <b>&ldquo;Yes&rdquo;</b> pays exactly <b>$1</b> if the event happens and
+            <b>$0</b> if it doesn&rsquo;t. So a share trading at <b>61&cent;</b> means the crowd
+            thinks there&rsquo;s a 61% chance.
+          </p>
+          <p class="lede">
+            That makes it the cleanest possible lab. Unlike a stock, <b>every bet gets a
+            definitive right-or-wrong answer</b>, usually within days &mdash; so you can actually
+            score a strategy instead of arguing about it.
+          </p>
+        </div>
+        <div class="col">
+          <div class="codecap"><span>The hypothesis under test</span></div>
+          <div class="pull">Traders who bet $1,000+ in a single order know something the price doesn&rsquo;t.</div>
+          <p class="fine">
+            <b>The plan &rarr;</b> watch every trade on the exchange. When someone bets big,
+            look up that wallet&rsquo;s history. <b>Copy</b> wallets that have been right more than
+            60% of the time. <b>Bet against</b> wallets under 40%. Ignore everyone else.
+          </p>
+          <p class="fine">
+            Scoring uses only bets that had <b>already resolved before</b> the signal arrived &mdash;
+            otherwise you&rsquo;re grading with tomorrow&rsquo;s newspaper.
+          </p>
+        </div>
+      </div>
+      <div class="foot"><span>Data source: <b>Polymarket</b> public trade feed + Gamma markets API</span><span class="sep">/</span><span>polled every 20s</span></div>
+    </section>
+
+    <!-- 3 ............................................................. -->
+    <section class="slide" data-time="00:50 &rarr; 01:20" data-title="How it is built">
+      <div class="eyebrow"><span>02</span><span class="sep">/</span><span>Architecture</span></div>
+      <h2 class="wide">One feed. Eighty opinions.</h2>
+      <div class="pipe">
+        <div class="node key">
+          <span class="t">poller</span>
+          <span class="d">One process fetches the live trade feed. <b>Every bot sees the identical tick.</b></span>
+        </div>
+        <span class="arrow">&rarr;</span>
+        <div class="node">
+          <span class="t">scorecard</span>
+          <span class="d">Size-weighted win rate per wallet. 48 wallets scored so far.</span>
+        </div>
+        <span class="arrow">&rarr;</span>
+        <div class="node">
+          <span class="t">strategy &times;80</span>
+          <span class="d">Each variant answers <em>copy, fade, explore, or skip</em> &mdash; with a reason.</span>
+        </div>
+        <span class="arrow">&rarr;</span>
+        <div class="node">
+          <span class="t">risk</span>
+          <span class="d">Position sizing and exposure caps, deliberately kept separate from strategy.</span>
+        </div>
+        <span class="arrow">&rarr;</span>
+        <div class="node">
+          <span class="t">paper book</span>
+          <span class="d">Fake cash, real prices. Settles at $1 or $0 when the market resolves.</span>
+        </div>
+      </div>
+      <div class="cols" style="gap:3cqi">
+        <div class="col">
+          <p class="lede" style="font-size:1.75cqi"><b>Why one poller and not eighty?</b></p>
+          <p class="fine">
+            It&rsquo;s 1&times; the API load instead of 80&times;, so nothing gets rate-limited. But
+            mainly: if each bot fetched separately they&rsquo;d see slightly different prices at
+            slightly different moments, and <b>the results would differ because of network luck
+            rather than strategy.</b> Shared data is what makes the comparison fair.
+          </p>
+        </div>
+        <div class="col">
+          <p class="lede" style="font-size:1.75cqi"><b>State is a plain JSON file.</b></p>
+          <p class="fine">
+            Every position, every settled trade, every wallet score. Kill the process, restart it,
+            and it resumes mid-experiment. The dashboard is a separate read-only reader of that
+            same file, so watching the bots can never disturb them.
+          </p>
+        </div>
+      </div>
+      <div class="foot"><span>Python 3.9</span><span class="sep">/</span><span>dependencies: <b>requests</b>, <b>PyYAML</b></span><span class="sep">/</span><span>no database, no broker, no framework</span></div>
+    </section>
+
+    <!-- 4 ............................................................. -->
+    <section class="slide" data-time="01:20 &rarr; 01:50" data-title="The code">
+      <div class="eyebrow"><span>03</span><span class="sep">/</span><span>The decision, in code</span></div>
+      <h2 class="wide">The bot has to explain itself &mdash; even when it does nothing.</h2>
+      <div class="cols narrow-left" style="gap:2.6cqi">
+        <div class="col">
+          <p class="lede" style="font-size:1.8cqi">
+            Most of this function is the <b>rejections</b>. Every signal returns an
+            <span class="num">Evaluation</span> with a plain-English reason, whether it traded or not.
+          </p>
+          <p class="fine">
+            That log is not a nicety. <b>294 recorded non-trades</b> are how I later found out
+            that scouting bets were quietly eating every slot, and that the strategy I was
+            actually testing had stopped firing days earlier.
+          </p>
+          <p class="fine">
+            <b>Sizing lives somewhere else on purpose.</b> &ldquo;Should we bet?&rdquo; and
+            &ldquo;how much?&rdquo; are different questions, and mixing them is how you end up
+            unable to tell which one was wrong.
+          </p>
+        </div>
+        <div class="col">
+          <div class="codecap"><span>src/strategy/whale_follow.py</span><span>abridged</span></div>
+<pre><code><span class="c"># Outcome tokens pay a fixed $1, so a share bought at 0.97 can</span>
+<span class="c"># only ever gain 3% while still risking the whole stake.</span>
+<span class="k">if not</span> self.min_entry_price &lt;= price &lt;= self.max_entry_price:
+    <span class="k">return</span> <span class="f">_eval</span>(action=<span class="s">"skipped_price_bounds"</span>, signal=<span class="k">None</span>,
+                 reason=<span class="s">f"a win pays only {upside:.1f}%"</span>)
+
+<span class="k">if</span> accuracy &gt;= self.copy_above:                <span class="c"># 0.60</span>
+    amount = self.risk.<span class="f">position_size_usd</span>(
+        portfolio=portfolio, market_id=event.market_id,
+        confidence=<span class="f">_confidence</span>(accuracy))
+    <span class="k">return</span> <span class="f">_eval</span>(action=<span class="s">"copy"</span>, signal=<span class="f">Signal</span>(...),
+        reason=<span class="s">f"right {accuracy:.0%} of {n} resolved bets"</span>)
+
+<span class="k">if</span> accuracy &lt;= self.fade_below:                <span class="c"># 0.40</span>
+    <span class="c"># Buy the OTHER side of their bet.</span>
+    <span class="k">return</span> <span class="f">_eval</span>(action=<span class="s">"fade"</span>, signal=<span class="f">Signal</span>(...))</code></pre>
+          <div class="codecap" style="margin-top:.6cqi"><span>src/risk.py</span><span>this line matters later</span></div>
+<pre><code>base = equity * self.config.max_pct_per_trade * confidence</code></pre>
+        </div>
+      </div>
+      <div class="foot"><span class="acc">Remember that last line.</span><span class="sep">/</span><span>it is the reason the whole strategy lost money</span></div>
+    </section>
+
+    <!-- 5 ............................................................. -->
+    <section class="slide" data-time="01:50 &rarr; 02:15" data-title="Why 80 bots">
+      <div class="eyebrow"><span>04</span><span class="sep">/</span><span>Experiment design</span></div>
+      <h2 class="wide">One bot is an anecdote.</h2>
+      <p class="lede">
+        If a single bot makes 16%, you have learned nothing &mdash; you cannot separate a good
+        strategy from a lucky fortnight. So every setting I was unsure about became a
+        <b>variant running side by side on identical data</b>.
+      </p>
+      <div class="cols" style="gap:2.6cqi">
+        <div class="col">
+          <div class="codecap"><span>Polymarket &mdash; 24 bots</span></div>
+          <div class="fleet">
+            <div class="cell"><b>$500</b>threshold</div>
+            <div class="cell"><b>$1k</b>threshold</div>
+            <div class="cell"><b>$2.5k</b>threshold</div>
+            <div class="cell"><b>$5k</b>threshold</div>
+            <div class="cell"><b>$10k</b>threshold</div>
+          </div>
+          <p class="fine">
+            &times; 4 risk profiles <b>(aggressive / balanced / strict / copy-only)</b> = 20,
+            plus 4 &ldquo;value&rdquo; bots that ignore whales entirely and instead compare
+            Polymarket&rsquo;s price against <b>real bookmaker odds</b>, de-vigged into a fair
+            probability.
+          </p>
+        </div>
+        <div class="col">
+          <div class="codecap"><span>Other asset classes &mdash; 56 bots</span></div>
+          <div class="fleet" style="grid-template-columns:repeat(4,1fr)">
+            <div class="cell"><b>crypto</b>11 bots</div>
+            <div class="cell"><b>stocks</b>18 bots</div>
+            <div class="cell"><b>forex</b>16 bots</div>
+            <div class="cell"><b>commods</b>11 bots</div>
+          </div>
+          <div class="fleet" style="grid-template-columns:1fr; margin-top:.5cqi">
+            <div class="cell ctl"><b>buy&#8209;and&#8209;hold</b>the control &mdash; buys on day one, then does nothing at all, in every single asset class</div>
+          </div>
+          <p class="fine">
+            <b>The control is the whole point.</b> If no clever strategy beats the bot that
+            does nothing, the cleverness was noise.
+          </p>
+        </div>
+      </div>
+      <div class="foot"><span>Same feed</span><span class="sep">/</span><span>same clock</span><span class="sep">/</span><span>same starting $1,000</span><span class="sep">/</span><span>only the settings differ</span></div>
+    </section>
+
+    <!-- 6 ............................................................. -->
+    <section class="slide" data-time="02:15 &rarr; 02:55" data-title="Finding 1 — copying loses">
+      <div class="eyebrow"><span>05</span><span class="sep">/</span><span>Finding one</span><span class="sep">/</span><span class="acc">the headline</span></div>
+      <h2 class="wide">Copying the smart money lost money. Betting at random didn&rsquo;t.</h2>
+      <div class="cols lean" style="gap:3cqi">
+        <div class="col">
+          <table>
+            <colgroup><col><col class="hl"><col></colgroup>
+            <thead>
+              <tr><th>458 settled bets</th><th class="mark">copy a scored wallet</th><th>explore (random)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>bets settled</td><td>60</td><td>398</td></tr>
+              <tr><td>win rate</td><td>55.0%</td><td class="up">63.8%</td></tr>
+              <tr><td>average stake</td><td>$35.33</td><td>$17.71</td></tr>
+              <tr><td>average win</td><td class="up">+$10.16</td><td class="up">+$11.69</td></tr>
+              <tr><td>average loss</td><td class="down">&minus;$37.28</td><td class="down">&minus;$19.38</td></tr>
+              <tr class="verdict"><td>total P&amp;L</td><td class="down big">&minus;$671</td><td class="up big">+$178</td></tr>
+              <tr><td>return on stake</td><td class="down">&minus;31.7%</td><td class="up">+2.5%</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col">
+          <p class="lede" style="font-size:1.78cqi">
+            <b>&ldquo;Explore&rdquo; is the control.</b> A flat $15 bet on any big trade from a
+            wallet the bot had never seen &mdash; no judgement at all. It beat the strategy.
+          </p>
+          <div class="pull" style="font-size:1.95cqi; max-width:34ch">
+            The bot bet twice as much on the signal it was right about less often &mdash; and lost
+            3.7&times; more when it was wrong.
+          </div>
+          <p class="fine">
+            <b>The mechanism &rarr;</b> <span class="num">base = equity &times; max_pct &times; confidence</span>.
+            Confidence came from track record, so a &ldquo;trusted&rdquo; wallet automatically got a
+            bigger stake. <b>Sizing doesn&rsquo;t create edge &mdash; it multiplies what you already
+            have.</b> This lost on <b>size and asymmetry</b>, not accuracy.
+          </p>
+        </div>
+      </div>
+      <div class="foot"><span>Hypothesis from slide 01:</span><span class="acc"><b>not supported</b></span><span class="sep">/</span><span>n&nbsp;=&nbsp;60 copy bets, so: suggestive, not settled</span></div>
+    </section>
+
+    <!-- 7 ............................................................. -->
+    <section class="slide" data-time="02:55 &rarr; 03:20" data-title="Finding 2 — bigger whales are worse">
+      <div class="eyebrow"><span>06</span><span class="sep">/</span><span>Finding two</span></div>
+      <h2 class="wide">The bigger the bet, the worse it did.</h2>
+      <div class="cols narrow-left" style="gap:2.8cqi">
+        <div class="col">
+          <p class="lede" style="font-size:1.75cqi">
+            Same strategy, five different bars for &ldquo;this is a whale.&rdquo;
+            <b>Following $500 bets won 68% of the time. Following $10,000 bets won 44%</b> &mdash;
+            worse than a coin flip.
+          </p>
+          <p class="fine">
+            <b>A plausible reading:</b> a $10,000 single order is more often a hedge, a longshot
+            punt, or someone with more money than information. The sharp trader is sizing sensibly
+            &mdash; so &ldquo;biggest&rdquo; is a bad proxy for &ldquo;smartest.&rdquo;
+          </p>
+        </div>
+        <div class="col chart">
+<svg viewBox="0 0 900 300" role="img" aria-label="Win rate of resolved Polymarket bets grouped by the minimum trade size that counted as a whale signal: 68.0% at $500, 63.3% at $1,000, 65.9% at $2,500, 47.1% at $5,000 and 44.4% at $10,000.">
+  <line class="zero" x1="340.6" y1="32" x2="340.6" y2="258"/>
+  <text class="tick" x="340.6" y="280" text-anchor="middle">50%</text>
+  <line class="grid" x1="531.2" y1="32" x2="531.2" y2="258"/>
+  <text class="tick" x="531.2" y="280" text-anchor="middle">60%</text>
+  <line class="grid" x1="721.9" y1="32" x2="721.9" y2="258"/>
+  <text class="tick" x="721.9" y="280" text-anchor="middle">70%</text>
+  <text class="cap" x="138" y="22" text-anchor="end">win rate</text>
+  <text class="cap coin" x="340.6" y="22" text-anchor="middle">coin flip</text>
+  <rect class="bar up" x="340.6" y="35.0" width="343.1" height="26" rx="2"/>
+  <text class="rlab" x="138" y="53.0" text-anchor="end">$500</text>
+  <text class="val" x="693.8" y="53.0" text-anchor="start">68.0%</text>
+  <text class="rn" x="864" y="53.0" text-anchor="end">172 bets</text>
+  <rect class="bar up" x="340.6" y="79.0" width="253.5" height="26" rx="2"/>
+  <text class="rlab" x="138" y="97.0" text-anchor="end">$1,000</text>
+  <text class="val" x="604.2" y="97.0" text-anchor="start">63.3%</text>
+  <text class="rn" x="864" y="97.0" text-anchor="end">120 bets</text>
+  <rect class="bar up" x="340.6" y="123.0" width="303.1" height="26" rx="2"/>
+  <text class="rlab" x="138" y="141.0" text-anchor="end">$2,500</text>
+  <text class="val" x="653.7" y="141.0" text-anchor="start">65.9%</text>
+  <text class="rn" x="864" y="141.0" text-anchor="end">88 bets</text>
+  <rect class="bar down" x="285.3" y="167.0" width="55.3" height="26" rx="2"/>
+  <text class="rlab" x="138" y="185.0" text-anchor="end">$5,000</text>
+  <text class="val" x="275.3" y="185.0" text-anchor="end">47.1%</text>
+  <text class="rn" x="864" y="185.0" text-anchor="end">51 bets</text>
+  <rect class="bar down" x="233.9" y="211.0" width="106.8" height="26" rx="2"/>
+  <text class="rlab" x="138" y="229.0" text-anchor="end">$10,000</text>
+  <text class="val" x="223.9" y="229.0" text-anchor="end">44.4%</text>
+  <text class="rn" x="864" y="229.0" text-anchor="end">27 bets</text>
+  <text class="tick" x="138" y="292" text-anchor="end">whale threshold</text>
+</svg>
+        </div>
+      </div>
+      <div class="foot">
+        <span>Correlation, threshold vs. return, across 20 bots: <b>&minus;0.376</b></span><span class="sep">/</span>
+        <span class="acc"><b>Caveat:</b> the $10k bucket is 27 bets &mdash; the trend is real in this data, it is not yet proof</span>
+      </div>
+    </section>
+
+    <!-- 8 ............................................................. -->
+    <section class="slide" data-time="03:20 &rarr; 03:45" data-title="Finding 3 — nothing beats flat">
+      <div class="eyebrow"><span>07</span><span class="sep">/</span><span>Finding three</span><span class="sep">/</span><span>the other four markets</span></div>
+      <h2 class="wide">56 bots, four asset classes, no separation.</h2>
+      <div class="chart">
+<svg viewBox="0 0 900 318" role="img" aria-label="Returns of 56 spot-market bots across crypto, stocks, forex and commodities. Every bot sits within 0.7 percentage points of flat, and the buy-and-hold control sits mid-pack in each class.">
+  <text class="cap" x="138" y="22">each dot = one bot&#8217;s return since launch</text>
+  <text class="cap" x="864" y="22" text-anchor="end">bots</text>
+  <line class="grid" x1="227.2" y1="30" x2="227.2" y2="276"/>
+  <text class="tick" x="227.2" y="298" text-anchor="middle">-0.6%</text>
+  <line class="grid" x1="405.7" y1="30" x2="405.7" y2="276"/>
+  <text class="tick" x="405.7" y="298" text-anchor="middle">-0.4%</text>
+  <line class="grid" x1="584.2" y1="30" x2="584.2" y2="276"/>
+  <text class="tick" x="584.2" y="298" text-anchor="middle">-0.2%</text>
+  <line class="zero" x1="762.8" y1="30" x2="762.8" y2="276"/>
+  <text class="tick" x="762.8" y="298" text-anchor="middle">+0.0%</text>
+  <line class="bh" x1="736.0" y1="31.0" x2="736.0" y2="85.0"/>
+  <text class="rlab" x="126" y="63.0" text-anchor="end">crypto</text>
+  <text class="rn" x="864" y="63.0" text-anchor="end">11</text>
+  <circle class="dot" cx="209.4" cy="58.0" r="3.7"/>
+  <circle class="dot" cx="387.9" cy="58.0" r="3.7"/>
+  <circle class="dot" cx="682.4" cy="58.0" r="3.7"/>
+  <circle class="dot" cx="700.3" cy="58.0" r="3.7"/>
+  <circle class="dot" cx="736.0" cy="72.4" r="3.7"/>
+  <circle class="dot" cx="736.0" cy="65.2" r="3.7"/>
+  <circle class="dot" cx="736.0" cy="58.0" r="3.7"/>
+  <circle class="dot" cx="736.0" cy="50.8" r="3.7"/>
+  <circle class="dot" cx="736.0" cy="43.6" r="3.7"/>
+  <circle class="dot" cx="771.7" cy="58.0" r="3.7"/>
+  <circle class="dot" cx="798.5" cy="58.0" r="3.7"/>
+  <line class="bh" x1="486.1" y1="95.0" x2="486.1" y2="149.0"/>
+  <text class="rlab" x="126" y="127.0" text-anchor="end">stocks</text>
+  <text class="rn" x="864" y="127.0" text-anchor="end">18</text>
+  <circle class="dot" cx="486.1" cy="122.0" r="3.7"/>
+  <circle class="dot" cx="602.1" cy="122.0" r="3.7"/>
+  <circle class="dot" cx="664.6" cy="125.6" r="3.7"/>
+  <circle class="dot" cx="664.6" cy="118.4" r="3.7"/>
+  <circle class="dot" cx="691.4" cy="122.0" r="3.7"/>
+  <circle class="dot" cx="709.2" cy="122.0" r="3.7"/>
+  <circle class="dot" cx="718.1" cy="122.0" r="3.7"/>
+  <circle class="dot" cx="727.0" cy="122.0" r="3.7"/>
+  <circle class="dot" cx="744.9" cy="122.0" r="3.7"/>
+  <circle class="dot" cx="753.8" cy="122.0" r="3.7"/>
+  <circle class="dot" cx="762.8" cy="147.2" r="3.7"/>
+  <circle class="dot" cx="762.8" cy="140.0" r="3.7"/>
+  <circle class="dot" cx="762.8" cy="132.8" r="3.7"/>
+  <circle class="dot" cx="762.8" cy="125.6" r="3.7"/>
+  <circle class="dot" cx="762.8" cy="118.4" r="3.7"/>
+  <circle class="dot" cx="762.8" cy="111.2" r="3.7"/>
+  <circle class="dot" cx="762.8" cy="104.0" r="3.7"/>
+  <circle class="dot" cx="762.8" cy="96.8" r="3.7"/>
+  <line class="bh" x1="611.0" y1="159.0" x2="611.0" y2="213.0"/>
+  <text class="rlab" x="126" y="191.0" text-anchor="end">forex</text>
+  <text class="rn" x="864" y="191.0" text-anchor="end">16</text>
+  <circle class="dot" cx="611.0" cy="186.0" r="3.7"/>
+  <circle class="dot" cx="718.1" cy="186.0" r="3.7"/>
+  <circle class="dot" cx="727.0" cy="186.0" r="3.7"/>
+  <circle class="dot" cx="736.0" cy="193.2" r="3.7"/>
+  <circle class="dot" cx="736.0" cy="186.0" r="3.7"/>
+  <circle class="dot" cx="736.0" cy="178.8" r="3.7"/>
+  <circle class="dot" cx="744.9" cy="193.2" r="3.7"/>
+  <circle class="dot" cx="744.9" cy="186.0" r="3.7"/>
+  <circle class="dot" cx="744.9" cy="178.8" r="3.7"/>
+  <circle class="dot" cx="753.8" cy="189.6" r="3.7"/>
+  <circle class="dot" cx="753.8" cy="182.4" r="3.7"/>
+  <circle class="dot" cx="762.8" cy="200.4" r="3.7"/>
+  <circle class="dot" cx="762.8" cy="193.2" r="3.7"/>
+  <circle class="dot" cx="762.8" cy="186.0" r="3.7"/>
+  <circle class="dot" cx="762.8" cy="178.8" r="3.7"/>
+  <circle class="dot" cx="762.8" cy="171.6" r="3.7"/>
+  <line class="bh" x1="709.2" y1="223.0" x2="709.2" y2="277.0"/>
+  <text class="rlab" x="126" y="255.0" text-anchor="end">commodities</text>
+  <text class="rn" x="864" y="255.0" text-anchor="end">11</text>
+  <circle class="dot" cx="673.5" cy="250.0" r="3.7"/>
+  <circle class="dot" cx="682.4" cy="250.0" r="3.7"/>
+  <circle class="dot" cx="709.2" cy="253.6" r="3.7"/>
+  <circle class="dot" cx="709.2" cy="246.4" r="3.7"/>
+  <circle class="dot" cx="753.8" cy="264.4" r="3.7"/>
+  <circle class="dot" cx="753.8" cy="257.2" r="3.7"/>
+  <circle class="dot" cx="753.8" cy="250.0" r="3.7"/>
+  <circle class="dot" cx="753.8" cy="242.8" r="3.7"/>
+  <circle class="dot" cx="753.8" cy="235.6" r="3.7"/>
+  <circle class="dot" cx="762.8" cy="253.6" r="3.7"/>
+  <circle class="dot" cx="762.8" cy="246.4" r="3.7"/>
+</svg>
+      </div>
+      <div class="legend">
+        <span><i></i>one strategy bot</span>
+        <span><i class="ctl"></i>buy-and-hold control &mdash; buys once, then does nothing</span>
+      </div>
+      <p class="fine" style="max-width:none">
+        Momentum, mean-reversion, breakout, volatility-scaled, take-profit variants &mdash;
+        <b>every one of them lands within 0.7 percentage points of flat</b>, with the do-nothing
+        control sitting comfortably mid-pack. In crypto, which has the most completed trades
+        <b>(112 round trips)</b>, the momentum bots are winning only <b>9&ndash;28%</b> of them:
+        they buy every wiggle and get chopped to pieces by fees.
+        <span class="acc"><b>Honest caveat:</b> stocks and forex have barely traded (7 round trips
+        between them). This is &ldquo;no separation yet,&rdquo; not &ldquo;proven no edge.&rdquo;</span>
+      </p>
+      <div class="foot"><span>Efficient markets, in miniature, on a laptop</span></div>
+    </section>
+
+    <!-- 9 ............................................................. -->
+    <section class="slide" data-time="03:45 &rarr; 04:20" data-title="The bugs">
+      <div class="eyebrow"><span>08</span><span class="sep">/</span><span>What actually went wrong</span></div>
+      <h2 class="wide">A broken trading bot still reports numbers.</h2>
+      <div class="cols lean" style="gap:3.2cqi">
+        <div class="col">
+          <ol class="steps">
+            <li><span><b>Nothing ever finished.</b> 218 open positions, zero resolutions &mdash; the markets API hides closed markets <em class="q">by default</em>.
+              <span class="tag">one retry with closed=true &rarr; 146 resolutions appeared instantly</span></span></li>
+            <li><span><b>The strategy never ran.</b> The scorecard didn&rsquo;t save in-flight bets, so every restart wiped it to zero wallets scored. Copy and fade hadn&rsquo;t fired in days.
+              <span class="tag">running perfectly, testing nothing</span></span></li>
+            <li><span><b>The value bots became longshot bots.</b> Ranking by absolute edge always picks the cheapest side. Average entry drifted to 29&cent;. Down $247.
+              <span class="tag">fixed with relative edge + a price floor</span></span></li>
+            <li><span><b>The retry that never gave up.</b> The error path used <code>continue</code>, which skips the exit check at the bottom of the loop.
+              <span class="tag">a blocked feed retried forever; now exits cleanly in 3 seconds</span></span></li>
+          </ol>
+        </div>
+        <div class="col">
+          <div class="pull" style="font-size:2cqi; max-width:32ch">
+            Not one of these crashed. Every one produced a confident, plausible, completely
+            meaningless number.
+          </div>
+          <p class="fine">
+            In normal software a bug is loud &mdash; something throws, something 500s, a test
+            goes red. <b>In a trading system the bug is silent</b>, because a portfolio that
+            never resolves anything and a portfolio that&rsquo;s genuinely flat look identical
+            from the outside.
+          </p>
+          <p class="fine">
+            All four were found by reading the <b>log of decisions not taken</b>, not by watching
+            the P&amp;L. The P&amp;L looked fine. It was fine. It was also fiction.
+          </p>
+          <div class="tiles" style="grid-template-columns:repeat(2,1fr)">
+            <div class="tile"><span class="v">170</span><span class="k">tests, all passing</span></div>
+            <div class="tile"><span class="v">294</span><span class="k">non-trades logged</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="foot"><span>Each fix has a regression test named after the bug it prevents</span></div>
+    </section>
+
+    <!-- 10 ............................................................ -->
+    <section class="slide" data-time="04:20 &rarr; 04:45" data-title="Takeaways">
+      <div class="eyebrow"><span>09</span><span class="sep">/</span><span>Five things worth stealing</span></div>
+      <h2 class="wide">What I&rsquo;d do the same, and what I&rsquo;d do differently.</h2>
+      <ol class="steps" style="font-size:1.72cqi; gap:1.3cqi">
+        <li><span><b>Always ship the do-nothing control.</b> Buy-and-hold costs ten lines, and it is the only thing that tells you whether your strategy is skill or weather.</span></li>
+        <li><span><b>Log the decisions you <em class="q">didn&rsquo;t</em> take, with reasons.</b> The rejections are the dataset. My three worst bugs were invisible in the results and obvious in the reject log.</span></li>
+        <li><span><b>Separate &ldquo;should I?&rdquo; from &ldquo;how much?&rdquo;</b> Sizing multiplies your signal; it never creates one. Scaling stake by confidence turned a mildly bad signal into a &minus;$671 one.</span></li>
+        <li><span><b>Test the failure path, not the happy path.</b> Every bug here lived in an <code>except</code> branch or a default API parameter &mdash; places the happy-path tests never reach.</span></li>
+        <li><span><b>n = 45 is not a result.</b> My best bot read <b class="up">+16.3%</b> one week and <b>+1.1%</b> the next, having changed nothing. If I&rsquo;d presented last week I&rsquo;d have told you the opposite story with equal confidence.</span></li>
+      </ol>
+      <div class="foot"><span>Next</span><span class="sep">/</span><span>flat-stake copy bets, to separate <b>signal quality</b> from <b>sizing</b></span><span class="sep">/</span><span>and a lot more resolutions</span></div>
+    </section>
+
+    <!-- 11 ............................................................ -->
+    <section class="slide" data-time="04:45 &rarr; 05:00" data-title="Close">
+      <div class="eyebrow"><span>10</span><span class="sep">/</span><span>Where it stands today</span></div>
+      <h2 class="wide">Target: $10,000. Actual: $1,011.</h2>
+      <div class="tiles">
+        <div class="tile"><span class="v">80</span><span class="k">bots running</span></div>
+        <div class="tile"><span class="v">611</span><span class="k">settled trades</span></div>
+        <div class="tile"><span class="v">48</span><span class="k">wallets scored</span></div>
+        <div class="tile"><span class="v up">+1.1%</span><span class="k">best bot, net</span></div>
+      </div>
+      <p class="lede">
+        The honest summary: <b>the strategy I set out to test does not work</b> &mdash; at least not
+        the way I built it, and not at this sample size. The random control beat it, the
+        do-nothing control matched it, and the one number that looked like success turned out
+        to be a fortnight of luck.
+      </p>
+      <div class="pull" style="font-size:2.35cqi; max-width:36ch">
+        A negative result you can actually defend is worth more than a positive one you can&rsquo;t.
+      </div>
+      <div class="foot">
+        <span>Paper trading only</span><span class="sep">/</span>
+        <span>no real order was ever placed</span><span class="sep">/</span>
+        <span>no real money exists anywhere in this system</span><span class="sep">/</span>
+        <span><b>Questions?</b></span>
+      </div>
+    </section>
+
+  </div>
+
+  <div class="controls">
+    <span class="nav" style="display:flex; gap:10px">
+      <button id="prev" type="button">&larr;&nbsp;Prev</button>
+      <button id="next" type="button">Next&nbsp;&rarr;</button>
+    </span>
+    <button id="docmode" type="button" aria-pressed="false">Read as document</button>
+    <span class="dots" id="dots"></span>
+  </div>
+
+  <div class="notes" id="notes">
+    <h3><span id="noteTitle">Speaker notes</span> <span id="noteTime">00:00 &rarr; 00:20</span></h3>
+    <div id="noteBody"></div>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var stage = document.getElementById('stage');
+  var slides = Array.prototype.slice.call(stage.querySelectorAll('.slide'));
+  var dots = document.getElementById('dots');
+  var fill = document.getElementById('fill');
+  var counter = document.getElementById('counter');
+  var clock = document.getElementById('clock');
+  var noteTitle = document.getElementById('noteTitle');
+  var noteTime = document.getElementById('noteTime');
+  var noteBody = document.getElementById('noteBody');
+  var i = 0;
+
+  var NOTES = [
+    ["Open flat and factual. Don't oversell.",
+     "“I built a trading bot for Polymarket — a prediction market where you bet on whether things will happen. It runs on completely fake money. Nothing here ever touched a real exchange.”",
+     "“I started with one bot and $1,000 of imaginary money, aiming for $10,000. It's at $1,011. But somewhere along the way it stopped being about the money and became an actual experiment — 80 bots, all disagreeing, and I get to see who's right.”",
+     "Set the expectation now: this is a negative result, presented honestly. That's the pitch."],
+
+    ["Make sure everyone understands the instrument before any numbers appear.",
+     "“On Polymarket you buy a share in an outcome. If it happens the share pays exactly one dollar. If it doesn't, it pays nothing. So if a share costs 61 cents, the market is saying there's a 61% chance. The price literally is a probability.”",
+     "“That's why I picked it over stocks. A stock never tells you if you were right. Here, every single bet gets a definitive answer, usually within days.”",
+     "“My hypothesis was the obvious one: people who bet a thousand dollars at once probably know something. So — watch every trade, track the big bettors, copy the ones who keep being right, bet against the ones who keep being wrong.”",
+     "If you mention one technical detail, make it the no-lookahead rule: a wallet's score only uses bets that had already resolved before the signal. Otherwise you're grading yourself with tomorrow's newspaper."],
+
+    ["Keep this to about 30 seconds. Point along the pipeline as you talk.",
+     "“One process pulls the live trade feed. That feeds a scorecard of every wallet, then 80 strategy variants that each decide copy / bet against / small test bet / skip. Then a risk layer decides how much. Then a fake portfolio books it.”",
+     "The one design decision worth defending out loud: “There's one poller, not eighty. Partly that's 1× the API load instead of 80×. But mainly — if each bot fetched its own data they'd see slightly different prices at slightly different moments, and then the results would differ because of network luck instead of strategy. Shared data is what makes the comparison fair.”",
+     "If asked about persistence: state is one JSON file. Kill it, restart it, it resumes mid-experiment. The dashboard is a separate read-only reader of that same file."],
+
+    ["Don't read the code line by line. Point at the shape of it.",
+     "“Notice that most of this function is rejections. Every signal returns an Evaluation object with a plain-English reason, whether or not it traded. The bot has to explain itself even when it does nothing.”",
+     "“That sounds like over-engineering. It's the single most useful thing in the codebase — 294 recorded non-trades are how I found out that scouting bets had quietly eaten every available slot, and the strategy I thought I was testing had stopped firing days earlier.”",
+     "Plant the seed for slide 6: “The second block is position sizing, and it's deliberately in a different file. 'Should we bet' and 'how much' are different questions. Remember that <code>confidence</code> term — it's about to become the villain.”"],
+
+    ["This is the methodology slide. It's what makes it an experiment rather than a gamble.",
+     "“If one bot makes 16% you've learned nothing — you can't separate a good strategy from a lucky fortnight. So every setting I wasn't sure about became its own bot, running on identical data at the identical moment.”",
+     "“Five definitions of 'whale', four risk profiles, that's 20. Plus four value bots that ignore whales entirely and compare Polymarket's price against real bookmaker odds — with the bookmaker's margin stripped out so the probabilities actually sum to 100%.”",
+     "“Then I extended the same design to crypto, stocks, forex and commodities. 56 more bots. And in every asset class there's a buy-and-hold control that buys on day one and then does absolutely nothing.”",
+     "Land this: “The control is the whole point. If no clever strategy beats the bot that does nothing, then the cleverness was noise.”"],
+
+    ["Slow down. This is the result. Give it the full 40 seconds.",
+     "“Two columns. The left is the actual strategy — copying wallets with a good track record. The right is 'explore': a flat $15 bet on any big trade from a wallet it had never seen before. No judgement at all. That's my random control.”",
+     "“The strategy lost $671. The random control made $178.”  Pause here.",
+     "“And here's the part I found genuinely surprising. It's not that the strategy picked badly — 55% is still better than a coin flip. Look at the stake row: it bet twice as much on copy trades. And the loss row: when a copy trade went wrong it lost 3.7 times what it made when one went right.”",
+     "“That's the line from the code earlier: stake = equity × max percent × confidence. Confidence came from the wallet's track record, so a 'trusted' wallet automatically got a bigger bet. Position sizing doesn't create edge. It multiplies whatever edge you already have — and if that's negative, you've just built a machine for losing faster.”",
+     "If you only say one sentence from this whole deck: the bot bet the most exactly where it was least right."],
+
+    ["Quick slide, 25 seconds. The chart does the work.",
+     "“Same strategy, five different bars for what counts as a whale. Following $500 bets won 68% of the time. Following $10,000 bets won 44% — worse than a coin flip.”",
+     "“My guess at why: a ten-thousand-dollar single order is more often a hedge, or a longshot punt, or just someone with more money than information. The genuinely sharp trader is sizing sensibly. So 'biggest bet' turns out to be a bad proxy for 'smartest bet'.”",
+     "Say the caveat out loud — it buys you credibility for everything else: “That top bucket is 27 bets. The trend is real in this data. It is not yet proof.”"],
+
+    ["25 seconds. Don't over-claim — this one is genuinely undercooked and saying so is the right move.",
+     "“Same experiment design, four other asset classes, 56 bots. Momentum, mean-reversion, breakout, volatility-scaled. Every single one lands within 0.7 percentage points of flat — and the orange line is the bot that buys once and does nothing, sitting right in the middle of the pack every time.”",
+     "“Crypto has the most finished trades, and there the momentum bots are winning 9 to 28% of them. They buy every little wiggle and get chopped to pieces by fees.”",
+     "“But stocks and forex have barely traded — seven completed round trips between them. So this is 'no separation yet', not 'proven no edge'. I'd need weeks more data to say anything stronger.”"],
+
+    ["35 seconds. This is the part a technical audience will actually remember.",
+     "“Four bugs. Watch what they have in common.”",
+     "“One: 218 open positions and zero resolutions, for days. The markets API hides closed markets by default — so the bot kept asking 'did this resolve?' and getting silence. One retry with closed=true and 146 resolutions appeared instantly.”",
+     "“Two: the wallet scorecard wasn't saving its in-flight bets, so every restart wiped it back to zero wallets scored. Copy and fade — the entire strategy — hadn't fired in days. The bot was running perfectly and testing nothing.”",
+     "“Three: the value bots ranked by absolute edge, which always picks the cheapest side, so they quietly turned into longshot bots. Average entry 29 cents. Down $247.”",
+     "“Four: in scheduled mode the error path used <code>continue</code>, which skips the exit check at the bottom of the loop — so a blocked feed retried forever instead of exiting.”",
+     "Then the point: “Not one of these crashed. Every one produced a confident, plausible, completely meaningless number. In normal software a bug is loud. In a trading system it's silent — a portfolio that never resolves anything and a portfolio that's genuinely flat look identical from outside. I found all four by reading the log of decisions not taken, not by watching the profit and loss. The P&L looked fine. It was fine. It was also fiction.”"],
+
+    ["25 seconds. Deliver these as advice, not as a list you're reading.",
+     "Lead with 1 and 2 — they're the ones that generalise beyond trading. The do-nothing control, and logging the decisions you didn't take.",
+     "Number 3 is the one your lecturer will like: separating 'should I' from 'how much' isn't style, it's what let me diagnose that the sizing was the problem rather than the signal.",
+     "Number 5 is the honest close: “My best bot read plus 16.3% one week and plus 1.1% the next, having changed nothing. If I'd stood up here last week I'd have told you the opposite story with exactly the same confidence.”"],
+
+    ["15 seconds. Don't apologise for the negative result — present it as the finding.",
+     "“Target was ten thousand. It's at one thousand and eleven. The strategy I set out to test doesn't work — at least not how I built it, and not at this sample size. The random control beat it. The do-nothing control matched it. And the one number that looked like success was a fortnight of luck.”",
+     "“A negative result you can defend is worth more than a positive one you can't. Happy to take questions.”",
+     "Likely questions — have an answer ready: Why not use real money? (It's a sealed experiment; the findings are the deliverable, and paper trading removes every incentive to fudge them.) Is 611 trades enough? (For finding 1, borderline; for findings 2 and 3, no — and I've said so on the slides.) What's next? (Flat-stake copy bets, so signal quality and position sizing can be measured separately.)"]
+  ];
+
+  slides.forEach(function(s, n){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = String(n + 1);
+    b.setAttribute('aria-label', 'Slide ' + (n + 1) + ': ' + (s.dataset.title || ''));
+    b.addEventListener('click', function(){ go(n); });
+    dots.appendChild(b);
+  });
+  var dotBtns = Array.prototype.slice.call(dots.children);
+
+  function go(n){
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach(function(s, k){ s.hidden = (k !== i); });
+    dotBtns.forEach(function(b, k){ b.setAttribute('aria-current', k === i ? 'true' : 'false'); });
+    fill.style.width = ((i + 1) / slides.length * 100).toFixed(2) + '%';
+    counter.textContent = String(i + 1).padStart(2, '0') + '/' + String(slides.length).padStart(2, '0');
+    clock.innerHTML = slides[i].dataset.time || '';
+    noteTitle.textContent = slides[i].dataset.title || 'Speaker notes';
+    noteTime.innerHTML = slides[i].dataset.time || '';
+    noteBody.innerHTML = (NOTES[i] || []).map(function(p){ return '<p>' + p + '</p>'; }).join('');
+  }
+
+  document.getElementById('prev').addEventListener('click', function(){ go(i - 1); });
+  document.getElementById('next').addEventListener('click', function(){ go(i + 1); });
+
+  var docBtn = document.getElementById('docmode');
+  docBtn.addEventListener('click', function(){
+    var on = document.body.classList.toggle('doc');
+    docBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+    docBtn.textContent = on ? 'Back to slides' : 'Read as document';
+    if (on){
+      slides.forEach(function(s, n){
+        s.hidden = false;
+        if (!s.querySelector('.docnotes')){
+          var d = document.createElement('div');
+          d.className = 'docnotes';
+          d.innerHTML = '<h3>Speaker notes &mdash; ' + (s.dataset.title || '') + '</h3>' +
+                        (NOTES[n] || []).map(function(p){ return '<p>' + p + '</p>'; }).join('');
+          s.appendChild(d);
+        }
+      });
+    } else {
+      go(i);
+    }
+  });
+
+  document.addEventListener('keydown', function(e){
+    if (document.body.classList.contains('doc')) return;
+    if (e.target && /^(INPUT|TEXTAREA)$/.test(e.target.tagName)) return;
+    if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' '){ e.preventDefault(); go(i + 1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp'){ e.preventDefault(); go(i - 1); }
+    else if (e.key === 'Home'){ e.preventDefault(); go(0); }
+    else if (e.key === 'End'){ e.preventDefault(); go(slides.length - 1); }
+  });
+
+  go(0);
+})();
+</script>

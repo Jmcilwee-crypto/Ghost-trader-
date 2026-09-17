@@ -1,0 +1,200 @@
+# Ghost trading configuration. Nothing here ever touches real funds or
+# real Polymarket orders -- this only drives an in-memory/on-disk simulation.
+
+bankroll:
+  starting_usd: 1000.0
+  target_usd: 10000.0     # stop (success) once equity reaches this
+  ruin_usd: 50.0           # stop (failure) once equity drops below this
+
+strategy:
+  # A trade counts as a "whale" signal once its USD notional (size * price)
+  # is at least this large.
+  whale_usd_threshold: 1000.0
+
+  # Minimum number of resolved bets we need to have observed for a wallet
+  # before we trust its scorecard enough to trade off it.
+  min_track_record: 5
+
+  # Wallets with resolved-bet accuracy (Brier-score based) above this are
+  # copied; below the mirrored threshold (1 - fade_below) they're faded.
+  copy_above_accuracy: 0.60
+  fade_below_accuracy: 0.40
+
+  # If a wallet has no track record yet, either skip it or copy a small
+  # "explore" size, mostly useful in backtests with sparse history.
+  explore_unknown_wallets: true
+  explore_size_usd: 15.0
+
+  # Outcome tokens always redeem at $1, so a share bought at 0.97 can only gain
+  # 3% while a loss still costs the whole stake. Refuse both tails: near-certain
+  # bets have no meaningful upside, near-hopeless ones rarely pay.
+  min_entry_price: 0.05
+  max_entry_price: 0.95
+
+risk:
+  max_pct_per_trade: 0.05    # cap any single paper position at 5% of equity
+  max_concurrent_positions: 15
+  max_pct_per_market: 0.10   # cap total exposure to one market
+  # Speculative scouting bets get at most this many of the slots above, so the
+  # remaining ones stay free for copy/fade signals from traders that actually
+  # have a track record. Without this, explore bets filled all 15 and the
+  # copy/fade strategy could never fire at all.
+  max_explore_positions: 7
+
+live:
+  poll_interval_seconds: 20
+  trades_lookback_limit: 100
+  # How often to re-check an open position's market for resolution. Kept well
+  # above poll_interval_seconds on purpose -- checking every cycle burns the
+  # ~60 req/min API budget once more than a few positions are open.
+  resolution_check_interval_seconds: 300
+  state_path: "data/live_state.json"
+  log_path: "data/live_log.jsonl"
+  # Every whale-sized trade the bot looks at (acted on or not) gets appended
+  # here with its importance/possibility rating -- this is what the
+  # dashboard's "potential trades" panel reads from. Trimmed to the most
+  # recent N entries on every write so it doesn't grow forever.
+  flagged_log_path: "data/flagged_log.jsonl"
+  flagged_log_max_entries: 300
+
+dashboard:
+  host: "127.0.0.1"
+  port: 8765
+  refresh_seconds: 5
+  max_flagged_shown: 50
+  max_closed_trades_shown: 50
+
+spot:
+  # Continuous-price experiments. The same 11 bots run against every asset
+  # class below -- once prices arrive as bars, a momentum bot doesn't care
+  # whether it's looking at Bitcoin, gold or the euro. Unlike Polymarket there
+  # is no settlement: a position ends only when a strategy sells it.
+  bars: 150
+  poll_interval_seconds: 120
+  cache_ttl_seconds: 300
+  # Charged on entry AND exit. At 0.1% a round trip costs 0.2%, which is often
+  # the whole edge of a fast strategy.
+  fee_rate: 0.001
+  flagged_log_max_entries: 300
+  archive_dir: "data/archive"
+
+  classes:
+    crypto:
+      label: "Crypto"
+      source: "binance"
+      symbols: ["BTCUSDT", "ETHUSDT", "SOLUSDT", "BNBUSDT", "XRPUSDT"]
+      interval: "1h"
+    commodities:
+      label: "Commodities"
+      source: "binance"
+      # Tokenised gold -- each is redeemable for physical bullion, so they
+      # track spot gold closely and are reachable without a broker key.
+      symbols: ["PAXGUSDT", "XAUTUSDT"]
+      interval: "1h"
+    forex:
+      label: "Forex"
+      source: "frankfurter"
+      # ECB reference rates: one close per weekday, no intraday bars.
+      symbols: ["EURUSD", "GBPUSD", "JPYUSD", "AUDUSD", "CHFUSD"]
+      interval: "1d"
+      poll_interval_seconds: 900
+      fee_rate: 0.0002        # FX spreads are far tighter than crypto
+      # Currencies barely move per bar, so the conservative bots almost never
+      # trade them. The risky tier uses shorter lookbacks and much larger
+      # stakes to actually generate a sample.
+      include_risky: true
+    stocks:
+      label: "Stocks"
+      source: "alphavantage"
+      # Needs ALPHAVANTAGE_API_KEY in .env for anything beyond IBM/MSFT, which
+      # are the only tickers the shared demo key serves.
+      # TTWO is Take-Two, publisher of GTA 6 -- a dated catalyst on 19 Nov 2026
+      # and currently running ~2.2% daily volatility, roughly triple SPY.
+      symbols: ["AAPL", "MSFT", "NVDA", "TTWO", "SPY"]
+      interval: "1day"
+      include_risky: true
+      catalysts:
+        - symbol: "TTWO"
+          name: "the GTA 6 launch"
+          date: "2026-11-19"
+          enter_days_before: 60
+          exit_days_before: 3     # the "sell-into" bot; a "hold-through" twin exits at 0
+          stop_loss_pct: 0.12
+          # Built in stages across the entry window rather than all at once, so
+          # the position grows into the run-up instead of being fully committed
+          # 60 days out at the smallest size.
+          tranches: 4
+          risk:
+            max_pct_per_trade: 0.20
+            max_pct_per_market: 0.30
+      # The free tier allows 1 request/minute and ~25/day, so the source
+      # refreshes at most one symbol per cycle. A 5-minute cycle warms all five
+      # up in ~25 minutes, then the 6h cache keeps usage near 20 calls/day.
+      poll_interval_seconds: 300
+      cache_ttl_seconds: 21600
+      fee_rate: 0.0           # most brokers are commission-free on equities
+
+research:
+  # Estimates the real probability of an event from sportsbook consensus odds,
+  # so bots can bet on the gap between that and Polymarket's price.
+  # The API key is read from the ODDS_API_KEY environment variable, never from
+  # this file -- get a free one (500 requests/month) at the-odds-api.com.
+  enabled: true
+  cache_ttl_seconds: 1800    # one request covers all upcoming events; cache it
+  regions: "us,eu"
+  max_requests_per_day: 120  # hard stop so the free quota can't be burned
+  min_books: 2               # ignore an event priced by only one bookmaker
+  match_threshold: 0.5       # how confidently a title must match a real fixture
+
+edge_strategy:
+  # ON TRIAL from 2026-09-15, judged on SAMPLE SIZE rather than a date.
+  # The first run lost $247.31 over 42 bets at a 33% win rate, average entry
+  # 0.297 -- a longshot bias fixed the same morning (relative-edge ranking
+  # plus a 0.15 price floor). But 42 bets is well inside the range where a 33%
+  # rate is indistinguishable from bad luck, so that verdict was never solid
+  # either way. Running on fresh $1,000 bankrolls until ~100 resolved bets,
+  # which is roughly where a genuinely losing edge separates from variance.
+  # These filters are strict, so that may take considerably longer than a week.
+  # The original record is archived and still readable via
+  # `python3 -m src.stats --all-runs`.
+  enabled: true
+  review_after_resolved_bets: 100
+
+  # Edge is how far below the researched fair probability the price has to be.
+  whale_usd_threshold: 500.0
+  min_edge: 0.08
+  # Raw points of edge always favoured the cheapest side -- a 0.06 longshot
+  # called 0.20 outranks a 0.80 favourite called 0.88 -- which is exactly where
+  # the probability estimate is least reliable. A bet must now also clear this
+  # edge relative to its price, and sit above min_value_price.
+  min_relative_edge: 0.25
+  min_value_price: 0.15
+  # Fraction of the Kelly stake to actually bet. Full Kelly assumes the
+  # probability estimate is exactly right; it isn't, so bet a quarter of it.
+  kelly_fraction: 0.25
+  min_confidence: 0.5
+
+experiment:
+  # Runs 20 strategy variants (4 decision profiles x 5 whale thresholds)
+  # against a single shared data feed -- see src/experiment.py.
+  poll_interval_seconds: 20
+  resolution_check_interval_seconds: 300
+  state_path: "data/experiment_state.json"
+  leaderboard_path: "data/experiment_leaderboard.json"
+  flagged_log_path: "data/experiment_flagged_log.jsonl"
+  flagged_log_max_entries: 300
+  # Past runs are snapshotted here on startup and never overwritten, so a
+  # strategy change can always be compared against what it replaced.
+  archive_dir: "data/archive"
+  # Appended once per cycle: every variant's equity over time.
+  history_path: "data/experiment_history.jsonl"
+  # Flagged rows show ratings from this variant's perspective, so the numbers
+  # in that panel stay consistent instead of varying by which variant acted.
+  reference_variant: "balanced@$1000"
+
+backtest:
+  num_closed_markets: 40
+  min_market_volume_usd: 20000
+  trades_per_market_limit: 500
+  report_path: "data/backtest_report.json"
+  equity_curve_csv: "data/backtest_equity_curve.csv"

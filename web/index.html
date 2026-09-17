@@ -1,0 +1,1148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ghost Trader</title>
+<style>
+  /* Cyber sigilism: pure monochrome, hairline geometry, sharp corners only.
+     No colour at all, so profit/loss is carried by ▲/▼ glyphs, weight and
+     inversion instead of green/red.
+
+     Layout is a fixed console shell: sticky stat rail, persistent bot roster
+     on the left, switchable stage on the right. Nothing scrolls the whole
+     page -- each pane scrolls independently. */
+  :root {
+    --bg: #000; --panel: #050505; --panel-hi: #0e0e0e; --line: #242424; --line-mid: #3a3a3a;
+    --text: #fff; --dim: #7a7a7a; --dimmer: #4a4a4a;
+    /* The ONLY colour in the palette, and it is never decorative -- acid green
+       means gain, hot red means loss, nothing else is tinted. The ▲/▼ glyphs
+       stay as well, so direction survives even if the hues don't read. */
+    --gain: #00ff9c; --loss: #ff2d55;
+    --gain-ink: #006b3c; --loss-ink: #a8002c;   /* legible on inverted rows */
+    --glow-gain: rgba(0,255,156,.35); --glow-loss: rgba(255,45,85,.3);
+    /* Selecting a row flips it to the opposite of the page. */
+    --invert-bg: #fff; --invert-fg: #000; --invert-dim: #444;
+    --sunken: #000;          /* insets: inputs, buttons, stat tiles */
+    --th-bg: #070707;
+    --hairline-soft: #141414;
+    --track: #111;
+    --scanline: rgba(255,255,255,.022);
+    --scan-blend: screen;
+    /* Liquid-chrome ramp for the backdrop sigil and the wordmark. */
+    --chrome-hi: #ffffff; --chrome-mid: #9aa0aa; --chrome-lo: #2a2d34;
+    --sigil-opacity: .42;
+    /* Surfaces sit slightly off opaque so the sigil reads underneath. Text
+       areas stay near-solid -- the artwork is never allowed to cost contrast. */
+    --veil: rgba(0,0,0,.62);
+    --veil-panel: rgba(5,5,5,.70);
+    --veil-table: rgba(0,0,0,.78);
+    --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+    --rail: 62px; --roster: 310px;
+  }
+
+  /* Light mode keeps the sigilism structure -- hairlines, hard corners, wide
+     tracking -- but neon on white is unreadable, so the accents drop to deep
+     ink-green and ink-red and the glows are removed entirely (a glow on a
+     light field just reads as blur). */
+  [data-theme="light"] {
+    --bg: #fbfbf9; --panel: #ffffff; --panel-hi: #f1f1ee; --line: #dcdcd6; --line-mid: #b4b4ac;
+    --text: #0c0c0c; --dim: #64645e; --dimmer: #9a9a92;
+    --gain: #00794f; --loss: #c1102e;
+    --gain-ink: #4ade9f; --loss-ink: #ff8097;   /* legible on the dark inversion */
+    --glow-gain: transparent; --glow-loss: transparent;
+    --invert-bg: #0c0c0c; --invert-fg: #fff; --invert-dim: #b0b0a8;
+    --sunken: #ffffff;
+    --th-bg: #f3f3ef;
+    --hairline-soft: #ebebe5;
+    --track: #e8e8e2;
+    --scanline: rgba(0,0,0,.022);
+    --scan-blend: multiply;
+    /* Polished steel on paper: the highlight has to go dark or the sigil
+       disappears into a white page. */
+    --chrome-hi: #b9bec7; --chrome-mid: #6e737c; --chrome-lo: #2b2e34;
+    --sigil-opacity: .26;
+    --veil: rgba(251,251,249,.70);
+    --veil-panel: rgba(255,255,255,.76);
+    --veil-table: rgba(255,255,255,.85);
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: var(--mono); font-size: 13px; letter-spacing: .01em;
+    -webkit-font-smoothing: antialiased; overflow: hidden;
+  }
+  body::after {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 9999;
+    background: repeating-linear-gradient(to bottom, var(--scanline) 0 1px, transparent 1px 3px);
+    mix-blend-mode: var(--scan-blend);
+  }
+  /* ---- cybersigilism backdrop ---- */
+  .sigil-bg {
+    position: fixed; inset: 0; width: 100vw; height: 100vh; z-index: 0;
+    pointer-events: none; opacity: var(--sigil-opacity);
+    filter: drop-shadow(0 0 26px rgba(255,255,255,.10));
+  }
+  /* Pushed right and oversized so the form bleeds off the edge instead of
+     sitting behind the leaderboard -- the dense middle of the console stays
+     clean, and the chrome reads in the open space around it. */
+  .sigil-main { transform-origin: 500px 500px; animation: sigil-drift 48s ease-in-out infinite; }
+  @keyframes sigil-drift {
+    0%, 100% { transform: translate(20%, 4%) scale(1.55) rotate(-.5deg); }
+    50%      { transform: translate(20%, 4%) scale(1.62) rotate(.5deg); }
+  }
+  /* Anyone who asked the OS to cut motion gets a still backdrop. */
+  @media (prefers-reduced-motion: reduce) { .sigil-main { animation: none; } }
+  /* Everything the eye reads sits above the artwork. */
+  .shell { position: relative; z-index: 1; }
+
+  ::-webkit-scrollbar { width: 9px; height: 9px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--line); border: 1px solid var(--bg); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--line-mid); }
+
+  /* ---- shell ---- */
+  .shell { display: grid; grid-template-rows: auto 1fr; height: 100vh; }
+  .console { display: grid; grid-template-columns: var(--roster) 1fr; min-height: 0; }
+
+  /* ---- top rail ---- */
+  .rail { border-bottom: 1px solid var(--line-mid); background: var(--veil); backdrop-filter: blur(3px); }
+  .rail-top { display: flex; align-items: baseline; gap: 16px; padding: 14px 20px 10px; flex-wrap: wrap; }
+  .brand {
+    font-size: 15px; font-weight: 600; letter-spacing: .34em; text-transform: uppercase; white-space: nowrap;
+    background: linear-gradient(175deg, var(--chrome-hi) 0%, var(--chrome-mid) 38%,
+                var(--chrome-hi) 52%, var(--chrome-lo) 72%, var(--chrome-hi) 100%);
+    -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+  }
+  .brand .sigil { letter-spacing: 0; opacity: .85; }
+  .tagline { color: var(--dimmer); font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; }
+  .markets { display: flex; gap: 0; border: 1px solid var(--line); }
+  .market-btn {
+    background: var(--sunken); border: none; border-right: 1px solid var(--line); color: var(--dim); cursor: pointer;
+    padding: 6px 15px; font-size: 9.5px; font-family: var(--mono); letter-spacing: .2em;
+    text-transform: uppercase; transition: all .12s ease;
+  }
+  .market-btn:last-child { border-right: none; }
+  .market-btn:hover { color: var(--text); background: var(--panel-hi); }
+  .market-btn.on { background: var(--invert-bg); color: var(--invert-fg); font-weight: 700; }
+  .theme-btn {
+    background: var(--sunken); border: 1px solid var(--line); color: var(--dim); cursor: pointer;
+    padding: 7px 12px; font-size: 11px; font-family: var(--mono); line-height: 1;
+    transition: all .12s ease;
+  }
+  .theme-btn:hover { color: var(--text); border-color: var(--text); }
+  .mb-sub { display: block; font-size: 8px; letter-spacing: .08em; color: var(--dimmer); margin-top: 3px; }
+  .market-btn.on .mb-sub { color: var(--invert-dim); }
+  #status-line { color: var(--dim); }
+
+  /* Compact inline stats replace the old row of big cards. */
+  .statstrip { display: flex; gap: 0; border-top: 1px solid var(--line); overflow-x: auto; }
+  .stat-cell { padding: 9px 20px; border-right: 1px solid var(--line); white-space: nowrap; flex: 0 0 auto;
+               position: relative; transition: background .14s ease; }
+  .stat-cell:hover { background: var(--panel-hi); }
+  .stat-cell .k { color: var(--dimmer); font-size: 8.5px; text-transform: uppercase; letter-spacing: .2em; }
+  .stat-cell .v { font-size: 17px; font-weight: 500; margin-top: 4px; }
+  .stat-cell .s { color: var(--dim); font-size: 9px; margin-top: 3px; letter-spacing: .06em; }
+  .bar { height: 3px; background: var(--track); border: 1px solid var(--line); margin-top: 6px; width: 130px; }
+  .bar > div { height: 100%; background: var(--gain); box-shadow: 0 0 8px var(--glow-gain); transition: width .4s ease; }
+
+  /* ---- left roster ---- */
+  .roster { border-right: 1px solid var(--line-mid); display: grid; grid-template-rows: auto 1fr;
+            min-height: 0; background: var(--veil-panel); backdrop-filter: blur(3px); }
+  .roster-head { padding: 12px 12px 10px; border-bottom: 1px solid var(--line); }
+  .roster-title { font-size: 9.5px; letter-spacing: .24em; text-transform: uppercase; color: var(--dim);
+                  margin-bottom: 9px; display: flex; justify-content: space-between; }
+  .roster-list { overflow-y: auto; min-height: 0; }
+  .bot {
+    display: grid; grid-template-columns: 1fr auto; gap: 2px 8px; align-items: center;
+    padding: 9px 12px; border-bottom: 1px solid var(--hairline-soft); cursor: pointer;
+    transition: background .1s ease; position: relative;
+  }
+  .bot:hover { background: var(--panel-hi); }
+  .bot.on { background: var(--invert-bg); color: var(--invert-fg); }
+  .bot.on .bot-meta, .bot.on .bot-val { color: var(--invert-dim); }
+  /* Neon on white is illegible, so inverted rows switch to ink-dark variants. */
+  .bot.on .pnl-pos { color: var(--gain-ink); text-shadow: none; }
+  .bot.on .pnl-neg { color: var(--loss-ink); text-shadow: none; }
+  .bot-name { font-size: 11.5px; font-weight: 600; letter-spacing: .04em; }
+  .bot.lead .bot-name::before { content: "✦ "; opacity: .75; }
+  .bot-meta { grid-column: 1; color: var(--dim); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; }
+  .bot-val { grid-column: 2; grid-row: 1; text-align: right; font-size: 11px; }
+  .bot-spark { grid-column: 2; grid-row: 2; }
+
+  /* ---- right stage ---- */
+  .stage { display: grid; grid-template-rows: auto 1fr; min-height: 0; }
+  .stage-tabs { display: flex; border-bottom: 1px solid var(--line-mid); background: var(--veil); backdrop-filter: blur(3px); }
+  .stage-tab {
+    background: none; border: none; border-bottom: 2px solid transparent; color: var(--dim); cursor: pointer;
+    padding: 11px 20px; font-size: 10px; font-family: var(--mono); letter-spacing: .2em;
+    text-transform: uppercase; transition: all .12s ease;
+  }
+  .stage-tab:hover { color: var(--text); background: var(--panel-hi); }
+  .stage-tab.on { color: var(--text); border-bottom-color: var(--text); }
+  .stage-tab .n { color: var(--dimmer); margin-left: 7px; }
+  .stage-tab.on .n { color: var(--dim); }
+  .stage-body { overflow-y: auto; min-height: 0; padding: 20px 22px 60px; }
+
+  /* ---- shared bits ---- */
+  .toolbar { display: flex; gap: 6px; align-items: center; margin: 0 0 12px; flex-wrap: wrap; }
+  input.search {
+    background: var(--sunken); border: 1px solid var(--line); color: var(--text); font-family: var(--mono); width: 100%;
+    padding: 7px 10px; font-size: 10.5px; outline: none; letter-spacing: .12em;
+    text-transform: uppercase; transition: border-color .14s ease;
+  }
+  input.search::placeholder { color: var(--dimmer); }
+  input.search:focus { border-color: var(--text); }
+  .chips { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 8px; }
+  .chip {
+    background: var(--sunken); border: 1px solid var(--line); color: var(--dim); cursor: pointer;
+    padding: 4px 8px; font-size: 8.5px; letter-spacing: .14em; text-transform: uppercase;
+    transition: all .12s ease; user-select: none;
+  }
+  .chip:hover { border-color: var(--text); color: var(--text); }
+  .chip.on { background: var(--invert-bg); border-color: var(--invert-bg); color: var(--invert-fg); font-weight: 600; }
+
+  h2.sec {
+    font-size: 10px; margin: 0 0 12px; display: flex; align-items: center; gap: 11px; flex-wrap: wrap;
+    text-transform: uppercase; letter-spacing: .26em; font-weight: 600;
+  }
+  h2.sec::before { content: "✦"; letter-spacing: 0; opacity: .6; }
+  h2.sec .count { color: var(--dimmer); font-weight: 400; font-size: 9px; letter-spacing: .12em; }
+
+  table { width: 100%; border-collapse: collapse; background: var(--veil-table); border: 1px solid var(--line); }
+  th, td { text-align: left; padding: 9px 13px; font-size: 11px; border-bottom: 1px solid var(--line); }
+  th {
+    color: var(--dim); font-weight: 500; font-size: 8.5px; text-transform: uppercase;
+    letter-spacing: .18em; border-bottom: 1px solid var(--line-mid); background: var(--th-bg);
+    position: sticky; top: 0; z-index: 2;
+  }
+  th.sortable { cursor: pointer; user-select: none; transition: color .12s ease; white-space: nowrap; }
+  th.sortable:hover { color: var(--text); }
+  th .arrow { opacity: .5; font-size: 8px; margin-left: 4px; }
+  th.sorted { color: var(--text); }
+  th.sorted .arrow { opacity: 1; }
+  tr:last-child td { border-bottom: none; }
+  .empty-row td { color: var(--dimmer); text-align: center; padding: 26px; letter-spacing: .1em; }
+  tbody tr.clickable { cursor: pointer; transition: background .1s ease; }
+  tbody tr.clickable:hover { background: var(--panel-hi); }
+  tbody tr.selected, tbody tr.selected td { background: var(--invert-bg); color: var(--invert-fg); }
+  tbody tr.selected .muted { color: var(--invert-dim); }
+  tbody tr.selected .pnl-pos { color: var(--gain-ink); text-shadow: none; }
+  tbody tr.selected .pnl-neg { color: var(--loss-ink); text-shadow: none; }
+  tbody tr.selected .badge { border-color: var(--invert-fg); color: var(--invert-fg); }
+  tbody tr.leader-row td.vname::before { content: "✦ "; opacity: .7; }
+  tbody tr.leader-row td.vname { font-weight: 700; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; }
+  th.num { text-align: right; }
+
+  .badge {
+    display: inline-block; padding: 2px 7px; font-size: 8.5px; font-weight: 600;
+    letter-spacing: .14em; text-transform: uppercase; border: 1px solid var(--line); color: var(--dim);
+  }
+  .badge.copy { border-color: var(--text); color: var(--text); }
+  .badge.fade { border-color: var(--text); color: var(--bg); background: var(--text); }
+  .badge.explore { border-color: var(--dim); color: var(--dim); }
+  .badge.value { border-color: var(--text); color: var(--text); border-style: dashed; }
+  .badge.watching { border-color: var(--line); color: var(--dimmer); }
+  .badge.won { border-color: var(--gain); color: var(--gain); }
+  .badge.lost { border-color: var(--loss); color: var(--loss); }
+  .badge.live { border-color: var(--gain); color: var(--gain); }
+  .rating { display: inline-flex; align-items: center; gap: 7px; }
+  .rating-bar { width: 46px; height: 4px; background: var(--track); overflow: hidden; border: 1px solid var(--line); }
+  .rating-bar > div { height: 100%; background: var(--text); transition: width .3s ease; }
+  .rating.low .rating-bar > div { background: var(--dimmer); }
+  .rating.medium .rating-bar > div { background: var(--dim); }
+  .rating.unknown .rating-bar > div { background: var(--line); width: 100% !important; }
+  .rating span.label { font-size: 8.5px; color: var(--dim); white-space: nowrap; letter-spacing: .12em; text-transform: uppercase; }
+  .pnl-pos { color: var(--gain); font-weight: 700; text-shadow: 0 0 10px var(--glow-gain); }
+  .pnl-neg { color: var(--loss); font-weight: 600; text-shadow: 0 0 10px var(--glow-loss); }
+  .up { color: var(--gain); font-weight: 600; }
+  .down { color: var(--loss); }
+  .muted { color: var(--dim); }
+  .reason { color: var(--dim); font-size: 10px; line-height: 1.5; }
+  .empty-state { border: 1px dashed var(--line); padding: 48px; text-align: center; color: var(--dim);
+                 letter-spacing: .1em; }
+  .hint-line { color: var(--dimmer); font-size: 9.5px; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 14px; }
+  .kbd { border: 1px solid var(--line); padding: 1px 5px; margin: 0 1px; color: var(--dim); font-size: 9px; }
+
+  /* ---- detail ---- */
+  .detail-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px;
+                 flex-wrap: wrap; border-bottom: 1px solid var(--line); padding-bottom: 14px; }
+  .detail-head h3 { margin: 0; font-size: 16px; letter-spacing: .2em; text-transform: uppercase; font-weight: 600; }
+  .detail-head .sub { color: var(--dim); font-size: 9.5px; margin-top: 7px; letter-spacing: .13em; text-transform: uppercase; }
+  .settings-row { display: flex; gap: 18px; flex-wrap: wrap; font-size: 9.5px; color: var(--dim);
+                  margin-top: 11px; letter-spacing: .08em; text-transform: uppercase; }
+  .settings-row b { color: var(--text); font-weight: 600; }
+  .settings-row span::before { content: "⟡ "; color: var(--dimmer); }
+  .statgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(128px, 1fr)); gap: 6px; margin: 18px 0; }
+  .stat { background: var(--veil-table); padding: 10px 12px; border: 1px solid var(--line); }
+  .stat .k { color: var(--dim); font-size: 8px; text-transform: uppercase; letter-spacing: .18em; }
+  .stat .v { font-size: 17px; font-weight: 500; margin-top: 5px; }
+  .stat .hint { color: var(--dimmer); font-size: 8.5px; margin-top: 4px; letter-spacing: .07em; }
+  .chartwrap { border: 1px solid var(--line); padding: 10px; margin: 16px 0; background: var(--veil-table); }
+  .eqchart { width: 100%; height: 190px; display: block; }
+  .eqchart #eqhit { cursor: crosshair; }
+  .eqchart .axis { fill: var(--dimmer); font-size: 8.5px; font-family: var(--mono); }
+  .chart-readout { font-size: 10px; letter-spacing: .06em; margin-top: 6px; min-height: 14px; }
+  .chart-empty { color: var(--dimmer); font-size: 10px; letter-spacing: .1em; text-align: center;
+                 padding: 60px 0; text-transform: uppercase; }
+
+  /* roster grouping */
+  .bot-group { display: flex; justify-content: space-between; align-items: center; cursor: pointer;
+               padding: 7px 12px; background: var(--th-bg); border-bottom: 1px solid var(--line);
+               border-top: 1px solid var(--line); user-select: none; transition: background .12s ease; }
+  .bot-group:hover { background: var(--panel-hi); }
+  .gname { font-size: 9px; letter-spacing: .2em; text-transform: uppercase; color: var(--text); font-weight: 600; }
+  .gmeta { font-size: 8.5px; letter-spacing: .06em; color: var(--dimmer); }
+  .bot-sub { grid-column: 1 / -1; color: var(--dimmer); font-size: 8.5px; letter-spacing: .08em;
+             text-transform: uppercase; margin-top: 2px; }
+  .bot.on .bot-sub { color: var(--invert-dim); }
+
+  /* bot explanation */
+  .bot-explain { color: var(--text); font-size: 11.5px; line-height: 1.6; margin-top: 10px; max-width: 78ch; }
+  .bot-points { margin: 8px 0 0; padding: 0; list-style: none; }
+  .bot-points li { color: var(--dim); font-size: 10px; line-height: 1.7; }
+  .bot-points li::before { content: "⟡ "; color: var(--dimmer); }
+  .bot-points b { color: var(--text); }
+  .tabs { display: flex; gap: 0; margin: 18px 0 0; border-bottom: 1px solid var(--line); }
+  .tab {
+    background: none; border: none; border-bottom: 2px solid transparent; color: var(--dim); cursor: pointer;
+    padding: 8px 14px; font-size: 9.5px; font-family: var(--mono); letter-spacing: .16em;
+    text-transform: uppercase; transition: all .12s ease;
+  }
+  .tab:hover { color: var(--text); }
+  .tab.on { color: var(--text); border-bottom-color: var(--text); }
+  .tabbody { padding-top: 13px; }
+  .spark { display: block; }
+
+  @media (max-width: 900px) {
+    body { overflow: auto; }
+    .shell, .console { display: block; height: auto; }
+    .roster { border-right: none; border-bottom: 1px solid var(--line-mid); }
+    .roster-list { max-height: 320px; }
+    .stage-body { overflow: visible; }
+  }
+</style>
+</head>
+<body>
+<!-- Cybersigilism backdrop. Hand-authored rather than bitmaps: it scales to
+     any display, weighs nothing, works with no network, and recolours itself
+     for light mode. Sits behind everything and ignores the mouse, so it can
+     never cost a click or a pixel of legibility. -->
+<svg class="sigil-bg" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <defs>
+    <linearGradient id="chrome" x1="0" y1="0" x2="0.35" y2="1">
+      <stop offset="0%"   stop-color="var(--chrome-hi)"/>
+      <stop offset="22%"  stop-color="var(--chrome-lo)"/>
+      <stop offset="42%"  stop-color="var(--chrome-hi)"/>
+      <stop offset="58%"  stop-color="var(--chrome-mid)"/>
+      <stop offset="78%"  stop-color="var(--chrome-lo)"/>
+      <stop offset="100%" stop-color="var(--chrome-hi)"/>
+    </linearGradient>
+    <linearGradient id="chrome2" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="var(--chrome-mid)"/>
+      <stop offset="30%"  stop-color="var(--chrome-hi)"/>
+      <stop offset="55%"  stop-color="var(--chrome-lo)"/>
+      <stop offset="80%"  stop-color="var(--chrome-hi)"/>
+      <stop offset="100%" stop-color="var(--chrome-mid)"/>
+    </linearGradient>
+
+    <!-- One half of the sigil: a tapering horn with two thorn offshoots and a
+         hooked barb. Mirrored at use time to build the symmetric whole. -->
+    <g id="sigil-half">
+      <path d="M0,470 C-6,360 -26,250 -74,150 C-96,104 -120,62 -150,28
+               C-124,74 -104,122 -88,172 C-62,254 -44,360 -38,470
+               C-30,520 -14,540 0,540 Z" fill="url(#chrome)"/>
+      <path d="M-52,300 C-84,286 -118,268 -150,238 C-122,282 -88,316 -50,338
+               C-40,326 -42,310 -52,300 Z" fill="url(#chrome2)"/>
+      <path d="M-30,392 C-64,404 -100,430 -132,472 C-92,452 -56,436 -24,430
+               C-18,416 -22,400 -30,392 Z" fill="url(#chrome2)"/>
+      <path d="M-18,470 C-40,516 -72,560 -118,596 C-66,574 -28,540 -6,500
+               C-4,486 -10,474 -18,470 Z" fill="url(#chrome)"/>
+      <path d="M-150,28 C-160,14 -168,6 -176,0 C-170,12 -162,22 -156,32 Z" fill="url(#chrome)"/>
+    </g>
+  </defs>
+
+  <g class="sigil-main">
+    <use href="#sigil-half" x="500" y="330"/>
+    <use href="#sigil-half" x="500" y="330" transform="scale(-1,1)" transform-origin="500 330"/>
+    <!-- The crossing tails that close the form at the base. -->
+    <path d="M470,840 C440,900 400,950 344,986 C404,962 452,922 486,872
+             C492,858 482,844 470,840 Z" fill="url(#chrome)"/>
+    <path d="M530,840 C560,900 600,950 656,986 C596,962 548,922 514,872
+             C508,858 518,844 530,840 Z" fill="url(#chrome)"/>
+  </g>
+</svg>
+
+<div class="shell">
+  <div class="rail">
+    <div class="rail-top">
+      <div class="brand"><span class="sigil">⛧</span> Ghost Trader <span class="sigil">⟡</span></div>
+      <div class="markets" id="markets"></div>
+      <button class="theme-btn" id="theme-btn" title="Toggle light / dark"></button>
+      <div class="tagline">paper trading &mdash; simulated capital, live market data <span class="sigil">✧</span> <span id="status-line">connecting...</span></div>
+    </div>
+    <div class="statstrip" id="statstrip"></div>
+  </div>
+  <div class="console">
+    <aside class="roster">
+      <div class="roster-head">
+        <div class="roster-title"><span>Bot Roster</span><span id="roster-count"></span></div>
+        <input class="search" id="filter" type="text" placeholder="search bots...">
+        <div class="chips" id="chips"></div>
+      </div>
+      <div class="roster-list" id="roster-list"></div>
+    </aside>
+    <section class="stage">
+      <div class="stage-tabs" id="stage-tabs"></div>
+      <div class="stage-body" id="stage-body"></div>
+    </section>
+  </div>
+</div>
+<script>
+const REFRESH_MS = __REFRESH_MS__;
+
+// ---- theme -------------------------------------------------------------
+// Defaults to whatever the OS asks for, then remembers an explicit choice.
+function applyTheme(theme) {
+  document.documentElement.setAttribute("data-theme", theme);
+  localStorage.setItem("ghost-theme", theme);
+  const btn = document.getElementById("theme-btn");
+  if (btn) btn.textContent = theme === "light" ? "◐ dark" : "◑ light";
+}
+(function initTheme() {
+  const saved = localStorage.getItem("ghost-theme");
+  const prefersLight = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches;
+  applyTheme(saved || (prefersLight ? "light" : "dark"));
+})();
+document.getElementById("theme-btn").onclick = () => {
+  const now = document.documentElement.getAttribute("data-theme");
+  applyTheme(now === "light" ? "dark" : "light");
+  if (latest) render(latest);   // sparklines are drawn with baked-in colours
+};
+
+// UI state survives refreshes so a poll doesn't yank the view out from under you.
+let ui = { selected: null, sortKey: "equity", sortDir: -1, filter: "", profiles: new Set(),
+           tab: "open", view: "leaderboard", market: "polymarket", collapsed: new Set() };
+let latest = null;
+// Selection and filters are per-market: a Polymarket bot name means nothing
+// in the crypto experiment, so switching markets resets them.
+const perMarket = {};
+
+function money(v, opts) {
+  if (v == null) return "--";
+  const o = opts || {};
+  const sign = o.forceSign && v >= 0 ? "+" : (v < 0 ? "-" : "");
+  return sign + "$" + Math.abs(v).toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+}
+function pct(v, digits) { return v == null ? "--" : (v).toFixed(digits == null ? 1 : digits) + "%"; }
+function ratePct(v) { return v == null ? "--" : Math.round(v * 100) + "%"; }
+// Monochrome has no green/red, so gain vs loss is carried by the glyph.
+function arrow(v) { return v > 0 ? "▲" : (v < 0 ? "▼" : "·"); }
+function signed(v, suffix) {
+  if (v == null) return '<span class="muted">--</span>';
+  const cls = v > 0 ? "pnl-pos" : (v < 0 ? "pnl-neg" : "muted");
+  return `<span class="${cls}">${arrow(v)} ${v >= 0 ? "+" : ""}${v}${suffix || ""}</span>`;
+}
+function signedMoney(v) {
+  if (v == null) return '<span class="muted">--</span>';
+  const cls = v > 0 ? "pnl-pos" : (v < 0 ? "pnl-neg" : "muted");
+  return `<span class="${cls}">${arrow(v)} ${money(v, {forceSign: true})}</span>`;
+}
+function timeAgo(ts) {
+  if (!ts) return "";
+  const d = Date.now() / 1000 - ts;
+  if (d < 60) return "just now";
+  if (d < 3600) return Math.floor(d / 60) + "m ago";
+  if (d < 86400) return Math.floor(d / 3600) + "h ago";
+  return Math.floor(d / 86400) + "d ago";
+}
+function shortWallet(w) {
+  if (!w) return "unknown";
+  return w.length > 12 ? w.slice(0, 6) + "..." + w.slice(-4) : w;
+}
+function ratingHtml(p, label) {
+  const cls = (label || "unknown").toLowerCase().replace(/\s+/g, "-");
+  const width = p == null ? 100 : Math.max(2, Math.min(100, p));
+  return `<span class="rating ${cls}"><span class="rating-bar"><div style="width:${width}%"></div></span><span class="label">${label || "Unknown"}</span></span>`;
+}
+function actionBadge(action) {
+  if (action === "copy") return '<span class="badge copy">Copying</span>';
+  if (action === "fade") return '<span class="badge fade">Fading</span>';
+  if (action === "explore") return '<span class="badge explore">Test bet</span>';
+  if (action === "value") return '<span class="badge value">Value bet</span>';
+  if (action === "skipped_price_bounds") return '<span class="badge watching">Bad odds</span>';
+  if (action === "skipped_explore_cap") return '<span class="badge watching">Explore full</span>';
+  if (action === "skipped_no_research") return '<span class="badge watching">No odds</span>';
+  if (action === "skipped_low_confidence") return '<span class="badge watching">Weak evidence</span>';
+  return '<span class="badge watching">Watching</span>';
+}
+function stanceBadge(s) {
+  if (s === "copy") return '<span class="badge copy">Copying</span>';
+  if (s === "fade") return '<span class="badge fade">Fading</span>';
+  if (s === "explore") return '<span class="badge explore">Test bet</span>';
+  if (s === "value") return '<span class="badge value">Value bet</span>';
+  return `<span class="badge watching">${s || "unknown"}</span>`;
+}
+
+// Inline SVG sparkline -- no chart library, so this keeps working offline.
+function sparkline(series, w, h, startCash) {
+  if (!series || series.length < 2) {
+    return `<svg class="spark" width="${w}" height="${h}"><line x1="0" y1="${h/2}" x2="${w}" y2="${h/2}" stroke="var(--line-mid)" stroke-dasharray="2 3"/></svg>`;
+  }
+  const vals = series.map(p => p[1]);
+  let lo = Math.min(...vals, startCash), hi = Math.max(...vals, startCash);
+  if (hi === lo) { hi = lo + 1; lo = lo - 1; }
+  const x = i => (i / (series.length - 1)) * (w - 2) + 1;
+  const y = v => h - 2 - ((v - lo) / (hi - lo)) * (h - 4);
+  const pts = series.map((p, i) => `${x(i).toFixed(1)},${y(p[1]).toFixed(1)}`).join(" ");
+  const last = vals[vals.length - 1];
+  // Colour carries the trend; the dash pattern repeats it so a flat-vs-losing
+  // line is still distinguishable without relying on hue.
+  const up = last > startCash, down = last < startCash;
+  const stroke = up ? "var(--gain)" : (down ? "var(--loss)" : "var(--dim)");
+  const dash = down ? 'stroke-dasharray="3 2"' : "";
+  const baseY = y(startCash).toFixed(1);
+  const cx = x(series.length - 1).toFixed(1), cy = y(last).toFixed(1);
+  return `<svg class="spark" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">
+    <line x1="0" y1="${baseY}" x2="${w}" y2="${baseY}" stroke="var(--line-mid)" stroke-dasharray="2 3"/>
+    <polyline points="${pts}" fill="none" stroke="${stroke}" stroke-width="1.4" ${dash} stroke-linejoin="miter" stroke-linecap="square"/>
+    <rect x="${cx - 2}" y="${cy - 2}" width="4" height="4" fill="${stroke}"/>
+  </svg>`;
+}
+
+// ---- bot naming ---------------------------------------------------------------
+// Names are terse by design (momentum-5/20, value-edge10-bold, aggressive@$500).
+// This turns each one back into a sentence so the roster is readable without
+// having to remember the convention.
+const FAMILIES = {
+  aggressive:      {group: "Whale followers", label: "Aggressive"},
+  balanced:        {group: "Whale followers", label: "Balanced"},
+  strict:          {group: "Whale followers", label: "Strict"},
+  copy_only:       {group: "Whale followers", label: "Copy only"},
+  value:           {group: "Value bettors",  label: "Value"},
+  momentum:        {group: "Trend followers", label: "Momentum"},
+  vol_scaled_momentum: {group: "Trend followers", label: "Volatility-scaled momentum"},
+  breakout:        {group: "Trend followers", label: "Breakout"},
+  mean_reversion:  {group: "Contrarians",    label: "Mean reversion"},
+  buy_and_hold:    {group: "Baseline",       label: "Buy and hold"},
+  catalyst:        {group: "Event bets",     label: "Catalyst"},
+};
+
+function botGroup(row) {
+  if (String(row.name).startsWith("risky-")) return "High risk";
+  return (FAMILIES[row.profile] || {}).group || "Other";
+}
+
+function describeBot(row) {
+  const s = row.settings || {};
+  const fam = FAMILIES[row.profile] || {label: row.profile};
+  const risky = String(row.name).startsWith("risky-");
+  const pct = v => v == null ? "--" : Math.round(v * 100) + "%";
+  let headline, points = [];
+
+  switch (row.profile) {
+    case "momentum":
+    case "vol_scaled_momentum":
+      headline = `Buys strength: enters when the ${s.fast}-bar average crosses above the ${s.slow}-bar, exits when it crosses back.`;
+      points.push(`${s.fast}/${s.slow} = the two moving averages it compares`);
+      if (row.profile === "vol_scaled_momentum") points.push("stakes less on assets that are swinging wildly");
+      break;
+    case "mean_reversion":
+      headline = `Buys weakness: enters when RSI falls to ${s.oversold} (oversold), exits once it recovers to ${s.exit_level}.`;
+      points.push(`the number in the name is the RSI level it buys at &mdash; lower means it waits for a deeper fall`);
+      break;
+    case "breakout":
+      headline = `Buys new highs: enters when price clears its ${s.lookback}-bar high, exits if it drops below the ${s.exit_lookback}-bar low.`;
+      points.push(`the number is how far back it looks for that high`);
+      break;
+    case "buy_and_hold":
+      headline = "The control. Buys once and never sells &mdash; every other bot has to beat simply owning the asset.";
+      break;
+    case "catalyst":
+      headline = `Event bet on ${s.symbol} into ${s.event} (${s.event_date}).`;
+      points.push(s.exit_days_before > 0
+        ? `"sell-into" &mdash; exits ${s.exit_days_before} days <b>before</b> the event, betting the run-up is the tradable part`
+        : `"hold-through" &mdash; holds <b>through</b> the event instead of selling into the anticipation`);
+      points.push("ignores every other symbol; it is an event bet, not a general signal");
+      break;
+    case "value":
+      headline = `Bets when bookmaker odds disagree with the market price by at least ${pct(s.min_edge)}.`;
+      points.push(`"edge${Math.round((s.min_edge || 0) * 100)}" = the points of edge required before it acts`);
+      if (String(row.name).includes("bold")) points.push(`"bold" = stakes double the usual fraction of Kelly`);
+      break;
+    default: {   // whale-following profiles
+      headline = `Copies traders whose past bets are right more than ${pct(s.copy_above_accuracy)} of the time`
+               + (s.fade_below_accuracy >= 0 ? `, and bets against those under ${pct(s.fade_below_accuracy)}.` : `, and never bets against anyone.`);
+      points.push(`the <b>$ amount</b> in the name is the minimum bet size it reacts to &mdash; bigger means fewer, larger whale trades`);
+      points.push(`needs ${s.min_track_record} finished bets before it trusts a trader`);
+      if (s.explore_unknown_wallets) points.push("places small test bets on unknown traders to start scoring them");
+    }
+  }
+  if (risky) {
+    headline = `High-risk variant. ${headline}`;
+    points.push(`stakes up to ${pct(s.max_pct_per_trade)} of its bankroll per trade (the cautious bots use 5%)`);
+    if (!s.stop_loss_pct) points.push("<b>no stop loss</b> &mdash; deliberately tests whether cutting losses helps");
+  }
+  if (s.stop_loss_pct) points.push(`sells automatically if it falls ${pct(s.stop_loss_pct)} from entry`);
+  if (s.take_profit_pct) points.push(`takes profit at ${pct(s.take_profit_pct)}`);
+
+  return {label: (risky ? "High risk " : "") + (fam.label || row.profile), headline, points};
+}
+
+// ---- interactive equity chart ------------------------------------------------
+// Hand-rolled SVG again: hover gives a crosshair, the exact value and the time,
+// with no charting library to load (this has to work on a dead connection).
+let chartSeries = [];      // the points currently drawn, for hit-testing
+
+function equityChart(series, startCash, w, h) {
+  chartSeries = (series || []).filter(p => p && p[1] != null);
+  if (chartSeries.length < 2) {
+    return `<div class="chart-empty">Not enough history yet &mdash; the chart fills in as the bot runs.</div>`;
+  }
+  const vals = chartSeries.map(p => p[1]);
+  let lo = Math.min(...vals, startCash), hi = Math.max(...vals, startCash);
+  const pad = (hi - lo) * 0.12 || 1;
+  lo -= pad; hi += pad;
+
+  const PAD_L = 62, PAD_R = 12, PAD_T = 12, PAD_B = 22;
+  const px = i => PAD_L + (i / (chartSeries.length - 1)) * (w - PAD_L - PAD_R);
+  const py = v => PAD_T + (1 - (v - lo) / (hi - lo)) * (h - PAD_T - PAD_B);
+
+  const last = vals[vals.length - 1];
+  const up = last > startCash, down = last < startCash;
+  const stroke = up ? "var(--gain)" : (down ? "var(--loss)" : "var(--dim)");
+  const line = chartSeries.map((p, i) => `${px(i).toFixed(1)},${py(p[1]).toFixed(1)}`).join(" ");
+  const area = `${PAD_L},${py(lo).toFixed(1)} ${line} ${px(chartSeries.length - 1).toFixed(1)},${py(lo).toFixed(1)}`;
+
+  // Horizontal guides at the extremes and the starting bankroll.
+  const guides = [[hi - pad, "high"], [startCash, "start"], [lo + pad, "low"]].map(([v, label]) => `
+    <line x1="${PAD_L}" y1="${py(v).toFixed(1)}" x2="${w - PAD_R}" y2="${py(v).toFixed(1)}"
+          stroke="var(--line)" stroke-dasharray="${label === "start" ? "3 3" : "1 4"}"/>
+    <text x="${PAD_L - 8}" y="${(py(v) + 3).toFixed(1)}" class="axis" text-anchor="end">${money(v).replace(".00", "")}</text>`).join("");
+
+  return `<svg class="eqchart" id="eqchart" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none"
+               data-padl="${PAD_L}" data-padr="${PAD_R}" data-w="${w}" data-h="${h}"
+               data-lo="${lo}" data-hi="${hi}" data-padt="${PAD_T}" data-padb="${PAD_B}">
+    ${guides}
+    <polygon points="${area}" fill="${stroke}" opacity=".07"/>
+    <polyline points="${line}" fill="none" stroke="${stroke}" stroke-width="1.6"
+              stroke-linejoin="round" stroke-linecap="round"/>
+    <g id="eqhover" style="opacity:0">
+      <line id="eqline" y1="${PAD_T}" y2="${h - PAD_B}" stroke="var(--text)" stroke-dasharray="2 2" opacity=".6"/>
+      <circle id="eqdot" r="3.5" fill="${stroke}" stroke="var(--bg)" stroke-width="1.5"/>
+    </g>
+    <rect x="${PAD_L}" y="${PAD_T}" width="${w - PAD_L - PAD_R}" height="${h - PAD_T - PAD_B}" fill="transparent" id="eqhit"/>
+  </svg>
+  <div class="chart-readout" id="eqreadout"><span class="muted">hover the chart to read any point</span></div>`;
+}
+
+function wireChart() {
+  const svg = document.getElementById("eqchart");
+  if (!svg || chartSeries.length < 2) return;
+  const hit = document.getElementById("eqhit");
+  const hover = document.getElementById("eqhover");
+  const vline = document.getElementById("eqline");
+  const dot = document.getElementById("eqdot");
+  const out = document.getElementById("eqreadout");
+  const d = svg.dataset;
+  const W = +d.w, H = +d.h, PAD_L = +d.padl, PAD_R = +d.padr, PAD_T = +d.padt, PAD_B = +d.padb;
+  const lo = +d.lo, hi = +d.hi;
+  const px = i => PAD_L + (i / (chartSeries.length - 1)) * (W - PAD_L - PAD_R);
+  const py = v => PAD_T + (1 - (v - lo) / (hi - lo)) * (H - PAD_T - PAD_B);
+
+  function move(evt) {
+    const box = svg.getBoundingClientRect();
+    // The viewBox is stretched to the element, so map client px back into it.
+    const x = ((evt.clientX - box.left) / box.width) * W;
+    const frac = (x - PAD_L) / (W - PAD_L - PAD_R);
+    const i = Math.max(0, Math.min(chartSeries.length - 1, Math.round(frac * (chartSeries.length - 1))));
+    const [ts, value] = chartSeries[i];
+    hover.style.opacity = 1;
+    vline.setAttribute("x1", px(i)); vline.setAttribute("x2", px(i));
+    dot.setAttribute("cx", px(i)); dot.setAttribute("cy", py(value));
+    const delta = value - chartSeries[0][1];
+    out.innerHTML = `<b>${money(value)}</b> &nbsp;${signedMoney(delta)} from the start of this window
+                     &nbsp;<span class="muted">${new Date(ts * 1000).toLocaleString()}</span>`;
+  }
+  hit.addEventListener("mousemove", move);
+  hit.addEventListener("mouseleave", () => {
+    hover.style.opacity = 0;
+    out.innerHTML = '<span class="muted">hover the chart to read any point</span>';
+  });
+}
+
+function visibleVariants(data) {
+  let rows = data.leaderboard.slice();
+  if (ui.filter) {
+    const f = ui.filter.toLowerCase();
+    rows = rows.filter(r => r.name.toLowerCase().includes(f) || (r.profile || "").toLowerCase().includes(f));
+  }
+  if (ui.profiles.size) rows = rows.filter(r => ui.profiles.has(r.profile));
+  const k = ui.sortKey;
+  rows.sort((a, b) => {
+    let av = a[k], bv = b[k];
+    if (av == null && bv == null) return 0;
+    if (av == null) return 1;          // unknowns always sink
+    if (bv == null) return -1;
+    if (typeof av === "string") return av.localeCompare(bv) * ui.sortDir;
+    return (av - bv) * ui.sortDir;
+  });
+  return rows;
+}
+
+function columnsFor(isSpot) {
+  return [
+    {key: "name", label: "Bot", cls: ""},
+    {key: "profile", label: "Style", cls: ""},
+    isSpot ? {key: "unrealized_pnl", label: "Unrealized", cls: "num"}
+           : {key: "whale_threshold", label: "Min Bet", cls: "num"},
+    {key: null, label: "Trend", cls: ""},
+    {key: "equity", label: "Value", cls: "num"},
+    {key: "return_pct", label: "Return", cls: "num"},
+    {key: "open_count", label: "Open", cls: "num"},
+    {key: "closed_count", label: "Done", cls: "num"},
+    {key: "win_rate", label: "Win %", cls: "num"},
+    {key: "profit_factor", label: "Profit Factor", cls: "num"},
+    isSpot ? {key: "fees_paid", label: "Fees", cls: "num"}
+           : {key: "avg_entry_price", label: "Avg Entry", cls: "num"},
+    {key: "max_drawdown_pct", label: "Max Drop", cls: "num"},
+  ];
+}
+
+// ---- top stat rail ----
+function renderStatStrip(s) {
+  const research = s.research || {};
+  let researchCell;
+  if (!research.enabled) {
+    researchCell = `<div class="k">Odds Research</div><div class="v muted" style="font-size:14px">◌ Offline</div>
+                    <div class="s">no api key &mdash; value bots idle</div>`;
+  } else {
+    const age = research.cache_age_seconds == null ? "not yet fetched"
+              : (research.cache_age_seconds < 90 ? "just refreshed" : Math.floor(research.cache_age_seconds / 60) + "m old");
+    const line = research.last_error ? `⚠ ${research.last_error}` : `${research.events_cached || 0} events &middot; ${age}`;
+    researchCell = `<div class="k">Odds Research</div><div class="v up" style="font-size:14px">◉ Live</div>
+                    <div class="s">${line}<br>${research.requests_made || 0} api calls today</div>`;
+  }
+
+  document.getElementById("statstrip").innerHTML = `
+    <div class="stat-cell">
+      <div class="k">Best Bot</div><div class="v">${money(s.equity)}</div>
+      <div class="s">${signedMoney(s.change_usd)} &middot; ${s.leader_name}</div>
+    </div>
+    <div class="stat-cell">
+      <div class="k">Bots</div><div class="v">${s.variant_count}</div>
+      <div class="s">${s.variants_trading} betting &middot; ${s.known_wallets} traders scored</div>
+    </div>
+    <div class="stat-cell">
+      <div class="k">In Play</div><div class="v">${s.total_open_all_variants}</div>
+      <div class="s">${money(s.total_exposure_all_variants)} staked</div>
+    </div>
+    <div class="stat-cell">
+      <div class="k">Finished</div><div class="v">${s.total_closed_all_variants}</div>
+      <div class="s">${s.overall_win_rate == null ? "no results yet" : ratePct(s.overall_win_rate) + " won"}</div>
+    </div>
+    <div class="stat-cell">
+      <div class="k">Target $${s.target_usd.toLocaleString()}</div><div class="v">${s.progress_pct}%</div>
+      <div class="bar"><div style="width:${Math.min(100, Math.max(0, s.progress_pct))}%"></div></div>
+    </div>
+    <div class="stat-cell">${researchCell}</div>
+    ${pricesCell(s.prices)}`;
+}
+
+// Crypto only: what the market itself is doing, so bot results have context.
+function pricesCell(prices) {
+  if (!prices || !Object.keys(prices).length) return "";
+  const items = Object.entries(prices).slice(0, 6)
+    .map(([sym, p]) => `${sym.replace("USDT", "")} ${money(p)}`).join(" &middot; ");
+  return `<div class="stat-cell"><div class="k">Live Prices</div>
+    <div class="s" style="margin-top:7px;line-height:1.7">${items}</div></div>`;
+}
+
+// ---- left roster ----
+function renderRoster(data) {
+  const rows = visibleVariants(data);
+  const start = data.summary.starting_usd;
+  const leader = data.summary.leader_name;
+
+  document.getElementById("roster-count").textContent = `${rows.length}/${data.leaderboard.length}`;
+  // Chips are built from whatever styles this market actually contains, so
+  // crypto shows momentum/mean-reversion rather than Polymarket's profiles.
+  const styles = [...new Set(data.leaderboard.map(r => r.profile).filter(Boolean))].sort();
+  document.getElementById("chips").innerHTML = styles
+    .map(p => `<span class="chip ${ui.profiles.has(p) ? "on" : ""}" data-profile="${p}">${p}</span>`).join("");
+
+  const list = document.getElementById("roster-list");
+  if (!rows.length) {
+    list.innerHTML = `<div style="padding:26px;text-align:center;color:var(--dimmer);font-size:10px;letter-spacing:.1em">no bots match</div>`;
+    return;
+  }
+  // Grouped by family so 18-24 bots read as a handful of approaches rather
+  // than one long undifferentiated list.
+  const groups = new Map();
+  for (const r of rows) {
+    const g = botGroup(r);
+    if (!groups.has(g)) groups.set(g, []);
+    groups.get(g).push(r);
+  }
+  const ORDER = ["Whale followers", "Value bettors", "Trend followers", "Contrarians",
+                 "High risk", "Event bets", "Baseline", "Other"];
+  const ordered = [...groups.entries()].sort((a, b) => ORDER.indexOf(a[0]) - ORDER.indexOf(b[0]));
+
+  list.innerHTML = ordered.map(([group, members]) => {
+    const best = Math.max(...members.map(m => m.return_pct));
+    const open = members.reduce((n, m) => n + m.open_count, 0);
+    const done = members.reduce((n, m) => n + m.closed_count, 0);
+    const collapsed = ui.collapsed.has(group);
+    return `<div class="bot-group ${collapsed ? "closed" : ""}" data-group="${group}">
+        <span class="gname">${collapsed ? "▸" : "▾"} ${group}</span>
+        <span class="gmeta">${members.length} &middot; best ${signed(+best.toFixed(2), "%")} &middot; ${open}/${done}</span>
+      </div>` + (collapsed ? "" : members.map(r => `
+      <div class="bot ${r.name === ui.selected ? "on" : ""} ${r.name === leader ? "lead" : ""}" data-variant="${r.name}">
+        <div class="bot-name">${r.name}</div>
+        <div class="bot-val">${money(r.equity)}</div>
+        <div class="bot-meta">${describeBot(r).label}</div>
+        <div class="bot-spark">${sparkline(r.equity_series, 74, 16, start)}</div>
+        <div class="bot-sub">${r.open_count} open &middot; ${r.closed_count} done &middot; ${signed(r.return_pct, "%")}</div>
+      </div>`).join(""));
+  }).join("");
+}
+
+// ---- stage: leaderboard ----
+function leaderboardView(data) {
+  const rows = visibleVariants(data);
+  const leaderName = data.summary.leader_name;
+  const start = data.summary.starting_usd;
+  const isSpot = !!data.is_spot;
+  const cols = columnsFor(isSpot);
+
+  let html = `<div class="hint-line">click a row to inspect &nbsp;⟡&nbsp; click a header to sort
+    &nbsp;⟡&nbsp; <span class="kbd">↑↓</span> browse <span class="kbd">↵</span> open
+    <span class="kbd">esc</span> back <span class="kbd">1-5</span> markets</div>`;
+  html += `<table><thead><tr>`;
+  for (const c of cols) {
+    if (!c.key) { html += `<th class="${c.cls}">${c.label}</th>`; continue; }
+    const on = ui.sortKey === c.key;
+    html += `<th class="sortable ${c.cls} ${on ? "sorted" : ""}" data-sort="${c.key}">${c.label}<span class="arrow">${on ? (ui.sortDir === -1 ? "▼" : "▲") : ""}</span></th>`;
+  }
+  html += `</tr></thead><tbody>`;
+  if (!rows.length) html += `<tr class="empty-row"><td colspan="${cols.length}">No bots match that filter.</td></tr>`;
+  for (const r of rows) {
+    const third = isSpot ? `<td class="num">${signedMoney(r.unrealized_pnl)}</td>`
+                         : `<td class="num muted">${money(r.whale_threshold)}</td>`;
+    const eleventh = isSpot ? `<td class="num muted">${money(r.fees_paid)}</td>`
+                            : `<td class="num">${r.avg_entry_price == null ? '<span class="muted">--</span>' : r.avg_entry_price}</td>`;
+    html += `<tr class="clickable ${r.name === leaderName ? "leader-row" : ""} ${r.name === ui.selected ? "selected" : ""}" data-variant="${r.name}">
+      <td class="vname">${r.name}</td>
+      <td class="muted">${r.profile}</td>
+      ${third}
+      <td>${sparkline(r.equity_series, 64, 18, start)}</td>
+      <td class="num">${money(r.equity)}</td>
+      <td class="num">${signed(r.return_pct, "%")}</td>
+      <td class="num">${r.open_count}</td>
+      <td class="num">${r.closed_count}</td>
+      <td class="num">${ratePct(r.win_rate)}</td>
+      <td class="num">${r.profit_factor == null ? '<span class="muted">--</span>' : r.profit_factor}</td>
+      ${eleventh}
+      <td class="num">${pct(r.max_drawdown_pct)}</td>
+    </tr>`;
+  }
+  return html + `</tbody></table>`;
+}
+
+// ---- stage: single bot detail ----
+function detailView(data) {
+  const v = data.leaderboard.find(r => r.name === ui.selected);
+  if (!v) return `<div class="empty-state">Select a bot from the roster to inspect it.</div>`;
+  const s = v.settings || {};
+  const start = data.summary.starting_usd;
+  const isSpot = !!data.is_spot;
+
+  const info = describeBot(v);
+  let html = `<div class="detail-head">
+      <div>
+        <h3>${v.name}</h3>
+        <div class="sub">${info.label}${isSpot && s.symbol ? " &middot; " + s.symbol : ""}</div>
+        <div class="bot-explain">${info.headline}</div>
+        <ul class="bot-points">${info.points.map(pt => `<li>${pt}</li>`).join("")}</ul>
+      </div>
+    </div>
+
+    <div class="chartwrap">${equityChart(v.equity_series, start, 1000, 190)}</div>
+
+    <div class="statgrid">
+      <div class="stat"><div class="k">Value</div><div class="v">${money(v.equity)}</div><div class="hint">${arrow(v.return_pct)} ${v.return_pct >= 0 ? "+" : ""}${v.return_pct}% from ${money(start)}</div></div>
+      <div class="stat"><div class="k">Cash Free</div><div class="v">${money(v.cash)}</div><div class="hint">${money(v.open_exposure)} tied up</div></div>
+      <div class="stat"><div class="k">Record</div><div class="v">${v.wins}W / ${v.losses}L</div><div class="hint">${ratePct(v.win_rate)} win rate</div></div>
+      <div class="stat"><div class="k">Realized P&amp;L</div><div class="v">${signedMoney(v.realized_pnl)}</div><div class="hint">from ${v.closed_count} finished</div></div>
+      <div class="stat"><div class="k">Avg Win</div><div class="v ${v.avg_win == null ? "" : "up"}">${v.avg_win == null ? "--" : "▲ " + money(v.avg_win)}</div><div class="hint">per winning bet</div></div>
+      <div class="stat"><div class="k">Avg Loss</div><div class="v ${v.avg_loss == null ? "" : "down"}">${v.avg_loss == null ? "--" : "▼ " + money(v.avg_loss)}</div><div class="hint">per losing bet</div></div>
+      <div class="stat"><div class="k">Profit Factor</div><div class="v">${v.profit_factor == null ? "--" : v.profit_factor}</div><div class="hint">above 1.0 is profitable</div></div>
+      <div class="stat"><div class="k">Edge per $1</div><div class="v">${v.expectancy_per_dollar == null ? "--" : (v.expectancy_per_dollar >= 0 ? "+" : "") + v.expectancy_per_dollar}</div><div class="hint">profit per $ staked</div></div>
+      ${isSpot
+        // Averaging an entry price across BTC and XRP is meaningless, so spot
+        // bots report unrealized P&L and fee drag instead.
+        ? `<div class="stat"><div class="k">Unrealized</div><div class="v">${signedMoney(v.unrealized_pnl)}</div><div class="hint">on ${v.open_count} open position${v.open_count === 1 ? "" : "s"}</div></div>
+           <div class="stat"><div class="k">Fees Paid</div><div class="v">${money(v.fees_paid)}</div><div class="hint">charged on entry and exit</div></div>`
+        : `<div class="stat"><div class="k">Avg Entry</div><div class="v">${v.avg_entry_price == null ? "--" : v.avg_entry_price}</div><div class="hint">${v.avg_entry_price == null ? "no bets yet" : "max gain " + ((1 - v.avg_entry_price) / v.avg_entry_price * 100).toFixed(0) + "%"}</div></div>`}
+      <div class="stat"><div class="k">Max Drop</div><div class="v">${pct(v.max_drawdown_pct)}</div><div class="hint">worst dip from a peak</div></div>
+    </div>
+
+    <div class="tabs">
+      <button class="tab ${ui.tab === "open" ? "on" : ""}" data-tab="open">Active (${v.open_count})</button>
+      <button class="tab ${ui.tab === "closed" ? "on" : ""}" data-tab="closed">Finished (${v.closed_count})</button>
+      <button class="tab ${ui.tab === "stance" ? "on" : ""}" data-tab="stance">By Reason</button>
+    </div>
+    <div class="tabbody">`;
+
+  if (ui.tab === "open") {
+    if (isSpot) {
+      html += `<table><thead><tr><th>Asset</th><th>Why</th><th class="num">Staked</th><th class="num">Entry</th>
+        <th class="num">Now</th><th class="num">Unrealized</th><th>Opened</th></tr></thead><tbody>`;
+      if (!v.positions.length) html += `<tr class="empty-row"><td colspan="7">No open positions.</td></tr>`;
+      for (const p of v.positions) {
+        html += `<tr><td>${p.title}</td><td>${stanceBadge(p.stance)}</td>
+          <td class="num">${money(p.usd_in)}</td><td class="num">${money(p.avg_price)}</td>
+          <td class="num">${p.current_price == null ? '<span class="muted">--</span>' : money(p.current_price)}</td>
+          <td class="num">${signedMoney(p.unrealized_pnl)} ${p.unrealized_pct == null ? "" : `<span class="muted">(${p.unrealized_pct >= 0 ? "+" : ""}${p.unrealized_pct}%)</span>`}</td>
+          <td class="muted">${timeAgo(p.opened_at)}</td></tr>`;
+      }
+      html += `</tbody></table>`;
+    } else {
+      html += `<table><thead><tr><th>Market</th><th>Betting On</th><th>Why</th><th class="num">Amount</th><th class="num">Entry</th><th class="num">Max Gain</th><th>Opened</th></tr></thead><tbody>`;
+      if (!v.positions.length) html += `<tr class="empty-row"><td colspan="7">No active bets.</td></tr>`;
+      for (const p of v.positions) {
+        html += `<tr><td>${p.title}</td><td>${p.outcome}</td><td>${stanceBadge(p.stance)}</td>
+          <td class="num">${money(p.usd_in)}</td><td class="num">${p.avg_price}</td>
+          <td class="num muted">+${p.max_gain_pct}%</td><td class="muted">${timeAgo(p.opened_at)}</td></tr>`;
+      }
+      html += `</tbody></table>`;
+    }
+  } else if (ui.tab === "closed") {
+    html += `<table><thead><tr><th>Market</th><th>Bet On</th><th>Why</th><th>Result</th><th class="num">Staked</th><th class="num">P&amp;L</th><th>Closed</th></tr></thead><tbody>`;
+    if (!v.closed.length) html += `<tr class="empty-row"><td colspan="7">Nothing has finished yet &mdash; markets need to resolve first.</td></tr>`;
+    for (const t of v.closed) {
+      html += `<tr><td>${t.title}</td><td>${t.outcome}</td><td>${stanceBadge(t.stance)}</td>
+        <td>${t.won ? '<span class="badge won">Won</span>' : '<span class="badge lost">Lost</span>'}</td>
+        <td class="num">${money(t.usd_in)}</td><td class="num">${signedMoney(t.pnl)}</td>
+        <td class="muted">${timeAgo(t.closed_at)}</td></tr>`;
+    }
+    html += `</tbody></table>`;
+  } else {
+    const entries = Object.entries(v.by_stance || {});
+    html += `<table><thead><tr><th>Reason for opening</th><th class="num">Bets</th><th class="num">Wins</th><th class="num">Win %</th><th class="num">P&amp;L</th></tr></thead><tbody>`;
+    if (!entries.length) html += `<tr class="empty-row"><td colspan="5">No finished bets yet, so there's nothing to break down.</td></tr>`;
+    for (const [stance, b] of entries) {
+      html += `<tr><td>${stanceBadge(stance)}</td><td class="num">${b.count}</td><td class="num">${b.wins}</td>
+        <td class="num">${ratePct(b.win_rate)}</td><td class="num">${signedMoney(b.pnl)}</td></tr>`;
+    }
+    html += `</tbody></table>`;
+  }
+  return html + `</div>`;
+}
+
+// ---- stage: signal feed ----
+function signalsView(data) {
+  if (data.is_spot) {
+    let html = `<div class="hint-line">every buy and sell the bots have made, newest first</div>`;
+    html += `<table><thead><tr><th>Bot</th><th>Asset</th><th>Action</th><th class="num">Price</th>
+      <th class="num">Amount</th><th class="num">P&amp;L</th><th>Why</th><th>When</th></tr></thead><tbody>`;
+    if (!data.flagged.length) {
+      html += `<tr class="empty-row"><td colspan="8">No trades yet &mdash; the bots are waiting for a signal.</td></tr>`;
+    }
+    for (const f of data.flagged) {
+      const isBuy = f.action === "buy";
+      html += `<tr>
+        <td>${f.bot}</td><td>${f.symbol}</td>
+        <td><span class="badge ${isBuy ? "copy" : "explore"}">${f.action}</span></td>
+        <td class="num">${money(f.price)}</td>
+        <td class="num">${isBuy ? money(f.usd) : '<span class="muted">--</span>'}</td>
+        <td class="num">${isBuy ? '<span class="muted">--</span>' : signedMoney(f.pnl)}</td>
+        <td class="reason">${f.reason}</td>
+        <td class="muted">${timeAgo(f.ts)}</td>
+      </tr>`;
+    }
+    return html + `</tbody></table>`;
+  }
+
+  let html = `<div class="hint-line">every trade big enough to consider &mdash; acted on or not</div>`;
+  html += `<table><thead><tr><th>Market</th><th>Trader</th><th>Side</th><th class="num">Size</th>
+    <th>Importance</th><th>Possibility</th><th class="num">Bots In</th><th>Status</th><th>Why</th></tr></thead><tbody>`;
+  if (!data.flagged.length) {
+    html += `<tr class="empty-row"><td colspan="9">Nothing flagged yet &mdash; no trade big enough has come through.</td></tr>`;
+  }
+  for (const f of data.flagged) {
+    const acted = f.variants_acted == null ? "" :
+      `<span class="${f.variants_acted > 0 ? "pnl-pos" : "muted"}">${f.variants_acted}/${f.variants_total}</span>`;
+    html += `<tr>
+      <td>${f.market}</td><td class="muted">${shortWallet(f.wallet)}</td><td>${f.outcome}</td>
+      <td class="num">${money(f.usd_size)}</td>
+      <td>${ratingHtml(f.importance_pct, f.importance_label)}</td>
+      <td>${ratingHtml(f.possibility_pct, f.possibility_label)}</td>
+      <td class="num">${acted}</td><td>${actionBadge(f.action)}</td>
+      <td class="reason">${f.reason}</td>
+    </tr>`;
+  }
+  return html + `</tbody></table>`;
+}
+
+function renderMarkets(data) {
+  const markets = data.markets || [{key: "polymarket", label: "Polymarket"}];
+  document.getElementById("markets").innerHTML = markets.map(m => {
+    // Each button carries its own experiment's headline, so both are legible
+    // without toggling between them.
+    const sub = !m.has_data ? "<span class='mb-sub'>idle</span>"
+      : `<span class='mb-sub'>${m.best_return_pct >= 0 ? "+" : ""}${m.best_return_pct}% &middot; ${m.open} open &middot; ${m.finished} done</span>`;
+    return `<button class="market-btn ${ui.market === m.key ? "on" : ""}" data-market="${m.key}">${m.label}${sub}</button>`;
+  }).join("");
+  document.querySelectorAll(".market-btn").forEach(b => {
+    b.onclick = () => {
+      if (ui.market === b.dataset.market) return;
+      // Stash this market's view so switching back feels like returning to it.
+      perMarket[ui.market] = {selected: ui.selected, view: ui.view, sortKey: ui.sortKey,
+                              sortDir: ui.sortDir, filter: ui.filter, profiles: new Set(ui.profiles)};
+      ui.market = b.dataset.market;
+      const saved = perMarket[ui.market] || {};
+      ui.selected = saved.selected || null;
+      ui.view = saved.view || "leaderboard";
+      ui.sortKey = saved.sortKey || "equity";
+      ui.sortDir = saved.sortDir || -1;
+      ui.filter = saved.filter || "";
+      ui.profiles = saved.profiles || new Set();
+      const box = document.getElementById("filter");
+      if (box) box.value = ui.filter;
+      refresh();
+    };
+  });
+}
+
+function render(data) {
+  renderMarkets(data);
+  if (!data.has_data) {
+    document.getElementById("statstrip").innerHTML = "";
+    document.getElementById("roster-list").innerHTML = "";
+    document.getElementById("stage-tabs").innerHTML = "";
+    document.getElementById("stage-body").innerHTML = `<div class="empty-state">${data.message}</div>`;
+    return;
+  }
+  renderStatStrip(data.summary);
+  renderRoster(data);
+
+  const views = [
+    {key: "leaderboard", label: "Leaderboard", n: data.leaderboard.length},
+    {key: "detail", label: ui.selected || "Bot Detail", n: null},
+    {key: "signals", label: "Signal Feed", n: data.flagged.length},
+  ];
+  document.getElementById("stage-tabs").innerHTML = views.map(v =>
+    `<button class="stage-tab ${ui.view === v.key ? "on" : ""}" data-view="${v.key}">${v.label}${v.n == null ? "" : `<span class="n">${v.n}</span>`}</button>`
+  ).join("");
+
+  const body = document.getElementById("stage-body");
+  body.innerHTML = ui.view === "detail" ? detailView(data)
+                 : ui.view === "signals" ? signalsView(data)
+                 : leaderboardView(data);
+  wireEvents();
+}
+
+function wireEvents() {
+  document.querySelectorAll(".stage-tab").forEach(b => {
+    b.onclick = () => { ui.view = b.dataset.view; render(latest); };
+  });
+  document.querySelectorAll("th.sortable").forEach(th => {
+    th.onclick = () => {
+      const k = th.dataset.sort;
+      if (ui.sortKey === k) ui.sortDir *= -1;
+      else { ui.sortKey = k; ui.sortDir = (k === "name" || k === "profile") ? 1 : -1; }
+      render(latest);
+    };
+  });
+  // Selecting a bot -- from either the roster or the table -- jumps to detail.
+  document.querySelectorAll("[data-variant]").forEach(el => {
+    el.onclick = () => {
+      ui.selected = el.dataset.variant;
+      ui.view = "detail";
+      render(latest);
+    };
+  });
+  document.querySelectorAll(".chip[data-profile]").forEach(chip => {
+    chip.onclick = () => {
+      const p = chip.dataset.profile;
+      ui.profiles.has(p) ? ui.profiles.delete(p) : ui.profiles.add(p);
+      render(latest);
+    };
+  });
+  document.querySelectorAll(".tab[data-tab]").forEach(btn => {
+    btn.onclick = () => { ui.tab = btn.dataset.tab; render(latest); };
+  });
+  document.querySelectorAll(".bot-group[data-group]").forEach(g => {
+    g.onclick = () => {
+      const key = g.dataset.group;
+      ui.collapsed.has(key) ? ui.collapsed.delete(key) : ui.collapsed.add(key);
+      render(latest);
+    };
+  });
+  wireChart();
+
+  const filter = document.getElementById("filter");
+  if (filter && filter.dataset.wired !== "1") {
+    filter.dataset.wired = "1";
+    filter.value = ui.filter;
+    // Full re-render is safe here: the input lives in the static shell rather
+    // than the re-rendered panes, so the caret and focus survive.
+    filter.oninput = () => { ui.filter = filter.value; render(latest); };
+  }
+}
+
+// Keyboard navigation: ↑/↓ walk the roster, Enter opens detail, Esc clears the
+// filter, 1-9 jump between markets. Typing in the search box is left alone.
+document.addEventListener("keydown", (e) => {
+  if (!latest || !latest.has_data) return;
+  const typing = document.activeElement && document.activeElement.tagName === "INPUT";
+  if (typing && e.key !== "Escape") return;
+
+  const rows = visibleVariants(latest);
+  if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+    e.preventDefault();
+    const i = rows.findIndex(r => r.name === ui.selected);
+    const next = e.key === "ArrowDown"
+      ? (i < 0 ? 0 : Math.min(rows.length - 1, i + 1))
+      : (i < 0 ? rows.length - 1 : Math.max(0, i - 1));
+    if (rows[next]) {
+      ui.selected = rows[next].name;
+      render(latest);
+      const el = document.querySelector(`.bot[data-variant="${CSS.escape(ui.selected)}"]`);
+      if (el) el.scrollIntoView({block: "nearest"});
+    }
+  } else if (e.key === "Enter" && ui.selected) {
+    ui.view = "detail"; render(latest);
+  } else if (e.key === "Escape") {
+    if (ui.filter) { ui.filter = ""; const f = document.getElementById("filter"); if (f) f.value = ""; }
+    else { ui.view = "leaderboard"; }
+    if (typing) document.activeElement.blur();
+    render(latest);
+  } else if (/^[1-9]$/.test(e.key)) {
+    const m = (latest.markets || [])[parseInt(e.key, 10) - 1];
+    const btn = m && document.querySelector(`.market-btn[data-market="${m.key}"]`);
+    if (btn) btn.click();
+  }
+});
+
+async function refresh() {
+  const statusEl = document.getElementById("status-line");
+  try {
+    const res = await fetch(`/api/data?market=${encodeURIComponent(ui.market)}`, {cache: "no-store"});
+    latest = await res.json();
+    render(latest);
+    statusEl.textContent = "updated " + new Date().toLocaleTimeString();
+  } catch (e) {
+    statusEl.textContent = "connection lost, retrying...";
+  }
+}
+
+refresh();
+setInterval(refresh, REFRESH_MS);
+</script>
+</body>
+</html>

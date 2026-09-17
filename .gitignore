@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+# API keys live here, never in config.yaml
+.env
+# Bot state IS committed on purpose: the scheduled GitHub Actions runner uses
+# the repo as its storage, so these files are how progress survives between
+# runs. Logs and local archives stay out.
+data/logs/
+data/archive/
+data/backtest_*.json
+data/backtest_*.csv

@@ -1,0 +1,71 @@
+name: ghost-trader
+
+# Runs the bots on a schedule instead of on a machine that has to stay awake.
+# Each run does ONE cycle and commits the updated state back, so the repo
+# itself is the storage - which also means the full history is versioned.
+#
+# Two things to know about GitHub's scheduler:
+#  - 5 minutes is the minimum interval, and runs are frequently delayed under
+#    load, so treat the cadence as "roughly every 15 minutes", not exact.
+#  - Scheduled workflows are disabled automatically after 60 days with no
+#    commits to the repo. These runs commit state, which keeps it alive.
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:        # lets you trigger a run by hand from the Actions tab
+
+# Two runs writing state at once would clobber each other; queue them instead.
+concurrency:
+  group: ghost-trader-state
+  cancel-in-progress: false
+
+jobs:
+  cycle:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write        # needed to commit the updated state back
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Check which data sources this runner can reach
+        continue-on-error: true      # informational; a block shouldn't fail the run
+        run: python3 deploy/preflight.py
+
+      - name: Run one cycle of each experiment
+        env:
+          ODDS_API_KEY: ${{ secrets.ODDS_API_KEY }}
+          ALPHAVANTAGE_API_KEY: ${{ secrets.ALPHAVANTAGE_API_KEY }}
+        run: |
+          # Each is allowed to fail without killing the others -- one blocked
+          # data source should never stop the rest from trading.
+          for m in crypto commodities forex stocks; do
+            echo "::group::$m"
+            timeout 200 python3 -m src.spot_experiment --market "$m" --once || echo "$m cycle failed, continuing"
+            echo "::endgroup::"
+          done
+          echo "::group::polymarket"
+          timeout 200 python3 -m src.experiment --once || echo "polymarket cycle failed, continuing"
+          echo "::endgroup::"
+
+      - name: Commit updated state
+        run: |
+          git config user.name  "ghost-trader"
+          git config user.email "ghost-trader@users.noreply.github.com"
+          git add -A data/
+          if git diff --cached --quiet; then
+            echo "no state change this cycle"
+          else
+            git commit -m "state: $(date -u '+%Y-%m-%d %H:%M UTC')"
+            # Another scheduled run may have landed first; rebase rather than fail.
+            git pull --rebase --autostash origin "${GITHUB_REF_NAME}" || true
+            git push
+          fi
