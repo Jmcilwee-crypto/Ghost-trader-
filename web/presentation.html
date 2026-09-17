@@ -418,7 +418,7 @@
             <span class="num">Evaluation</span> with a plain-English reason, whether it traded or not.
           </p>
           <p class="fine">
-            That log is not a nicety. <b>294 recorded non-trades</b> are how I later found out
+            That log is not a nicety. <b>239 recorded rejections</b> are how I later found out
             that scouting bets were quietly eating every slot, and that the strategy I was
             actually testing had stopped firing days earlier.
           </p>
@@ -734,7 +734,7 @@
           </p>
           <div class="tiles" style="grid-template-columns:repeat(2,1fr)">
             <div class="tile"><span class="v">170</span><span class="k">tests, all passing</span></div>
-            <div class="tile"><span class="v">294</span><span class="k">non-trades logged</span></div>
+            <div class="tile"><span class="v">239</span><span class="k">rejections logged</span></div>
           </div>
         </div>
       </div>
@@ -832,7 +832,7 @@
 
     ["Don't read the code line by line. Point at the shape of it.",
      "“Notice that most of this function is rejections. Every signal returns an Evaluation object with a plain-English reason, whether or not it traded. The bot has to explain itself even when it does nothing.”",
-     "“That sounds like over-engineering. It's the single most useful thing in the codebase — 294 recorded non-trades are how I found out that scouting bets had quietly eaten every available slot, and the strategy I thought I was testing had stopped firing days earlier.”",
+     "“That sounds like over-engineering. It's the single most useful thing in the codebase — 239 logged rejections, out of 294 decisions in total, are how I found out that scouting bets had quietly eaten every available slot, and the strategy I thought I was testing had stopped firing days earlier.”",
      "Plant the seed for slide 6: “The second block is position sizing, and it's deliberately in a different file. 'Should we bet' and 'how much' are different questions. Remember that <code>confidence</code> term — it's about to become the villain.”"],
 
     ["This is the methodology slide. It's what makes it an experiment rather than a gamble.",
