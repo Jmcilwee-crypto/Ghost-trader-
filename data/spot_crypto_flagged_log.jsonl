@@ -1,6 +1,3 @@
-{"ts": 1789084615.716761, "bot": "meanrev-30", "symbol": "XRPUSDT", "action": "buy", "price": 1.3361, "usd": 33.51, "reason": "RSI 22 -- oversold below 30", "strength_pct": 67.0}
-{"ts": 1789084615.717088, "bot": "meanrev-35", "symbol": "XRPUSDT", "action": "buy", "price": 1.3361, "usd": 38.72, "reason": "RSI 22 -- oversold below 35", "strength_pct": 77.4}
-{"ts": 1789084615.717361, "bot": "buy-and-hold", "symbol": "XRPUSDT", "action": "buy", "price": 1.3361, "usd": 49.99, "reason": "Baseline -- buy once and hold, for comparison", "strength_pct": 100.0}
 {"ts": 1789101376.836867, "bot": "momentum-5/20", "symbol": "BNBUSDT", "action": "buy", "price": 716.15, "usd": 1.03, "reason": "5-bar average is 0.10% above the 20-bar -- uptrend", "strength_pct": 2.1}
 {"ts": 1789105752.5272489, "bot": "momentum-5/20", "symbol": "ETHUSDT", "action": "buy", "price": 2466.0, "usd": 1.03, "reason": "5-bar average is 0.10% above the 20-bar -- uptrend", "strength_pct": 2.1}
 {"ts": 1789107209.6606562, "bot": "breakout-20", "symbol": "ETHUSDT", "action": "buy", "price": 2469.71, "usd": 25.53, "reason": "Broke above its 20-bar high by 0.04%", "strength_pct": 51.1}
@@ -298,3 +295,6 @@
 {"ts": 1790098452.1301782, "bot": "meanrev-35", "symbol": "SOLUSDT", "action": "sell", "price": 118.12, "pnl": 0.32, "reason": "RSI recovered to 60 -- back to normal", "strength_pct": 50.0}
 {"ts": 1790100207.3446598, "bot": "meanrev-35", "symbol": "ETHUSDT", "action": "sell", "price": 2750.36, "pnl": 0.07, "reason": "RSI recovered to 62 -- back to normal", "strength_pct": 50.0}
 {"ts": 1790104867.887421, "bot": "momentum-5/20", "symbol": "ETHUSDT", "action": "buy", "price": 2760.4, "usd": 2.43, "reason": "5-bar average is 0.24% above the 20-bar -- uptrend", "strength_pct": 4.9}
+{"ts": 1790114544.6994164, "bot": "momentum-10/50", "symbol": "BNBUSDT", "action": "sell", "price": 784.32, "pnl": 0.86, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1790114544.699904, "bot": "vol-momentum", "symbol": "BNBUSDT", "action": "sell", "price": 784.32, "pnl": 0.86, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1790114544.7003596, "bot": "momentum-tp", "symbol": "BNBUSDT", "action": "sell", "price": 784.32, "pnl": 0.86, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
