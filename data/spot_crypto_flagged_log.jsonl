@@ -1,4 +1,3 @@
-{"ts": 1789084615.712767, "bot": "meanrev-30", "symbol": "BTCUSDT", "action": "buy", "price": 76640.0, "usd": 26.12, "reason": "RSI 26 -- oversold below 30", "strength_pct": 52.2}
 {"ts": 1789084615.713853, "bot": "meanrev-35", "symbol": "BTCUSDT", "action": "buy", "price": 76640.0, "usd": 32.39, "reason": "RSI 26 -- oversold below 35", "strength_pct": 64.8}
 {"ts": 1789084615.7143831, "bot": "buy-and-hold", "symbol": "BTCUSDT", "action": "buy", "price": 76640.0, "usd": 50.0, "reason": "Baseline -- buy once and hold, for comparison", "strength_pct": 100.0}
 {"ts": 1789084615.714819, "bot": "buy-and-hold", "symbol": "ETHUSDT", "action": "buy", "price": 2438.45, "usd": 50.0, "reason": "Baseline -- buy once and hold, for comparison", "strength_pct": 100.0}
@@ -295,3 +294,7 @@
 {"ts": 1790073005.167169, "bot": "momentum-tp", "symbol": "XRPUSDT", "action": "sell", "price": 1.5258, "pnl": 0.42, "reason": "Take profit hit -- up 17.3% from entry", "strength_pct": 50.0}
 {"ts": 1790073125.65784, "bot": "momentum-tp", "symbol": "XRPUSDT", "action": "buy", "price": 1.5258, "usd": 40.8, "reason": "10-bar average is 4.06% above the 50-bar -- uptrend", "strength_pct": 81.2}
 {"ts": 1790073368.947196, "bot": "meanrev-30", "symbol": "SOLUSDT", "action": "buy", "price": 116.44, "usd": 20.64, "reason": "RSI 30 -- oversold below 30", "strength_pct": 41.4}
+{"ts": 1790087871.7001364, "bot": "breakout-20", "symbol": "SOLUSDT", "action": "sell", "price": 116.08, "pnl": 5.16, "reason": "Fell below the 10-bar low -- breakout failed", "strength_pct": 50.0}
+{"ts": 1790087871.7006345, "bot": "breakout-50", "symbol": "SOLUSDT", "action": "sell", "price": 116.08, "pnl": 4.9, "reason": "Fell below the 20-bar low -- breakout failed", "strength_pct": 50.0}
+{"ts": 1790087871.7010312, "bot": "breakout-20", "symbol": "BNBUSDT", "action": "sell", "price": 781.56, "pnl": 1.79, "reason": "Fell below the 10-bar low -- breakout failed", "strength_pct": 50.0}
+{"ts": 1790087871.7013571, "bot": "breakout-50", "symbol": "BNBUSDT", "action": "sell", "price": 781.56, "pnl": 1.79, "reason": "Fell below the 20-bar low -- breakout failed", "strength_pct": 50.0}
