@@ -1,5 +1,5 @@
 <meta charset="utf-8">
-<title>Ghost Trader</title>
+<title>Ghost Trader AI</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500;700&display=swap">
@@ -228,6 +228,8 @@
   .chart .cap{font-size:10.5px; letter-spacing:.14em; text-transform:uppercase}
   .chart .cap.coin{fill:var(--ink-2)}
   .chart .rlab{font-family:var(--f-mono); font-size:14px; fill:var(--ink); font-weight:500}
+  .chart .rn.win{fill:var(--gain); font-weight:700}
+  .chart .rn.lose{fill:var(--loss); font-weight:700}
   .chart .val{font-family:var(--f-mono); font-size:16.5px; font-weight:700; fill:var(--ink); font-variant-numeric:tabular-nums}
   .chart .dot{fill:var(--ink-2); fill-opacity:.72; stroke:var(--stage); stroke-width:1}
   .chart .bh{stroke:var(--accent); stroke-width:3; fill:none; stroke-linecap:round}
@@ -303,7 +305,7 @@
       <div class="eyebrow">
         <span>Paper-trading experiment</span><span class="sep">/</span>
         <span>80 bots</span><span class="sep">/</span>
-        <span>611 settled trades</span><span class="sep">/</span>
+        <span>716 settled trades</span><span class="sep">/</span>
         <span>$0 at risk</span>
       </div>
       <h1>Ghost Trader</h1>
@@ -314,7 +316,7 @@
       <p class="kicker">It did not get to $10,000. That turned out to be the interesting part.</p>
       <div class="foot">
         <span><b>6,270</b> lines of Python</span><span class="sep">/</span>
-        <span><b>170</b> tests</span><span class="sep">/</span>
+        <span><b>186</b> tests</span><span class="sep">/</span>
         <span><b>2</b> dependencies</span><span class="sep">/</span>
         <span><b>5</b> markets</span><span class="sep">/</span>
         <span>no real order was ever placed</span>
@@ -418,7 +420,7 @@
             <span class="num">Evaluation</span> with a plain-English reason, whether it traded or not.
           </p>
           <p class="fine">
-            That log is not a nicety. <b>239 recorded rejections</b> are how I later found out
+            That log is not a nicety. <b>254 recorded rejections</b> are how I later found out
             that scouting bets were quietly eating every slot, and that the strategy I was
             actually testing had stopped firing days earlier.
           </p>
@@ -508,16 +510,16 @@
           <table>
             <colgroup><col><col class="hl"><col></colgroup>
             <thead>
-              <tr><th>458 settled bets</th><th class="mark">copy a scored wallet</th><th>explore (random)</th></tr>
+              <tr><th>517 settled bets</th><th class="mark">copy a scored wallet</th><th>explore (random)</th></tr>
             </thead>
             <tbody>
-              <tr><td>bets settled</td><td>60</td><td>398</td></tr>
-              <tr><td>win rate</td><td>55.0%</td><td class="up">63.8%</td></tr>
-              <tr><td>average stake</td><td>$35.33</td><td>$17.71</td></tr>
-              <tr><td>average win</td><td class="up">+$10.16</td><td class="up">+$11.69</td></tr>
-              <tr><td>average loss</td><td class="down">&minus;$37.28</td><td class="down">&minus;$19.38</td></tr>
-              <tr class="verdict"><td>total P&amp;L</td><td class="down big">&minus;$671</td><td class="up big">+$178</td></tr>
-              <tr><td>return on stake</td><td class="down">&minus;31.7%</td><td class="up">+2.5%</td></tr>
+              <tr><td>bets settled</td><td>68</td><td>449</td></tr>
+              <tr><td>win rate</td><td>60.3%</td><td class="up">65.3%</td></tr>
+              <tr><td>average stake</td><td>$33.96</td><td>$17.41</td></tr>
+              <tr><td>average win</td><td class="up">+$9.43</td><td class="up">+$11.19</td></tr>
+              <tr><td>average loss</td><td class="down">&minus;$37.28</td><td class="down">&minus;$19.04</td></tr>
+              <tr class="verdict"><td>total P&amp;L</td><td class="down big">&minus;$620</td><td class="up big">+$310</td></tr>
+              <tr><td>return on stake</td><td class="down">&minus;26.9%</td><td class="up">+4.0%</td></tr>
             </tbody>
           </table>
         </div>
@@ -601,87 +603,89 @@
     <!-- 8 ............................................................. -->
     <section class="slide" data-time="03:20 &rarr; 03:45" data-title="Finding 3 — nothing beats flat">
       <div class="eyebrow"><span>07</span><span class="sep">/</span><span>Finding three</span><span class="sep">/</span><span>the other four markets</span></div>
-      <h2 class="wide">56 bots, four asset classes, no separation.</h2>
+      <h2 class="wide">The bot that does nothing came 1st, 1st, 8th &mdash; and last.</h2>
       <div class="chart">
-<svg viewBox="0 0 900 318" role="img" aria-label="Returns of 56 spot-market bots across crypto, stocks, forex and commodities. Every bot sits within 0.7 percentage points of flat, and the buy-and-hold control sits mid-pack in each class.">
-  <text class="cap" x="138" y="22">each dot = one bot&#8217;s return since launch</text>
-  <text class="cap" x="864" y="22" text-anchor="end">bots</text>
-  <line class="grid" x1="227.2" y1="30" x2="227.2" y2="276"/>
-  <text class="tick" x="227.2" y="298" text-anchor="middle">-0.6%</text>
-  <line class="grid" x1="405.7" y1="30" x2="405.7" y2="276"/>
-  <text class="tick" x="405.7" y="298" text-anchor="middle">-0.4%</text>
-  <line class="grid" x1="584.2" y1="30" x2="584.2" y2="276"/>
-  <text class="tick" x="584.2" y="298" text-anchor="middle">-0.2%</text>
-  <line class="zero" x1="762.8" y1="30" x2="762.8" y2="276"/>
-  <text class="tick" x="762.8" y="298" text-anchor="middle">+0.0%</text>
-  <line class="bh" x1="736.0" y1="31.0" x2="736.0" y2="85.0"/>
-  <text class="rlab" x="126" y="63.0" text-anchor="end">crypto</text>
-  <text class="rn" x="864" y="63.0" text-anchor="end">11</text>
-  <circle class="dot" cx="209.4" cy="58.0" r="3.7"/>
-  <circle class="dot" cx="387.9" cy="58.0" r="3.7"/>
-  <circle class="dot" cx="682.4" cy="58.0" r="3.7"/>
-  <circle class="dot" cx="700.3" cy="58.0" r="3.7"/>
-  <circle class="dot" cx="736.0" cy="72.4" r="3.7"/>
-  <circle class="dot" cx="736.0" cy="65.2" r="3.7"/>
-  <circle class="dot" cx="736.0" cy="58.0" r="3.7"/>
-  <circle class="dot" cx="736.0" cy="50.8" r="3.7"/>
-  <circle class="dot" cx="736.0" cy="43.6" r="3.7"/>
-  <circle class="dot" cx="771.7" cy="58.0" r="3.7"/>
-  <circle class="dot" cx="798.5" cy="58.0" r="3.7"/>
-  <line class="bh" x1="486.1" y1="95.0" x2="486.1" y2="149.0"/>
-  <text class="rlab" x="126" y="127.0" text-anchor="end">stocks</text>
-  <text class="rn" x="864" y="127.0" text-anchor="end">18</text>
-  <circle class="dot" cx="486.1" cy="122.0" r="3.7"/>
-  <circle class="dot" cx="602.1" cy="122.0" r="3.7"/>
-  <circle class="dot" cx="664.6" cy="125.6" r="3.7"/>
-  <circle class="dot" cx="664.6" cy="118.4" r="3.7"/>
-  <circle class="dot" cx="691.4" cy="122.0" r="3.7"/>
-  <circle class="dot" cx="709.2" cy="122.0" r="3.7"/>
-  <circle class="dot" cx="718.1" cy="122.0" r="3.7"/>
-  <circle class="dot" cx="727.0" cy="122.0" r="3.7"/>
-  <circle class="dot" cx="744.9" cy="122.0" r="3.7"/>
-  <circle class="dot" cx="753.8" cy="122.0" r="3.7"/>
-  <circle class="dot" cx="762.8" cy="147.2" r="3.7"/>
-  <circle class="dot" cx="762.8" cy="140.0" r="3.7"/>
-  <circle class="dot" cx="762.8" cy="132.8" r="3.7"/>
-  <circle class="dot" cx="762.8" cy="125.6" r="3.7"/>
-  <circle class="dot" cx="762.8" cy="118.4" r="3.7"/>
-  <circle class="dot" cx="762.8" cy="111.2" r="3.7"/>
-  <circle class="dot" cx="762.8" cy="104.0" r="3.7"/>
-  <circle class="dot" cx="762.8" cy="96.8" r="3.7"/>
-  <line class="bh" x1="611.0" y1="159.0" x2="611.0" y2="213.0"/>
-  <text class="rlab" x="126" y="191.0" text-anchor="end">forex</text>
-  <text class="rn" x="864" y="191.0" text-anchor="end">16</text>
-  <circle class="dot" cx="611.0" cy="186.0" r="3.7"/>
-  <circle class="dot" cx="718.1" cy="186.0" r="3.7"/>
-  <circle class="dot" cx="727.0" cy="186.0" r="3.7"/>
-  <circle class="dot" cx="736.0" cy="193.2" r="3.7"/>
-  <circle class="dot" cx="736.0" cy="186.0" r="3.7"/>
-  <circle class="dot" cx="736.0" cy="178.8" r="3.7"/>
-  <circle class="dot" cx="744.9" cy="193.2" r="3.7"/>
-  <circle class="dot" cx="744.9" cy="186.0" r="3.7"/>
-  <circle class="dot" cx="744.9" cy="178.8" r="3.7"/>
-  <circle class="dot" cx="753.8" cy="189.6" r="3.7"/>
-  <circle class="dot" cx="753.8" cy="182.4" r="3.7"/>
-  <circle class="dot" cx="762.8" cy="200.4" r="3.7"/>
-  <circle class="dot" cx="762.8" cy="193.2" r="3.7"/>
-  <circle class="dot" cx="762.8" cy="186.0" r="3.7"/>
-  <circle class="dot" cx="762.8" cy="178.8" r="3.7"/>
-  <circle class="dot" cx="762.8" cy="171.6" r="3.7"/>
-  <line class="bh" x1="709.2" y1="223.0" x2="709.2" y2="277.0"/>
-  <text class="rlab" x="126" y="255.0" text-anchor="end">commodities</text>
-  <text class="rn" x="864" y="255.0" text-anchor="end">11</text>
-  <circle class="dot" cx="673.5" cy="250.0" r="3.7"/>
-  <circle class="dot" cx="682.4" cy="250.0" r="3.7"/>
-  <circle class="dot" cx="709.2" cy="253.6" r="3.7"/>
-  <circle class="dot" cx="709.2" cy="246.4" r="3.7"/>
-  <circle class="dot" cx="753.8" cy="264.4" r="3.7"/>
-  <circle class="dot" cx="753.8" cy="257.2" r="3.7"/>
-  <circle class="dot" cx="753.8" cy="250.0" r="3.7"/>
-  <circle class="dot" cx="753.8" cy="242.8" r="3.7"/>
-  <circle class="dot" cx="753.8" cy="235.6" r="3.7"/>
-  <circle class="dot" cx="762.8" cy="253.6" r="3.7"/>
-  <circle class="dot" cx="762.8" cy="246.4" r="3.7"/>
+<svg viewBox="0 0 900 318" role="img" aria-label="Returns of 56 spot-market bots. The buy-and-hold control finished 1st of 11 in crypto at +3.39%, 1st of 18 in stocks, 8th of 11 in commodities and last of 16 in forex.">
+  <text class="cap" x="150" y="22">each dot = one bot&#8217;s return since launch</text>
+  <text class="cap" x="864" y="22" text-anchor="end">control&#8217;s rank</text>
+  <line class="zero" x1="266.4" y1="30" x2="266.4" y2="276"/>
+  <text class="tick" x="266.4" y="298" text-anchor="middle">+0%</text>
+  <line class="grid" x1="411.8" y1="30" x2="411.8" y2="276"/>
+  <text class="tick" x="411.8" y="298" text-anchor="middle">+1%</text>
+  <line class="grid" x1="557.3" y1="30" x2="557.3" y2="276"/>
+  <text class="tick" x="557.3" y="298" text-anchor="middle">+2%</text>
+  <line class="grid" x1="702.7" y1="30" x2="702.7" y2="276"/>
+  <text class="tick" x="702.7" y="298" text-anchor="middle">+3%</text>
+  <line class="grid" x1="150.0" y1="30" x2="150.0" y2="276"/>
+  <text class="tick" x="150.0" y="298" text-anchor="middle">-0.8%</text>
+  <line class="bh" x1="759.5" y1="31.0" x2="759.5" y2="85.0"/>
+  <text class="rlab" x="138" y="63.0" text-anchor="end">crypto</text>
+  <text class="rn win" x="864" y="63.0" text-anchor="end">1st of 11</text>
+  <circle class="dot" cx="174.7" cy="58.0" r="3.7"/>
+  <circle class="dot" cx="208.2" cy="58.0" r="3.7"/>
+  <circle class="dot" cx="278.0" cy="61.5" r="3.7"/>
+  <circle class="dot" cx="278.0" cy="54.5" r="3.7"/>
+  <circle class="dot" cx="292.5" cy="58.0" r="3.7"/>
+  <circle class="dot" cx="337.6" cy="61.5" r="3.7"/>
+  <circle class="dot" cx="337.6" cy="54.5" r="3.7"/>
+  <circle class="dot" cx="339.1" cy="58.0" r="3.7"/>
+  <circle class="dot" cx="528.2" cy="58.0" r="3.7"/>
+  <circle class="dot" cx="538.4" cy="58.0" r="3.7"/>
+  <circle class="dot" cx="759.5" cy="58.0" r="3.7"/>
+  <line class="bh" x1="294.0" y1="95.0" x2="294.0" y2="149.0"/>
+  <text class="rlab" x="138" y="127.0" text-anchor="end">stocks</text>
+  <text class="rn win" x="864" y="127.0" text-anchor="end">1st of 18</text>
+  <circle class="dot" cx="254.7" cy="122.0" r="3.7"/>
+  <circle class="dot" cx="266.4" cy="146.5" r="3.7"/>
+  <circle class="dot" cx="266.4" cy="139.5" r="3.7"/>
+  <circle class="dot" cx="266.4" cy="132.5" r="3.7"/>
+  <circle class="dot" cx="266.4" cy="125.5" r="3.7"/>
+  <circle class="dot" cx="266.4" cy="118.5" r="3.7"/>
+  <circle class="dot" cx="266.4" cy="111.5" r="3.7"/>
+  <circle class="dot" cx="266.4" cy="104.5" r="3.7"/>
+  <circle class="dot" cx="266.4" cy="97.5" r="3.7"/>
+  <circle class="dot" cx="272.2" cy="129.0" r="3.7"/>
+  <circle class="dot" cx="272.2" cy="122.0" r="3.7"/>
+  <circle class="dot" cx="272.2" cy="115.0" r="3.7"/>
+  <circle class="dot" cx="279.5" cy="125.5" r="3.7"/>
+  <circle class="dot" cx="279.5" cy="118.5" r="3.7"/>
+  <circle class="dot" cx="285.3" cy="122.0" r="3.7"/>
+  <circle class="dot" cx="288.2" cy="122.0" r="3.7"/>
+  <circle class="dot" cx="289.6" cy="122.0" r="3.7"/>
+  <circle class="dot" cx="294.0" cy="122.0" r="3.7"/>
+  <line class="bh" x1="222.7" y1="159.0" x2="222.7" y2="213.0"/>
+  <text class="rlab" x="138" y="191.0" text-anchor="end">forex</text>
+  <text class="rn lose" x="864" y="191.0" text-anchor="end">last of 16</text>
+  <circle class="dot" cx="222.7" cy="186.0" r="3.7"/>
+  <circle class="dot" cx="238.7" cy="186.0" r="3.7"/>
+  <circle class="dot" cx="247.5" cy="186.0" r="3.7"/>
+  <circle class="dot" cx="254.7" cy="186.0" r="3.7"/>
+  <circle class="dot" cx="256.2" cy="193.0" r="3.7"/>
+  <circle class="dot" cx="256.2" cy="186.0" r="3.7"/>
+  <circle class="dot" cx="256.2" cy="179.0" r="3.7"/>
+  <circle class="dot" cx="259.1" cy="189.5" r="3.7"/>
+  <circle class="dot" cx="259.1" cy="182.5" r="3.7"/>
+  <circle class="dot" cx="263.5" cy="186.0" r="3.7"/>
+  <circle class="dot" cx="264.9" cy="186.0" r="3.7"/>
+  <circle class="dot" cx="266.4" cy="196.5" r="3.7"/>
+  <circle class="dot" cx="266.4" cy="189.5" r="3.7"/>
+  <circle class="dot" cx="266.4" cy="182.5" r="3.7"/>
+  <circle class="dot" cx="266.4" cy="175.5" r="3.7"/>
+  <circle class="dot" cx="267.8" cy="186.0" r="3.7"/>
+  <line class="bh" x1="259.1" y1="223.0" x2="259.1" y2="277.0"/>
+  <text class="rlab" x="138" y="255.0" text-anchor="end">commodities</text>
+  <text class="rn" x="864" y="255.0" text-anchor="end">8th of 11</text>
+  <circle class="dot" cx="253.3" cy="250.0" r="3.7"/>
+  <circle class="dot" cx="254.7" cy="253.5" r="3.7"/>
+  <circle class="dot" cx="254.7" cy="246.5" r="3.7"/>
+  <circle class="dot" cx="259.1" cy="250.0" r="3.7"/>
+  <circle class="dot" cx="264.9" cy="264.0" r="3.7"/>
+  <circle class="dot" cx="264.9" cy="257.0" r="3.7"/>
+  <circle class="dot" cx="264.9" cy="250.0" r="3.7"/>
+  <circle class="dot" cx="264.9" cy="243.0" r="3.7"/>
+  <circle class="dot" cx="264.9" cy="236.0" r="3.7"/>
+  <circle class="dot" cx="266.4" cy="253.5" r="3.7"/>
+  <circle class="dot" cx="266.4" cy="246.5" r="3.7"/>
 </svg>
       </div>
       <div class="legend">
@@ -689,15 +693,15 @@
         <span><i class="ctl"></i>buy-and-hold control &mdash; buys once, then does nothing</span>
       </div>
       <p class="fine" style="max-width:none">
-        Momentum, mean-reversion, breakout, volatility-scaled, take-profit variants &mdash;
-        <b>every one of them lands within 0.7 percentage points of flat</b>, with the do-nothing
-        control sitting comfortably mid-pack. In crypto, which has the most completed trades
-        <b>(112 round trips)</b>, the momentum bots are winning only <b>9&ndash;28%</b> of them:
-        they buy every wiggle and get chopped to pieces by fees.
-        <span class="acc"><b>Honest caveat:</b> stocks and forex have barely traded (7 round trips
-        between them). This is &ldquo;no separation yet,&rdquo; not &ldquo;proven no edge.&rdquo;</span>
+        In <b>crypto</b> the do-nothing control beat all ten strategies at <b class="up">+3.39%</b>,
+        and in <b>stocks</b> it came first again. In <b>commodities</b> it placed 8th of 11. In
+        <b>forex</b> it finished <b class="down">dead last of 16</b>.
+        <b>That inconsistency is the finding.</b> If the strategies carried real edge, the bot that
+        does nothing should lose reliably &mdash; instead its rank wanders, which is what noise looks
+        like. <span class="acc"><b>Caveat:</b> stocks and forex have only 14 completed round trips
+        between them, so those two rows are thin.</span>
       </p>
-      <div class="foot"><span>Efficient markets, in miniature, on a laptop</span></div>
+      <div class="foot"><span>56 bots</span><span class="sep">/</span><span>185 completed round trips</span><span class="sep">/</span><span>efficient markets, in miniature, on a laptop</span></div>
     </section>
 
     <!-- 9 ............................................................. -->
@@ -715,6 +719,8 @@
               <span class="tag">fixed with relative edge + a price floor</span></span></li>
             <li><span><b>The retry that never gave up.</b> The error path used <code>continue</code>, which skips the exit check at the bottom of the loop.
               <span class="tag">a blocked feed retried forever; now exits cleanly in 3 seconds</span></span></li>
+            <li><span><b>The bots shut down the market by working.</b> Tranche sizing reused the variable <code>target</code> &mdash; also the bankroll goal the loop stops on. The first GTA&nbsp;6 buy set it to <b>$75</b>, so &ldquo;reached our goal?&rdquo; went permanently true.
+              <span class="tag">stocks sat dead for two days, reporting success</span></span></li>
           </ol>
         </div>
         <div class="col">
@@ -729,12 +735,12 @@
             from the outside.
           </p>
           <p class="fine">
-            All four were found by reading the <b>log of decisions not taken</b>, not by watching
+            All five were found by reading the <b>log of decisions not taken</b>, not by watching
             the P&amp;L. The P&amp;L looked fine. It was fine. It was also fiction.
           </p>
           <div class="tiles" style="grid-template-columns:repeat(2,1fr)">
-            <div class="tile"><span class="v">170</span><span class="k">tests, all passing</span></div>
-            <div class="tile"><span class="v">239</span><span class="k">rejections logged</span></div>
+            <div class="tile"><span class="v">186</span><span class="k">tests, all passing</span></div>
+            <div class="tile"><span class="v">254</span><span class="k">rejections logged</span></div>
           </div>
         </div>
       </div>
@@ -750,7 +756,7 @@
         <li><span><b>Log the decisions you <em class="q">didn&rsquo;t</em> take, with reasons.</b> The rejections are the dataset. My three worst bugs were invisible in the results and obvious in the reject log.</span></li>
         <li><span><b>Separate &ldquo;should I?&rdquo; from &ldquo;how much?&rdquo;</b> Sizing multiplies your signal; it never creates one. Scaling stake by confidence turned a mildly bad signal into a &minus;$671 one.</span></li>
         <li><span><b>Test the failure path, not the happy path.</b> Every bug here lived in an <code>except</code> branch or a default API parameter &mdash; places the happy-path tests never reach.</span></li>
-        <li><span><b>n = 45 is not a result.</b> My best bot read <b class="up">+16.3%</b> one week and <b>+1.1%</b> the next, having changed nothing. If I&rsquo;d presented last week I&rsquo;d have told you the opposite story with equal confidence.</span></li>
+        <li><span><b>Small samples lie.</b> My best bot read <b class="up">+16.3%</b>, then <b>+1.1%</b>, then <b class="up">+3.8%</b> on three different days, having changed nothing. Whichever day I presented, I&rsquo;d have told you a different story with equal confidence.</span></li>
       </ol>
       <div class="foot"><span>Next</span><span class="sep">/</span><span>flat-stake copy bets, to separate <b>signal quality</b> from <b>sizing</b></span><span class="sep">/</span><span>and a lot more resolutions</span></div>
     </section>
@@ -758,12 +764,12 @@
     <!-- 11 ............................................................ -->
     <section class="slide" data-time="04:45 &rarr; 05:00" data-title="Close">
       <div class="eyebrow"><span>10</span><span class="sep">/</span><span>Where it stands today</span></div>
-      <h2 class="wide">Target: $10,000. Actual: $1,011.</h2>
+      <h2 class="wide">Target: $10,000. Actual: $1,038.</h2>
       <div class="tiles">
         <div class="tile"><span class="v">80</span><span class="k">bots running</span></div>
-        <div class="tile"><span class="v">611</span><span class="k">settled trades</span></div>
-        <div class="tile"><span class="v">48</span><span class="k">wallets scored</span></div>
-        <div class="tile"><span class="v up">+1.1%</span><span class="k">best bot, net</span></div>
+        <div class="tile"><span class="v">716</span><span class="k">settled trades</span></div>
+        <div class="tile"><span class="v">65</span><span class="k">wallets scored</span></div>
+        <div class="tile"><span class="v up">+3.8%</span><span class="k">best bot, net</span></div>
       </div>
       <p class="lede">
         The honest summary: <b>the strategy I set out to test does not work</b> &mdash; at least not
@@ -816,7 +822,7 @@
   var NOTES = [
     ["Open flat and factual. Don't oversell.",
      "“I built a trading bot for Polymarket — a prediction market where you bet on whether things will happen. It runs on completely fake money. Nothing here ever touched a real exchange.”",
-     "“I started with one bot and $1,000 of imaginary money, aiming for $10,000. It's at $1,011. But somewhere along the way it stopped being about the money and became an actual experiment — 80 bots, all disagreeing, and I get to see who's right.”",
+     "“I started with one bot and $1,000 of imaginary money, aiming for $10,000. It's at $1,038. But somewhere along the way it stopped being about the money and became an actual experiment — 80 bots, all disagreeing, and I get to see who's right.”",
      "Set the expectation now: this is a negative result, presented honestly. That's the pitch."],
 
     ["Make sure everyone understands the instrument before any numbers appear.",
@@ -832,7 +838,7 @@
 
     ["Don't read the code line by line. Point at the shape of it.",
      "“Notice that most of this function is rejections. Every signal returns an Evaluation object with a plain-English reason, whether or not it traded. The bot has to explain itself even when it does nothing.”",
-     "“That sounds like over-engineering. It's the single most useful thing in the codebase — 239 logged rejections, out of 294 decisions in total, are how I found out that scouting bets had quietly eaten every available slot, and the strategy I thought I was testing had stopped firing days earlier.”",
+     "“That sounds like over-engineering. It's the single most useful thing in the codebase — 254 logged rejections, out of 300 decisions in total, are how I found out that scouting bets had quietly eaten every available slot, and the strategy I thought I was testing had stopped firing days earlier.”",
      "Plant the seed for slide 6: “The second block is position sizing, and it's deliberately in a different file. 'Should we bet' and 'how much' are different questions. Remember that <code>confidence</code> term — it's about to become the villain.”"],
 
     ["This is the methodology slide. It's what makes it an experiment rather than a gamble.",
@@ -853,18 +859,20 @@
      "“My guess at why: a ten-thousand-dollar single order is more often a hedge, or a longshot punt, or just someone with more money than information. The genuinely sharp trader is sizing sensibly. So 'biggest bet' turns out to be a bad proxy for 'smartest bet'.”",
      "Say the caveat out loud — it buys you credibility for everything else: “That top bucket is 27 bets. The trend is real in this data. It is not yet proof.”"],
 
-    ["25 seconds. Don't over-claim — this one is genuinely undercooked and saying so is the right move.",
-     "“Same experiment design, four other asset classes, 56 bots. Momentum, mean-reversion, breakout, volatility-scaled. Every single one lands within 0.7 percentage points of flat — and the orange line is the bot that buys once and does nothing, sitting right in the middle of the pack every time.”",
-     "“Crypto has the most finished trades, and there the momentum bots are winning 9 to 28% of them. They buy every little wiggle and get chopped to pieces by fees.”",
-     "“But stocks and forex have barely traded — seven completed round trips between them. So this is 'no separation yet', not 'proven no edge'. I'd need weeks more data to say anything stronger.”"],
+    ["25 seconds. The inconsistency IS the point — say it that way, not as a hedge.",
+     "“Same experiment design, four other asset classes, 56 bots. The orange line in each row is the control — the bot that buys on day one and then does absolutely nothing.”",
+     "“In crypto it beat all ten strategies — plus 3.4%, first place. In stocks, first again. In commodities, 8th of 11. In forex, dead last of 16.”  Pause.",
+     "“That wandering rank is the whole finding. If my strategies had real edge, the do-nothing bot should lose consistently. It doesn't do anything consistently — and that's what noise looks like from the inside.”",
+     "Then the caveat, which you should say rather than wait to be asked: “Stocks and forex only have 14 finished round trips between them, so those two rows are thin. Crypto and commodities are the ones carrying weight here.”"],
 
     ["35 seconds. This is the part a technical audience will actually remember.",
-     "“Four bugs. Watch what they have in common.”",
+     "“Five bugs. Watch what they have in common.”",
      "“One: 218 open positions and zero resolutions, for days. The markets API hides closed markets by default — so the bot kept asking 'did this resolve?' and getting silence. One retry with closed=true and 146 resolutions appeared instantly.”",
      "“Two: the wallet scorecard wasn't saving its in-flight bets, so every restart wiped it back to zero wallets scored. Copy and fade — the entire strategy — hadn't fired in days. The bot was running perfectly and testing nothing.”",
      "“Three: the value bots ranked by absolute edge, which always picks the cheapest side, so they quietly turned into longshot bots. Average entry 29 cents. Down $247.”",
      "“Four: in scheduled mode the error path used <code>continue</code>, which skips the exit check at the bottom of the loop — so a blocked feed retried forever instead of exiting.”",
-     "Then the point: “Not one of these crashed. Every one produced a confident, plausible, completely meaningless number. In normal software a bug is loud. In a trading system it's silent — a portfolio that never resolves anything and a portfolio that's genuinely flat look identical from outside. I found all four by reading the log of decisions not taken, not by watching the profit and loss. The P&L looked fine. It was fine. It was also fiction.”"],
+     "“And five: the best one. My GTA 6 bots bought Take-Two for the first time on Saturday — and that purchase silently shut down the entire stocks experiment. The tranche-sizing code reused a variable called target, which is also the bankroll goal the loop stops on. First buy set it to seventy-five dollars, so the next 'have we reached our goal?' check compared a thousand pounds against seventy-five, passed, and stopped everything. It sat dead for two days reporting that it had succeeded.”",
+     "Then the point: “Not one of these crashed. Every one produced a confident, plausible, completely meaningless number. The last one literally reported success. In normal software a bug is loud. In a trading system it's silent — a portfolio that never resolves anything and a portfolio that's genuinely flat look identical from outside. I found all four by reading the log of decisions not taken, not by watching the profit and loss. The P&L looked fine. It was fine. It was also fiction.”"],
 
     ["25 seconds. Deliver these as advice, not as a list you're reading.",
      "Lead with 1 and 2 — they're the ones that generalise beyond trading. The do-nothing control, and logging the decisions you didn't take.",
@@ -874,7 +882,7 @@
     ["15 seconds. Don't apologise for the negative result — present it as the finding.",
      "“Target was ten thousand. It's at one thousand and eleven. The strategy I set out to test doesn't work — at least not how I built it, and not at this sample size. The random control beat it. The do-nothing control matched it. And the one number that looked like success was a fortnight of luck.”",
      "“A negative result you can defend is worth more than a positive one you can't. Happy to take questions.”",
-     "Likely questions — have an answer ready: Why not use real money? (It's a sealed experiment; the findings are the deliverable, and paper trading removes every incentive to fudge them.) Is 611 trades enough? (For finding 1, borderline; for findings 2 and 3, no — and I've said so on the slides.) What's next? (Flat-stake copy bets, so signal quality and position sizing can be measured separately.)"]
+     "Likely questions — have an answer ready: Why not use real money? (It's a sealed experiment; the findings are the deliverable, and paper trading removes every incentive to fudge them.) Is 716 trades enough? (For finding 1, borderline; for findings 2 and 3, no — and I've said so on the slides.) What's next? (Flat-stake copy bets, so signal quality and position sizing can be measured separately.)"]
   ];
 
   slides.forEach(function(s, n){
