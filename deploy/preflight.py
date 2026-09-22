@@ -45,7 +45,7 @@ def check(url: str, also_ok: tuple = ()) -> tuple[bool, str]:
 
 
 def main() -> int:
-    print("Ghost Trader preflight -- checking every data source from this machine\n")
+    print("Ghost Trader AI preflight -- checking every data source from this machine\n")
     width = max(len(name) for name, *_ in CHECKS)
     blocked = []
     for name, url, powers, also_ok in CHECKS:

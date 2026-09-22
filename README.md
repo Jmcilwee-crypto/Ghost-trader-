@@ -1,4 +1,4 @@
-# Polymarket Ghost Trader
+# Ghost Trader AI
 
 A **paper-trading only** research bot. It watches Polymarket's public trade
 feed, scores each wallet's historical accuracy on resolved bets, and copies

@@ -90,7 +90,7 @@ def print_status_plain(config_path: str, tail_log: int) -> None:
     change = equity - starting
     progress = max(0.0, min(100.0, (equity - starting) / (target - starting) * 100)) if target != starting else 0.0
 
-    print("Ghost Trader -- plain-English status")
+    print("Ghost Trader AI -- plain-English status")
     print("=" * 40)
     print(f"Started with {_money(starting)} of pretend money.")
     if change >= 0:
@@ -145,7 +145,7 @@ def print_status_technical(config_path: str, tail_log: int) -> None:
     equity = portfolio.equity()
     progress = (equity - starting) / (target - starting) * 100 if target != starting else 0.0
 
-    print("=== Ghost Trader Status ===")
+    print("=== Ghost Trader AI Status ===")
     print(f"Equity:          ${equity:,.2f}  ({equity / starting - 1:+.1%} since start)")
     print(f"Cash:            ${portfolio.cash:,.2f}")
     print(f"Target/Ruin:     ${target:,.0f} / ${ruin:,.0f}   ({progress:.1f}% of the way to target)")
