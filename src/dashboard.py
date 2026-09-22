@@ -21,11 +21,12 @@ from urllib.parse import parse_qs, urlparse
 import yaml
 
 from .dashboard_data import build_dashboard_data
+from .state_sync import StateSync
 
 WEB_DIR = Path(__file__).resolve().parent.parent / "web"
 
 
-def _make_handler(config_path: str, refresh_ms: int):
+def _make_handler(config_path: str, refresh_ms: int, sync: StateSync | None = None):
     html_template = (WEB_DIR / "index.html").read_text()
     html = html_template.replace("__REFRESH_MS__", str(refresh_ms))
     html_bytes = html.encode("utf-8")
@@ -37,6 +38,9 @@ def _make_handler(config_path: str, refresh_ms: int):
                     query = parse_qs(urlparse(self.path).query)
                     market = (query.get("market") or ["polymarket"])[0]
                     payload = build_dashboard_data(config_path, market=market)
+                    # Where the data came from matters now that the bots run
+                    # on GitHub: a stale page and a quiet page look identical.
+                    payload["sync"] = sync.status() if sync else {"enabled": False, "state": "off"}
                     body = json.dumps(payload).encode("utf-8")
                     status = 200
                 except Exception as exc:  # keep the dashboard alive even if a read glitches
@@ -71,15 +75,31 @@ def run_dashboard(config_path: str = "config.yaml") -> None:
     port = dash_cfg.get("port", 8765)
     refresh_ms = int(dash_cfg.get("refresh_seconds", 5) * 1000)
 
-    handler = _make_handler(config_path, refresh_ms)
+    # The bots run on GitHub now, so the page has to pull their state down
+    # or it would poll unchanging local files forever.
+    sync = None
+    if dash_cfg.get("sync_from_git", True):
+        sync = StateSync(
+            interval_seconds=dash_cfg.get("sync_interval_seconds", 120),
+            branch=dash_cfg.get("sync_branch", "main"),
+        )
+        sync.start()
+
+    handler = _make_handler(config_path, refresh_ms, sync)
     server = ThreadingHTTPServer((host, port), handler)
     print(f"Dashboard running at http://{host}:{port}  (Ctrl+C to stop)")
-    print("This only reads local files -- safe to leave open alongside `python3 -m src.live`.")
+    if sync and sync.status().get("enabled"):
+        print(f"Pulling bot state from GitHub every {sync.interval:.0f}s "
+              f"(the bots themselves run there on a 15-minute schedule).")
+    else:
+        print("Reading local files only -- no GitHub remote to sync from.")
     try:
         server.serve_forever()
     except KeyboardInterrupt:
         print("\nShutting down dashboard...")
     finally:
+        if sync:
+            sync.stop()
         server.server_close()
 
 

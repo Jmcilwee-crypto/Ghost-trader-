@@ -1129,15 +1129,47 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
+function agoText(ts) {
+  if (!ts) return null;
+  const secs = Math.max(0, Math.floor(Date.now() / 1000 - ts));
+  if (secs < 90) return "just now";
+  const mins = Math.round(secs / 60);
+  if (mins < 60) return mins + " min ago";
+  const hrs = Math.round(mins / 60);
+  return hrs === 1 ? "1 hour ago" : hrs + " hours ago";
+}
+
+// The page polls every few seconds, but the bots run on GitHub every 15
+// minutes -- so "updated" (when the page last drew) and "how old the data
+// is" are different numbers. Showing only the first makes stale data look
+// live, which is the exact failure this dashboard exists to prevent.
+function syncText(sync) {
+  if (!sync || !sync.enabled) return "local files";
+  switch (sync.state) {
+    case "ok": {
+      const ago = agoText(sync.last_success_at);
+      return ago ? "GitHub · synced " + ago : "GitHub · synced";
+    }
+    case "offline":  return "⚠ offline — last known data";
+    case "diverged": return "⚠ local changes not on GitHub";
+    case "starting": return "connecting to GitHub…";
+    case "disabled": return "local files";
+    default:         return "⚠ " + (sync.message || "sync problem");
+  }
+}
+
 async function refresh() {
   const statusEl = document.getElementById("status-line");
   try {
     const res = await fetch(`/api/data?market=${encodeURIComponent(ui.market)}`, {cache: "no-store"});
     latest = await res.json();
     render(latest);
-    statusEl.textContent = "updated " + new Date().toLocaleTimeString();
+    const sync = latest.sync;
+    statusEl.textContent = "updated " + new Date().toLocaleTimeString() + " · " + syncText(sync);
+    statusEl.title = (sync && sync.message) ? sync.message : "";
   } catch (e) {
     statusEl.textContent = "connection lost, retrying...";
+    statusEl.title = "";
   }
 }
 

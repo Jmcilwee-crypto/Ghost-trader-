@@ -61,6 +61,11 @@ dashboard:
   host: "127.0.0.1"
   port: 8765
   refresh_seconds: 5
+  # The bots run on GitHub now and commit their state back to the repo, so
+  # the dashboard pulls that down rather than watching files nothing writes.
+  sync_from_git: true
+  sync_interval_seconds: 120
+  sync_branch: main
   max_flagged_shown: 50
   max_closed_trades_shown: 50
 
