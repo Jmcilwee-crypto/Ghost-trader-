@@ -38,3 +38,7 @@
 {"ts": 1789641894.913671, "bot": "momentum-5/20", "symbol": "MSFT", "action": "sell", "price": 490.3, "pnl": -0.03, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1789641894.916391, "bot": "risky-nostop-5/20", "symbol": "MSFT", "action": "sell", "price": 490.3, "pnl": -0.27, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1789642498.615029, "bot": "meanrev-30", "symbol": "TTWO", "action": "buy", "price": 211.81, "usd": 20.02, "reason": "RSI 30 -- oversold below 30", "strength_pct": 40.0}
+{"ts": 1789697438.652787, "bot": "risky-momentum-3/10", "symbol": "MSFT", "action": "sell", "price": 497.75, "pnl": 0.01, "reason": "3-bar average dropped below the 10-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1789697438.655114, "bot": "risky-nostop-5/20", "symbol": "MSFT", "action": "buy", "price": 497.75, "usd": 3.66, "reason": "5-bar average is 0.07% above the 20-bar -- uptrend", "strength_pct": 1.5}
+{"ts": 1789867884.196214, "bot": "catalyst-ttwo-hold-through", "symbol": "TTWO", "action": "buy", "price": 211.81, "usd": 75.0, "reason": "First tranche (1/4) -- 60 days to the GTA 6 launch, starting the position in TTWO", "strength_pct": 25.0}
+{"ts": 1789867884.197757, "bot": "catalyst-ttwo-sell-into", "symbol": "TTWO", "action": "buy", "price": 211.81, "usd": 75.0, "reason": "First tranche (1/4) -- 60 days to the GTA 6 launch, starting the position in TTWO", "strength_pct": 25.0}
