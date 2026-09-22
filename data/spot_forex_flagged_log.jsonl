@@ -39,3 +39,7 @@
 {"ts": 1789655440.171286, "bot": "meanrev-35", "symbol": "AUDUSD", "action": "buy", "price": 0.71138, "usd": 20.63, "reason": "RSI 35 -- oversold below 35", "strength_pct": 41.3}
 {"ts": 1789655440.1715798, "bot": "meanrev-25", "symbol": "CHFUSD", "action": "buy", "price": 1.2129, "usd": 20.25, "reason": "RSI 25 -- oversold below 25", "strength_pct": 40.5}
 {"ts": 1789655440.171812, "bot": "meanrev-30", "symbol": "CHFUSD", "action": "buy", "price": 1.2129, "usd": 28.53, "reason": "RSI 25 -- oversold below 30", "strength_pct": 57.1}
+{"ts": 1790074632.935543, "bot": "momentum-10/50", "symbol": "GBPUSD", "action": "sell", "price": 1.3395, "pnl": -0.04, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1790074632.938352, "bot": "vol-momentum", "symbol": "GBPUSD", "action": "sell", "price": 1.3395, "pnl": -0.04, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1790074632.938874, "bot": "momentum-tp", "symbol": "GBPUSD", "action": "sell", "price": 1.3395, "pnl": -0.04, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1790074632.939407, "bot": "risky-momentum-5/15", "symbol": "JPYUSD", "action": "sell", "price": 0.00636, "pnl": -1.27, "reason": "5-bar average dropped below the 15-bar -- trend over", "strength_pct": 50.0}

@@ -42,3 +42,10 @@
 {"ts": 1789697438.655114, "bot": "risky-nostop-5/20", "symbol": "MSFT", "action": "buy", "price": 497.75, "usd": 3.66, "reason": "5-bar average is 0.07% above the 20-bar -- uptrend", "strength_pct": 1.5}
 {"ts": 1789867884.196214, "bot": "catalyst-ttwo-hold-through", "symbol": "TTWO", "action": "buy", "price": 211.81, "usd": 75.0, "reason": "First tranche (1/4) -- 60 days to the GTA 6 launch, starting the position in TTWO", "strength_pct": 25.0}
 {"ts": 1789867884.197757, "bot": "catalyst-ttwo-sell-into", "symbol": "TTWO", "action": "buy", "price": 211.81, "usd": 75.0, "reason": "First tranche (1/4) -- 60 days to the GTA 6 launch, starting the position in TTWO", "strength_pct": 25.0}
+{"ts": 1790074210.9203598, "bot": "risky-momentum-3/10", "symbol": "MSFT", "action": "buy", "price": 501.61, "usd": 10.59, "reason": "3-bar average is 0.35% above the 10-bar -- uptrend", "strength_pct": 7.1}
+{"ts": 1790074210.92338, "bot": "risky-nostop-5/20", "symbol": "MSFT", "action": "sell", "price": 501.61, "pnl": 0.03, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1790074512.283726, "bot": "risky-momentum-3/10", "symbol": "NVDA", "action": "buy", "price": 227.38, "usd": 51.92, "reason": "3-bar average is 1.73% above the 10-bar -- uptrend", "strength_pct": 34.6}
+{"ts": 1790074813.703221, "bot": "risky-momentum-3/10", "symbol": "TTWO", "action": "sell", "price": 209.92, "pnl": -1.89, "reason": "3-bar average dropped below the 10-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1790075115.227957, "bot": "breakout-20", "symbol": "SPY", "action": "buy", "price": 773.5, "usd": 25.66, "reason": "Broke above its 20-bar high by 0.04%", "strength_pct": 51.3}
+{"ts": 1790075115.2305222, "bot": "risky-momentum-3/10", "symbol": "SPY", "action": "buy", "price": 773.5, "usd": 15.23, "reason": "3-bar average is 0.51% above the 10-bar -- uptrend", "strength_pct": 10.2}
+{"ts": 1790075115.23103, "bot": "risky-breakout-10", "symbol": "SPY", "action": "buy", "price": 773.5, "usd": 94.48, "reason": "Broke above its 10-bar high by 0.43%", "strength_pct": 62.9}
