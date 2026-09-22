@@ -310,9 +310,13 @@ def run_spot_experiment(config_path: str = "config.yaml", asset_class: str = "cr
                         # Buy only the shortfall against where the ramp says
                         # this position should already be, so repeated cycles
                         # inside one tranche don't keep adding.
+                        # Named tranche_target, NOT target: `target` is the
+                        # bankroll goal this loop stops on, and shadowing it
+                        # here set the stop condition to one tranche's dollar
+                        # size -- so the first catalyst buy ended the run.
                         equity = v.portfolio.equity(prices)
-                        target = equity * v_risk.config.max_pct_per_market * decision.target_fraction
-                        amount = min(target - (pos.cost_basis if pos else 0.0), v.portfolio.cash)
+                        tranche_target = equity * v_risk.config.max_pct_per_market * decision.target_fraction
+                        amount = min(tranche_target - (pos.cost_basis if pos else 0.0), v.portfolio.cash)
                     else:
                         amount = v_risk.position_size_usd(portfolio=v.portfolio, market_id=symbol,
                                                            confidence=decision.strength, current_prices=prices)
