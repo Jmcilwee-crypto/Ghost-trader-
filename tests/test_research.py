@@ -122,7 +122,8 @@ def test_build_research_falls_back_to_null_when_disabled():
 def test_build_research_returns_null_when_key_missing(monkeypatch, tmp_path):
     monkeypatch.delenv("ODDS_API_KEY", raising=False)
     # Point at an env file that doesn't exist, so the real .env can't supply a key.
-    config = {"research": {"enabled": True, "env_file": str(tmp_path / "absent.env")}}
+    config = {"research": {"enabled": True, "env_file": str(tmp_path / "absent.env"),
+                           "manifold": {"enabled": False}}}  # odds-only: this test is about the key
     assert isinstance(build_research(config), NullResearch)
 
 
@@ -131,7 +132,8 @@ def test_env_file_supplies_the_key(monkeypatch, tmp_path):
     env_file = tmp_path / ".env"
     env_file.write_text("# comment line\nODDS_API_KEY=from-env-file\n")
 
-    provider = build_research({"research": {"enabled": True, "env_file": str(env_file)}})
+    provider = build_research({"research": {"enabled": True, "env_file": str(env_file),
+                                            "manifold": {"enabled": False}}})
     assert provider.enabled
     assert provider.api_key == "from-env-file"
 
@@ -141,7 +143,8 @@ def test_real_environment_variable_beats_the_env_file(monkeypatch, tmp_path):
     env_file = tmp_path / ".env"
     env_file.write_text("ODDS_API_KEY=from-env-file\n")
 
-    provider = build_research({"research": {"enabled": True, "env_file": str(env_file)}})
+    provider = build_research({"research": {"enabled": True, "env_file": str(env_file),
+                                            "manifold": {"enabled": False}}})
     assert provider.api_key == "from-real-env"
 
 

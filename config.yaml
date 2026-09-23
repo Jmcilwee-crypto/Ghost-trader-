@@ -149,7 +149,19 @@ research:
   regions: "us,eu"
   max_requests_per_day: 120  # hard stop so the free quota can't be burned
   min_books: 2               # ignore an event priced by only one bookmaker
-  match_threshold: 0.5       # how confidently a title must match a real fixture
+  match_threshold: 0.5
+
+  # Manifold Markets: a second crowd pricing the same questions. No API key
+  # and no account needed. Play money, so its prices are real forecasts but
+  # less sharp than a bookmaker's -- max_confidence caps how much weight the
+  # strategy may give them, and thin markets are rejected outright.
+  manifold:
+    enabled: true
+    cache_ttl_seconds: 900
+    match_threshold: 0.85     # near-total coverage: a wrong match is worse than no match
+    min_bettors: 15           # fewer than this is one person's opinion, not a crowd
+    min_liquidity: 100.0
+    max_confidence: 0.55      # never weighted as highly as real-money odds       # how confidently a title must match a real fixture
 
 edge_strategy:
   # ON TRIAL from 2026-09-15, judged on SAMPLE SIZE rather than a date.

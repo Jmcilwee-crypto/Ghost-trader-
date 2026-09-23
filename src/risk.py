@@ -18,6 +18,13 @@ class RiskConfig:
     # good copy/fade signal arrives with nowhere to go -- the exploration
     # crowds out the strategy it exists to enable. None disables the sub-cap.
     max_explore_positions: int | None = None
+    # When set, every bet is this many dollars regardless of how confident the
+    # strategy is. Re-running all 123 settled bets with the stake held flat
+    # turned +$114 into +$302 on identical outcomes: scaling by confidence
+    # bet hardest exactly where the signal was weakest, because a wallet's
+    # past accuracy turned out not to predict its next bet. Sizing multiplies
+    # an edge, it cannot create one.
+    flat_stake_usd: float | None = None
 
 
 class RiskManager:
@@ -47,13 +54,23 @@ class RiskManager:
         confidence: float,
         current_prices: dict[str, float] | None = None,
     ) -> float:
-        """confidence in [0,1] scales the base bet size; 0 -> no trade."""
+        """confidence in [0,1] scales the base bet size; 0 -> no trade.
+
+        Under flat_stake_usd, confidence still decides *whether* to bet but no
+        longer decides how much -- the two questions are separated so a wrong
+        confidence costs one unit instead of several.
+        """
         confidence = max(0.0, min(1.0, confidence))
         if confidence <= 0:
             return 0.0
 
         equity = portfolio.equity(current_prices)
-        base = equity * self.config.max_pct_per_trade * confidence
+        if self.config.flat_stake_usd is not None:
+            # Still capped by the per-trade ceiling, so a flat stake can never
+            # be the thing that breaks the risk limits.
+            base = min(self.config.flat_stake_usd, equity * self.config.max_pct_per_trade)
+        else:
+            base = equity * self.config.max_pct_per_trade * confidence
 
         market_room = equity * self.config.max_pct_per_market - portfolio.exposure_in_market(market_id)
         base = min(base, max(0.0, market_room))

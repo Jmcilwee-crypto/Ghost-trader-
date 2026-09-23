@@ -5,7 +5,12 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import yaml
 
-from src.experiment import EDGE_VARIANTS, PROFILES, WHALE_THRESHOLDS, build_variants, leaderboard
+from src.experiment import (EDGE_VARIANTS, FLAT_STAKE_VARIANTS, PROFILES, WHALE_THRESHOLDS,
+                            build_variants, leaderboard)
+
+# Derived, never hardcoded: adding a cohort should not require editing a
+# literal in five tests, and a stale literal hides what actually changed.
+WHALE_COUNT = len(PROFILES) * len(WHALE_THRESHOLDS) + len(FLAT_STAKE_VARIANTS)
 from src.scorecard import TraderScorecard
 
 CONFIG = yaml.safe_load(Path(__file__).resolve().parents[1].joinpath("config.yaml").read_text())
@@ -13,8 +18,8 @@ CONFIG = yaml.safe_load(Path(__file__).resolve().parents[1].joinpath("config.yam
 
 def test_builds_one_variant_per_profile_threshold_combination():
     variants = build_variants(CONFIG, TraderScorecard())
-    assert len(variants) == len(PROFILES) * len(WHALE_THRESHOLDS) == 20
-    assert len({v.name for v in variants}) == 20  # names are unique
+    assert len(variants) == WHALE_COUNT
+    assert len({v.name for v in variants}) == WHALE_COUNT  # names are unique
 
 
 def test_each_variant_gets_its_own_portfolio():
@@ -68,7 +73,7 @@ class _FakeResearch:
 
 def test_no_value_variants_without_research():
     variants = build_variants(CONFIG, TraderScorecard(), research=None)
-    assert len(variants) == 20
+    assert len(variants) == WHALE_COUNT
     assert not any(v.settings.get("profile") == "value" for v in variants)
 
 
@@ -76,11 +81,12 @@ def test_value_variants_added_when_research_is_enabled():
     variants = build_variants(_with_value_enabled(), TraderScorecard(), research=_FakeResearch())
     value = [v for v in variants if v.settings.get("profile") == "value"]
 
-    assert len(variants) == 20 + len(EDGE_VARIANTS)
-    assert len(value) == len(EDGE_VARIANTS)
+    # +1 for the flat-stake value twin.
+    assert len(variants) == WHALE_COUNT + len(EDGE_VARIANTS) + 1
+    assert len(value) == len(EDGE_VARIANTS) + 1
     # The whale bots must be untouched, so the comparison stays honest.
-    assert len([v for v in variants if v.settings.get("profile") != "value"]) == 20
-    assert {v.name for v in value} == {spec["name"] for spec in EDGE_VARIANTS}
+    assert len([v for v in variants if v.settings.get("profile") != "value"]) == WHALE_COUNT
+    assert {v.name for v in value} == {spec["name"] for spec in EDGE_VARIANTS} | {"value-edge10-flat"}
 
 
 def test_value_variants_carry_their_own_edge_settings():
@@ -108,8 +114,10 @@ def test_value_bots_can_be_retired_without_disabling_research():
     cfg["edge_strategy"] = {**cfg.get("edge_strategy", {}), "enabled": False}
     retired = build_variants(cfg, TraderScorecard(), research=_FakeResearch())
     assert not any(v.settings.get("profile") == "value" for v in retired)
-    assert len(retired) == 20
+    # The flat-stake value twin obeys the same gate, so only whale bots remain.
+    assert len(retired) == WHALE_COUNT
 
     cfg["edge_strategy"]["enabled"] = True
     revived = build_variants(cfg, TraderScorecard(), research=_FakeResearch())
-    assert len([v for v in revived if v.settings.get("profile") == "value"]) == len(EDGE_VARIANTS)
+    # +1: the flat-stake value twin comes back with them.
+    assert len([v for v in revived if v.settings.get("profile") == "value"]) == len(EDGE_VARIANTS) + 1

@@ -64,6 +64,21 @@ EDGE_VARIANTS = [
     {"name": "value-edge10-bold", "min_edge": 0.10, "kelly_fraction": 0.50},
 ]
 
+# Flat-stake twins. Each is an exact copy of an existing bot with one thing
+# changed: the stake no longer scales with confidence. Replaying all 123
+# settled bets at a flat $20 turned +$114 into +$302, because the bot bet
+# biggest on the signals it was least right about. Pairing each twin with its
+# confidence-scaled original makes that a controlled A/B rather than a story:
+# same feed, same profile, same threshold, only the sizing rule differs.
+FLAT_STAKE_USD = 20.0
+FLAT_STAKE_VARIANTS = [
+    {"profile": "aggressive", "threshold": 500.0},    # the current leader
+    {"profile": "balanced", "threshold": 1000.0},
+    {"profile": "strict", "threshold": 500.0},
+    {"profile": "copy_only", "threshold": 2500.0},    # isolates copy, where the damage is
+]
+FLAT_EDGE_VARIANT = {"name": "value-edge10", "min_edge": 0.10, "kelly_fraction": 0.25}
+
 
 @dataclass
 class Variant:
@@ -106,6 +121,38 @@ def build_variants(base_config: dict, scorecard: TraderScorecard, research=None)
                 settings={"profile": "value", "whale_usd_threshold": edge_threshold,
                           "min_edge": spec["min_edge"], "kelly_fraction": spec["kelly_fraction"]},
             ))
+
+    # -- flat-stake twins -------------------------------------------------
+    # Their own RiskManager: flat_stake_usd lives in RiskConfig, so sharing
+    # the manager above would silently flatten every bot in the experiment.
+    flat_risk = RiskManager(RiskConfig(**{**base_config["risk"],
+                                          "flat_stake_usd": FLAT_STAKE_USD}))
+    for spec in FLAT_STAKE_VARIANTS:
+        profile = PROFILES[spec["profile"]]
+        config = copy.deepcopy(base_config)
+        config["strategy"].update(profile)
+        config["strategy"]["whale_usd_threshold"] = spec["threshold"]
+        variants.append(Variant(
+            name=f"{spec['profile']}@${int(spec['threshold'])}-flat",
+            strategy=WhaleFollowStrategy(config=config, scorecard=scorecard, risk=flat_risk),
+            portfolio=PaperPortfolio(starting_cash),
+            settings={"profile": spec["profile"], "whale_usd_threshold": spec["threshold"],
+                      "flat_stake_usd": FLAT_STAKE_USD, **profile},
+        ))
+
+    if research is not None and getattr(research, "enabled", False) and edge_cfg.get("enabled", True):
+        config = copy.deepcopy(base_config)
+        config["strategy"]["whale_usd_threshold"] = edge_cfg.get("whale_usd_threshold", 500.0)
+        config["edge_strategy"] = {**config.get("edge_strategy", {}), **FLAT_EDGE_VARIANT}
+        variants.append(Variant(
+            name=f"{FLAT_EDGE_VARIANT['name']}-flat",
+            strategy=EdgeValueStrategy(config=config, scorecard=scorecard, risk=flat_risk,
+                                        research=research),
+            portfolio=PaperPortfolio(starting_cash),
+            settings={"profile": "value", "flat_stake_usd": FLAT_STAKE_USD,
+                      "min_edge": FLAT_EDGE_VARIANT["min_edge"],
+                      "kelly_fraction": FLAT_EDGE_VARIANT["kelly_fraction"]},
+        ))
     return variants
 
 
