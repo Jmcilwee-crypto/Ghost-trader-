@@ -1,7 +1,3 @@
-{"ts": 1789173785.651018, "bot": "vol-momentum", "symbol": "XRPUSDT", "action": "sell", "price": 1.3585, "pnl": -0.01, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
-{"ts": 1789173785.6514869, "bot": "momentum-tp", "symbol": "XRPUSDT", "action": "sell", "price": 1.3585, "pnl": -0.01, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
-{"ts": 1789182445.199703, "bot": "meanrev-25", "symbol": "BTCUSDT", "action": "buy", "price": 77278.01, "usd": 29.67, "reason": "RSI 20 -- oversold below 25", "strength_pct": 59.3}
-{"ts": 1789182445.203146, "bot": "meanrev-30", "symbol": "BTCUSDT", "action": "buy", "price": 77278.01, "usd": 36.41, "reason": "RSI 20 -- oversold below 30", "strength_pct": 72.8}
 {"ts": 1789182445.203748, "bot": "meanrev-35", "symbol": "BTCUSDT", "action": "buy", "price": 77278.01, "usd": 41.3, "reason": "RSI 20 -- oversold below 35", "strength_pct": 82.4}
 {"ts": 1789182445.204628, "bot": "meanrev-25", "symbol": "ETHUSDT", "action": "buy", "price": 2513.39, "usd": 36.75, "reason": "RSI 17 -- oversold below 25", "strength_pct": 73.5}
 {"ts": 1789182445.205648, "bot": "meanrev-30", "symbol": "ETHUSDT", "action": "buy", "price": 2513.39, "usd": 42.31, "reason": "RSI 17 -- oversold below 30", "strength_pct": 84.6}
@@ -298,3 +294,7 @@
 {"ts": 1790173470.6022954, "bot": "meanrev-35", "symbol": "XRPUSDT", "action": "buy", "price": 1.5137, "usd": 21.07, "reason": "RSI 34 -- oversold below 35", "strength_pct": 42.1}
 {"ts": 1790179372.395613, "bot": "meanrev-25", "symbol": "BTCUSDT", "action": "buy", "price": 83999.18, "usd": 26.12, "reason": "RSI 22 -- oversold below 25", "strength_pct": 52.6}
 {"ts": 1790180704.77607, "bot": "meanrev-30", "symbol": "XRPUSDT", "action": "buy", "price": 1.5075, "usd": 20.25, "reason": "RSI 30 -- oversold below 30", "strength_pct": 40.6}
+{"ts": 1790184189.3666427, "bot": "momentum-10/50", "symbol": "XRPUSDT", "action": "sell", "price": 1.4977, "pnl": 0.37, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1790184189.3671296, "bot": "meanrev-25", "symbol": "XRPUSDT", "action": "buy", "price": 1.4977, "usd": 26.18, "reason": "RSI 22 -- oversold below 25", "strength_pct": 52.7}
+{"ts": 1790184189.3674304, "bot": "vol-momentum", "symbol": "XRPUSDT", "action": "sell", "price": 1.4977, "pnl": 0.37, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1790184189.3677154, "bot": "momentum-tp", "symbol": "XRPUSDT", "action": "sell", "price": 1.4977, "pnl": -0.79, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
