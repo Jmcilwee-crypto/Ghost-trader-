@@ -290,7 +290,7 @@
 <div class="wrap">
 
   <div class="rail">
-    <span class="slug">Ghost&nbsp;Trader</span>
+    <span class="slug">Ghost&nbsp;Trader&nbsp;AI</span>
     <span>0.00</span>
     <span class="track"><span class="fill" id="fill"></span></span>
     <span>1.00</span>
@@ -301,7 +301,7 @@
   <div class="stage" id="stage">
 
     <!-- 1 ............................................................. -->
-    <section class="slide title-slide" data-time="00:00 &rarr; 00:20" data-title="Title">
+    <section class="slide title-slide" data-time="00:00 &rarr; 00:18" data-title="Title">
       <div class="eyebrow">
         <span>Paper-trading experiment</span><span class="sep">/</span>
         <span>80 bots</span><span class="sep">/</span>
@@ -324,7 +324,7 @@
     </section>
 
     <!-- 2 ............................................................. -->
-    <section class="slide" data-time="00:20 &rarr; 00:50" data-title="The instrument &amp; the hypothesis">
+    <section class="slide" data-time="00:18 &rarr; 00:45" data-title="The instrument &amp; the hypothesis">
       <div class="eyebrow"><span>01</span><span class="sep">/</span><span>What we are betting on</span></div>
       <h2 class="wide">On Polymarket, the price <em class="q">is</em> the probability.</h2>
       <div class="cols lean">
@@ -358,7 +358,7 @@
     </section>
 
     <!-- 3 ............................................................. -->
-    <section class="slide" data-time="00:50 &rarr; 01:20" data-title="How it is built">
+    <section class="slide" data-time="00:45 &rarr; 01:10" data-title="How it is built">
       <div class="eyebrow"><span>02</span><span class="sep">/</span><span>Architecture</span></div>
       <h2 class="wide">One feed. Eighty opinions.</h2>
       <div class="pipe">
@@ -410,7 +410,7 @@
     </section>
 
     <!-- 4 ............................................................. -->
-    <section class="slide" data-time="01:20 &rarr; 01:50" data-title="The code">
+    <section class="slide" data-time="01:10 &rarr; 01:33" data-title="The code">
       <div class="eyebrow"><span>03</span><span class="sep">/</span><span>The decision, in code</span></div>
       <h2 class="wide">The bot has to explain itself &mdash; even when it does nothing.</h2>
       <div class="cols narrow-left" style="gap:2.6cqi">
@@ -456,7 +456,7 @@
     </section>
 
     <!-- 5 ............................................................. -->
-    <section class="slide" data-time="01:50 &rarr; 02:15" data-title="Why 80 bots">
+    <section class="slide" data-time="01:33 &rarr; 01:55" data-title="Why 80 bots">
       <div class="eyebrow"><span>04</span><span class="sep">/</span><span>Experiment design</span></div>
       <h2 class="wide">One bot is an anecdote.</h2>
       <p class="lede">
@@ -502,7 +502,7 @@
     </section>
 
     <!-- 6 ............................................................. -->
-    <section class="slide" data-time="02:15 &rarr; 02:55" data-title="Finding 1 — copying loses">
+    <section class="slide" data-time="01:55 &rarr; 02:30" data-title="Finding 1 — copying loses">
       <div class="eyebrow"><span>05</span><span class="sep">/</span><span>Finding one</span><span class="sep">/</span><span class="acc">the headline</span></div>
       <h2 class="wide">Copying the smart money lost money. Betting at random didn&rsquo;t.</h2>
       <div class="cols lean" style="gap:3cqi">
@@ -544,8 +544,54 @@
     </section>
 
     <!-- 7 ............................................................. -->
-    <section class="slide" data-time="02:55 &rarr; 03:20" data-title="Finding 2 — bigger whales are worse">
-      <div class="eyebrow"><span>06</span><span class="sep">/</span><span>Finding two</span></div>
+    <section class="slide" data-time="02:30 &rarr; 02:55" data-title="The fix, measured">
+      <div class="eyebrow"><span>06</span><span class="sep">/</span><span>What we did about it</span></div>
+      <h2 class="wide">Same bets. Same outcomes. 2.6&times; the money.</h2>
+      <div class="cols lean" style="gap:3cqi">
+        <div class="col">
+          <p class="lede" style="font-size:1.78cqi">
+            If the problem really is <b>sizing</b> and not <b>picking</b>, that&rsquo;s testable
+            without waiting for new data. I replayed every bet the bot has ever settled, kept
+            every outcome exactly as it happened, and changed one thing: a <b>flat $20</b> stake
+            instead of one scaled by confidence.
+          </p>
+          <table>
+            <colgroup><col><col><col class="hl"><col></colgroup>
+            <thead>
+              <tr><th>123 settled bets</th><th>as sized</th><th class="mark">flat $20</th><th>&Delta;</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>copy</td><td class="down">&minus;$89.76</td><td class="down">&minus;$35.94</td><td class="up">+$53.82</td></tr>
+              <tr><td>explore</td><td class="up">+$231.32</td><td class="up">+$241.18</td><td class="up">+$9.86</td></tr>
+              <tr class="verdict"><td>everything</td><td class="up">+$114.00</td><td class="up big">+$301.74</td><td class="up big">+$187.74</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="col">
+          <div class="pull" style="font-size:2cqi; max-width:32ch">
+            Betting hardest where you feel surest only works if the feeling is right.
+            Here it wasn&rsquo;t.
+          </div>
+          <p class="fine">
+            A wallet&rsquo;s past accuracy didn&rsquo;t predict its next bet, so confidence-scaling
+            reliably put the <b>most money on the worst signals</b>. Flattening the stake doesn&rsquo;t
+            improve a single pick &mdash; it just stops one wrong opinion costing five units
+            instead of one.
+          </p>
+          <p class="fine acc">
+            <b>This is a replay, not a result.</b> It proves the arithmetic, not the future. So
+            <b>five new bots</b> now run the flat rule live, each paired with its
+            confidence-scaled twin &mdash; same feed, same settings, one variable. That comparison
+            is the actual test.
+          </p>
+        </div>
+      </div>
+      <div class="foot"><span>Separating <b>should I bet?</b> from <b>how much?</b></span><span class="sep">/</span><span>the single most valuable line of code in the project</span></div>
+    </section>
+
+    <!-- 8 ............................................................. -->
+    <section class="slide" data-time="02:55 &rarr; 03:15" data-title="Finding 2 — bigger whales are worse">
+      <div class="eyebrow"><span>07</span><span class="sep">/</span><span>Finding two</span></div>
       <h2 class="wide">The bigger the bet, the worse it did.</h2>
       <div class="cols narrow-left" style="gap:2.8cqi">
         <div class="col">
@@ -600,9 +646,9 @@
       </div>
     </section>
 
-    <!-- 8 ............................................................. -->
-    <section class="slide" data-time="03:20 &rarr; 03:45" data-title="Finding 3 — nothing beats flat">
-      <div class="eyebrow"><span>07</span><span class="sep">/</span><span>Finding three</span><span class="sep">/</span><span>the other four markets</span></div>
+    <!-- 9 ............................................................. -->
+    <section class="slide" data-time="03:15 &rarr; 03:38" data-title="Finding 3 — nothing beats flat">
+      <div class="eyebrow"><span>08</span><span class="sep">/</span><span>Finding three</span><span class="sep">/</span><span>the other four markets</span></div>
       <h2 class="wide">The bot that does nothing came 1st, 1st, 8th &mdash; and last.</h2>
       <div class="chart">
 <svg viewBox="0 0 900 318" role="img" aria-label="Returns of 56 spot-market bots. The buy-and-hold control finished 1st of 11 in crypto at +3.39%, 1st of 18 in stocks, 8th of 11 in commodities and last of 16 in forex.">
@@ -704,9 +750,9 @@
       <div class="foot"><span>56 bots</span><span class="sep">/</span><span>185 completed round trips</span><span class="sep">/</span><span>efficient markets, in miniature, on a laptop</span></div>
     </section>
 
-    <!-- 9 ............................................................. -->
-    <section class="slide" data-time="03:45 &rarr; 04:20" data-title="The bugs">
-      <div class="eyebrow"><span>08</span><span class="sep">/</span><span>What actually went wrong</span></div>
+    <!-- 10 ............................................................ -->
+    <section class="slide" data-time="03:38 &rarr; 04:12" data-title="The bugs">
+      <div class="eyebrow"><span>09</span><span class="sep">/</span><span>What actually went wrong</span></div>
       <h2 class="wide">A broken trading bot still reports numbers.</h2>
       <div class="cols lean" style="gap:3.2cqi">
         <div class="col">
@@ -747,23 +793,23 @@
       <div class="foot"><span>Each fix has a regression test named after the bug it prevents</span></div>
     </section>
 
-    <!-- 10 ............................................................ -->
-    <section class="slide" data-time="04:20 &rarr; 04:45" data-title="Takeaways">
-      <div class="eyebrow"><span>09</span><span class="sep">/</span><span>Five things worth stealing</span></div>
+    <!-- 11 ............................................................ -->
+    <section class="slide" data-time="04:12 &rarr; 04:40" data-title="Takeaways">
+      <div class="eyebrow"><span>10</span><span class="sep">/</span><span>Five things worth stealing</span></div>
       <h2 class="wide">What I&rsquo;d do the same, and what I&rsquo;d do differently.</h2>
       <ol class="steps" style="font-size:1.72cqi; gap:1.3cqi">
         <li><span><b>Always ship the do-nothing control.</b> Buy-and-hold costs ten lines, and it is the only thing that tells you whether your strategy is skill or weather.</span></li>
         <li><span><b>Log the decisions you <em class="q">didn&rsquo;t</em> take, with reasons.</b> The rejections are the dataset. My three worst bugs were invisible in the results and obvious in the reject log.</span></li>
-        <li><span><b>Separate &ldquo;should I?&rdquo; from &ldquo;how much?&rdquo;</b> Sizing multiplies your signal; it never creates one. Scaling stake by confidence turned a mildly bad signal into a &minus;$671 one.</span></li>
+        <li><span><b>Separate &ldquo;should I?&rdquo; from &ldquo;how much?&rdquo;</b> Sizing multiplies your signal; it never creates one. Flattening the stake was worth <b class="up">+$188</b> on bets that had already settled &mdash; the cheapest win in the project.</span></li>
         <li><span><b>Test the failure path, not the happy path.</b> Every bug here lived in an <code>except</code> branch or a default API parameter &mdash; places the happy-path tests never reach.</span></li>
         <li><span><b>Small samples lie.</b> My best bot read <b class="up">+16.3%</b>, then <b>+1.1%</b>, then <b class="up">+3.8%</b> on three different days, having changed nothing. Whichever day I presented, I&rsquo;d have told you a different story with equal confidence.</span></li>
       </ol>
       <div class="foot"><span>Next</span><span class="sep">/</span><span>flat-stake copy bets, to separate <b>signal quality</b> from <b>sizing</b></span><span class="sep">/</span><span>and a lot more resolutions</span></div>
     </section>
 
-    <!-- 11 ............................................................ -->
-    <section class="slide" data-time="04:45 &rarr; 05:00" data-title="Close">
-      <div class="eyebrow"><span>10</span><span class="sep">/</span><span>Where it stands today</span></div>
+    <!-- 12 ............................................................ -->
+    <section class="slide" data-time="04:40 &rarr; 05:00" data-title="Close">
+      <div class="eyebrow"><span>11</span><span class="sep">/</span><span>Where it stands today</span></div>
       <h2 class="wide">Target: $10,000. Actual: $1,038.</h2>
       <div class="tiles">
         <div class="tile"><span class="v">80</span><span class="k">bots running</span></div>
@@ -854,6 +900,11 @@
      "“That's the line from the code earlier: stake = equity × max percent × confidence. Confidence came from the wallet's track record, so a 'trusted' wallet automatically got a bigger bet. Position sizing doesn't create edge. It multiplies whatever edge you already have — and if that's negative, you've just built a machine for losing faster.”",
      "If you only say one sentence from this whole deck: the bot bet the most exactly where it was least right."],
 
+    ["25 seconds. This is the one slide with a forward-looking answer on it — deliver it as a fix, not another complaint.",
+     "“So if my theory is right — that the problem was sizing and not picking — I can test that without waiting for a single new bet. I replayed every bet the bot has ever settled, kept every outcome exactly as it happened, and changed one thing: a flat twenty-dollar stake instead of one scaled by confidence.”",
+     "“Plus 114 dollars becomes plus 302. Same bets, same outcomes, 2.6 times the money.”  Let that sit for a second.",
+     "“Notice this doesn't improve a single pick. Every bet it got wrong, it still gets wrong. All it does is stop one wrong opinion costing five units instead of one.”",
+     "Then be honest about what it is, because someone will ask: “That's a replay, not a result — it proves the arithmetic, not the future. So there are now five new bots running the flat rule live, each paired with its confidence-scaled twin on the same feed with the same settings. That comparison is the real test, and I don't have the answer yet.”"],
     ["Quick slide, 25 seconds. The chart does the work.",
      "“Same strategy, five different bars for what counts as a whale. Following $500 bets won 68% of the time. Following $10,000 bets won 44% — worse than a coin flip.”",
      "“My guess at why: a ten-thousand-dollar single order is more often a hedge, or a longshot punt, or just someone with more money than information. The genuinely sharp trader is sizing sensibly. So 'biggest bet' turns out to be a bad proxy for 'smartest bet'.”",
