@@ -101,3 +101,8 @@
 {"ts": 1790119212.8994532, "bot": "momentum-10/50", "symbol": "PAXGUSDT", "action": "buy", "price": 4358.93, "usd": 1.05, "reason": "10-bar average is 0.10% above the 50-bar -- uptrend", "strength_pct": 2.1}
 {"ts": 1790119212.9001293, "bot": "vol-momentum", "symbol": "PAXGUSDT", "action": "buy", "price": 4358.93, "usd": 1.05, "reason": "10-bar average is 0.10% above the 50-bar -- uptrend; volatility 0.25% vs 2.00% target -> sizing at 100% (moved +0.4%)", "strength_pct": 2.1}
 {"ts": 1790119212.9004447, "bot": "momentum-tp", "symbol": "PAXGUSDT", "action": "buy", "price": 4358.93, "usd": 1.05, "reason": "10-bar average is 0.10% above the 50-bar -- uptrend", "strength_pct": 2.1}
+{"ts": 1790130202.8863041, "bot": "breakout-20", "symbol": "PAXGUSDT", "action": "sell", "price": 4335.81, "pnl": -0.2, "reason": "Fell below the 10-bar low -- breakout failed", "strength_pct": 50.0}
+{"ts": 1790130202.886712, "bot": "momentum-10/50", "symbol": "XAUTUSDT", "action": "buy", "price": 4337.95, "usd": 1.42, "reason": "10-bar average is 0.14% above the 50-bar -- uptrend", "strength_pct": 2.8}
+{"ts": 1790130202.8869789, "bot": "breakout-20", "symbol": "XAUTUSDT", "action": "sell", "price": 4337.95, "pnl": -0.14, "reason": "Fell below the 10-bar low -- breakout failed", "strength_pct": 50.0}
+{"ts": 1790130202.8873255, "bot": "vol-momentum", "symbol": "XAUTUSDT", "action": "buy", "price": 4337.95, "usd": 1.42, "reason": "10-bar average is 0.14% above the 50-bar -- uptrend; volatility 0.23% vs 2.00% target -> sizing at 100% (moved +0.4%)", "strength_pct": 2.8}
+{"ts": 1790130202.8875675, "bot": "momentum-tp", "symbol": "XAUTUSDT", "action": "buy", "price": 4337.95, "usd": 1.42, "reason": "10-bar average is 0.14% above the 50-bar -- uptrend", "strength_pct": 2.8}
