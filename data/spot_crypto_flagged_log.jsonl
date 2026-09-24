@@ -1,5 +1,3 @@
-{"ts": 1789321529.510559, "bot": "momentum-5/20", "symbol": "BNBUSDT", "action": "sell", "price": 721.04, "pnl": 0.0, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
-{"ts": 1789321529.5109901, "bot": "momentum-10/50", "symbol": "BNBUSDT", "action": "sell", "price": 721.04, "pnl": -0.03, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1789321529.511394, "bot": "vol-momentum", "symbol": "BNBUSDT", "action": "sell", "price": 721.04, "pnl": -0.03, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1789321529.51169, "bot": "momentum-tp", "symbol": "BNBUSDT", "action": "sell", "price": 721.04, "pnl": -0.03, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1789321529.5119638, "bot": "momentum-5/20", "symbol": "XRPUSDT", "action": "sell", "price": 1.3542, "pnl": -0.01, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
@@ -298,3 +296,5 @@
 {"ts": 1790269347.810301, "bot": "momentum-5/20", "symbol": "ETHUSDT", "action": "buy", "price": 2688.31, "usd": 1.24, "reason": "5-bar average is 0.12% above the 20-bar -- uptrend", "strength_pct": 2.5}
 {"ts": 1790270557.0565722, "bot": "momentum-5/20", "symbol": "BTCUSDT", "action": "buy", "price": 84371.37, "usd": 2.23, "reason": "5-bar average is 0.22% above the 20-bar -- uptrend", "strength_pct": 4.5}
 {"ts": 1790270557.057463, "bot": "meanrev-35", "symbol": "XRPUSDT", "action": "sell", "price": 1.5353, "pnl": 0.28, "reason": "RSI recovered to 64 -- back to normal", "strength_pct": 50.0}
+{"ts": 1790277703.1390135, "bot": "meanrev-25", "symbol": "BTCUSDT", "action": "sell", "price": 84538.01, "pnl": 0.14, "reason": "RSI recovered to 56 -- back to normal", "strength_pct": 50.0}
+{"ts": 1790277703.1395097, "bot": "meanrev-30", "symbol": "BTCUSDT", "action": "sell", "price": 84538.01, "pnl": 0.05, "reason": "RSI recovered to 56 -- back to normal", "strength_pct": 50.0}
