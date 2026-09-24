@@ -49,3 +49,4 @@
 {"ts": 1790075115.227957, "bot": "breakout-20", "symbol": "SPY", "action": "buy", "price": 773.5, "usd": 25.66, "reason": "Broke above its 20-bar high by 0.04%", "strength_pct": 51.3}
 {"ts": 1790075115.2305222, "bot": "risky-momentum-3/10", "symbol": "SPY", "action": "buy", "price": 773.5, "usd": 15.23, "reason": "3-bar average is 0.51% above the 10-bar -- uptrend", "strength_pct": 10.2}
 {"ts": 1790075115.23103, "bot": "risky-breakout-10", "symbol": "SPY", "action": "buy", "price": 773.5, "usd": 94.48, "reason": "Broke above its 10-bar high by 0.43%", "strength_pct": 62.9}
+{"ts": 1790281478.0697932, "bot": "risky-breakout-10", "symbol": "AAPL", "action": "sell", "price": 335.92, "pnl": 0.73, "reason": "Fell below the 5-bar low -- breakout failed", "strength_pct": 50.0}
