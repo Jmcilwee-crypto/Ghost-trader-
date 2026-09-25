@@ -316,6 +316,25 @@
     }
   },
   {
+    "name": "strict@$500-flat",
+    "equity": 968.6553163222727,
+    "return_pct": -3.1344683677727248,
+    "cash": 858.6553163222727,
+    "open_positions": 7,
+    "closed_trades": 22,
+    "win_rate": 0.5909090909090909,
+    "realized_pnl": -31.344683677727204,
+    "settings": {
+      "profile": "strict",
+      "whale_usd_threshold": 500.0,
+      "flat_stake_usd": 20.0,
+      "copy_above_accuracy": 0.7,
+      "fade_below_accuracy": 0.3,
+      "min_track_record": 10,
+      "explore_unknown_wallets": true
+    }
+  },
+  {
     "name": "aggressive@$10000",
     "equity": 963.7223010530572,
     "return_pct": -3.627769894694277,
@@ -363,25 +382,6 @@
     "settings": {
       "profile": "strict",
       "whale_usd_threshold": 10000.0,
-      "copy_above_accuracy": 0.7,
-      "fade_below_accuracy": 0.3,
-      "min_track_record": 10,
-      "explore_unknown_wallets": true
-    }
-  },
-  {
-    "name": "strict@$500-flat",
-    "equity": 958.6553163222727,
-    "return_pct": -4.134468367772726,
-    "cash": 833.6553163222727,
-    "open_positions": 8,
-    "closed_trades": 21,
-    "win_rate": 0.5714285714285714,
-    "realized_pnl": -41.344683677727204,
-    "settings": {
-      "profile": "strict",
-      "whale_usd_threshold": 500.0,
-      "flat_stake_usd": 20.0,
       "copy_above_accuracy": 0.7,
       "fade_below_accuracy": 0.3,
       "min_track_record": 10,
@@ -498,13 +498,13 @@
   },
   {
     "name": "aggressive@$500-flat",
-    "equity": 872.2569675090633,
-    "return_pct": -12.774303249093666,
-    "cash": 727.2569675090633,
-    "open_positions": 9,
-    "closed_trades": 30,
-    "win_rate": 0.5,
-    "realized_pnl": -127.7430324909367,
+    "equity": 882.2569675090633,
+    "return_pct": -11.774303249093665,
+    "cash": 752.2569675090633,
+    "open_positions": 8,
+    "closed_trades": 31,
+    "win_rate": 0.5161290322580645,
+    "realized_pnl": -117.7430324909367,
     "settings": {
       "profile": "aggressive",
       "whale_usd_threshold": 500.0,
