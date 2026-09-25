@@ -1,5 +1,3 @@
-{"ts": 1789344037.980437, "bot": "momentum-5/20", "symbol": "BTCUSDT", "action": "sell", "price": 76848.01, "pnl": -0.01, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
-{"ts": 1789344037.982843, "bot": "momentum-20/100", "symbol": "ETHUSDT", "action": "sell", "price": 2476.37, "pnl": -0.05, "reason": "20-bar average dropped below the 100-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1789344037.983399, "bot": "momentum-5/20", "symbol": "SOLUSDT", "action": "sell", "price": 99.3, "pnl": -0.03, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1789353973.7273312, "bot": "breakout-20", "symbol": "BTCUSDT", "action": "buy", "price": 77535.07, "usd": 28.62, "reason": "Broke above its 20-bar high by 0.24%", "strength_pct": 57.3}
 {"ts": 1789353973.727778, "bot": "breakout-50", "symbol": "BTCUSDT", "action": "buy", "price": 77535.07, "usd": 26.43, "reason": "Broke above its 50-bar high by 0.10%", "strength_pct": 52.9}
@@ -298,3 +296,5 @@
 {"ts": 1790305353.0416222, "bot": "breakout-20", "symbol": "XRPUSDT", "action": "sell", "price": 1.5271, "pnl": 0.32, "reason": "Fell below the 10-bar low -- breakout failed", "strength_pct": 50.0}
 {"ts": 1790306520.6429014, "bot": "momentum-5/20", "symbol": "BNBUSDT", "action": "sell", "price": 771.52, "pnl": -0.01, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1790308952.6236145, "bot": "breakout-20", "symbol": "BTCUSDT", "action": "sell", "price": 84198.95, "pnl": -0.2, "reason": "Fell below the 10-bar low -- breakout failed", "strength_pct": 50.0}
+{"ts": 1790310251.682728, "bot": "breakout-20", "symbol": "ETHUSDT", "action": "sell", "price": 2674.88, "pnl": -0.21, "reason": "Fell below the 10-bar low -- breakout failed", "strength_pct": 50.0}
+{"ts": 1790310251.6832125, "bot": "breakout-20", "symbol": "SOLUSDT", "action": "sell", "price": 116.48, "pnl": 0.04, "reason": "Fell below the 10-bar low -- breakout failed", "strength_pct": 50.0}
