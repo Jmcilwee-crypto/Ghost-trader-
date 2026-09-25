@@ -129,3 +129,6 @@
 {"ts": 1790316184.2067716, "bot": "momentum-5/20", "symbol": "PAXGUSDT", "action": "sell", "price": 4264.23, "pnl": -0.01, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1790326271.4584873, "bot": "momentum-5/20", "symbol": "PAXGUSDT", "action": "buy", "price": 4290.7, "usd": 1.17, "reason": "5-bar average is 0.12% above the 20-bar -- uptrend", "strength_pct": 2.4}
 {"ts": 1790326271.4591012, "bot": "breakout-20", "symbol": "PAXGUSDT", "action": "buy", "price": 4290.7, "usd": 27.88, "reason": "Broke above its 20-bar high by 0.19%", "strength_pct": 55.8}
+{"ts": 1790341034.1475067, "bot": "momentum-5/20", "symbol": "XAUTUSDT", "action": "buy", "price": 4296.2, "usd": 4.55, "reason": "5-bar average is 0.46% above the 20-bar -- uptrend", "strength_pct": 9.1}
+{"ts": 1790341034.1478794, "bot": "meanrev-30", "symbol": "XAUTUSDT", "action": "sell", "price": 4296.2, "pnl": 0.01, "reason": "RSI recovered to 64 -- back to normal", "strength_pct": 50.0}
+{"ts": 1790341034.1482415, "bot": "meanrev-35", "symbol": "XAUTUSDT", "action": "sell", "price": 4296.2, "pnl": -0.19, "reason": "RSI recovered to 64 -- back to normal", "strength_pct": 50.0}
