@@ -1,5 +1,3 @@
-{"ts": 1789358130.7008781, "bot": "momentum-5/20", "symbol": "XRPUSDT", "action": "buy", "price": 1.3727, "usd": 4.45, "reason": "5-bar average is 0.44% above the 20-bar -- uptrend", "strength_pct": 8.9}
-{"ts": 1789362459.908889, "bot": "momentum-5/20", "symbol": "ETHUSDT", "action": "buy", "price": 2513.88, "usd": 5.26, "reason": "5-bar average is 0.53% above the 20-bar -- uptrend", "strength_pct": 10.5}
 {"ts": 1789362459.9100401, "bot": "momentum-5/20", "symbol": "SOLUSDT", "action": "buy", "price": 101.18, "usd": 3.92, "reason": "5-bar average is 0.39% above the 20-bar -- uptrend", "strength_pct": 7.8}
 {"ts": 1789365493.3204632, "bot": "breakout-20", "symbol": "ETHUSDT", "action": "buy", "price": 2515.8, "usd": 25.5, "reason": "Broke above its 20-bar high by 0.03%", "strength_pct": 51.0}
 {"ts": 1789365493.3215191, "bot": "breakout-50", "symbol": "XRPUSDT", "action": "buy", "price": 1.3789, "usd": 26.74, "reason": "Broke above its 50-bar high by 0.12%", "strength_pct": 53.5}
@@ -298,3 +296,5 @@
 {"ts": 1790324723.425052, "bot": "breakout-20", "symbol": "XRPUSDT", "action": "buy", "price": 1.5452, "usd": 26.25, "reason": "Broke above its 20-bar high by 0.05%", "strength_pct": 51.6}
 {"ts": 1790326963.8110046, "bot": "momentum-20/100", "symbol": "SOLUSDT", "action": "buy", "price": 117.32, "usd": 1.17, "reason": "20-bar average is 0.12% above the 100-bar -- uptrend", "strength_pct": 2.3}
 {"ts": 1790326963.8115396, "bot": "momentum-20/100", "symbol": "XRPUSDT", "action": "buy", "price": 1.5421, "usd": 1.08, "reason": "20-bar average is 0.11% above the 100-bar -- uptrend", "strength_pct": 2.2}
+{"ts": 1790328276.414015, "bot": "breakout-20", "symbol": "BTCUSDT", "action": "buy", "price": 84641.5, "usd": 26.28, "reason": "Broke above its 20-bar high by 0.05%", "strength_pct": 51.6}
+{"ts": 1790328276.41458, "bot": "breakout-20", "symbol": "SOLUSDT", "action": "buy", "price": 117.56, "usd": 26.76, "reason": "Broke above its 20-bar high by 0.09%", "strength_pct": 52.6}
