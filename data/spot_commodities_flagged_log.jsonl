@@ -139,3 +139,4 @@
 {"ts": 1790372972.7957516, "bot": "momentum-10/50", "symbol": "XAUTUSDT", "action": "buy", "price": 4286.81, "usd": 1.77, "reason": "10-bar average is 0.18% above the 50-bar -- uptrend", "strength_pct": 3.5}
 {"ts": 1790372972.79617, "bot": "vol-momentum", "symbol": "XAUTUSDT", "action": "buy", "price": 4286.81, "usd": 1.77, "reason": "10-bar average is 0.18% above the 50-bar -- uptrend; volatility 0.21% vs 2.00% target -> sizing at 100% (moved +0.0%)", "strength_pct": 3.5}
 {"ts": 1790372972.7968276, "bot": "momentum-tp", "symbol": "XAUTUSDT", "action": "buy", "price": 4286.81, "usd": 1.77, "reason": "10-bar average is 0.18% above the 50-bar -- uptrend", "strength_pct": 3.5}
+{"ts": 1790382529.9954102, "bot": "meanrev-35", "symbol": "PAXGUSDT", "action": "buy", "price": 4281.43, "usd": 21.05, "reason": "RSI 34 -- oversold below 35", "strength_pct": 42.1}
