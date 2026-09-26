@@ -145,3 +145,4 @@
 {"ts": 1790411051.2686954, "bot": "meanrev-25", "symbol": "XAUTUSDT", "action": "buy", "price": 4282.0, "usd": 20.75, "reason": "RSI 25 -- oversold below 25", "strength_pct": 41.5}
 {"ts": 1790411051.2692251, "bot": "meanrev-30", "symbol": "XAUTUSDT", "action": "buy", "price": 4282.0, "usd": 28.96, "reason": "RSI 25 -- oversold below 30", "strength_pct": 57.9}
 {"ts": 1790411051.2695386, "bot": "meanrev-35", "symbol": "XAUTUSDT", "action": "buy", "price": 4282.0, "usd": 34.79, "reason": "RSI 25 -- oversold below 35", "strength_pct": 69.7}
+{"ts": 1790436131.9408338, "bot": "meanrev-35", "symbol": "PAXGUSDT", "action": "buy", "price": 4278.31, "usd": 25.71, "reason": "RSI 31 -- oversold below 35", "strength_pct": 51.5}
