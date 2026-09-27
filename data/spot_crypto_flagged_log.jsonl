@@ -1,6 +1,3 @@
-{"ts": 1789468276.272095, "bot": "momentum-10/50", "symbol": "SOLUSDT", "action": "sell", "price": 100.69, "pnl": -0.01, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
-{"ts": 1789468276.2726002, "bot": "vol-momentum", "symbol": "SOLUSDT", "action": "sell", "price": 100.69, "pnl": -0.01, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
-{"ts": 1789468276.273129, "bot": "momentum-tp", "symbol": "SOLUSDT", "action": "sell", "price": 100.69, "pnl": -0.01, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1789487499.3009531, "bot": "momentum-20/100", "symbol": "SOLUSDT", "action": "sell", "price": 99.46, "pnl": -0.04, "reason": "20-bar average dropped below the 100-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1789488210.473689, "bot": "momentum-20/100", "symbol": "BTCUSDT", "action": "sell", "price": 76574.78, "pnl": -0.03, "reason": "20-bar average dropped below the 100-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1789495562.0806541, "bot": "meanrev-25", "symbol": "BNBUSDT", "action": "sell", "price": 723.39, "pnl": 0.27, "reason": "RSI recovered to 55 -- back to normal", "strength_pct": 50.0}
@@ -298,3 +295,6 @@
 {"ts": 1790475786.772289, "bot": "momentum-tp", "symbol": "BTCUSDT", "action": "buy", "price": 84528.0, "usd": 1.28, "reason": "10-bar average is 0.13% above the 50-bar -- uptrend", "strength_pct": 2.5}
 {"ts": 1790483033.6321323, "bot": "momentum-5/20", "symbol": "SOLUSDT", "action": "sell", "price": 120.6, "pnl": -0.01, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1790485372.1190429, "bot": "meanrev-35", "symbol": "SOLUSDT", "action": "buy", "price": 120.14, "usd": 21.03, "reason": "RSI 34 -- oversold below 35", "strength_pct": 42.0}
+{"ts": 1790488130.7186809, "bot": "momentum-10/50", "symbol": "ETHUSDT", "action": "buy", "price": 2705.98, "usd": 1.0, "reason": "10-bar average is 0.10% above the 50-bar -- uptrend", "strength_pct": 2.0}
+{"ts": 1790488130.7193916, "bot": "vol-momentum", "symbol": "ETHUSDT", "action": "buy", "price": 2705.98, "usd": 1.0, "reason": "10-bar average is 0.10% above the 50-bar -- uptrend; volatility 0.21% vs 2.00% target -> sizing at 100% (moved +0.9%)", "strength_pct": 2.0}
+{"ts": 1790488130.7199774, "bot": "momentum-tp", "symbol": "ETHUSDT", "action": "buy", "price": 2705.98, "usd": 1.0, "reason": "10-bar average is 0.10% above the 50-bar -- uptrend", "strength_pct": 2.0}
