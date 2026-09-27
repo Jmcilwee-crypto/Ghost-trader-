@@ -1,4 +1,3 @@
-{"ts": 1789585337.2623842, "bot": "momentum-5/20", "symbol": "SOLUSDT", "action": "buy", "price": 98.26, "usd": 2.04, "reason": "5-bar average is 0.20% above the 20-bar -- uptrend", "strength_pct": 4.1}
 {"ts": 1789585337.264266, "bot": "breakout-20", "symbol": "SOLUSDT", "action": "buy", "price": 98.26, "usd": 28.67, "reason": "Broke above its 20-bar high by 0.24%", "strength_pct": 57.3}
 {"ts": 1789585337.265321, "bot": "momentum-5/20", "symbol": "BNBUSDT", "action": "buy", "price": 717.98, "usd": 2.36, "reason": "5-bar average is 0.24% above the 20-bar -- uptrend", "strength_pct": 4.7}
 {"ts": 1789585337.266026, "bot": "breakout-20", "symbol": "BNBUSDT", "action": "buy", "price": 717.98, "usd": 29.82, "reason": "Broke above its 20-bar high by 0.32%", "strength_pct": 59.6}
@@ -298,3 +297,4 @@
 {"ts": 1790539348.913474, "bot": "momentum-5/20", "symbol": "XRPUSDT", "action": "buy", "price": 1.5322, "usd": 1.33, "reason": "5-bar average is 0.13% above the 20-bar -- uptrend", "strength_pct": 2.7}
 {"ts": 1790542956.905729, "bot": "breakout-50", "symbol": "ETHUSDT", "action": "sell", "price": 2685.78, "pnl": -0.35, "reason": "Fell below the 20-bar low -- breakout failed", "strength_pct": 50.0}
 {"ts": 1790544107.0053513, "bot": "meanrev-35", "symbol": "ETHUSDT", "action": "buy", "price": 2689.71, "usd": 26.12, "reason": "RSI 31 -- oversold below 35", "strength_pct": 52.1}
+{"ts": 1790544889.435662, "bot": "meanrev-30", "symbol": "ETHUSDT", "action": "buy", "price": 2686.25, "usd": 24.43, "reason": "RSI 27 -- oversold below 30", "strength_pct": 48.9}

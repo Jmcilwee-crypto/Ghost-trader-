@@ -57,8 +57,8 @@
     "name": "balanced@$1000-flat",
     "equity": 1180.2022122010894,
     "return_pct": 18.020221220108933,
-    "cash": 1050.2022122010894,
-    "open_positions": 8,
+    "cash": 1035.2022122010894,
+    "open_positions": 9,
     "closed_trades": 42,
     "win_rate": 0.6904761904761905,
     "realized_pnl": 180.2022122010895,
@@ -218,25 +218,6 @@
     }
   },
   {
-    "name": "strict@$500-flat",
-    "equity": 1064.9091695009424,
-    "return_pct": 6.49091695009425,
-    "cash": 859.9091695009424,
-    "open_positions": 12,
-    "closed_trades": 56,
-    "win_rate": 0.6607142857142857,
-    "realized_pnl": 64.90916950094261,
-    "settings": {
-      "profile": "strict",
-      "whale_usd_threshold": 500.0,
-      "flat_stake_usd": 20.0,
-      "copy_above_accuracy": 0.7,
-      "fade_below_accuracy": 0.3,
-      "min_track_record": 10,
-      "explore_unknown_wallets": true
-    }
-  },
-  {
     "name": "copy_only@$5000",
     "equity": 1061.4683685504922,
     "return_pct": 6.14683685504922,
@@ -270,6 +251,25 @@
       "fade_below_accuracy": -1.0,
       "min_track_record": 5,
       "explore_unknown_wallets": false
+    }
+  },
+  {
+    "name": "strict@$500-flat",
+    "equity": 1049.9091695009424,
+    "return_pct": 4.990916950094237,
+    "cash": 859.9091695009424,
+    "open_positions": 11,
+    "closed_trades": 57,
+    "win_rate": 0.6491228070175439,
+    "realized_pnl": 49.90916950094261,
+    "settings": {
+      "profile": "strict",
+      "whale_usd_threshold": 500.0,
+      "flat_stake_usd": 20.0,
+      "copy_above_accuracy": 0.7,
+      "fade_below_accuracy": 0.3,
+      "min_track_record": 10,
+      "explore_unknown_wallets": true
     }
   },
   {
@@ -464,8 +464,8 @@
     "name": "aggressive@$500",
     "equity": 911.6108056512599,
     "return_pct": -8.838919434874015,
-    "cash": 635.5018599726857,
-    "open_positions": 14,
+    "cash": 628.3839793651797,
+    "open_positions": 15,
     "closed_trades": 139,
     "win_rate": 0.6330935251798561,
     "realized_pnl": -88.3891943487396,
@@ -500,8 +500,8 @@
     "name": "aggressive@$500-flat",
     "equity": 904.5731133220821,
     "return_pct": -9.542688667791788,
-    "cash": 659.5731133220821,
-    "open_positions": 14,
+    "cash": 639.5731133220821,
+    "open_positions": 15,
     "closed_trades": 84,
     "win_rate": 0.5595238095238095,
     "realized_pnl": -95.42688667791776,
