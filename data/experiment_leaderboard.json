@@ -1,13 +1,13 @@
 [
   {
     "name": "balanced@$1000",
-    "equity": 1540.6635123991016,
-    "return_pct": 54.06635123991015,
+    "equity": 1478.1039397778,
+    "return_pct": 47.810393977779995,
     "cash": 1373.1039397778,
-    "open_positions": 8,
-    "closed_trades": 96,
-    "win_rate": 0.6979166666666666,
-    "realized_pnl": 540.6635123991017,
+    "open_positions": 7,
+    "closed_trades": 97,
+    "win_rate": 0.6907216494845361,
+    "realized_pnl": 478.1039397778,
     "settings": {
       "profile": "balanced",
       "whale_usd_threshold": 1000.0,
@@ -18,32 +18,14 @@
     }
   },
   {
-    "name": "aggressive@$1000",
-    "equity": 1382.488160534569,
-    "return_pct": 38.24881605345691,
-    "cash": 1158.5047623199903,
-    "open_positions": 9,
-    "closed_trades": 107,
-    "win_rate": 0.6542056074766355,
-    "realized_pnl": 382.48816053456903,
-    "settings": {
-      "profile": "aggressive",
-      "whale_usd_threshold": 1000.0,
-      "copy_above_accuracy": 0.55,
-      "fade_below_accuracy": 0.45,
-      "min_track_record": 3,
-      "explore_unknown_wallets": true
-    }
-  },
-  {
     "name": "balanced@$500",
-    "equity": 1378.2223523878897,
-    "return_pct": 37.822235238788984,
+    "equity": 1345.0167835038706,
+    "return_pct": 34.50167835038707,
     "cash": 1206.6205348296771,
-    "open_positions": 9,
-    "closed_trades": 148,
-    "win_rate": 0.6891891891891891,
-    "realized_pnl": 378.22235238788943,
+    "open_positions": 8,
+    "closed_trades": 149,
+    "win_rate": 0.6845637583892618,
+    "realized_pnl": 345.0167835038702,
     "settings": {
       "profile": "balanced",
       "whale_usd_threshold": 500.0,
@@ -54,14 +36,32 @@
     }
   },
   {
+    "name": "aggressive@$1000",
+    "equity": 1326.351393627969,
+    "return_pct": 32.63513936279689,
+    "cash": 1158.5047623199903,
+    "open_positions": 8,
+    "closed_trades": 108,
+    "win_rate": 0.6481481481481481,
+    "realized_pnl": 326.35139362796895,
+    "settings": {
+      "profile": "aggressive",
+      "whale_usd_threshold": 1000.0,
+      "copy_above_accuracy": 0.55,
+      "fade_below_accuracy": 0.45,
+      "min_track_record": 3,
+      "explore_unknown_wallets": true
+    }
+  },
+  {
     "name": "copy_only@$1000",
-    "equity": 1291.5871626294604,
-    "return_pct": 29.158716262946037,
+    "equity": 1239.141485655235,
+    "return_pct": 23.91414856552352,
     "cash": 1239.141485655235,
-    "open_positions": 1,
-    "closed_trades": 31,
-    "win_rate": 0.8064516129032258,
-    "realized_pnl": 291.5871626294608,
+    "open_positions": 0,
+    "closed_trades": 32,
+    "win_rate": 0.78125,
+    "realized_pnl": 239.14148565523544,
     "settings": {
       "profile": "copy_only",
       "whale_usd_threshold": 1000.0,
@@ -73,13 +73,13 @@
   },
   {
     "name": "strict@$500",
-    "equity": 1214.7439807679173,
-    "return_pct": 21.474398076791722,
+    "equity": 1183.6082151275139,
+    "return_pct": 18.36082151275138,
     "cash": 1047.291017973659,
-    "open_positions": 9,
-    "closed_trades": 109,
-    "win_rate": 0.7064220183486238,
-    "realized_pnl": 214.74398076791584,
+    "open_positions": 8,
+    "closed_trades": 110,
+    "win_rate": 0.7,
+    "realized_pnl": 183.60821512751235,
     "settings": {
       "profile": "strict",
       "whale_usd_threshold": 500.0,
@@ -162,63 +162,6 @@
     }
   },
   {
-    "name": "aggressive@$500",
-    "equity": 1085.5812793137566,
-    "return_pct": 8.558127931375648,
-    "cash": 874.7948934065389,
-    "open_positions": 10,
-    "closed_trades": 165,
-    "win_rate": 0.6484848484848484,
-    "realized_pnl": 85.5812793137565,
-    "settings": {
-      "profile": "aggressive",
-      "whale_usd_threshold": 500.0,
-      "copy_above_accuracy": 0.55,
-      "fade_below_accuracy": 0.45,
-      "min_track_record": 3,
-      "explore_unknown_wallets": true
-    }
-  },
-  {
-    "name": "copy_only@$500",
-    "equity": 1082.4070832872296,
-    "return_pct": 8.240708328722967,
-    "cash": 1030.1003717033475,
-    "open_positions": 2,
-    "closed_trades": 69,
-    "win_rate": 0.6811594202898551,
-    "realized_pnl": 82.40708328722954,
-    "settings": {
-      "profile": "copy_only",
-      "whale_usd_threshold": 500.0,
-      "copy_above_accuracy": 0.6,
-      "fade_below_accuracy": -1.0,
-      "min_track_record": 5,
-      "explore_unknown_wallets": false
-    }
-  },
-  {
-    "name": "ab-balanced@$1000-scaled",
-    "equity": 1077.3937342322276,
-    "return_pct": 7.739373423222773,
-    "cash": 942.4875817705811,
-    "open_positions": 7,
-    "closed_trades": 8,
-    "win_rate": 0.75,
-    "realized_pnl": 77.39373423222764,
-    "settings": {
-      "profile": "balanced",
-      "whale_usd_threshold": 1000.0,
-      "ab_pair": "balanced@$1000",
-      "ab_arm": "scaled",
-      "flat_stake_usd": null,
-      "copy_above_accuracy": 0.6,
-      "fade_below_accuracy": 0.4,
-      "min_track_record": 5,
-      "explore_unknown_wallets": true
-    }
-  },
-  {
     "name": "copy_only@$5000",
     "equity": 1075.1442700768262,
     "return_pct": 7.514427007682611,
@@ -255,24 +198,39 @@
     }
   },
   {
-    "name": "ab-balanced@$1000-flat",
-    "equity": 1041.4347980043763,
-    "return_pct": 4.143479800437633,
-    "cash": 931.4347980043764,
-    "open_positions": 7,
-    "closed_trades": 8,
-    "win_rate": 0.75,
-    "realized_pnl": 41.434798004376255,
+    "name": "aggressive@$500",
+    "equity": 1059.4263240650628,
+    "return_pct": 5.942632406506276,
+    "cash": 874.7948934065389,
+    "open_positions": 9,
+    "closed_trades": 166,
+    "win_rate": 0.6445783132530121,
+    "realized_pnl": 59.4263240650628,
     "settings": {
-      "profile": "balanced",
-      "whale_usd_threshold": 1000.0,
-      "ab_pair": "balanced@$1000",
-      "ab_arm": "flat",
-      "flat_stake_usd": 20.0,
-      "copy_above_accuracy": 0.6,
-      "fade_below_accuracy": 0.4,
-      "min_track_record": 5,
+      "profile": "aggressive",
+      "whale_usd_threshold": 500.0,
+      "copy_above_accuracy": 0.55,
+      "fade_below_accuracy": 0.45,
+      "min_track_record": 3,
       "explore_unknown_wallets": true
+    }
+  },
+  {
+    "name": "copy_only@$500",
+    "equity": 1056.3286040764028,
+    "return_pct": 5.632860407640283,
+    "cash": 1030.1003717033475,
+    "open_positions": 1,
+    "closed_trades": 70,
+    "win_rate": 0.6714285714285714,
+    "realized_pnl": 56.328604076402726,
+    "settings": {
+      "profile": "copy_only",
+      "whale_usd_threshold": 500.0,
+      "copy_above_accuracy": 0.6,
+      "fade_below_accuracy": -1.0,
+      "min_track_record": 5,
+      "explore_unknown_wallets": false
     }
   },
   {
@@ -289,6 +247,48 @@
       "whale_usd_threshold": 500.0,
       "min_edge": 0.1,
       "kelly_fraction": 0.5
+    }
+  },
+  {
+    "name": "ab-balanced@$1000-scaled",
+    "equity": 1032.487581770581,
+    "return_pct": 3.2487581770580976,
+    "cash": 927.4875817705811,
+    "open_positions": 7,
+    "closed_trades": 9,
+    "win_rate": 0.6666666666666666,
+    "realized_pnl": 32.487581770580995,
+    "settings": {
+      "profile": "balanced",
+      "whale_usd_threshold": 1000.0,
+      "ab_pair": "balanced@$1000",
+      "ab_arm": "scaled",
+      "flat_stake_usd": null,
+      "copy_above_accuracy": 0.6,
+      "fade_below_accuracy": 0.4,
+      "min_track_record": 5,
+      "explore_unknown_wallets": true
+    }
+  },
+  {
+    "name": "ab-balanced@$1000-flat",
+    "equity": 1021.4347980043764,
+    "return_pct": 2.143479800437631,
+    "cash": 916.4347980043764,
+    "open_positions": 7,
+    "closed_trades": 9,
+    "win_rate": 0.6666666666666666,
+    "realized_pnl": 21.434798004376255,
+    "settings": {
+      "profile": "balanced",
+      "whale_usd_threshold": 1000.0,
+      "ab_pair": "balanced@$1000",
+      "ab_arm": "flat",
+      "flat_stake_usd": 20.0,
+      "copy_above_accuracy": 0.6,
+      "fade_below_accuracy": 0.4,
+      "min_track_record": 5,
+      "explore_unknown_wallets": true
     }
   },
   {
@@ -454,27 +454,6 @@
     }
   },
   {
-    "name": "ab-aggressive@$500-scaled",
-    "equity": 954.5449527536598,
-    "return_pct": -4.54550472463402,
-    "cash": 796.8588303125496,
-    "open_positions": 7,
-    "closed_trades": 17,
-    "win_rate": 0.5882352941176471,
-    "realized_pnl": -45.455047246340136,
-    "settings": {
-      "profile": "aggressive",
-      "whale_usd_threshold": 500.0,
-      "ab_pair": "aggressive@$500",
-      "ab_arm": "scaled",
-      "flat_stake_usd": null,
-      "copy_above_accuracy": 0.55,
-      "fade_below_accuracy": 0.45,
-      "min_track_record": 3,
-      "explore_unknown_wallets": true
-    }
-  },
-  {
     "name": "aggressive@$5000",
     "equity": 944.8557875132798,
     "return_pct": -5.5144212486720185,
@@ -493,20 +472,20 @@
     }
   },
   {
-    "name": "ab-aggressive@$500-flat",
-    "equity": 944.3060316782419,
-    "return_pct": -5.56939683217581,
-    "cash": 824.3060316782419,
+    "name": "ab-aggressive@$500-scaled",
+    "equity": 930.6407572151087,
+    "return_pct": -6.935924278489136,
+    "cash": 781.8588303125496,
     "open_positions": 7,
-    "closed_trades": 17,
-    "win_rate": 0.5882352941176471,
-    "realized_pnl": -55.69396832175815,
+    "closed_trades": 18,
+    "win_rate": 0.5555555555555556,
+    "realized_pnl": -69.3592427848912,
     "settings": {
       "profile": "aggressive",
       "whale_usd_threshold": 500.0,
       "ab_pair": "aggressive@$500",
-      "ab_arm": "flat",
-      "flat_stake_usd": 20.0,
+      "ab_arm": "scaled",
+      "flat_stake_usd": null,
       "copy_above_accuracy": 0.55,
       "fade_below_accuracy": 0.45,
       "min_track_record": 3,
@@ -528,6 +507,27 @@
       "copy_above_accuracy": 0.6,
       "fade_below_accuracy": 0.4,
       "min_track_record": 5,
+      "explore_unknown_wallets": true
+    }
+  },
+  {
+    "name": "ab-aggressive@$500-flat",
+    "equity": 924.3060316782419,
+    "return_pct": -7.569396832175812,
+    "cash": 809.3060316782419,
+    "open_positions": 7,
+    "closed_trades": 18,
+    "win_rate": 0.5555555555555556,
+    "realized_pnl": -75.69396832175815,
+    "settings": {
+      "profile": "aggressive",
+      "whale_usd_threshold": 500.0,
+      "ab_pair": "aggressive@$500",
+      "ab_arm": "flat",
+      "flat_stake_usd": 20.0,
+      "copy_above_accuracy": 0.55,
+      "fade_below_accuracy": 0.45,
+      "min_track_record": 3,
       "explore_unknown_wallets": true
     }
   },
