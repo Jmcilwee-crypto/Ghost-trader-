@@ -5,12 +5,13 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 import yaml
 
-from src.experiment import (EDGE_VARIANTS, FLAT_STAKE_VARIANTS, PROFILES, WHALE_THRESHOLDS,
+from src.experiment import (AB_PAIRS, EDGE_VARIANTS, PROFILES, WHALE_THRESHOLDS,
                             build_variants, leaderboard)
 
 # Derived, never hardcoded: adding a cohort should not require editing a
 # literal in five tests, and a stale literal hides what actually changed.
-WHALE_COUNT = len(PROFILES) * len(WHALE_THRESHOLDS) + len(FLAT_STAKE_VARIANTS)
+# Each A/B pair contributes two bots (a scaled arm and a flat arm).
+WHALE_COUNT = len(PROFILES) * len(WHALE_THRESHOLDS) + 2 * len(AB_PAIRS)
 from src.scorecard import TraderScorecard
 
 CONFIG = yaml.safe_load(Path(__file__).resolve().parents[1].joinpath("config.yaml").read_text())
@@ -81,12 +82,11 @@ def test_value_variants_added_when_research_is_enabled():
     variants = build_variants(_with_value_enabled(), TraderScorecard(), research=_FakeResearch())
     value = [v for v in variants if v.settings.get("profile") == "value"]
 
-    # +1 for the flat-stake value twin.
-    assert len(variants) == WHALE_COUNT + len(EDGE_VARIANTS) + 1
-    assert len(value) == len(EDGE_VARIANTS) + 1
+    assert len(variants) == WHALE_COUNT + len(EDGE_VARIANTS)
+    assert len(value) == len(EDGE_VARIANTS)
     # The whale bots must be untouched, so the comparison stays honest.
     assert len([v for v in variants if v.settings.get("profile") != "value"]) == WHALE_COUNT
-    assert {v.name for v in value} == {spec["name"] for spec in EDGE_VARIANTS} | {"value-edge10-flat"}
+    assert {v.name for v in value} == {spec["name"] for spec in EDGE_VARIANTS}
 
 
 def test_value_variants_carry_their_own_edge_settings():
@@ -119,5 +119,4 @@ def test_value_bots_can_be_retired_without_disabling_research():
 
     cfg["edge_strategy"]["enabled"] = True
     revived = build_variants(cfg, TraderScorecard(), research=_FakeResearch())
-    # +1: the flat-stake value twin comes back with them.
-    assert len([v for v in revived if v.settings.get("profile") == "value"]) == len(EDGE_VARIANTS) + 1
+    assert len([v for v in revived if v.settings.get("profile") == "value"]) == len(EDGE_VARIANTS)

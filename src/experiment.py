@@ -64,20 +64,34 @@ EDGE_VARIANTS = [
     {"name": "value-edge10-bold", "min_edge": 0.10, "kelly_fraction": 0.50},
 ]
 
-# Flat-stake twins. Each is an exact copy of an existing bot with one thing
-# changed: the stake no longer scales with confidence. Replaying all 123
-# settled bets at a flat $20 turned +$114 into +$302, because the bot bet
-# biggest on the signals it was least right about. Pairing each twin with its
-# confidence-scaled original makes that a controlled A/B rather than a story:
-# same feed, same profile, same threshold, only the sizing rule differs.
+# Flat-stake A/B cohort.
+#
+# The first attempt at this was confounded and could not answer the question:
+# the flat twins were added 12.5 days after the bots they were compared
+# against, so the "originals" had banked most of their gains before the twins
+# placed a single bet, and the two halves were never choosing between the same
+# opportunities. Restricted to the overlapping window the result was a wash
+# (-$24 across three pairs), which is a statement about the test, not the idea.
+#
+# So both halves are built fresh here and start together. The scaled half is a
+# NEW bot rather than the long-running original -- that costs a few days of
+# warm-up but makes the only difference between the two the sizing rule, which
+# is the entire point. The original bots are left untouched so the main
+# experiment keeps its history.
+#
+# One honest limit remains, and it is inherent rather than fixable: once the
+# two halves stake different amounts their cash diverges, so they stop being
+# offered identical opportunities. The counterfactual replay (same bets by
+# construction) answers "was the sizing rule wrong?"; this cohort answers the
+# different and more useful question "does the flat rule produce a better
+# trajectory from the same starting point?".
 FLAT_STAKE_USD = 20.0
-FLAT_STAKE_VARIANTS = [
-    {"profile": "aggressive", "threshold": 500.0},    # the current leader
+AB_PAIRS = [
+    {"profile": "aggressive", "threshold": 500.0},   # widest signal net
     {"profile": "balanced", "threshold": 1000.0},
-    {"profile": "strict", "threshold": 500.0},
-    {"profile": "copy_only", "threshold": 2500.0},    # isolates copy, where the damage is
+    {"profile": "copy_only", "threshold": 2500.0},   # isolates copy, where the damage was measured
 ]
-FLAT_EDGE_VARIANT = {"name": "value-edge10", "min_edge": 0.10, "kelly_fraction": 0.25}
+AB_PREFIX = "ab"
 
 
 @dataclass
@@ -122,37 +136,41 @@ def build_variants(base_config: dict, scorecard: TraderScorecard, research=None)
                           "min_edge": spec["min_edge"], "kelly_fraction": spec["kelly_fraction"]},
             ))
 
-    # -- flat-stake twins -------------------------------------------------
-    # Their own RiskManager: flat_stake_usd lives in RiskConfig, so sharing
-    # the manager above would silently flatten every bot in the experiment.
-    flat_risk = RiskManager(RiskConfig(**{**base_config["risk"],
-                                          "flat_stake_usd": FLAT_STAKE_USD}))
-    for spec in FLAT_STAKE_VARIANTS:
+    # -- flat-stake A/B cohort --------------------------------------------
+    # Both halves are built from ONE spec in ONE loop so they cannot drift
+    # apart: anything that isn't the sizing rule is written once and shared.
+    # The flat half gets its own RiskManager because flat_stake_usd lives in
+    # RiskConfig -- sharing the manager above would silently flatten every
+    # bot in the experiment and destroy the comparison.
+    ab_risk = {
+        "scaled": risk,
+        "flat": RiskManager(RiskConfig(**{**base_config["risk"],
+                                          "flat_stake_usd": FLAT_STAKE_USD})),
+    }
+    for spec in AB_PAIRS:
         profile = PROFILES[spec["profile"]]
-        config = copy.deepcopy(base_config)
-        config["strategy"].update(profile)
-        config["strategy"]["whale_usd_threshold"] = spec["threshold"]
-        variants.append(Variant(
-            name=f"{spec['profile']}@${int(spec['threshold'])}-flat",
-            strategy=WhaleFollowStrategy(config=config, scorecard=scorecard, risk=flat_risk),
-            portfolio=PaperPortfolio(starting_cash),
-            settings={"profile": spec["profile"], "whale_usd_threshold": spec["threshold"],
-                      "flat_stake_usd": FLAT_STAKE_USD, **profile},
-        ))
+        pair_id = f"{spec['profile']}@${int(spec['threshold'])}"
+        for arm in ("scaled", "flat"):
+            config = copy.deepcopy(base_config)
+            config["strategy"].update(profile)
+            config["strategy"]["whale_usd_threshold"] = spec["threshold"]
+            variants.append(Variant(
+                name=f"{AB_PREFIX}-{pair_id}-{arm}",
+                strategy=WhaleFollowStrategy(config=config, scorecard=scorecard,
+                                             risk=ab_risk[arm]),
+                portfolio=PaperPortfolio(starting_cash),
+                settings={
+                    "profile": spec["profile"],
+                    "whale_usd_threshold": spec["threshold"],
+                    # Grouping keys the dashboard and stats read to pair the
+                    # arms up without re-deriving them from the name.
+                    "ab_pair": pair_id,
+                    "ab_arm": arm,
+                    "flat_stake_usd": FLAT_STAKE_USD if arm == "flat" else None,
+                    **profile,
+                },
+            ))
 
-    if research is not None and getattr(research, "enabled", False) and edge_cfg.get("enabled", True):
-        config = copy.deepcopy(base_config)
-        config["strategy"]["whale_usd_threshold"] = edge_cfg.get("whale_usd_threshold", 500.0)
-        config["edge_strategy"] = {**config.get("edge_strategy", {}), **FLAT_EDGE_VARIANT}
-        variants.append(Variant(
-            name=f"{FLAT_EDGE_VARIANT['name']}-flat",
-            strategy=EdgeValueStrategy(config=config, scorecard=scorecard, risk=flat_risk,
-                                        research=research),
-            portfolio=PaperPortfolio(starting_cash),
-            settings={"profile": "value", "flat_stake_usd": FLAT_STAKE_USD,
-                      "min_edge": FLAT_EDGE_VARIANT["min_edge"],
-                      "kelly_fraction": FLAT_EDGE_VARIANT["kelly_fraction"]},
-        ))
     return variants
 
 

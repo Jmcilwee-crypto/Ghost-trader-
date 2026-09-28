@@ -579,10 +579,11 @@
             instead of one.
           </p>
           <p class="fine acc">
-            <b>This is a replay, not a result.</b> It proves the arithmetic, not the future. So
-            <b>five new bots</b> now run the flat rule live, each paired with its
-            confidence-scaled twin &mdash; same feed, same settings, one variable. That comparison
-            is the actual test.
+            <b>This is a replay, not a result.</b> It proves the arithmetic, not the future &mdash;
+            so I built a live A/B to test it. <b>The first one was invalid:</b> I added the flat
+            bots 12.5 days after the ones they were measured against, so it compared a head start,
+            not a sizing rule. Rebuilt as <b>three pairs born together</b>, and the report now
+            refuses to print a number for any pair whose arms didn&rsquo;t start within a day.
           </p>
         </div>
       </div>
@@ -904,7 +905,8 @@
      "“So if my theory is right — that the problem was sizing and not picking — I can test that without waiting for a single new bet. I replayed every bet the bot has ever settled, kept every outcome exactly as it happened, and changed one thing: a flat twenty-dollar stake instead of one scaled by confidence.”",
      "“Plus 114 dollars becomes plus 302. Same bets, same outcomes, 2.6 times the money.”  Let that sit for a second.",
      "“Notice this doesn't improve a single pick. Every bet it got wrong, it still gets wrong. All it does is stop one wrong opinion costing five units instead of one.”",
-     "Then be honest about what it is, because someone will ask: “That's a replay, not a result — it proves the arithmetic, not the future. So there are now five new bots running the flat rule live, each paired with its confidence-scaled twin on the same feed with the same settings. That comparison is the real test, and I don't have the answer yet.”"],
+     "Then be honest about what it is, because someone will ask: “That's a replay, not a result — it proves the arithmetic, not the future. So I built a live A/B to test it properly.”",
+     "And then the bit worth telling, because it is the same lesson as the bugs slide: “My first attempt at that A/B was worthless and I didn't notice for five days. I'd added the flat bots twelve days after the ones I was comparing them to, so the 'originals' had banked most of their gains before the flat bots placed a single bet. It printed a perfectly clean-looking table saying flat loses four times out of five. It was measuring a head start. I've rebuilt it as three pairs that start together, and the report now refuses to print a number at all if the two halves didn't start within a day of each other.”"],
     ["Quick slide, 25 seconds. The chart does the work.",
      "“Same strategy, five different bars for what counts as a whale. Following $500 bets won 68% of the time. Following $10,000 bets won 44% — worse than a coin flip.”",
      "“My guess at why: a ten-thousand-dollar single order is more often a hedge, or a longshot punt, or just someone with more money than information. The genuinely sharp trader is sizing sensibly. So 'biggest bet' turns out to be a bad proxy for 'smartest bet'.”",

@@ -240,6 +240,89 @@ def compare_runs(runs: list[dict]) -> None:
         print(line)
 
 
+def ab_report(state_path: str = "data/experiment_state.json") -> list[dict]:
+    """Pair up the flat-stake A/B arms and report each side by side.
+
+    Reports the two arms' first-bet times as well as their returns, because
+    the first version of this experiment was invalidated by exactly that gap:
+    the flat arms were added 12.5 days late, so the comparison measured a head
+    start rather than a sizing rule. A pair whose arms did not start together
+    is not evidence, and this says so rather than printing a tidy number.
+    """
+    import json as _json
+
+    raw = _json.loads(Path(state_path).read_text())
+    variants = raw.get("variants", raw)
+
+    pairs: dict[str, dict] = {}
+    for name, entry in variants.items():
+        settings = entry.get("settings") or {}
+        pair_id = settings.get("ab_pair")
+        if not pair_id:
+            continue
+        portfolio = entry.get("portfolio") or {}
+        closed = portfolio.get("closed_trades") or []
+        start = portfolio.get("starting_cash") or 1000.0
+        equity = portfolio.get("cash", start) + sum(
+            p.get("shares", 0) * p.get("avg_price", 0)
+            for p in (portfolio.get("positions") or {}).values()
+        )
+        pairs.setdefault(pair_id, {})[settings.get("ab_arm", "?")] = {
+            "name": name,
+            "return_pct": (equity - start) / start * 100 if start else 0.0,
+            "realized_pnl": sum(c.get("pnl", 0.0) for c in closed),
+            "settled": len(closed),
+            "first_bet_at": min((c.get("opened_at") for c in closed), default=None),
+            "avg_stake": (sum(c.get("avg_price", 0) * c.get("shares", 0) for c in closed) / len(closed)
+                          if closed else 0.0),
+        }
+
+    out = []
+    for pair_id, arms in sorted(pairs.items()):
+        scaled, flat = arms.get("scaled"), arms.get("flat")
+        row = {"pair": pair_id, "scaled": scaled, "flat": flat, "valid": False, "note": ""}
+        if not scaled or not flat:
+            row["note"] = "incomplete pair -- one arm is missing"
+        elif not scaled["settled"] or not flat["settled"]:
+            row["note"] = "not enough data yet -- one arm has settled nothing"
+        else:
+            gap_hours = abs(scaled["first_bet_at"] - flat["first_bet_at"]) / 3600.0
+            row["start_gap_hours"] = gap_hours
+            if gap_hours > 24:
+                row["note"] = (f"CONFOUNDED: arms started {gap_hours / 24:.1f} days apart, "
+                               "so this measures a head start, not the sizing rule")
+            else:
+                row["valid"] = True
+                row["diff_pp"] = flat["return_pct"] - scaled["return_pct"]
+                row["note"] = f"flat {'ahead' if row['diff_pp'] > 0 else 'behind'} by {abs(row['diff_pp']):.2f}pp"
+        out.append(row)
+    return out
+
+
+def print_ab(rows: list[dict]) -> None:
+    if not rows:
+        print("No A/B cohort in this run.")
+        return
+    print("=== flat-stake A/B ===")
+    print(f"{'pair':24} {'scaled':>9} {'flat':>9} {'diff':>8} {'settled':>12}")
+    for row in rows:
+        s, f = row.get("scaled"), row.get("flat")
+        if s and f:
+            diff = f"{row['diff_pp']:+.2f}pp" if row.get("valid") else "--"
+            print(f"{row['pair']:24} {s['return_pct']:+8.2f}% {f['return_pct']:+8.2f}% "
+                  f"{diff:>8} {s['settled']:5}/{f['settled']:<6}")
+        else:
+            print(f"{row['pair']:24} {'(incomplete)':>40}")
+        print(f"{'':24} {row['note']}")
+    valid = [r for r in rows if r.get("valid")]
+    if valid:
+        ahead = sum(1 for r in valid if r["diff_pp"] > 0)
+        print(f"\n  flat ahead in {ahead} of {len(valid)} valid pair(s); "
+              f"{len(rows) - len(valid)} pair(s) not yet usable")
+    else:
+        print("\n  no pair is usable evidence yet")
+
+
 def build_report(config_path: str = "config.yaml", include_archived: bool = False) -> dict[str, Any]:
     config = yaml.safe_load(Path(config_path).read_text())
     paths = discover_runs(config, include_archived)
@@ -252,7 +335,12 @@ def main():
     parser.add_argument("--all-runs", action="store_true", help="include archived runs from previous experiments")
     parser.add_argument("--top", type=int, default=None, help="only show the top N variants per run")
     parser.add_argument("--json", action="store_true", help="print machine-readable JSON instead of tables")
+    parser.add_argument("--ab", action="store_true", help="report the flat-stake A/B cohort only")
     args = parser.parse_args()
+
+    if args.ab:
+        print_ab(ab_report())
+        return
 
     report = build_report(args.config, args.all_runs)
     if not report["runs"]:
