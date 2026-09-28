@@ -1,5 +1,3 @@
-{"ts": 1789641560.2117991, "bot": "momentum-10/50", "symbol": "BNBUSDT", "action": "buy", "price": 723.47, "usd": 10.42, "reason": "10-bar average is 1.04% above the 50-bar -- uptrend", "strength_pct": 20.8}
-{"ts": 1789641560.21229, "bot": "momentum-20/100", "symbol": "BNBUSDT", "action": "buy", "price": 723.47, "usd": 3.3, "reason": "20-bar average is 0.33% above the 100-bar -- uptrend", "strength_pct": 6.6}
 {"ts": 1789641560.212825, "bot": "breakout-20", "symbol": "BNBUSDT", "action": "sell", "price": 723.47, "pnl": 0.2, "reason": "Fell below the 10-bar low -- breakout failed", "strength_pct": 50.0}
 {"ts": 1789641560.213326, "bot": "vol-momentum", "symbol": "BNBUSDT", "action": "buy", "price": 723.47, "usd": 10.42, "reason": "10-bar average is 1.04% above the 50-bar -- uptrend; volatility 0.30% vs 2.00% target -> sizing at 100% (moved +1.9%)", "strength_pct": 20.8}
 {"ts": 1789641560.213799, "bot": "momentum-tp", "symbol": "BNBUSDT", "action": "buy", "price": 723.47, "usd": 10.42, "reason": "10-bar average is 1.04% above the 50-bar -- uptrend", "strength_pct": 20.8}
@@ -298,3 +296,5 @@
 {"ts": 1790560179.9115915, "bot": "meanrev-35", "symbol": "BTCUSDT", "action": "buy", "price": 83878.71, "usd": 21.78, "reason": "RSI 34 -- oversold below 35", "strength_pct": 43.4}
 {"ts": 1790560179.912219, "bot": "breakout-50", "symbol": "SOLUSDT", "action": "sell", "price": 120.98, "pnl": 0.66, "reason": "Fell below the 20-bar low -- breakout failed", "strength_pct": 50.0}
 {"ts": 1790560179.91269, "bot": "momentum-5/20", "symbol": "BNBUSDT", "action": "sell", "price": 775.83, "pnl": -0.01, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1790560979.7650115, "bot": "breakout-20", "symbol": "BNBUSDT", "action": "sell", "price": 773.64, "pnl": -0.36, "reason": "Fell below the 10-bar low -- breakout failed", "strength_pct": 50.0}
+{"ts": 1790560979.765545, "bot": "breakout-50", "symbol": "BNBUSDT", "action": "sell", "price": 773.64, "pnl": -0.24, "reason": "Fell below the 20-bar low -- breakout failed", "strength_pct": 50.0}
