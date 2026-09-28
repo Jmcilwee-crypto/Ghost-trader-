@@ -2873,6 +2873,10 @@
           [
             1790603707.5374072,
             999.4018647632613
+          ],
+          [
+            1790604380.6893878,
+            999.4018647632613
           ]
         ],
         "fee_rate": 0.0002,
@@ -2888,7 +2892,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 961.9271019427899,
+        "cash": 979.5138934499631,
         "positions": {
           "JPYUSD": {
             "market_id": "JPYUSD",
@@ -2898,16 +2902,6 @@
             "shares": 3063.996014988804,
             "avg_price": 0.00649,
             "opened_at": 1789111320.032593,
-            "stance": "momentum"
-          },
-          "AUDUSD": {
-            "market_id": "AUDUSD",
-            "token_id": "AUDUSD",
-            "outcome": "long",
-            "title": "AUDUSD",
-            "shares": 25.04350797859739,
-            "avg_price": 0.7185,
-            "opened_at": 1789111320.034314,
             "stance": "momentum"
           }
         },
@@ -2938,6 +2932,20 @@
             "closed_at": 1790172183.3145041,
             "reason": "10-bar average dropped below the 50-bar -- trend over",
             "pnl": -0.14107207672466662,
+            "stance": "momentum"
+          },
+          {
+            "market_id": "AUDUSD",
+            "token_id": "AUDUSD",
+            "outcome": "long",
+            "title": "AUDUSD",
+            "shares": 25.04350797859739,
+            "avg_price": 0.7185,
+            "exit_price": 0.70239,
+            "opened_at": 1789111320.034314,
+            "closed_at": 1790604380.659816,
+            "reason": "10-bar average dropped below the 50-bar -- trend over",
+            "pnl": -0.40696897544902344,
             "stance": "momentum"
           }
         ],
@@ -5773,10 +5781,14 @@
           [
             1790603707.5374072,
             998.9895636170824
+          ],
+          [
+            1790604380.6893878,
+            999.0315480654418
           ]
         ],
         "fee_rate": 0.0002,
-        "fees_paid": 0.012511106476080485
+        "fees_paid": 0.016029168389897888
       }
     },
     "momentum-20/100": {
@@ -5788,18 +5800,8 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 962.5479019705127,
+        "cash": 968.0326751884344,
         "positions": {
-          "EURUSD": {
-            "market_id": "EURUSD",
-            "token_id": "EURUSD",
-            "outcome": "long",
-            "title": "EURUSD",
-            "shares": 4.821471604851489,
-            "avg_price": 1.1616,
-            "opened_at": 1789111320.028194,
-            "stance": "momentum"
-          },
           "GBPUSD": {
             "market_id": "GBPUSD",
             "token_id": "GBPUSD",
@@ -5831,7 +5833,22 @@
             "stance": "momentum"
           }
         },
-        "closed_trades": [],
+        "closed_trades": [
+          {
+            "market_id": "EURUSD",
+            "token_id": "EURUSD",
+            "outcome": "long",
+            "title": "EURUSD",
+            "shares": 4.821471604851489,
+            "avg_price": 1.1616,
+            "exit_price": 1.1378,
+            "opened_at": 1789111320.028194,
+            "closed_at": 1790604380.6587746,
+            "reason": "20-bar average dropped below the 100-bar -- trend over",
+            "pnl": -0.11584819827386524,
+            "stance": "momentum"
+          }
+        ],
         "equity_curve": [
           [
             1789111320.037172,
@@ -8664,10 +8681,14 @@
           [
             1790603707.5374072,
             999.2188736956734
+          ],
+          [
+            1790604380.6893878,
+            999.2377098174356
           ]
         ],
         "fee_rate": 0.0002,
-        "fees_paid": 0.0074904196058974346
+        "fees_paid": 0.00858759368429744
       }
     },
     "meanrev-25": {
@@ -11555,6 +11576,10 @@
           [
             1790603707.5374072,
             999.5216111070287
+          ],
+          [
+            1790604380.6893878,
+            999.3789645455718
           ]
         ],
         "fee_rate": 0.0002,
@@ -14446,6 +14471,10 @@
           [
             1790603707.5374072,
             998.9397292769395
+          ],
+          [
+            1790604380.6893878,
+            998.7629687488985
           ]
         ],
         "fee_rate": 0.0002,
@@ -17337,6 +17366,10 @@
           [
             1790603707.5374072,
             998.248603646216
+          ],
+          [
+            1790604380.6893878,
+            998.106681081717
           ]
         ],
         "fee_rate": 0.0002,
@@ -20186,6 +20219,10 @@
           ],
           [
             1790603707.5374072,
+            1000.0
+          ],
+          [
+            1790604380.6893878,
             1000.0
           ]
         ],
@@ -23037,6 +23074,10 @@
           [
             1790603707.5374072,
             1000.0
+          ],
+          [
+            1790604380.6893878,
+            1000.0
           ]
         ],
         "fee_rate": 0.0002,
@@ -23052,7 +23093,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 961.9271019427899,
+        "cash": 979.5138934499631,
         "positions": {
           "JPYUSD": {
             "market_id": "JPYUSD",
@@ -23062,16 +23103,6 @@
             "shares": 3063.996014988804,
             "avg_price": 0.00649,
             "opened_at": 1789111320.03316,
-            "stance": "vol_scaled_momentum"
-          },
-          "AUDUSD": {
-            "market_id": "AUDUSD",
-            "token_id": "AUDUSD",
-            "outcome": "long",
-            "title": "AUDUSD",
-            "shares": 25.04350797859739,
-            "avg_price": 0.7185,
-            "opened_at": 1789111320.035176,
             "stance": "vol_scaled_momentum"
           }
         },
@@ -23103,6 +23134,20 @@
             "reason": "10-bar average dropped below the 50-bar -- trend over",
             "pnl": -0.14107207672466662,
             "stance": "vol_scaled_momentum"
+          },
+          {
+            "market_id": "AUDUSD",
+            "token_id": "AUDUSD",
+            "outcome": "long",
+            "title": "AUDUSD",
+            "shares": 25.04350797859739,
+            "avg_price": 0.7185,
+            "exit_price": 0.70239,
+            "opened_at": 1789111320.035176,
+            "closed_at": 1790604380.6606534,
+            "reason": "10-bar average dropped below the 50-bar -- trend over",
+            "pnl": -0.40696897544902344,
+            "stance": "vol_scaled_momentum"
           }
         ],
         "equity_curve": [
@@ -25937,10 +25982,14 @@
           [
             1790603707.5374072,
             998.9895636170824
+          ],
+          [
+            1790604380.6893878,
+            999.0315480654418
           ]
         ],
         "fee_rate": 0.0002,
-        "fees_paid": 0.012511106476080485
+        "fees_paid": 0.016029168389897888
       }
     },
     "momentum-tp": {
@@ -25953,7 +26002,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 961.9271019427899,
+        "cash": 979.5138934499631,
         "positions": {
           "JPYUSD": {
             "market_id": "JPYUSD",
@@ -25963,16 +26012,6 @@
             "shares": 3063.996014988804,
             "avg_price": 0.00649,
             "opened_at": 1789111320.033427,
-            "stance": "momentum"
-          },
-          "AUDUSD": {
-            "market_id": "AUDUSD",
-            "token_id": "AUDUSD",
-            "outcome": "long",
-            "title": "AUDUSD",
-            "shares": 25.04350797859739,
-            "avg_price": 0.7185,
-            "opened_at": 1789111320.035572,
             "stance": "momentum"
           }
         },
@@ -26004,6 +26043,20 @@
             "reason": "10-bar average dropped below the 50-bar -- trend over",
             "pnl": -0.14107207672466662,
             "stance": "momentum"
+          },
+          {
+            "market_id": "AUDUSD",
+            "token_id": "AUDUSD",
+            "outcome": "long",
+            "title": "AUDUSD",
+            "shares": 25.04350797859739,
+            "avg_price": 0.7185,
+            "exit_price": 0.70239,
+            "opened_at": 1789111320.035572,
+            "closed_at": 1790604380.6826212,
+            "reason": "10-bar average dropped below the 50-bar -- trend over",
+            "pnl": -0.40696897544902344,
+            "stance": "momentum"
           }
         ],
         "equity_curve": [
@@ -28838,10 +28891,14 @@
           [
             1790603707.5374072,
             998.9895636170824
+          ],
+          [
+            1790604380.6893878,
+            999.0315480654418
           ]
         ],
         "fee_rate": 0.0002,
-        "fees_paid": 0.012511106476080485
+        "fees_paid": 0.016029168389897888
       }
     },
     "buy-and-hold": {
@@ -31736,6 +31793,10 @@
           [
             1790603707.5374072,
             994.9008029070379
+          ],
+          [
+            1790604380.6893878,
+            994.7371061680693
           ]
         ],
         "fee_rate": 0.0002,
@@ -34273,6 +34334,10 @@
           ],
           [
             1790603707.5374072,
+            999.9016543064301
+          ],
+          [
+            1790604380.6893878,
             999.9016543064301
           ]
         ],
@@ -36826,6 +36891,10 @@
           ],
           [
             1790603707.5374072,
+            998.7165120733366
+          ],
+          [
+            1790604380.6893878,
             998.7165120733366
           ]
         ],
@@ -39381,6 +39450,10 @@
           [
             1790603707.5374072,
             1000.5484614759264
+          ],
+          [
+            1790604380.6893878,
+            1000.3261653599668
           ]
         ],
         "fee_rate": 0.0002,
@@ -41903,6 +41976,10 @@
           ],
           [
             1790603707.5374072,
+            1000.0
+          ],
+          [
+            1790604380.6893878,
             1000.0
           ]
         ],
@@ -44456,6 +44533,10 @@
           [
             1790603707.5374072,
             997.5891662420817
+          ],
+          [
+            1790604380.6893878,
+            997.5891662420817
           ]
         ],
         "fee_rate": 0.0002,
@@ -44464,11 +44545,11 @@
     }
   },
   "prices": {
-    "EURUSD": 1.1403,
-    "GBPUSD": 1.3252,
-    "JPYUSD": 0.00635,
-    "AUDUSD": 0.70302,
-    "CHFUSD": 1.2073
+    "EURUSD": 1.1378,
+    "GBPUSD": 1.3263,
+    "JPYUSD": 0.00637,
+    "AUDUSD": 0.70239,
+    "CHFUSD": 1.2022
   },
   "research": {
     "enabled": true,
@@ -44477,6 +44558,6 @@
     "last_error": null
   },
   "scorecard": {},
-  "last_seen_ts": 1790603707.577602,
+  "last_seen_ts": 1790604380.7161224,
   "seen_hashes": []
 }

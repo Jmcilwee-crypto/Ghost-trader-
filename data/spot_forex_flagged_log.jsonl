@@ -54,3 +54,7 @@
 {"ts": 1790258581.178605, "bot": "risky-meanrev-20", "symbol": "EURUSD", "action": "buy", "price": 1.1367, "usd": 100.0, "reason": "RSI 17 -- oversold below 20", "strength_pct": 53.0}
 {"ts": 1790258581.179031, "bot": "risky-meanrev-20", "symbol": "GBPUSD", "action": "buy", "price": 1.322, "usd": 100.0, "reason": "RSI 18 -- oversold below 20", "strength_pct": 50.8}
 {"ts": 1790258581.1801953, "bot": "risky-meanrev-20", "symbol": "AUDUSD", "action": "buy", "price": 0.70266, "usd": 95.49, "reason": "RSI 18 -- oversold below 20", "strength_pct": 47.7}
+{"ts": 1790604380.6588602, "bot": "momentum-20/100", "symbol": "EURUSD", "action": "sell", "price": 1.1378, "pnl": -0.12, "reason": "20-bar average dropped below the 100-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1790604380.6598594, "bot": "momentum-10/50", "symbol": "AUDUSD", "action": "sell", "price": 0.70239, "pnl": -0.41, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1790604380.6606963, "bot": "vol-momentum", "symbol": "AUDUSD", "action": "sell", "price": 0.70239, "pnl": -0.41, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1790604380.6826882, "bot": "momentum-tp", "symbol": "AUDUSD", "action": "sell", "price": 0.70239, "pnl": -0.41, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
