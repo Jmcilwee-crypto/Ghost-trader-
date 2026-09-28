@@ -145,9 +145,9 @@ research:
   # The API key is read from the ODDS_API_KEY environment variable, never from
   # this file -- get a free one (500 requests/month) at the-odds-api.com.
   enabled: true
-  cache_ttl_seconds: 1800    # one request covers all upcoming events; cache it
+  cache_ttl_seconds: 5400    # one request covers all upcoming events; cache it
   regions: "us,eu"
-  max_requests_per_day: 120  # hard stop so the free quota can't be burned
+  max_requests_per_day: 15  # hard stop so the free quota can't be burned
   min_books: 2               # ignore an event priced by only one bookmaker
   match_threshold: 0.5
 
