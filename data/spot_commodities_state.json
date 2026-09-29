@@ -6551,6 +6551,10 @@
           [
             1790654594.807156,
             999.9229803128883
+          ],
+          [
+            1790655894.8585794,
+            999.9229803128883
           ]
         ],
         "fee_rate": 0.001,
@@ -13038,6 +13042,10 @@
           [
             1790654594.807156,
             999.8180885143314
+          ],
+          [
+            1790655894.8585794,
+            999.8180885143314
           ]
         ],
         "fee_rate": 0.001,
@@ -19469,6 +19477,10 @@
           [
             1790654594.807156,
             999.9863957372344
+          ],
+          [
+            1790655894.8585794,
+            999.9863957372344
           ]
         ],
         "fee_rate": 0.001,
@@ -19484,7 +19496,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 950.9766939725749,
+        "cash": 977.9041217671275,
         "positions": {
           "XAUTUSDT": {
             "market_id": "XAUTUSDT",
@@ -19494,16 +19506,6 @@
             "shares": 0.004841238574900189,
             "avg_price": 4282.0,
             "opened_at": 1790411051.2686582,
-            "stance": "mean_reversion"
-          },
-          "PAXGUSDT": {
-            "market_id": "PAXGUSDT",
-            "token_id": "PAXGUSDT",
-            "outcome": "long",
-            "title": "PAXGUSDT",
-            "shares": 0.006510547346985799,
-            "avg_price": 4265.09,
-            "opened_at": 1790546541.8737829,
             "stance": "mean_reversion"
           }
         },
@@ -19562,6 +19564,20 @@
             "closed_at": 1790290968.9709077,
             "reason": "RSI recovered to 57 -- back to normal",
             "pnl": -0.36027679729999085,
+            "stance": "mean_reversion"
+          },
+          {
+            "market_id": "PAXGUSDT",
+            "token_id": "PAXGUSDT",
+            "outcome": "long",
+            "title": "PAXGUSDT",
+            "shares": 0.006510547346985799,
+            "avg_price": 4265.09,
+            "exit_price": 4140.11,
+            "opened_at": 1790546541.8737829,
+            "closed_at": 1790655894.8575401,
+            "reason": "RSI recovered to 57 -- back to normal",
+            "pnl": -0.8406425896030144,
             "stance": "mean_reversion"
           }
         ],
@@ -25921,10 +25937,14 @@
           [
             1790654594.807156,
             998.6798147869658
+          ],
+          [
+            1790655894.8585794,
+            998.6343053448502
           ]
         ],
         "fee_rate": 0.001,
-        "fees_paid": 0.352692140873806
+        "fees_paid": 0.37964652305053537
       }
     },
     "meanrev-30": {
@@ -25936,7 +25956,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 935.8030550471715,
+        "cash": 969.5409231353319,
         "positions": {
           "XAUTUSDT": {
             "market_id": "XAUTUSDT",
@@ -25946,16 +25966,6 @@
             "shares": 0.006755539159447238,
             "avg_price": 4282.0,
             "opened_at": 1790411051.2691853,
-            "stance": "mean_reversion"
-          },
-          "PAXGUSDT": {
-            "market_id": "PAXGUSDT",
-            "token_id": "PAXGUSDT",
-            "outcome": "long",
-            "title": "PAXGUSDT",
-            "shares": 0.008157184163678829,
-            "avg_price": 4265.09,
-            "opened_at": 1790546541.874382,
             "stance": "mean_reversion"
           }
         },
@@ -26084,6 +26094,20 @@
             "closed_at": 1790462125.3429658,
             "reason": "RSI recovered to 59 -- back to normal",
             "pnl": -0.001829334552382253,
+            "stance": "mean_reversion"
+          },
+          {
+            "market_id": "PAXGUSDT",
+            "token_id": "PAXGUSDT",
+            "outcome": "long",
+            "title": "PAXGUSDT",
+            "shares": 0.008157184163678829,
+            "avg_price": 4265.09,
+            "exit_price": 4140.11,
+            "opened_at": 1790546541.874382,
+            "closed_at": 1790655894.8581388,
+            "reason": "RSI recovered to 57 -- back to normal",
+            "pnl": -1.053256516504469,
             "stance": "mean_reversion"
           }
         ],
@@ -32443,10 +32467,14 @@
           [
             1790654594.807156,
             998.5251614306794
+          ],
+          [
+            1790655894.8585794,
+            998.468141816085
           ]
         ],
         "fee_rate": 0.001,
-        "fees_paid": 0.6095894781674907
+        "fees_paid": 0.643361117895379
       }
     },
     "meanrev-35": {
@@ -39007,6 +39035,10 @@
           [
             1790654594.807156,
             998.1208453965409
+          ],
+          [
+            1790655894.8585794,
+            998.1060071709511
           ]
         ],
         "fee_rate": 0.001,
@@ -45494,6 +45526,10 @@
           [
             1790654594.807156,
             998.6111595576283
+          ],
+          [
+            1790655894.8585794,
+            998.6111595576283
           ]
         ],
         "fee_rate": 0.001,
@@ -51924,6 +51960,10 @@
           ],
           [
             1790654594.807156,
+            998.3070786569112
+          ],
+          [
+            1790655894.8585794,
             998.3070786569112
           ]
         ],
@@ -58411,6 +58451,10 @@
           ],
           [
             1790654594.807156,
+            999.8180885143314
+          ],
+          [
+            1790655894.8585794,
             999.8180885143314
           ]
         ],
@@ -64900,6 +64944,10 @@
           [
             1790654594.807156,
             999.8180885143314
+          ],
+          [
+            1790655894.8585794,
+            999.8180885143314
           ]
         ],
         "fee_rate": 0.001,
@@ -71292,6 +71340,10 @@
           [
             1790654594.807156,
             997.4605753611835
+          ],
+          [
+            1790655894.8585794,
+            997.4278921750908
           ]
         ],
         "fee_rate": 0.001,
@@ -71300,7 +71352,7 @@
     }
   },
   "prices": {
-    "PAXGUSDT": 4142.96
+    "PAXGUSDT": 4140.11
   },
   "research": {
     "enabled": true,
@@ -71312,6 +71364,6 @@
     "last_error": "coinbase: 404 Client Error: Not Found for url: https://api.exchange.coinbase.com/products/XAUT-USD/candles?granularity=3600"
   },
   "scorecard": {},
-  "last_seen_ts": 1790654594.8706398,
+  "last_seen_ts": 1790655894.9229705,
   "seen_hashes": []
 }
