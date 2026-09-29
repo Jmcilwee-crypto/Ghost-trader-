@@ -58,3 +58,6 @@
 {"ts": 1790604380.6598594, "bot": "momentum-10/50", "symbol": "AUDUSD", "action": "sell", "price": 0.70239, "pnl": -0.41, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1790604380.6606963, "bot": "vol-momentum", "symbol": "AUDUSD", "action": "sell", "price": 0.70239, "pnl": -0.41, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1790604380.6826882, "bot": "momentum-tp", "symbol": "AUDUSD", "action": "sell", "price": 0.70239, "pnl": -0.41, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1790690727.5236413, "bot": "momentum-20/100", "symbol": "GBPUSD", "action": "sell", "price": 1.3247, "pnl": -0.18, "reason": "20-bar average dropped below the 100-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1790690727.5241992, "bot": "meanrev-30", "symbol": "JPYUSD", "action": "buy", "price": 0.00636, "usd": 23.68, "reason": "RSI 28 -- oversold below 30", "strength_pct": 47.4}
+{"ts": 1790690727.5244544, "bot": "meanrev-35", "symbol": "JPYUSD", "action": "buy", "price": 0.00636, "usd": 30.27, "reason": "RSI 28 -- oversold below 35", "strength_pct": 60.6}
