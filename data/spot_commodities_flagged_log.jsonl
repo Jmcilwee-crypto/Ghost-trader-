@@ -167,3 +167,13 @@
 {"ts": 1790663403.648996, "bot": "momentum-5/20", "symbol": "PAXGUSDT", "action": "buy", "price": 4153.57, "usd": 1.03, "reason": "5-bar average is 0.10% above the 20-bar -- uptrend", "strength_pct": 2.1}
 {"ts": 1790674000.303117, "bot": "meanrev-35", "symbol": "PAXGUSDT", "action": "sell", "price": 4152.17, "pnl": -0.66, "reason": "RSI recovered to 64 -- back to normal", "strength_pct": 50.0}
 {"ts": 1790677639.9629157, "bot": "breakout-20", "symbol": "PAXGUSDT", "action": "buy", "price": 4159.17, "usd": 26.53, "reason": "Broke above its 20-bar high by 0.10%", "strength_pct": 53.1}
+{"ts": 1790720660.8181202, "bot": "momentum-10/50", "symbol": "PAXGUSDT", "action": "buy", "price": 4189.7, "usd": 1.51, "reason": "10-bar average is 0.15% above the 50-bar -- uptrend", "strength_pct": 3.0}
+{"ts": 1790720660.8185215, "bot": "vol-momentum", "symbol": "PAXGUSDT", "action": "buy", "price": 4189.7, "usd": 1.51, "reason": "10-bar average is 0.15% above the 50-bar -- uptrend; volatility 0.21% vs 2.00% target -> sizing at 100% (moved +1.0%)", "strength_pct": 3.0}
+{"ts": 1790720660.8189657, "bot": "momentum-tp", "symbol": "PAXGUSDT", "action": "buy", "price": 4189.7, "usd": 1.51, "reason": "10-bar average is 0.15% above the 50-bar -- uptrend", "strength_pct": 3.0}
+{"ts": 1790720660.8194404, "bot": "momentum-5/20", "symbol": "XAUTUSDT", "action": "buy", "price": 4183.64, "usd": 5.48, "reason": "5-bar average is 0.55% above the 20-bar -- uptrend", "strength_pct": 11.0}
+{"ts": 1790720660.8197756, "bot": "momentum-10/50", "symbol": "XAUTUSDT", "action": "buy", "price": 4183.64, "usd": 1.2, "reason": "10-bar average is 0.12% above the 50-bar -- uptrend", "strength_pct": 2.4}
+{"ts": 1790720660.820177, "bot": "meanrev-25", "symbol": "XAUTUSDT", "action": "sell", "price": 4183.64, "pnl": -0.5, "reason": "RSI recovered to 70 -- back to normal", "strength_pct": 50.0}
+{"ts": 1790720660.82052, "bot": "meanrev-30", "symbol": "XAUTUSDT", "action": "sell", "price": 4183.64, "pnl": -0.69, "reason": "RSI recovered to 70 -- back to normal", "strength_pct": 50.0}
+{"ts": 1790720660.8208945, "bot": "meanrev-35", "symbol": "XAUTUSDT", "action": "sell", "price": 4183.64, "pnl": -0.83, "reason": "RSI recovered to 70 -- back to normal", "strength_pct": 50.0}
+{"ts": 1790720660.821266, "bot": "vol-momentum", "symbol": "XAUTUSDT", "action": "buy", "price": 4183.64, "usd": 1.2, "reason": "10-bar average is 0.12% above the 50-bar -- uptrend; volatility 0.21% vs 2.00% target -> sizing at 100% (moved +1.0%)", "strength_pct": 2.4}
+{"ts": 1790720660.8216026, "bot": "momentum-tp", "symbol": "XAUTUSDT", "action": "buy", "price": 4183.64, "usd": 1.2, "reason": "10-bar average is 0.12% above the 50-bar -- uptrend", "strength_pct": 2.4}

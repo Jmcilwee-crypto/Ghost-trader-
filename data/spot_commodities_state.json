@@ -9,7 +9,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 998.8979358356387,
+        "cash": 993.4229276538153,
         "positions": {
           "PAXGUSDT": {
             "market_id": "PAXGUSDT",
@@ -19,6 +19,16 @@
             "shares": 0.00024653958709552225,
             "avg_price": 4153.57,
             "opened_at": 1790663403.648897,
+            "stance": "momentum"
+          },
+          "XAUTUSDT": {
+            "market_id": "XAUTUSDT",
+            "token_id": "XAUTUSDT",
+            "outcome": "long",
+            "title": "XAUTUSDT",
+            "shares": 0.001307362290646789,
+            "avg_price": 4183.64,
+            "opened_at": 1790720660.819411,
             "stance": "momentum"
           }
         },
@@ -6834,10 +6844,14 @@
           [
             1790719378.195067,
             999.9300393014719
+          ],
+          [
+            1790720660.8219278,
+            999.925387735511
           ]
         ],
         "fee_rate": 0.001,
-        "fees_paid": 0.05256030254953738
+        "fees_paid": 0.058035310731360736
       }
     },
     "momentum-10/50": {
@@ -6849,8 +6863,29 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 999.8180885143314,
-        "positions": {},
+        "cash": 997.1090978144789,
+        "positions": {
+          "PAXGUSDT": {
+            "market_id": "PAXGUSDT",
+            "token_id": "PAXGUSDT",
+            "outcome": "long",
+            "title": "PAXGUSDT",
+            "shares": 0.0003605568515154963,
+            "avg_price": 4189.7,
+            "opened_at": 1790720660.8180385,
+            "stance": "momentum"
+          },
+          "XAUTUSDT": {
+            "market_id": "XAUTUSDT",
+            "token_id": "XAUTUSDT",
+            "outcome": "long",
+            "title": "XAUTUSDT",
+            "shares": 0.00028579339244250157,
+            "avg_price": 4183.64,
+            "opened_at": 1790720660.8197489,
+            "stance": "momentum"
+          }
+        },
         "closed_trades": [
           {
             "market_id": "PAXGUSDT",
@@ -13593,10 +13628,14 @@
           [
             1790719378.195067,
             999.8180885143314
+          ],
+          [
+            1790720660.8219278,
+            999.8153795236316
           ]
         ],
         "fee_rate": 0.001,
-        "fees_paid": 0.048992592762389056
+        "fees_paid": 0.05170158346224153
       }
     },
     "momentum-20/100": {
@@ -20296,6 +20335,10 @@
           [
             1790719378.195067,
             999.9863957372344
+          ],
+          [
+            1790720660.8219278,
+            999.9863957372344
           ]
         ],
         "fee_rate": 0.001,
@@ -20311,19 +20354,8 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 977.9041217671275,
-        "positions": {
-          "XAUTUSDT": {
-            "market_id": "XAUTUSDT",
-            "token_id": "XAUTUSDT",
-            "outcome": "long",
-            "title": "XAUTUSDT",
-            "shares": 0.004841238574900189,
-            "avg_price": 4282.0,
-            "opened_at": 1790411051.2686582,
-            "stance": "mean_reversion"
-          }
-        },
+        "cash": 998.1378671192715,
+        "positions": {},
         "closed_trades": [
           {
             "market_id": "PAXGUSDT",
@@ -20393,6 +20425,20 @@
             "closed_at": 1790655894.8575401,
             "reason": "RSI recovered to 57 -- back to normal",
             "pnl": -0.8406425896030144,
+            "stance": "mean_reversion"
+          },
+          {
+            "market_id": "XAUTUSDT",
+            "token_id": "XAUTUSDT",
+            "outcome": "long",
+            "title": "XAUTUSDT",
+            "shares": 0.004841238574900189,
+            "avg_price": 4282.0,
+            "exit_price": 4183.64,
+            "opened_at": 1790411051.2686582,
+            "closed_at": 1790720660.8201437,
+            "reason": "RSI recovered to 70 -- back to normal",
+            "pnl": -0.49643822557867456,
             "stance": "mean_reversion"
           }
         ],
@@ -27024,10 +27070,14 @@
           [
             1790719378.195067,
             998.6343053448502
+          ],
+          [
+            1790720660.8219278,
+            998.1378671192715
           ]
         ],
         "fee_rate": 0.001,
-        "fees_paid": 0.37964652305053537
+        "fees_paid": 0.3999005224020308
       }
     },
     "meanrev-30": {
@@ -27039,19 +27089,8 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 969.5409231353319,
-        "positions": {
-          "XAUTUSDT": {
-            "market_id": "XAUTUSDT",
-            "token_id": "XAUTUSDT",
-            "outcome": "long",
-            "title": "XAUTUSDT",
-            "shares": 0.006755539159447238,
-            "avg_price": 4282.0,
-            "opened_at": 1790411051.2691853,
-            "stance": "mean_reversion"
-          }
-        },
+        "cash": 997.7754042405128,
+        "positions": {},
         "closed_trades": [
           {
             "market_id": "PAXGUSDT",
@@ -27191,6 +27230,20 @@
             "closed_at": 1790655894.8581388,
             "reason": "RSI recovered to 57 -- back to normal",
             "pnl": -1.053256516504469,
+            "stance": "mean_reversion"
+          },
+          {
+            "market_id": "XAUTUSDT",
+            "token_id": "XAUTUSDT",
+            "outcome": "long",
+            "title": "XAUTUSDT",
+            "shares": 0.006755539159447238,
+            "avg_price": 4282.0,
+            "exit_price": 4183.64,
+            "opened_at": 1790411051.2691853,
+            "closed_at": 1790720660.8204916,
+            "reason": "RSI recovered to 70 -- back to normal",
+            "pnl": -0.6927375755722555,
             "stance": "mean_reversion"
           }
         ],
@@ -33822,10 +33875,14 @@
           [
             1790719378.195067,
             998.468141816085
+          ],
+          [
+            1790720660.8219278,
+            997.7754042405128
           ]
         ],
         "fee_rate": 0.001,
-        "fees_paid": 0.643361117895379
+        "fees_paid": 0.6716238617444088
       }
     },
     "meanrev-35": {
@@ -33837,19 +33894,8 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 963.3909344918236,
-        "positions": {
-          "XAUTUSDT": {
-            "market_id": "XAUTUSDT",
-            "token_id": "XAUTUSDT",
-            "outcome": "long",
-            "title": "XAUTUSDT",
-            "shares": 0.00811682484008775,
-            "avg_price": 4282.0,
-            "opened_at": 1790411051.2695022,
-            "stance": "mean_reversion"
-          }
-        },
+        "cash": 997.3148496927344,
+        "positions": {},
         "closed_trades": [
           {
             "market_id": "PAXGUSDT",
@@ -34031,6 +34077,20 @@
             "closed_at": 1790674000.3030436,
             "reason": "RSI recovered to 64 -- back to normal",
             "pnl": -0.66314982186562,
+            "stance": "mean_reversion"
+          },
+          {
+            "market_id": "XAUTUSDT",
+            "token_id": "XAUTUSDT",
+            "outcome": "long",
+            "title": "XAUTUSDT",
+            "shares": 0.00811682484008775,
+            "avg_price": 4282.0,
+            "exit_price": 4183.64,
+            "opened_at": 1790411051.2695022,
+            "closed_at": 1790720660.8208644,
+            "reason": "RSI recovered to 70 -- back to normal",
+            "pnl": -0.8323287643450117,
             "stance": "mean_reversion"
           }
         ],
@@ -40662,10 +40722,14 @@
           [
             1790719378.195067,
             998.1471784570793
+          ],
+          [
+            1790720660.8219278,
+            997.3148496927344
           ]
         ],
         "fee_rate": 0.001,
-        "fees_paid": 0.7451497577232222
+        "fees_paid": 0.7791076307972069
       }
     },
     "breakout-20": {
@@ -47432,6 +47496,10 @@
           [
             1790719378.195067,
             998.7578920813963
+          ],
+          [
+            1790720660.8219278,
+            998.7791755192677
           ]
         ],
         "fee_rate": 0.001,
@@ -54135,6 +54203,10 @@
           [
             1790719378.195067,
             998.3070786569112
+          ],
+          [
+            1790720660.8219278,
+            998.3070786569112
           ]
         ],
         "fee_rate": 0.001,
@@ -54150,8 +54222,29 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 999.8180885143314,
-        "positions": {},
+        "cash": 997.1090978144789,
+        "positions": {
+          "PAXGUSDT": {
+            "market_id": "PAXGUSDT",
+            "token_id": "PAXGUSDT",
+            "outcome": "long",
+            "title": "PAXGUSDT",
+            "shares": 0.0003605568515154963,
+            "avg_price": 4189.7,
+            "opened_at": 1790720660.8184938,
+            "stance": "vol_scaled_momentum"
+          },
+          "XAUTUSDT": {
+            "market_id": "XAUTUSDT",
+            "token_id": "XAUTUSDT",
+            "outcome": "long",
+            "title": "XAUTUSDT",
+            "shares": 0.00028579339244250157,
+            "avg_price": 4183.64,
+            "opened_at": 1790720660.8212383,
+            "stance": "vol_scaled_momentum"
+          }
+        },
         "closed_trades": [
           {
             "market_id": "PAXGUSDT",
@@ -60894,10 +60987,14 @@
           [
             1790719378.195067,
             999.8180885143314
+          ],
+          [
+            1790720660.8219278,
+            999.8153795236316
           ]
         ],
         "fee_rate": 0.001,
-        "fees_paid": 0.048992592762389056
+        "fees_paid": 0.05170158346224153
       }
     },
     "momentum-tp": {
@@ -60910,8 +61007,29 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 999.8180885143314,
-        "positions": {},
+        "cash": 997.1090978144789,
+        "positions": {
+          "PAXGUSDT": {
+            "market_id": "PAXGUSDT",
+            "token_id": "PAXGUSDT",
+            "outcome": "long",
+            "title": "PAXGUSDT",
+            "shares": 0.0003605568515154963,
+            "avg_price": 4189.7,
+            "opened_at": 1790720660.8189356,
+            "stance": "momentum"
+          },
+          "XAUTUSDT": {
+            "market_id": "XAUTUSDT",
+            "token_id": "XAUTUSDT",
+            "outcome": "long",
+            "title": "XAUTUSDT",
+            "shares": 0.00028579339244250157,
+            "avg_price": 4183.64,
+            "opened_at": 1790720660.8215766,
+            "stance": "momentum"
+          }
+        },
         "closed_trades": [
           {
             "market_id": "PAXGUSDT",
@@ -67654,10 +67772,14 @@
           [
             1790719378.195067,
             999.8180885143314
+          ],
+          [
+            1790720660.8219278,
+            999.8153795236316
           ]
         ],
         "fee_rate": 0.001,
-        "fees_paid": 0.048992592762389056
+        "fees_paid": 0.05170158346224153
       }
     },
     "buy-and-hold": {
@@ -74318,6 +74440,10 @@
           [
             1790719378.195067,
             997.9582772125592
+          ],
+          [
+            1790720660.8219278,
+            996.0739279815209
           ]
         ],
         "fee_rate": 0.001,
@@ -74326,18 +74452,20 @@
     }
   },
   "prices": {
-    "PAXGUSDT": 4186.36
+    "PAXGUSDT": 4189.7,
+    "XAUTUSDT": 4183.64
   },
   "research": {
     "enabled": true,
-    "symbols_cached": 1,
-    "requests_made": 4,
+    "symbols_cached": 2,
+    "requests_made": 2,
     "sources": {
-      "PAXGUSDT": "coinbase"
+      "PAXGUSDT": "binance",
+      "XAUTUSDT": "binance"
     },
-    "last_error": "coinbase: 404 Client Error: Not Found for url: https://api.exchange.coinbase.com/products/XAUT-USD/candles?granularity=3600"
+    "last_error": null
   },
   "scorecard": {},
-  "last_seen_ts": 1790719378.2637725,
+  "last_seen_ts": 1790720660.8761523,
   "seen_hashes": []
 }
