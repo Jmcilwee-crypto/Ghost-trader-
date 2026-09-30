@@ -184,3 +184,6 @@
 {"ts": 1790779517.4165406, "bot": "breakout-50", "symbol": "PAXGUSDT", "action": "sell", "price": 4175.27, "pnl": -0.16, "reason": "Fell below the 20-bar low -- breakout failed", "strength_pct": 50.0}
 {"ts": 1790780854.7763634, "bot": "momentum-5/20", "symbol": "PAXGUSDT", "action": "sell", "price": 4167.47, "pnl": 0.0, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1790798607.7789388, "bot": "meanrev-35", "symbol": "PAXGUSDT", "action": "buy", "price": 4163.01, "usd": 20.34, "reason": "RSI 35 -- oversold below 35", "strength_pct": 40.8}
+{"ts": 1790807115.1250257, "bot": "momentum-10/50", "symbol": "PAXGUSDT", "action": "sell", "price": 4163.92, "pnl": -0.01, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1790807115.1256437, "bot": "vol-momentum", "symbol": "PAXGUSDT", "action": "sell", "price": 4163.92, "pnl": -0.01, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1790807115.1259966, "bot": "momentum-tp", "symbol": "PAXGUSDT", "action": "sell", "price": 4163.92, "pnl": -0.01, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
