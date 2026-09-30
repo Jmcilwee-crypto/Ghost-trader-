@@ -181,3 +181,4 @@
 {"ts": 1790751986.93767, "bot": "breakout-20", "symbol": "PAXGUSDT", "action": "buy", "price": 4198.01, "usd": 25.66, "reason": "Broke above its 20-bar high by 0.05%", "strength_pct": 51.4}
 {"ts": 1790751986.938085, "bot": "breakout-50", "symbol": "PAXGUSDT", "action": "buy", "price": 4198.01, "usd": 25.65, "reason": "Broke above its 50-bar high by 0.05%", "strength_pct": 51.4}
 {"ts": 1790778541.736192, "bot": "breakout-20", "symbol": "PAXGUSDT", "action": "sell", "price": 4178.97, "pnl": -0.14, "reason": "Fell below the 10-bar low -- breakout failed", "strength_pct": 50.0}
+{"ts": 1790779517.4165406, "bot": "breakout-50", "symbol": "PAXGUSDT", "action": "sell", "price": 4175.27, "pnl": -0.16, "reason": "Fell below the 20-bar low -- breakout failed", "strength_pct": 50.0}
