@@ -1,4 +1,3 @@
-{"ts": 1790330556.845393, "bot": "momentum-5/20", "symbol": "ETHUSDT", "action": "buy", "price": 2702.13, "usd": 1.25, "reason": "5-bar average is 0.13% above the 20-bar -- uptrend", "strength_pct": 2.5}
 {"ts": 1790332597.6324053, "bot": "momentum-10/50", "symbol": "ETHUSDT", "action": "buy", "price": 2711.97, "usd": 1.23, "reason": "10-bar average is 0.12% above the 50-bar -- uptrend", "strength_pct": 2.5}
 {"ts": 1790332597.6329434, "bot": "vol-momentum", "symbol": "ETHUSDT", "action": "buy", "price": 2711.97, "usd": 1.23, "reason": "10-bar average is 0.12% above the 50-bar -- uptrend; volatility 0.40% vs 2.00% target -> sizing at 100% (moved +2.1%)", "strength_pct": 2.5}
 {"ts": 1790332597.6333811, "bot": "momentum-tp", "symbol": "ETHUSDT", "action": "buy", "price": 2711.97, "usd": 1.23, "reason": "10-bar average is 0.12% above the 50-bar -- uptrend", "strength_pct": 2.5}
@@ -298,3 +297,4 @@
 {"ts": 1790821482.8152118, "bot": "meanrev-35", "symbol": "BNBUSDT", "action": "buy", "price": 767.27, "usd": 21.95, "reason": "RSI 34 -- oversold below 35", "strength_pct": 43.8}
 {"ts": 1790827472.138605, "bot": "momentum-20/100", "symbol": "ETHUSDT", "action": "buy", "price": 2695.34, "usd": 1.4, "reason": "20-bar average is 0.14% above the 100-bar -- uptrend", "strength_pct": 2.8}
 {"ts": 1790827472.139044, "bot": "meanrev-35", "symbol": "ETHUSDT", "action": "sell", "price": 2695.34, "pnl": 0.03, "reason": "RSI recovered to 62 -- back to normal", "strength_pct": 50.0}
+{"ts": 1790828799.351854, "bot": "momentum-5/20", "symbol": "BNBUSDT", "action": "sell", "price": 768.11, "pnl": 0.01, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
