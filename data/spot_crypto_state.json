@@ -9,7 +9,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 992.9505111655275,
+        "cash": 995.632334299058,
         "positions": {
           "ETHUSDT": {
             "market_id": "ETHUSDT",
@@ -39,26 +39,6 @@
             "shares": 1.7334375622627966e-05,
             "avg_price": 84170.94,
             "opened_at": 1790838637.8853972,
-            "stance": "momentum"
-          },
-          "SOLUSDT": {
-            "market_id": "SOLUSDT",
-            "token_id": "SOLUSDT",
-            "outcome": "long",
-            "title": "SOLUSDT",
-            "shares": 0.012732626668483333,
-            "avg_price": 119.15,
-            "opened_at": 1790838637.8860173,
-            "stance": "momentum"
-          },
-          "BNBUSDT": {
-            "market_id": "BNBUSDT",
-            "token_id": "BNBUSDT",
-            "outcome": "long",
-            "title": "BNBUSDT",
-            "shares": 0.0015567565368951575,
-            "avg_price": 770.51,
-            "opened_at": 1790838637.886438,
             "stance": "momentum"
           }
         },
@@ -1125,6 +1105,34 @@
             "closed_at": 1790828799.3517833,
             "reason": "5-bar average dropped below the 20-bar -- trend over",
             "pnl": 0.009142268492855496,
+            "stance": "momentum"
+          },
+          {
+            "market_id": "SOLUSDT",
+            "token_id": "SOLUSDT",
+            "outcome": "long",
+            "title": "SOLUSDT",
+            "shares": 0.012732626668483333,
+            "avg_price": 119.15,
+            "exit_price": 117.43,
+            "opened_at": 1790838637.8860173,
+            "closed_at": 1790839712.2350156,
+            "reason": "5-bar average dropped below the 20-bar -- trend over",
+            "pnl": -0.02339531021947129,
+            "stance": "momentum"
+          },
+          {
+            "market_id": "BNBUSDT",
+            "token_id": "BNBUSDT",
+            "outcome": "long",
+            "title": "BNBUSDT",
+            "shares": 0.0015567565368951575,
+            "avg_price": 770.51,
+            "exit_price": 763.97,
+            "opened_at": 1790838637.886438,
+            "closed_at": 1790839712.2354867,
+            "reason": "5-bar average dropped below the 20-bar -- trend over",
+            "pnl": -0.011370503042786079,
             "stance": "momentum"
           }
         ],
@@ -9124,10 +9132,14 @@
           [
             1790838637.8869467,
             1000.1730464633202
+          ],
+          [
+            1790839712.2385798,
+            1000.088608923541
           ]
         ],
         "fee_rate": 0.001,
-        "fees_paid": 0.37417167480483166
+        "fees_paid": 0.37685618244600344
       }
     },
     "momentum-10/50": {
@@ -17622,6 +17634,10 @@
           [
             1790838637.8869467,
             1004.3371382303291
+          ],
+          [
+            1790839712.2385798,
+            1004.3069864326246
           ]
         ],
         "fee_rate": 0.001,
@@ -25906,6 +25922,10 @@
           [
             1790838637.8869467,
             999.9033921148282
+          ],
+          [
+            1790839712.2385798,
+            999.8647854227434
           ]
         ],
         "fee_rate": 0.001,
@@ -34242,6 +34262,10 @@
           ],
           [
             1790838637.8869467,
+            997.080256239387
+          ],
+          [
+            1790839712.2385798,
             997.080256239387
           ]
         ],
@@ -42717,6 +42741,10 @@
           [
             1790838637.8869467,
             999.7878013867709
+          ],
+          [
+            1790839712.2385798,
+            999.4658170031261
           ]
         ],
         "fee_rate": 0.001,
@@ -51323,6 +51351,10 @@
           [
             1790838637.8869467,
             1003.7108026574961
+          ],
+          [
+            1790839712.2385798,
+            1002.5030565637522
           ]
         ],
         "fee_rate": 0.001,
@@ -60052,6 +60084,10 @@
           [
             1790838637.8869467,
             1012.2152803730384
+          ],
+          [
+            1790839712.2385798,
+            1012.2152803730384
           ]
         ],
         "fee_rate": 0.001,
@@ -60067,18 +60103,8 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 939.011857140763,
+        "cash": 968.0763980545623,
         "positions": {
-          "BNBUSDT": {
-            "market_id": "BNBUSDT",
-            "token_id": "BNBUSDT",
-            "outcome": "long",
-            "title": "BNBUSDT",
-            "shares": 0.038082168865724554,
-            "avg_price": 772.42,
-            "opened_at": 1790771651.1344824,
-            "stance": "breakout"
-          },
           "BTCUSDT": {
             "market_id": "BTCUSDT",
             "token_id": "BTCUSDT",
@@ -60341,6 +60367,20 @@
             "closed_at": 1790796439.511021,
             "reason": "Fell below the 20-bar low -- breakout failed",
             "pnl": -1.6870648420655048,
+            "stance": "breakout"
+          },
+          {
+            "market_id": "BNBUSDT",
+            "token_id": "BNBUSDT",
+            "outcome": "long",
+            "title": "BNBUSDT",
+            "shares": 0.038082168865724554,
+            "avg_price": 772.42,
+            "exit_price": 763.97,
+            "opened_at": 1790771651.1344824,
+            "closed_at": 1790839712.2379498,
+            "reason": "Fell below the 20-bar low -- breakout failed",
+            "pnl": -0.3508879614637176,
             "stance": "breakout"
           }
         ],
@@ -68340,10 +68380,14 @@
           [
             1790838637.8869467,
             1012.1102935654626
+          ],
+          [
+            1790839712.2385798,
+            1011.4639007670563
           ]
         ],
         "fee_rate": 0.001,
-        "fees_paid": 1.192400537465398
+        "fees_paid": 1.2214941720137458
       }
     },
     "vol-momentum": {
@@ -76838,6 +76882,10 @@
           [
             1790838637.8869467,
             1004.3371382303291
+          ],
+          [
+            1790839712.2385798,
+            1004.3069864326246
           ]
         ],
         "fee_rate": 0.001,
@@ -85365,6 +85413,10 @@
           [
             1790838637.8869467,
             1003.548486697611
+          ],
+          [
+            1790839712.2385798,
+            1003.5183585764796
           ]
         ],
         "fee_rate": 0.001,
@@ -93427,6 +93479,10 @@
           [
             1790838637.8869467,
             1031.2802477679807
+          ],
+          [
+            1790839712.2385798,
+            1028.125324727838
           ]
         ],
         "fee_rate": 0.001,
@@ -93435,11 +93491,11 @@
     }
   },
   "prices": {
-    "BTCUSDT": 84170.94,
-    "ETHUSDT": 2715.32,
-    "SOLUSDT": 119.15,
-    "BNBUSDT": 770.51,
-    "XRPUSDT": 1.5048
+    "BTCUSDT": 83462.57,
+    "ETHUSDT": 2681.28,
+    "SOLUSDT": 117.43,
+    "BNBUSDT": 763.97,
+    "XRPUSDT": 1.487
   },
   "research": {
     "enabled": true,
@@ -93455,6 +93511,6 @@
     "last_error": null
   },
   "scorecard": {},
-  "last_seen_ts": 1790838637.9785945,
+  "last_seen_ts": 1790839712.3073754,
   "seen_hashes": []
 }
