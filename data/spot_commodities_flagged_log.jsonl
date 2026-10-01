@@ -196,3 +196,4 @@
 {"ts": 1790840579.0835626, "bot": "momentum-10/50", "symbol": "XAUTUSDT", "action": "sell", "price": 4162.79, "pnl": -0.01, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1790840579.0839043, "bot": "vol-momentum", "symbol": "XAUTUSDT", "action": "sell", "price": 4162.79, "pnl": -0.01, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1790840579.0844202, "bot": "momentum-tp", "symbol": "XAUTUSDT", "action": "sell", "price": 4162.79, "pnl": -0.01, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1790849145.4555888, "bot": "momentum-5/20", "symbol": "PAXGUSDT", "action": "sell", "price": 4159.49, "pnl": -0.01, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
