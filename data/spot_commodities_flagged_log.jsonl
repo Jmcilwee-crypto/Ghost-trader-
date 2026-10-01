@@ -199,3 +199,4 @@
 {"ts": 1790849145.4555888, "bot": "momentum-5/20", "symbol": "PAXGUSDT", "action": "sell", "price": 4159.49, "pnl": -0.01, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1790856365.9772778, "bot": "momentum-5/20", "symbol": "PAXGUSDT", "action": "buy", "price": 4188.21, "usd": 1.1, "reason": "5-bar average is 0.11% above the 20-bar -- uptrend", "strength_pct": 2.2}
 {"ts": 1790875555.6485856, "bot": "momentum-5/20", "symbol": "PAXGUSDT", "action": "sell", "price": 4183.78, "pnl": -0.0, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1790895063.59236, "bot": "momentum-5/20", "symbol": "PAXGUSDT", "action": "buy", "price": 4182.73, "usd": 1.07, "reason": "5-bar average is 0.11% above the 20-bar -- uptrend", "strength_pct": 2.1}
