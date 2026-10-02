@@ -1,4 +1,3 @@
-{"ts": 1790431361.8714368, "bot": "vol-momentum", "symbol": "ETHUSDT", "action": "sell", "price": 2686.11, "pnl": -0.01, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1790431361.8719165, "bot": "momentum-tp", "symbol": "ETHUSDT", "action": "sell", "price": 2686.11, "pnl": -0.01, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1790432537.3438427, "bot": "momentum-10/50", "symbol": "XRPUSDT", "action": "sell", "price": 1.5439, "pnl": -0.0, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1790432537.3443403, "bot": "vol-momentum", "symbol": "XRPUSDT", "action": "sell", "price": 1.5439, "pnl": -0.0, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
@@ -298,3 +297,4 @@
 {"ts": 1790889873.9290974, "bot": "momentum-5/20", "symbol": "SOLUSDT", "action": "buy", "price": 117.97, "usd": 1.19, "reason": "5-bar average is 0.12% above the 20-bar -- uptrend", "strength_pct": 2.4}
 {"ts": 1790905930.9686832, "bot": "meanrev-35", "symbol": "SOLUSDT", "action": "sell", "price": 119.3, "pnl": 0.28, "reason": "RSI recovered to 62 -- back to normal", "strength_pct": 50.0}
 {"ts": 1790906656.905541, "bot": "breakout-20", "symbol": "ETHUSDT", "action": "buy", "price": 2714.7, "usd": 25.35, "reason": "Broke above its 20-bar high by 0.00%", "strength_pct": 50.1}
+{"ts": 1790907821.4727, "bot": "breakout-20", "symbol": "SOLUSDT", "action": "buy", "price": 119.6, "usd": 26.83, "reason": "Broke above its 20-bar high by 0.10%", "strength_pct": 53.0}
