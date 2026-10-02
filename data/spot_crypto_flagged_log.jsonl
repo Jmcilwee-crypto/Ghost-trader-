@@ -1,6 +1,3 @@
-{"ts": 1790539348.913474, "bot": "momentum-5/20", "symbol": "XRPUSDT", "action": "buy", "price": 1.5322, "usd": 1.33, "reason": "5-bar average is 0.13% above the 20-bar -- uptrend", "strength_pct": 2.7}
-{"ts": 1790542956.905729, "bot": "breakout-50", "symbol": "ETHUSDT", "action": "sell", "price": 2685.78, "pnl": -0.35, "reason": "Fell below the 20-bar low -- breakout failed", "strength_pct": 50.0}
-{"ts": 1790544107.0053513, "bot": "meanrev-35", "symbol": "ETHUSDT", "action": "buy", "price": 2689.71, "usd": 26.12, "reason": "RSI 31 -- oversold below 35", "strength_pct": 52.1}
 {"ts": 1790544889.435662, "bot": "meanrev-30", "symbol": "ETHUSDT", "action": "buy", "price": 2686.25, "usd": 24.43, "reason": "RSI 27 -- oversold below 30", "strength_pct": 48.9}
 {"ts": 1790545648.7359498, "bot": "momentum-10/50", "symbol": "ETHUSDT", "action": "sell", "price": 2682.08, "pnl": -0.01, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1790545648.7363408, "bot": "vol-momentum", "symbol": "ETHUSDT", "action": "sell", "price": 2682.08, "pnl": -0.01, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
@@ -298,3 +295,6 @@
 {"ts": 1790979830.6426146, "bot": "momentum-10/50", "symbol": "BNBUSDT", "action": "sell", "price": 765.69, "pnl": -0.01, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1790979830.64301, "bot": "vol-momentum", "symbol": "BNBUSDT", "action": "sell", "price": 765.69, "pnl": -0.01, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1790979830.643466, "bot": "momentum-tp", "symbol": "BNBUSDT", "action": "sell", "price": 765.69, "pnl": -0.01, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1790982134.8609543, "bot": "momentum-10/50", "symbol": "SOLUSDT", "action": "sell", "price": 118.5, "pnl": -0.02, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1790982134.8614569, "bot": "vol-momentum", "symbol": "SOLUSDT", "action": "sell", "price": 118.5, "pnl": -0.02, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1790982134.8618953, "bot": "momentum-tp", "symbol": "SOLUSDT", "action": "sell", "price": 118.5, "pnl": -0.02, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
