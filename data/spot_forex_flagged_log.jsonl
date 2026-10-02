@@ -63,3 +63,4 @@
 {"ts": 1790690727.5244544, "bot": "meanrev-35", "symbol": "JPYUSD", "action": "buy", "price": 0.00636, "usd": 30.27, "reason": "RSI 28 -- oversold below 35", "strength_pct": 60.6}
 {"ts": 1790692013.321415, "bot": "risky-meanrev-20", "symbol": "CHFUSD", "action": "buy", "price": 1.2002, "usd": 99.97, "reason": "RSI 16 -- oversold below 20", "strength_pct": 59.6}
 {"ts": 1790777201.2122693, "bot": "risky-momentum-3/10", "symbol": "JPYUSD", "action": "buy", "price": 0.00637, "usd": 5.51, "reason": "3-bar average is 0.18% above the 10-bar -- uptrend", "strength_pct": 3.7}
+{"ts": 1790950026.6905832, "bot": "risky-momentum-3/10", "symbol": "JPYUSD", "action": "sell", "price": 0.00634, "pnl": -0.03, "reason": "3-bar average dropped below the 10-bar -- trend over", "strength_pct": 50.0}
