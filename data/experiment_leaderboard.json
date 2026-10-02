@@ -274,13 +274,13 @@
   },
   {
     "name": "value-edge10-bold",
-    "equity": 1042.9018305025565,
-    "return_pct": 4.290183050255658,
-    "cash": 1000.2087644997652,
-    "open_positions": 4,
-    "closed_trades": 5,
-    "win_rate": 0.8,
-    "realized_pnl": 42.90183050255642,
+    "equity": 1051.2007424900874,
+    "return_pct": 5.1200742490087325,
+    "cash": 1012.9763214036585,
+    "open_positions": 3,
+    "closed_trades": 6,
+    "win_rate": 0.8333333333333334,
+    "realized_pnl": 51.200742490087094,
     "settings": {
       "profile": "value",
       "whale_usd_threshold": 500.0,
@@ -290,17 +290,33 @@
   },
   {
     "name": "value-edge5",
-    "equity": 1025.009583825314,
-    "return_pct": 2.500958382531393,
-    "cash": 1004.0044911926403,
-    "open_positions": 4,
-    "closed_trades": 7,
-    "win_rate": 0.7142857142857143,
-    "realized_pnl": 25.00958382531375,
+    "equity": 1029.107266949948,
+    "return_pct": 2.910726694994814,
+    "cash": 1010.3086190766932,
+    "open_positions": 3,
+    "closed_trades": 8,
+    "win_rate": 0.75,
+    "realized_pnl": 29.107266949948063,
     "settings": {
       "profile": "value",
       "whale_usd_threshold": 500.0,
       "min_edge": 0.05,
+      "kelly_fraction": 0.25
+    }
+  },
+  {
+    "name": "value-edge10",
+    "equity": 1025.4866429337717,
+    "return_pct": 2.5486642933771675,
+    "cash": 1006.7212786376366,
+    "open_positions": 3,
+    "closed_trades": 6,
+    "win_rate": 0.8333333333333334,
+    "realized_pnl": 25.48664293377145,
+    "settings": {
+      "profile": "value",
+      "whale_usd_threshold": 500.0,
+      "min_edge": 0.1,
       "kelly_fraction": 0.25
     }
   },
@@ -360,22 +376,6 @@
       "fade_below_accuracy": 0.45,
       "min_track_record": 3,
       "explore_unknown_wallets": true
-    }
-  },
-  {
-    "name": "value-edge10",
-    "equity": 1021.4033763528818,
-    "return_pct": 2.140337635288181,
-    "cash": 1000.4393300516522,
-    "open_positions": 4,
-    "closed_trades": 5,
-    "win_rate": 0.8,
-    "realized_pnl": 21.4033763528816,
-    "settings": {
-      "profile": "value",
-      "whale_usd_threshold": 500.0,
-      "min_edge": 0.1,
-      "kelly_fraction": 0.25
     }
   },
   {
