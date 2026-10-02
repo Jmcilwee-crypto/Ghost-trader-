@@ -1,4 +1,3 @@
-{"ts": 1790528549.315729, "bot": "momentum-5/20", "symbol": "SOLUSDT", "action": "sell", "price": 121.79, "pnl": -0.13, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1790529681.3248584, "bot": "momentum-5/20", "symbol": "BTCUSDT", "action": "sell", "price": 84427.19, "pnl": -0.0, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1790535068.8148599, "bot": "breakout-20", "symbol": "XRPUSDT", "action": "buy", "price": 1.5394, "usd": 26.15, "reason": "Broke above its 20-bar high by 0.05%", "strength_pct": 51.4}
 {"ts": 1790539348.9129083, "bot": "momentum-5/20", "symbol": "SOLUSDT", "action": "buy", "price": 123.0, "usd": 1.38, "reason": "5-bar average is 0.14% above the 20-bar -- uptrend", "strength_pct": 2.8}
@@ -298,3 +297,4 @@
 {"ts": 1790975011.940393, "bot": "momentum-10/50", "symbol": "XRPUSDT", "action": "sell", "price": 1.4747, "pnl": -0.05, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1790975011.9407356, "bot": "vol-momentum", "symbol": "XRPUSDT", "action": "sell", "price": 1.4747, "pnl": -0.05, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1790975011.9412098, "bot": "momentum-tp", "symbol": "XRPUSDT", "action": "sell", "price": 1.4747, "pnl": -0.05, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1790976272.4849722, "bot": "meanrev-25", "symbol": "ETHUSDT", "action": "buy", "price": 2661.8, "usd": 23.51, "reason": "RSI 23 -- oversold below 25", "strength_pct": 47.2}
