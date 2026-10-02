@@ -211,3 +211,4 @@
 {"ts": 1790921042.0697641, "bot": "momentum-10/50", "symbol": "PAXGUSDT", "action": "buy", "price": 4194.04, "usd": 1.06, "reason": "10-bar average is 0.11% above the 50-bar -- uptrend", "strength_pct": 2.1}
 {"ts": 1790921042.0703003, "bot": "vol-momentum", "symbol": "PAXGUSDT", "action": "buy", "price": 4194.04, "usd": 1.06, "reason": "10-bar average is 0.11% above the 50-bar -- uptrend; volatility 0.24% vs 2.00% target -> sizing at 100% (moved +0.3%)", "strength_pct": 2.1}
 {"ts": 1790921042.070631, "bot": "momentum-tp", "symbol": "PAXGUSDT", "action": "buy", "price": 4194.04, "usd": 1.06, "reason": "10-bar average is 0.11% above the 50-bar -- uptrend", "strength_pct": 2.1}
+{"ts": 1790951274.718369, "bot": "breakout-20", "symbol": "PAXGUSDT", "action": "sell", "price": 4184.36, "pnl": -0.08, "reason": "Fell below the 10-bar low -- breakout failed", "strength_pct": 50.0}
