@@ -274,18 +274,66 @@
   },
   {
     "name": "value-edge10-bold",
-    "equity": 1046.8879614600835,
-    "return_pct": 4.688796146008345,
-    "cash": 1000.0960585618863,
-    "open_positions": 4,
-    "closed_trades": 7,
-    "win_rate": 0.7142857142857143,
-    "realized_pnl": 46.8879614600831,
+    "equity": 1062.1190402365603,
+    "return_pct": 6.211904023656034,
+    "cash": 1023.8946191501316,
+    "open_positions": 3,
+    "closed_trades": 8,
+    "win_rate": 0.75,
+    "realized_pnl": 62.11904023656014,
     "settings": {
       "profile": "value",
       "whale_usd_threshold": 500.0,
       "min_edge": 0.1,
       "kelly_fraction": 0.5
+    }
+  },
+  {
+    "name": "value-edge5",
+    "equity": 1034.4670357438056,
+    "return_pct": 3.4467035743805496,
+    "cash": 1015.6683878705506,
+    "open_positions": 3,
+    "closed_trades": 10,
+    "win_rate": 0.7,
+    "realized_pnl": 34.467035743805525,
+    "settings": {
+      "profile": "value",
+      "whale_usd_threshold": 500.0,
+      "min_edge": 0.05,
+      "kelly_fraction": 0.25
+    }
+  },
+  {
+    "name": "value-edge15",
+    "equity": 1031.119151404495,
+    "return_pct": 3.111915140449484,
+    "cash": 1012.3537871083599,
+    "open_positions": 3,
+    "closed_trades": 5,
+    "win_rate": 1.0,
+    "realized_pnl": 31.11915140449485,
+    "settings": {
+      "profile": "value",
+      "whale_usd_threshold": 500.0,
+      "min_edge": 0.15,
+      "kelly_fraction": 0.25
+    }
+  },
+  {
+    "name": "value-edge10",
+    "equity": 1030.8275548909908,
+    "return_pct": 3.082755489099087,
+    "cash": 1012.0621905948558,
+    "open_positions": 3,
+    "closed_trades": 8,
+    "win_rate": 0.75,
+    "realized_pnl": 30.82755489099058,
+    "settings": {
+      "profile": "value",
+      "whale_usd_threshold": 500.0,
+      "min_edge": 0.1,
+      "kelly_fraction": 0.25
     }
   },
   {
@@ -310,22 +358,6 @@
     }
   },
   {
-    "name": "value-edge5",
-    "equity": 1026.9961980934768,
-    "return_pct": 2.6996198093476753,
-    "cash": 1003.9952040419117,
-    "open_positions": 4,
-    "closed_trades": 9,
-    "win_rate": 0.6666666666666666,
-    "realized_pnl": 26.996198093476604,
-    "settings": {
-      "profile": "value",
-      "whale_usd_threshold": 500.0,
-      "min_edge": 0.05,
-      "kelly_fraction": 0.25
-    }
-  },
-  {
     "name": "ab-copy_only@$2500-scaled",
     "equity": 1024.505694447268,
     "return_pct": 2.4505694447268134,
@@ -344,38 +376,6 @@
       "fade_below_accuracy": -1.0,
       "min_track_record": 5,
       "explore_unknown_wallets": false
-    }
-  },
-  {
-    "name": "value-edge15",
-    "equity": 1023.6724919053365,
-    "return_pct": 2.36724919053366,
-    "cash": 1000.7183816409248,
-    "open_positions": 4,
-    "closed_trades": 4,
-    "win_rate": 1.0,
-    "realized_pnl": 23.672491905336386,
-    "settings": {
-      "profile": "value",
-      "whale_usd_threshold": 500.0,
-      "min_edge": 0.15,
-      "kelly_fraction": 0.25
-    }
-  },
-  {
-    "name": "value-edge10",
-    "equity": 1023.3830012783774,
-    "return_pct": 2.3383001278377336,
-    "cash": 1000.4300755751472,
-    "open_positions": 4,
-    "closed_trades": 7,
-    "win_rate": 0.7142857142857143,
-    "realized_pnl": 23.38300127837709,
-    "settings": {
-      "profile": "value",
-      "whale_usd_threshold": 500.0,
-      "min_edge": 0.1,
-      "kelly_fraction": 0.25
     }
   },
   {
