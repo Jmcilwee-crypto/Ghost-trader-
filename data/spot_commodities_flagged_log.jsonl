@@ -234,3 +234,4 @@
 {"ts": 1791087352.986458, "bot": "meanrev-30", "symbol": "PAXGUSDT", "action": "sell", "price": 4148.08, "pnl": -0.02, "reason": "RSI recovered to 62 -- back to normal", "strength_pct": 50.0}
 {"ts": 1791087352.9869568, "bot": "meanrev-35", "symbol": "PAXGUSDT", "action": "sell", "price": 4148.08, "pnl": -0.02, "reason": "RSI recovered to 62 -- back to normal", "strength_pct": 50.0}
 {"ts": 1791149791.9047873, "bot": "meanrev-35", "symbol": "PAXGUSDT", "action": "buy", "price": 4143.18, "usd": 23.78, "reason": "RSI 32 -- oversold below 35", "strength_pct": 47.7}
+{"ts": 1791150857.0407612, "bot": "meanrev-30", "symbol": "PAXGUSDT", "action": "buy", "price": 4142.0, "usd": 21.56, "reason": "RSI 29 -- oversold below 30", "strength_pct": 43.2}
