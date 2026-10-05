@@ -56,3 +56,5 @@
 {"ts": 1790713555.4901412, "bot": "risky-momentum-3/10", "symbol": "AAPL", "action": "sell", "price": 329.4, "pnl": -0.69, "reason": "3-bar average dropped below the 10-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1790713555.4905062, "bot": "risky-breakout-10", "symbol": "AAPL", "action": "sell", "price": 329.4, "pnl": -3.17, "reason": "Fell below the 5-bar low -- breakout failed", "strength_pct": 50.0}
 {"ts": 1790886401.7833889, "bot": "risky-momentum-5/15", "symbol": "AAPL", "action": "sell", "price": 330.32, "pnl": -0.44, "reason": "5-bar average dropped below the 15-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1791235913.9728255, "bot": "momentum-5/20", "symbol": "AAPL", "action": "sell", "price": 332.89, "pnl": 0.37, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1791235913.9734573, "bot": "risky-nostop-5/20", "symbol": "AAPL", "action": "sell", "price": 332.89, "pnl": -0.06, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}

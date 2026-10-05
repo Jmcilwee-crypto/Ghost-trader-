@@ -1,6 +1,3 @@
-{"ts": 1790686606.5615797, "bot": "momentum-tp", "symbol": "XRPUSDT", "action": "buy", "price": 1.5531, "usd": 1.89, "reason": "10-bar average is 0.19% above the 50-bar -- uptrend", "strength_pct": 3.8}
-{"ts": 1790687360.398269, "bot": "momentum-10/50", "symbol": "BTCUSDT", "action": "buy", "price": 84283.5, "usd": 2.36, "reason": "10-bar average is 0.23% above the 50-bar -- uptrend", "strength_pct": 4.7}
-{"ts": 1790687360.3988705, "bot": "vol-momentum", "symbol": "BTCUSDT", "action": "buy", "price": 84283.5, "usd": 2.36, "reason": "10-bar average is 0.23% above the 50-bar -- uptrend; volatility 0.34% vs 2.00% target -> sizing at 100% (moved +0.5%)", "strength_pct": 4.7}
 {"ts": 1790687360.399277, "bot": "momentum-tp", "symbol": "BTCUSDT", "action": "buy", "price": 84283.5, "usd": 2.36, "reason": "10-bar average is 0.23% above the 50-bar -- uptrend", "strength_pct": 4.7}
 {"ts": 1790694392.5473988, "bot": "momentum-10/50", "symbol": "SOLUSDT", "action": "buy", "price": 120.0, "usd": 1.69, "reason": "10-bar average is 0.17% above the 50-bar -- uptrend", "strength_pct": 3.4}
 {"ts": 1790694392.5479548, "bot": "vol-momentum", "symbol": "SOLUSDT", "action": "buy", "price": 120.0, "usd": 1.69, "reason": "10-bar average is 0.17% above the 50-bar -- uptrend; volatility 0.57% vs 2.00% target -> sizing at 100% (moved +1.4%)", "strength_pct": 3.4}
@@ -298,3 +295,6 @@
 {"ts": 1791216260.979195, "bot": "momentum-tp", "symbol": "BNBUSDT", "action": "sell", "price": 786.43, "pnl": -0.02, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1791216260.979645, "bot": "meanrev-35", "symbol": "XRPUSDT", "action": "buy", "price": 1.4926, "usd": 20.26, "reason": "RSI 35 -- oversold below 35", "strength_pct": 40.4}
 {"ts": 1791217661.874052, "bot": "meanrev-35", "symbol": "BTCUSDT", "action": "buy", "price": 85123.75, "usd": 21.09, "reason": "RSI 34 -- oversold below 35", "strength_pct": 42.1}
+{"ts": 1791235910.9281135, "bot": "momentum-10/50", "symbol": "XRPUSDT", "action": "sell", "price": 1.5049, "pnl": 0.01, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1791235910.9285507, "bot": "vol-momentum", "symbol": "XRPUSDT", "action": "sell", "price": 1.5049, "pnl": 0.01, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1791235910.928994, "bot": "momentum-tp", "symbol": "XRPUSDT", "action": "sell", "price": 1.5049, "pnl": 0.01, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
