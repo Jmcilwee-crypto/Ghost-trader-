@@ -1,6 +1,3 @@
-{"ts": 1790669111.2577772, "bot": "momentum-5/20", "symbol": "BTCUSDT", "action": "buy", "price": 84034.19, "usd": 2.95, "reason": "5-bar average is 0.29% above the 20-bar -- uptrend", "strength_pct": 5.9}
-{"ts": 1790669111.2586212, "bot": "momentum-5/20", "symbol": "SOLUSDT", "action": "buy", "price": 119.43, "usd": 1.91, "reason": "5-bar average is 0.19% above the 20-bar -- uptrend", "strength_pct": 3.8}
-{"ts": 1790669111.259306, "bot": "momentum-5/20", "symbol": "XRPUSDT", "action": "buy", "price": 1.5079, "usd": 3.29, "reason": "5-bar average is 0.33% above the 20-bar -- uptrend", "strength_pct": 6.6}
 {"ts": 1790670449.492403, "bot": "breakout-50", "symbol": "ETHUSDT", "action": "buy", "price": 2725.53, "usd": 29.82, "reason": "Broke above its 50-bar high by 0.29%", "strength_pct": 58.6}
 {"ts": 1790672682.5342712, "bot": "momentum-10/50", "symbol": "ETHUSDT", "action": "buy", "price": 2706.83, "usd": 1.06, "reason": "10-bar average is 0.11% above the 50-bar -- uptrend", "strength_pct": 2.1}
 {"ts": 1790672682.5346642, "bot": "vol-momentum", "symbol": "ETHUSDT", "action": "buy", "price": 2706.83, "usd": 1.06, "reason": "10-bar average is 0.11% above the 50-bar -- uptrend; volatility 0.49% vs 2.00% target -> sizing at 100% (moved +0.6%)", "strength_pct": 2.1}
@@ -298,3 +295,6 @@
 {"ts": 1791192629.0693364, "bot": "breakout-50", "symbol": "BNBUSDT", "action": "sell", "price": 786.91, "pnl": -0.26, "reason": "Fell below the 20-bar low -- breakout failed", "strength_pct": 50.0}
 {"ts": 1791207098.1529918, "bot": "momentum-5/20", "symbol": "BTCUSDT", "action": "sell", "price": 86030.21, "pnl": 0.02, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1791207098.1534474, "bot": "momentum-5/20", "symbol": "ETHUSDT", "action": "sell", "price": 2718.43, "pnl": 0.01, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1791212160.9232104, "bot": "momentum-5/20", "symbol": "XRPUSDT", "action": "sell", "price": 1.4969, "pnl": 0.01, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1791212160.9422631, "bot": "breakout-20", "symbol": "XRPUSDT", "action": "sell", "price": 1.4969, "pnl": -0.49, "reason": "Fell below the 10-bar low -- breakout failed", "strength_pct": 50.0}
+{"ts": 1791212160.94411, "bot": "breakout-50", "symbol": "XRPUSDT", "action": "sell", "price": 1.4969, "pnl": -0.34, "reason": "Fell below the 20-bar low -- breakout failed", "strength_pct": 50.0}
