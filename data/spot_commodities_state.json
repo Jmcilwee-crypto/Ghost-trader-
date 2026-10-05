@@ -8453,6 +8453,10 @@
           [
             1791212879.910805,
             999.8231723821492
+          ],
+          [
+            1791214161.7409286,
+            999.8231723821492
           ]
         ],
         "fee_rate": 0.001,
@@ -16807,6 +16811,10 @@
           [
             1791212879.910805,
             999.7784817011169
+          ],
+          [
+            1791214161.7409286,
+            999.7761469826825
           ]
         ],
         "fee_rate": 0.001,
@@ -25066,6 +25074,10 @@
           ],
           [
             1791212879.910805,
+            999.9702806195658
+          ],
+          [
+            1791214161.7409286,
             999.9702806195658
           ]
         ],
@@ -33371,6 +33383,10 @@
           ],
           [
             1791212879.910805,
+            998.1582642994142
+          ],
+          [
+            1791214161.7409286,
             998.1582642994142
           ]
         ],
@@ -41760,6 +41776,10 @@
           ],
           [
             1791212879.910805,
+            997.7763144865071
+          ],
+          [
+            1791214161.7409286,
             997.7763144865071
           ]
         ],
@@ -50217,6 +50237,10 @@
           [
             1791212879.910805,
             997.4277397352015
+          ],
+          [
+            1791214161.7409286,
+            997.4277397352015
           ]
         ],
         "fee_rate": 0.001,
@@ -50232,19 +50256,8 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 972.7299100570284,
-        "positions": {
-          "PAXGUSDT": {
-            "market_id": "PAXGUSDT",
-            "token_id": "PAXGUSDT",
-            "outcome": "long",
-            "title": "PAXGUSDT",
-            "shares": 0.006117897693730425,
-            "avg_price": 4169.65,
-            "opened_at": 1791187540.5225248,
-            "stance": "breakout"
-          }
-        },
+        "cash": 998.0266277506223,
+        "positions": {},
         "closed_trades": [
           {
             "market_id": "XAUTUSDT",
@@ -50412,6 +50425,20 @@
             "closed_at": 1791174498.1054964,
             "reason": "Fell below the 10-bar low -- breakout failed",
             "pnl": -0.10405677974453884,
+            "stance": "breakout"
+          },
+          {
+            "market_id": "PAXGUSDT",
+            "token_id": "PAXGUSDT",
+            "outcome": "long",
+            "title": "PAXGUSDT",
+            "shares": 0.006117897693730425,
+            "avg_price": 4169.65,
+            "exit_price": 4139.01,
+            "opened_at": 1791187540.5225248,
+            "closed_at": 1791214161.739957,
+            "reason": "Fell below the 10-bar low -- breakout failed",
+            "pnl": -0.2127744250692223,
             "stance": "breakout"
           }
         ],
@@ -58575,10 +58602,14 @@
           [
             1791212879.910805,
             998.1049307843833
+          ],
+          [
+            1791214161.7409286,
+            998.0266277506223
           ]
         ],
         "fee_rate": 0.001,
-        "fees_paid": 0.6501624046050066
+        "fees_paid": 0.6754844443383338
       }
     },
     "breakout-50": {
@@ -58590,19 +58621,8 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 972.4638475927677,
-        "positions": {
-          "PAXGUSDT": {
-            "market_id": "PAXGUSDT",
-            "token_id": "PAXGUSDT",
-            "outcome": "long",
-            "title": "PAXGUSDT",
-            "shares": 0.006116224317678492,
-            "avg_price": 4169.65,
-            "opened_at": 1791187540.522857,
-            "stance": "breakout"
-          }
-        },
+        "cash": 997.753646092269,
+        "positions": {},
         "closed_trades": [
           {
             "market_id": "PAXGUSDT",
@@ -58686,6 +58706,20 @@
             "closed_at": 1791174498.1060226,
             "reason": "Fell below the 20-bar low -- breakout failed",
             "pnl": -0.09989374432506451,
+            "stance": "breakout"
+          },
+          {
+            "market_id": "PAXGUSDT",
+            "token_id": "PAXGUSDT",
+            "outcome": "long",
+            "title": "PAXGUSDT",
+            "shares": 0.006116224317678492,
+            "avg_price": 4169.65,
+            "exit_price": 4139.01,
+            "opened_at": 1791187540.522857,
+            "closed_at": 1791214161.7403715,
+            "reason": "Fell below the 20-bar low -- breakout failed",
+            "pnl": -0.2127162267067817,
             "stance": "breakout"
           }
         ],
@@ -66849,10 +66883,14 @@
           [
             1791212879.910805,
             997.8319277084732
+          ],
+          [
+            1791214161.7409286,
+            997.753646092269
           ]
         ],
         "fee_rate": 0.001,
-        "fees_paid": 0.33507858999044354
+        "fees_paid": 0.360393703603558
       }
     },
     "vol-momentum": {
@@ -75203,6 +75241,10 @@
           [
             1791212879.910805,
             999.7784817011169
+          ],
+          [
+            1791214161.7409286,
+            999.7761469826825
           ]
         ],
         "fee_rate": 0.001,
@@ -83558,6 +83600,10 @@
           [
             1791212879.910805,
             999.7784817011169
+          ],
+          [
+            1791214161.7409286,
+            999.7761469826825
           ]
         ],
         "fee_rate": 0.001,
@@ -91754,6 +91800,10 @@
           [
             1791212879.910805,
             997.5145886266208
+          ],
+          [
+            1791214161.7409286,
+            997.4152776120376
           ]
         ],
         "fee_rate": 0.001,
@@ -91762,7 +91812,7 @@
     }
   },
   "prices": {
-    "PAXGUSDT": 4147.67
+    "PAXGUSDT": 4139.01
   },
   "research": {
     "enabled": true,
@@ -91774,6 +91824,6 @@
     "last_error": "coinbase: 404 Client Error: Not Found for url: https://api.exchange.coinbase.com/products/XAUT-USD/candles?granularity=3600"
   },
   "scorecard": {},
-  "last_seen_ts": 1791212879.9932017,
+  "last_seen_ts": 1791214161.8099215,
   "seen_hashes": []
 }
