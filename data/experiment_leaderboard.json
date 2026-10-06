@@ -219,6 +219,27 @@
     }
   },
   {
+    "name": "ab-balanced@$1000-scaled",
+    "equity": 1099.7924545434491,
+    "return_pct": 9.97924545434492,
+    "cash": 1024.7924545434491,
+    "open_positions": 5,
+    "closed_trades": 69,
+    "win_rate": 0.6086956521739131,
+    "realized_pnl": 99.7924545434491,
+    "settings": {
+      "profile": "balanced",
+      "whale_usd_threshold": 1000.0,
+      "ab_pair": "balanced@$1000",
+      "ab_arm": "scaled",
+      "flat_stake_usd": null,
+      "copy_above_accuracy": 0.6,
+      "fade_below_accuracy": 0.4,
+      "min_track_record": 5,
+      "explore_unknown_wallets": true
+    }
+  },
+  {
     "name": "copy_only@$5000",
     "equity": 1089.2489477313686,
     "return_pct": 8.92489477313687,
@@ -234,27 +255,6 @@
       "fade_below_accuracy": -1.0,
       "min_track_record": 5,
       "explore_unknown_wallets": false
-    }
-  },
-  {
-    "name": "ab-balanced@$1000-scaled",
-    "equity": 1082.877560926428,
-    "return_pct": 8.287756092642805,
-    "cash": 992.8775609264279,
-    "open_positions": 6,
-    "closed_trades": 68,
-    "win_rate": 0.6029411764705882,
-    "realized_pnl": 82.87756092642782,
-    "settings": {
-      "profile": "balanced",
-      "whale_usd_threshold": 1000.0,
-      "ab_pair": "balanced@$1000",
-      "ab_arm": "scaled",
-      "flat_stake_usd": null,
-      "copy_above_accuracy": 0.6,
-      "fade_below_accuracy": 0.4,
-      "min_track_record": 5,
-      "explore_unknown_wallets": true
     }
   },
   {
@@ -314,13 +314,13 @@
   },
   {
     "name": "ab-balanced@$1000-flat",
-    "equity": 1041.1575920958226,
-    "return_pct": 4.115759209582248,
-    "cash": 951.1575920958225,
-    "open_positions": 6,
-    "closed_trades": 68,
-    "win_rate": 0.6029411764705882,
-    "realized_pnl": 41.15759209582222,
+    "equity": 1058.0724857128437,
+    "return_pct": 5.8072485712843624,
+    "cash": 983.0724857128437,
+    "open_positions": 5,
+    "closed_trades": 69,
+    "win_rate": 0.6086956521739131,
+    "realized_pnl": 58.072485712843495,
     "settings": {
       "profile": "balanced",
       "whale_usd_threshold": 1000.0,
