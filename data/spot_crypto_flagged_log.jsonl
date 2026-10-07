@@ -1,5 +1,3 @@
-{"ts": 1790773127.7427511, "bot": "breakout-50", "symbol": "SOLUSDT", "action": "buy", "price": 122.46, "usd": 44.05, "reason": "Broke above its 50-bar high by 1.22%", "strength_pct": 86.7}
-{"ts": 1790774047.6782076, "bot": "momentum-10/50", "symbol": "BTCUSDT", "action": "buy", "price": 85437.88, "usd": 2.43, "reason": "10-bar average is 0.24% above the 50-bar -- uptrend", "strength_pct": 4.8}
 {"ts": 1790774047.6787856, "bot": "vol-momentum", "symbol": "BTCUSDT", "action": "buy", "price": 85437.88, "usd": 2.43, "reason": "10-bar average is 0.24% above the 50-bar -- uptrend; volatility 0.45% vs 2.00% target -> sizing at 100% (moved +2.9%)", "strength_pct": 4.8}
 {"ts": 1790774047.6793277, "bot": "momentum-tp", "symbol": "BTCUSDT", "action": "buy", "price": 85437.88, "usd": 2.43, "reason": "10-bar average is 0.24% above the 50-bar -- uptrend", "strength_pct": 4.8}
 {"ts": 1790784694.4136786, "bot": "momentum-10/50", "symbol": "ETHUSDT", "action": "buy", "price": 2686.35, "usd": 1.36, "reason": "10-bar average is 0.13% above the 50-bar -- uptrend", "strength_pct": 2.7}
@@ -298,3 +296,5 @@
 {"ts": 1791338679.7505434, "bot": "momentum-tp", "symbol": "SOLUSDT", "action": "sell", "price": 117.94, "pnl": -0.03, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1791338679.7509115, "bot": "meanrev-25", "symbol": "BNBUSDT", "action": "buy", "price": 769.71, "usd": 49.89, "reason": "RSI 8 -- oversold below 25", "strength_pct": 100.0}
 {"ts": 1791338679.7513404, "bot": "meanrev-25", "symbol": "XRPUSDT", "action": "buy", "price": 1.4396, "usd": 39.81, "reason": "RSI 15 -- oversold below 25", "strength_pct": 79.8}
+{"ts": 1791342260.6045103, "bot": "momentum-20/100", "symbol": "SOLUSDT", "action": "sell", "price": 118.38, "pnl": -0.03, "reason": "20-bar average dropped below the 100-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1791342260.6049566, "bot": "meanrev-30", "symbol": "SOLUSDT", "action": "buy", "price": 118.38, "usd": 21.86, "reason": "RSI 29 -- oversold below 30", "strength_pct": 43.8}
