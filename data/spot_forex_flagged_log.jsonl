@@ -66,3 +66,7 @@
 {"ts": 1790950026.6905832, "bot": "risky-momentum-3/10", "symbol": "JPYUSD", "action": "sell", "price": 0.00634, "pnl": -0.03, "reason": "3-bar average dropped below the 10-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1791295862.3324664, "bot": "risky-momentum-3/10", "symbol": "CHFUSD", "action": "buy", "price": 1.2041, "usd": 2.91, "reason": "3-bar average is 0.10% above the 10-bar -- uptrend", "strength_pct": 1.9}
 {"ts": 1791382275.620998, "bot": "risky-momentum-3/10", "symbol": "CHFUSD", "action": "sell", "price": 1.2007, "pnl": -0.01, "reason": "3-bar average dropped below the 10-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1791468400.9934723, "bot": "momentum-10/50", "symbol": "JPYUSD", "action": "sell", "price": 0.00632, "pnl": -0.52, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1791468400.9938583, "bot": "vol-momentum", "symbol": "JPYUSD", "action": "sell", "price": 0.00632, "pnl": -0.52, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1791468400.9942691, "bot": "momentum-tp", "symbol": "JPYUSD", "action": "sell", "price": 0.00632, "pnl": -0.52, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1791468400.9946368, "bot": "momentum-20/100", "symbol": "AUDUSD", "action": "sell", "price": 0.69435, "pnl": -0.39, "reason": "20-bar average dropped below the 100-bar -- trend over", "strength_pct": 50.0}
