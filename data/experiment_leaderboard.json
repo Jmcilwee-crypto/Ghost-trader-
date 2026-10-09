@@ -73,13 +73,13 @@
   },
   {
     "name": "aggressive@$500",
-    "equity": 1443.9516288411307,
-    "return_pct": 44.39516288411307,
-    "cash": 1204.7622653729402,
-    "open_positions": 12,
-    "closed_trades": 237,
-    "win_rate": 0.6033755274261603,
-    "realized_pnl": 443.95162884113057,
+    "equity": 1450.7046333160795,
+    "return_pct": 45.070463331607954,
+    "cash": 1219.7689319728236,
+    "open_positions": 11,
+    "closed_trades": 238,
+    "win_rate": 0.6050420168067226,
+    "realized_pnl": 450.7046333160794,
     "settings": {
       "profile": "aggressive",
       "whale_usd_threshold": 500.0,
@@ -234,6 +234,27 @@
     }
   },
   {
+    "name": "ab-aggressive@$500-flat",
+    "equity": 1082.0225626530869,
+    "return_pct": 8.202256265308684,
+    "cash": 897.0225626530868,
+    "open_positions": 11,
+    "closed_trades": 117,
+    "win_rate": 0.5042735042735043,
+    "realized_pnl": 82.02256265308691,
+    "settings": {
+      "profile": "aggressive",
+      "whale_usd_threshold": 500.0,
+      "ab_pair": "aggressive@$500",
+      "ab_arm": "flat",
+      "flat_stake_usd": 20.0,
+      "copy_above_accuracy": 0.55,
+      "fade_below_accuracy": 0.45,
+      "min_track_record": 3,
+      "explore_unknown_wallets": true
+    }
+  },
+  {
     "name": "value-edge10-bold",
     "equity": 1069.4105317062595,
     "return_pct": 6.941053170625944,
@@ -250,35 +271,14 @@
     }
   },
   {
-    "name": "ab-aggressive@$500-flat",
-    "equity": 1065.6589064415057,
-    "return_pct": 6.565890644150563,
-    "cash": 860.6589064415057,
-    "open_positions": 12,
-    "closed_trades": 116,
-    "win_rate": 0.5,
-    "realized_pnl": 65.65890644150582,
-    "settings": {
-      "profile": "aggressive",
-      "whale_usd_threshold": 500.0,
-      "ab_pair": "aggressive@$500",
-      "ab_arm": "flat",
-      "flat_stake_usd": 20.0,
-      "copy_above_accuracy": 0.55,
-      "fade_below_accuracy": 0.45,
-      "min_track_record": 3,
-      "explore_unknown_wallets": true
-    }
-  },
-  {
     "name": "ab-aggressive@$500-scaled",
-    "equity": 1062.8229171938451,
-    "return_pct": 6.282291719384503,
-    "cash": 859.0526205377796,
-    "open_positions": 12,
-    "closed_trades": 116,
-    "win_rate": 0.5,
-    "realized_pnl": 62.82291719384491,
+    "equity": 1067.7934769913697,
+    "return_pct": 6.779347699136973,
+    "cash": 870.0983016080271,
+    "open_positions": 11,
+    "closed_trades": 117,
+    "win_rate": 0.5042735042735043,
+    "realized_pnl": 67.79347699136973,
     "settings": {
       "profile": "aggressive",
       "whale_usd_threshold": 500.0,
