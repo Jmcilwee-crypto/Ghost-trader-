@@ -1,4 +1,3 @@
-{"ts": 1790915139.3545794, "bot": "breakout-50", "symbol": "ETHUSDT", "action": "buy", "price": 2733.12, "usd": 27.02, "reason": "Broke above its 50-bar high by 0.11%", "strength_pct": 53.4}
 {"ts": 1790915139.3550646, "bot": "breakout-50", "symbol": "BNBUSDT", "action": "buy", "price": 777.4, "usd": 26.93, "reason": "Broke above its 50-bar high by 0.11%", "strength_pct": 53.2}
 {"ts": 1790915139.3555903, "bot": "momentum-10/50", "symbol": "XRPUSDT", "action": "buy", "price": 1.5199, "usd": 1.48, "reason": "10-bar average is 0.15% above the 50-bar -- uptrend", "strength_pct": 3.0}
 {"ts": 1790915139.356249, "bot": "vol-momentum", "symbol": "XRPUSDT", "action": "buy", "price": 1.5199, "usd": 1.48, "reason": "10-bar average is 0.15% above the 50-bar -- uptrend; volatility 0.41% vs 2.00% target -> sizing at 100% (moved +2.2%)", "strength_pct": 3.0}
@@ -298,3 +297,4 @@
 {"ts": 1791643089.0811179, "bot": "breakout-20", "symbol": "SOLUSDT", "action": "buy", "price": 110.25, "usd": 27.88, "reason": "Broke above its 20-bar high by 0.17%", "strength_pct": 55.2}
 {"ts": 1791643089.0815442, "bot": "vol-momentum", "symbol": "SOLUSDT", "action": "buy", "price": 110.25, "usd": 1.17, "reason": "10-bar average is 0.12% above the 50-bar -- uptrend; volatility 0.32% vs 2.00% target -> sizing at 100% (moved +0.8%)", "strength_pct": 2.3}
 {"ts": 1791643089.0819356, "bot": "momentum-tp", "symbol": "SOLUSDT", "action": "buy", "price": 110.25, "usd": 1.16, "reason": "10-bar average is 0.12% above the 50-bar -- uptrend", "strength_pct": 2.3}
+{"ts": 1791655351.865828, "bot": "momentum-5/20", "symbol": "XRPUSDT", "action": "sell", "price": 1.4025, "pnl": 0.0, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
