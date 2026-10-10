@@ -19,13 +19,13 @@
   },
   {
     "name": "aggressive@$1000",
-    "equity": 1642.1873672106703,
-    "return_pct": 64.21873672106703,
+    "equity": 1625.3302859235473,
+    "return_pct": 62.533028592354725,
     "cash": 1520.3302859235473,
-    "open_positions": 8,
-    "closed_trades": 168,
-    "win_rate": 0.6071428571428571,
-    "realized_pnl": 642.1873672106709,
+    "open_positions": 7,
+    "closed_trades": 169,
+    "win_rate": 0.6035502958579881,
+    "realized_pnl": 625.3302859235479,
     "settings": {
       "profile": "aggressive",
       "whale_usd_threshold": 1000.0,
@@ -91,13 +91,13 @@
   },
   {
     "name": "aggressive@$500",
-    "equity": 1387.235790187563,
-    "return_pct": 38.7235790187563,
+    "equity": 1373.0455124210748,
+    "return_pct": 37.30455124210748,
     "cash": 1176.543187920619,
-    "open_positions": 10,
-    "closed_trades": 253,
-    "win_rate": 0.6007905138339921,
-    "realized_pnl": 387.23579018756277,
+    "open_positions": 9,
+    "closed_trades": 254,
+    "win_rate": 0.5984251968503937,
+    "realized_pnl": 373.0455124210747,
     "settings": {
       "profile": "aggressive",
       "whale_usd_threshold": 500.0,
@@ -340,48 +340,6 @@
     }
   },
   {
-    "name": "ab-aggressive@$500-flat",
-    "equity": 1021.1676257007243,
-    "return_pct": 2.116762570072428,
-    "cash": 856.1676257007243,
-    "open_positions": 10,
-    "closed_trades": 132,
-    "win_rate": 0.5075757575757576,
-    "realized_pnl": 21.16762570072457,
-    "settings": {
-      "profile": "aggressive",
-      "whale_usd_threshold": 500.0,
-      "ab_pair": "aggressive@$500",
-      "ab_arm": "flat",
-      "flat_stake_usd": 20.0,
-      "copy_above_accuracy": 0.55,
-      "fade_below_accuracy": 0.45,
-      "min_track_record": 3,
-      "explore_unknown_wallets": true
-    }
-  },
-  {
-    "name": "ab-aggressive@$500-scaled",
-    "equity": 1021.0771329965877,
-    "return_pct": 2.1077132996587755,
-    "cash": 838.2819232240023,
-    "open_positions": 10,
-    "closed_trades": 132,
-    "win_rate": 0.5075757575757576,
-    "realized_pnl": 21.077132996587352,
-    "settings": {
-      "profile": "aggressive",
-      "whale_usd_threshold": 500.0,
-      "ab_pair": "aggressive@$500",
-      "ab_arm": "scaled",
-      "flat_stake_usd": null,
-      "copy_above_accuracy": 0.55,
-      "fade_below_accuracy": 0.45,
-      "min_track_record": 3,
-      "explore_unknown_wallets": true
-    }
-  },
-  {
     "name": "strict@$500",
     "equity": 1020.7822176435108,
     "return_pct": 2.0782217643510847,
@@ -417,6 +375,27 @@
       "copy_above_accuracy": 0.6,
       "fade_below_accuracy": 0.4,
       "min_track_record": 5,
+      "explore_unknown_wallets": true
+    }
+  },
+  {
+    "name": "ab-aggressive@$500-scaled",
+    "equity": 1010.6323562392985,
+    "return_pct": 1.063235623929848,
+    "cash": 838.2819232240023,
+    "open_positions": 9,
+    "closed_trades": 133,
+    "win_rate": 0.5037593984962406,
+    "realized_pnl": 10.632356239298078,
+    "settings": {
+      "profile": "aggressive",
+      "whale_usd_threshold": 500.0,
+      "ab_pair": "aggressive@$500",
+      "ab_arm": "scaled",
+      "flat_stake_usd": null,
+      "copy_above_accuracy": 0.55,
+      "fade_below_accuracy": 0.45,
+      "min_track_record": 3,
       "explore_unknown_wallets": true
     }
   },
@@ -457,6 +436,27 @@
       "fade_below_accuracy": -1.0,
       "min_track_record": 5,
       "explore_unknown_wallets": false
+    }
+  },
+  {
+    "name": "ab-aggressive@$500-flat",
+    "equity": 1001.1676257007243,
+    "return_pct": 0.11676257007242619,
+    "cash": 856.1676257007243,
+    "open_positions": 9,
+    "closed_trades": 133,
+    "win_rate": 0.5037593984962406,
+    "realized_pnl": 1.167625700724571,
+    "settings": {
+      "profile": "aggressive",
+      "whale_usd_threshold": 500.0,
+      "ab_pair": "aggressive@$500",
+      "ab_arm": "flat",
+      "flat_stake_usd": 20.0,
+      "copy_above_accuracy": 0.55,
+      "fade_below_accuracy": 0.45,
+      "min_track_record": 3,
+      "explore_unknown_wallets": true
     }
   },
   {
