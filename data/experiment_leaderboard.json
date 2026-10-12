@@ -73,13 +73,13 @@
   },
   {
     "name": "balanced@$500",
-    "equity": 1372.4459817751545,
-    "return_pct": 37.24459817751544,
-    "cash": 1101.5774298563783,
-    "open_positions": 11,
-    "closed_trades": 240,
-    "win_rate": 0.6375,
-    "realized_pnl": 372.4459817751542,
+    "equity": 1399.7642681151483,
+    "return_pct": 39.976426811514834,
+    "cash": 1143.605562687138,
+    "open_positions": 10,
+    "closed_trades": 241,
+    "win_rate": 0.6390041493775933,
+    "realized_pnl": 399.764268115148,
     "settings": {
       "profile": "balanced",
       "whale_usd_threshold": 500.0,
@@ -144,6 +144,24 @@
     }
   },
   {
+    "name": "aggressive@$500",
+    "equity": 1136.5906185190497,
+    "return_pct": 13.659061851904974,
+    "cash": 875.1123608714604,
+    "open_positions": 11,
+    "closed_trades": 288,
+    "win_rate": 0.6006944444444444,
+    "realized_pnl": 136.59061851904985,
+    "settings": {
+      "profile": "aggressive",
+      "whale_usd_threshold": 500.0,
+      "copy_above_accuracy": 0.55,
+      "fade_below_accuracy": 0.45,
+      "min_track_record": 3,
+      "explore_unknown_wallets": true
+    }
+  },
+  {
     "name": "balanced@$2500",
     "equity": 1119.7826815218184,
     "return_pct": 11.978268152181837,
@@ -158,24 +176,6 @@
       "copy_above_accuracy": 0.6,
       "fade_below_accuracy": 0.4,
       "min_track_record": 5,
-      "explore_unknown_wallets": true
-    }
-  },
-  {
-    "name": "aggressive@$500",
-    "equity": 1114.4085206649133,
-    "return_pct": 11.440852066491324,
-    "cash": 840.9860564804811,
-    "open_positions": 12,
-    "closed_trades": 287,
-    "win_rate": 0.5993031358885017,
-    "realized_pnl": 114.40852066491331,
-    "settings": {
-      "profile": "aggressive",
-      "whale_usd_threshold": 500.0,
-      "copy_above_accuracy": 0.55,
-      "fade_below_accuracy": 0.45,
-      "min_track_record": 3,
       "explore_unknown_wallets": true
     }
   },
@@ -418,6 +418,27 @@
     }
   },
   {
+    "name": "ab-aggressive@$500-flat",
+    "equity": 983.0546851125962,
+    "return_pct": -1.6945314887403806,
+    "cash": 798.0546851125962,
+    "open_positions": 11,
+    "closed_trades": 167,
+    "win_rate": 0.5269461077844312,
+    "realized_pnl": -16.945314887403548,
+    "settings": {
+      "profile": "aggressive",
+      "whale_usd_threshold": 500.0,
+      "ab_pair": "aggressive@$500",
+      "ab_arm": "flat",
+      "flat_stake_usd": 20.0,
+      "copy_above_accuracy": 0.55,
+      "fade_below_accuracy": 0.45,
+      "min_track_record": 3,
+      "explore_unknown_wallets": true
+    }
+  },
+  {
     "name": "aggressive@$10000",
     "equity": 968.2363460988959,
     "return_pct": -3.176365390110414,
@@ -472,27 +493,6 @@
     }
   },
   {
-    "name": "ab-aggressive@$500-flat",
-    "equity": 945.9118279697391,
-    "return_pct": -5.408817203026095,
-    "cash": 740.9118279697391,
-    "open_positions": 12,
-    "closed_trades": 166,
-    "win_rate": 0.5240963855421686,
-    "realized_pnl": -54.088172030260694,
-    "settings": {
-      "profile": "aggressive",
-      "whale_usd_threshold": 500.0,
-      "ab_pair": "aggressive@$500",
-      "ab_arm": "flat",
-      "flat_stake_usd": 20.0,
-      "copy_above_accuracy": 0.55,
-      "fade_below_accuracy": 0.45,
-      "min_track_record": 3,
-      "explore_unknown_wallets": true
-    }
-  },
-  {
     "name": "strict@$5000",
     "equity": 902.2722125549562,
     "return_pct": -9.772778744504373,
@@ -530,13 +530,13 @@
   },
   {
     "name": "ab-aggressive@$500-scaled",
-    "equity": 820.2621827639316,
-    "return_pct": -17.97378172360684,
-    "cash": 591.2945573046659,
-    "open_positions": 12,
-    "closed_trades": 166,
-    "win_rate": 0.5240963855421686,
-    "realized_pnl": -179.7378172360684,
+    "equity": 836.5893515415546,
+    "return_pct": -16.341064845844542,
+    "cash": 616.4132785010089,
+    "open_positions": 11,
+    "closed_trades": 167,
+    "win_rate": 0.5269461077844312,
+    "realized_pnl": -163.41064845844542,
     "settings": {
       "profile": "aggressive",
       "whale_usd_threshold": 500.0,
