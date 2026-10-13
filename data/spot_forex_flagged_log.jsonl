@@ -70,3 +70,4 @@
 {"ts": 1791468400.9938583, "bot": "vol-momentum", "symbol": "JPYUSD", "action": "sell", "price": 0.00632, "pnl": -0.52, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1791468400.9942691, "bot": "momentum-tp", "symbol": "JPYUSD", "action": "sell", "price": 0.00632, "pnl": -0.52, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1791468400.9946368, "bot": "momentum-20/100", "symbol": "AUDUSD", "action": "sell", "price": 0.69435, "pnl": -0.39, "reason": "20-bar average dropped below the 100-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1791900135.4937055, "bot": "risky-momentum-3/10", "symbol": "AUDUSD", "action": "buy", "price": 0.69781, "usd": 6.47, "reason": "3-bar average is 0.22% above the 10-bar -- uptrend", "strength_pct": 4.3}
