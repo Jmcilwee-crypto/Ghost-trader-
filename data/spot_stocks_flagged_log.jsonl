@@ -63,3 +63,6 @@
 {"ts": 1791577478.2748506, "bot": "momentum-5/20", "symbol": "AAPL", "action": "buy", "price": 336.64, "usd": 1.97, "reason": "5-bar average is 0.20% above the 20-bar -- uptrend", "strength_pct": 3.9}
 {"ts": 1791577478.2755566, "bot": "risky-momentum-5/15", "symbol": "AAPL", "action": "buy", "price": 336.64, "usd": 2.33, "reason": "5-bar average is 0.06% above the 15-bar -- uptrend", "strength_pct": 1.2}
 {"ts": 1791836919.1650555, "bot": "risky-breakout-10", "symbol": "AAPL", "action": "buy", "price": 340.97, "usd": 82.07, "reason": "Broke above its 10-bar high by 0.16%", "strength_pct": 54.8}
+{"ts": 1791890979.1306689, "bot": "momentum-5/20", "symbol": "SPY", "action": "buy", "price": 778.1, "usd": 11.11, "reason": "5-bar average is 1.11% above the 20-bar -- uptrend", "strength_pct": 22.2}
+{"ts": 1791890979.1311796, "bot": "risky-momentum-5/15", "symbol": "SPY", "action": "buy", "price": 778.1, "usd": 32.21, "reason": "5-bar average is 0.81% above the 15-bar -- uptrend", "strength_pct": 16.1}
+{"ts": 1791890979.1315267, "bot": "risky-nostop-5/20", "symbol": "SPY", "action": "buy", "price": 778.1, "usd": 55.55, "reason": "5-bar average is 1.11% above the 20-bar -- uptrend", "strength_pct": 22.2}
