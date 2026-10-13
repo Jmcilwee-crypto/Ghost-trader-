@@ -76,3 +76,9 @@
 {"ts": 1791893298.9004776, "bot": "risky-momentum-3/10", "symbol": "NVDA", "action": "sell", "price": 226.32, "pnl": -0.24, "reason": "3-bar average dropped below the 10-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1791893298.900784, "bot": "risky-momentum-5/15", "symbol": "NVDA", "action": "buy", "price": 226.32, "usd": 38.64, "reason": "5-bar average is 0.97% above the 15-bar -- uptrend", "strength_pct": 19.3}
 {"ts": 1791893298.9011016, "bot": "risky-nostop-5/20", "symbol": "NVDA", "action": "buy", "price": 226.32, "usd": 111.09, "reason": "5-bar average is 2.22% above the 20-bar -- uptrend", "strength_pct": 44.4}
+{"ts": 1791901888.9486616, "bot": "momentum-5/20", "symbol": "MSFT", "action": "buy", "price": 541.15, "usd": 38.45, "reason": "5-bar average is 3.85% above the 20-bar -- uptrend", "strength_pct": 76.9}
+{"ts": 1791901888.9491806, "bot": "breakout-20", "symbol": "MSFT", "action": "buy", "price": 541.15, "usd": 42.04, "reason": "Broke above its 20-bar high by 1.14%", "strength_pct": 84.1}
+{"ts": 1791901888.949504, "bot": "breakout-50", "symbol": "MSFT", "action": "buy", "price": 541.15, "usd": 42.04, "reason": "Broke above its 50-bar high by 1.14%", "strength_pct": 84.1}
+{"ts": 1791901888.9499137, "bot": "risky-momentum-5/15", "symbol": "MSFT", "action": "buy", "price": 541.15, "usd": 99.96, "reason": "5-bar average is 2.79% above the 15-bar -- uptrend", "strength_pct": 55.8}
+{"ts": 1791901888.950224, "bot": "risky-breakout-10", "symbol": "MSFT", "action": "buy", "price": 541.15, "usd": 99.81, "reason": "Broke above its 10-bar high by 1.14%", "strength_pct": 84.1}
+{"ts": 1791901888.9505355, "bot": "risky-nostop-5/20", "symbol": "MSFT", "action": "buy", "price": 541.15, "usd": 192.29, "reason": "5-bar average is 3.85% above the 20-bar -- uptrend", "strength_pct": 76.9}
