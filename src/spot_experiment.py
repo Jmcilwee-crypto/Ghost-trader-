@@ -156,11 +156,22 @@ def leaderboard(variants: list[SpotVariant], prices: dict[str, float]) -> list[d
     return rows
 
 
-def save_state(path: str, variants: list[SpotVariant], prices: dict[str, float], data_stats: dict) -> None:
+# Enough bars for the longest lookback any strategy uses (momentum-20/100),
+# with room to spare. Capped so the state file cannot grow without bound.
+MAX_PERSISTED_BARS = 260
+
+
+def save_state(path: str, variants: list[SpotVariant], prices: dict[str, float], data_stats: dict,
+               bars: dict[str, list[float]] | None = None) -> None:
     Path(path).parent.mkdir(parents=True, exist_ok=True)
     Path(path).write_text(json.dumps({
         "variants": {v.name: {"settings": v.settings, "portfolio": v.portfolio.to_dict()} for v in variants},
         "prices": prices,
+        # Persisted because a scheduled --once run is a fresh process: the
+        # provider's rate limiter lets exactly one symbol through per run, so
+        # without a stored history every other symbol would look like it had
+        # no data at all and could never be traded.
+        "bars": {k: v[-MAX_PERSISTED_BARS:] for k, v in (bars or {}).items()},
         "research": data_stats,
         "scorecard": {},
         "last_seen_ts": time.time(),
@@ -168,14 +179,17 @@ def save_state(path: str, variants: list[SpotVariant], prices: dict[str, float],
     }, indent=2))
 
 
-def load_state(path: str, variants: list[SpotVariant]) -> None:
+def load_state(path: str, variants: list[SpotVariant]) -> dict[str, list[float]]:
+    """Restores portfolios and returns the last known bar history per symbol."""
     p = Path(path)
     if not p.exists():
-        return
-    saved = json.loads(p.read_text()).get("variants", {})
+        return {}
+    raw = json.loads(p.read_text())
+    saved = raw.get("variants", {})
     for v in variants:
         if v.name in saved:
             v.portfolio = SpotPortfolio.from_dict(saved[v.name]["portfolio"])
+    return {k: list(v) for k, v in (raw.get("bars") or {}).items() if v}
 
 
 def archive_existing_state(state_path: str, archive_dir: str, asset_class: str = "spot") -> str | None:
@@ -267,7 +281,7 @@ def run_spot_experiment(config_path: str = "config.yaml", asset_class: str = "cr
         include_risky=spot_cfg.get("include_risky", False),
         catalysts=spot_cfg.get("catalysts"),
     )
-    load_state(state_path, variants)
+    known_bars = load_state(state_path, variants)
 
     print(f"Running {len(variants)} {spot_cfg['label']} bots on {', '.join(symbols)} "
           f"({spot_cfg.get('interval')} bars via {data.name}, "
@@ -276,11 +290,23 @@ def run_spot_experiment(config_path: str = "config.yaml", asset_class: str = "cr
     while not _STOP:
         prices: dict[str, float] = {}
         history: dict[str, list[float]] = {}
-        for symbol in symbols:
+        # Rotate which symbol is asked for first. Providers on a free tier
+        # space requests a minute or more apart, and a scheduled --once run is
+        # a fresh process, so without rotation the same symbol wins the single
+        # available slot every run and the rest are never priced at all.
+        offset = int(time.time() // max(poll_interval, 1)) % max(len(symbols), 1)
+        for symbol in symbols[offset:] + symbols[:offset]:
             closes = data.closes(symbol)
             if closes:
                 history[symbol] = closes
-                prices[symbol] = closes[-1]
+                known_bars[symbol] = closes
+            elif known_bars.get(symbol):
+                # Not this symbol's turn (or the provider is throttling):
+                # trade on the last history we actually saw rather than
+                # pretending the instrument does not exist.
+                history[symbol] = known_bars[symbol]
+            if history.get(symbol):
+                prices[symbol] = history[symbol][-1]
 
         if not prices:
             print("no price data available this cycle", file=sys.stderr)
@@ -350,7 +376,7 @@ def run_spot_experiment(config_path: str = "config.yaml", asset_class: str = "cr
             v.portfolio.record_equity(now, prices)
 
         rows = leaderboard(variants, prices)
-        save_state(state_path, variants, prices, data.stats())
+        save_state(state_path, variants, prices, data.stats(), known_bars)
         append_history(spot_cfg["history_path"], rows)
 
         best = rows[0]
@@ -375,7 +401,10 @@ def run_spot_experiment(config_path: str = "config.yaml", asset_class: str = "cr
                 break
             time.sleep(1)
 
-    save_state(state_path, variants, prices if "prices" in dir() else {}, data.stats())
+    # Must pass known_bars too: this final save runs after the loop's own
+    # save, so omitting them here silently overwrote the history with {}
+    # and every symbol but the one fetched this run went blind again.
+    save_state(state_path, variants, prices if "prices" in dir() else {}, data.stats(), known_bars)
     print("State saved. Bye.")
     return 0
 
