@@ -82,3 +82,4 @@
 {"ts": 1791901888.9499137, "bot": "risky-momentum-5/15", "symbol": "MSFT", "action": "buy", "price": 541.15, "usd": 99.96, "reason": "5-bar average is 2.79% above the 15-bar -- uptrend", "strength_pct": 55.8}
 {"ts": 1791901888.950224, "bot": "risky-breakout-10", "symbol": "MSFT", "action": "buy", "price": 541.15, "usd": 99.81, "reason": "Broke above its 10-bar high by 1.14%", "strength_pct": 84.1}
 {"ts": 1791901888.9505355, "bot": "risky-nostop-5/20", "symbol": "MSFT", "action": "buy", "price": 541.15, "usd": 192.29, "reason": "5-bar average is 3.85% above the 20-bar -- uptrend", "strength_pct": 76.9}
+{"ts": 1791936065.5855072, "bot": "breakout-20", "symbol": "AAPL", "action": "buy", "price": 341.27, "usd": 25.87, "reason": "Broke above its 20-bar high by 0.06%", "strength_pct": 51.8}
