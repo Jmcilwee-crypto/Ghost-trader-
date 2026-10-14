@@ -1,5 +1,3 @@
-{"ts": 1791295859.6627457, "bot": "momentum-tp", "symbol": "BTCUSDT", "action": "buy", "price": 86163.05, "usd": 1.11, "reason": "10-bar average is 0.11% above the 50-bar -- uptrend", "strength_pct": 2.2}
-{"ts": 1791295859.6632066, "bot": "momentum-5/20", "symbol": "SOLUSDT", "action": "buy", "price": 120.77, "usd": 1.1, "reason": "5-bar average is 0.11% above the 20-bar -- uptrend", "strength_pct": 2.2}
 {"ts": 1791297757.5872338, "bot": "breakout-20", "symbol": "SOLUSDT", "action": "buy", "price": 121.21, "usd": 27.46, "reason": "Broke above its 20-bar high by 0.14%", "strength_pct": 54.2}
 {"ts": 1791298632.0719936, "bot": "momentum-20/100", "symbol": "SOLUSDT", "action": "buy", "price": 121.53, "usd": 1.04, "reason": "20-bar average is 0.10% above the 100-bar -- uptrend", "strength_pct": 2.1}
 {"ts": 1791299410.4588392, "bot": "meanrev-35", "symbol": "ETHUSDT", "action": "sell", "price": 2719.78, "pnl": 0.18, "reason": "RSI recovered to 60 -- back to normal", "strength_pct": 50.0}
@@ -298,3 +296,5 @@
 {"ts": 1791976086.56451, "bot": "momentum-10/50", "symbol": "XRPUSDT", "action": "buy", "price": 1.3707, "usd": 1.92, "reason": "10-bar average is 0.19% above the 50-bar -- uptrend", "strength_pct": 3.8}
 {"ts": 1791976086.5651, "bot": "vol-momentum", "symbol": "XRPUSDT", "action": "buy", "price": 1.3707, "usd": 1.92, "reason": "10-bar average is 0.19% above the 50-bar -- uptrend; volatility 0.35% vs 2.00% target -> sizing at 100% (moved +0.1%)", "strength_pct": 3.8}
 {"ts": 1791976086.5655594, "bot": "momentum-tp", "symbol": "XRPUSDT", "action": "buy", "price": 1.3707, "usd": 1.92, "reason": "10-bar average is 0.19% above the 50-bar -- uptrend", "strength_pct": 3.8}
+{"ts": 1791979660.1462815, "bot": "momentum-5/20", "symbol": "XRPUSDT", "action": "buy", "price": 1.3758, "usd": 1.26, "reason": "5-bar average is 0.13% above the 20-bar -- uptrend", "strength_pct": 2.5}
+{"ts": 1791979660.1467667, "bot": "breakout-20", "symbol": "XRPUSDT", "action": "buy", "price": 1.3758, "usd": 27.28, "reason": "Broke above its 20-bar high by 0.14%", "strength_pct": 54.1}
