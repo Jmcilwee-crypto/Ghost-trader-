@@ -71,3 +71,8 @@
 {"ts": 1791468400.9942691, "bot": "momentum-tp", "symbol": "JPYUSD", "action": "sell", "price": 0.00632, "pnl": -0.52, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1791468400.9946368, "bot": "momentum-20/100", "symbol": "AUDUSD", "action": "sell", "price": 0.69435, "pnl": -0.39, "reason": "20-bar average dropped below the 100-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1791900135.4937055, "bot": "risky-momentum-3/10", "symbol": "AUDUSD", "action": "buy", "price": 0.69781, "usd": 6.47, "reason": "3-bar average is 0.22% above the 10-bar -- uptrend", "strength_pct": 4.3}
+{"ts": 1791987779.5741003, "bot": "risky-breakout-10", "symbol": "AUDUSD", "action": "buy", "price": 0.70096, "usd": 92.79, "reason": "Broke above its 10-bar high by 0.40%", "strength_pct": 61.9}
+{"ts": 1791987779.5746934, "bot": "meanrev-25", "symbol": "GBPUSD", "action": "sell", "price": 1.3267, "pnl": -0.22, "reason": "RSI recovered to 56 -- back to normal", "strength_pct": 50.0}
+{"ts": 1791987779.5750403, "bot": "meanrev-30", "symbol": "GBPUSD", "action": "sell", "price": 1.3267, "pnl": -0.46, "reason": "RSI recovered to 56 -- back to normal", "strength_pct": 50.0}
+{"ts": 1791987779.5753691, "bot": "risky-momentum-3/10", "symbol": "GBPUSD", "action": "buy", "price": 1.3267, "usd": 4.07, "reason": "3-bar average is 0.14% above the 10-bar -- uptrend", "strength_pct": 2.7}
+{"ts": 1791987779.575669, "bot": "risky-meanrev-20", "symbol": "GBPUSD", "action": "sell", "price": 1.3267, "pnl": 0.34, "reason": "RSI recovered to 56 -- back to normal", "strength_pct": 50.0}
