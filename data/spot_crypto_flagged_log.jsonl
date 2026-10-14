@@ -1,5 +1,3 @@
-{"ts": 1791320558.2896771, "bot": "vol-momentum", "symbol": "BTCUSDT", "action": "sell", "price": 85567.91, "pnl": -0.01, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
-{"ts": 1791320558.2901967, "bot": "momentum-tp", "symbol": "BTCUSDT", "action": "sell", "price": 85567.91, "pnl": -0.01, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1791321880.4122174, "bot": "momentum-10/50", "symbol": "XRPUSDT", "action": "sell", "price": 1.5009, "pnl": -0.01, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1791321880.4127104, "bot": "vol-momentum", "symbol": "XRPUSDT", "action": "sell", "price": 1.5009, "pnl": -0.01, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1791333400.1804352, "bot": "meanrev-35", "symbol": "BTCUSDT", "action": "buy", "price": 85409.56, "usd": 21.32, "reason": "RSI 34 -- oversold below 35", "strength_pct": 42.5}
@@ -298,3 +296,5 @@
 {"ts": 1791987776.8289561, "bot": "meanrev-35", "symbol": "BTCUSDT", "action": "buy", "price": 81910.23, "usd": 32.32, "reason": "RSI 26 -- oversold below 35", "strength_pct": 64.8}
 {"ts": 1791987776.829362, "bot": "vol-momentum", "symbol": "BTCUSDT", "action": "sell", "price": 81910.23, "pnl": -0.03, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1791987776.8297014, "bot": "momentum-tp", "symbol": "BTCUSDT", "action": "sell", "price": 81910.23, "pnl": -0.03, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1791989845.0804265, "bot": "meanrev-25", "symbol": "XRPUSDT", "action": "buy", "price": 1.3278, "usd": 20.04, "reason": "RSI 25 -- oversold below 25", "strength_pct": 40.5}
+{"ts": 1791989845.0809803, "bot": "meanrev-25", "symbol": "BTCUSDT", "action": "buy", "price": 81701.45, "usd": 20.59, "reason": "RSI 25 -- oversold below 25", "strength_pct": 41.6}
