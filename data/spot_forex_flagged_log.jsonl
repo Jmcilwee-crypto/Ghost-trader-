@@ -76,3 +76,4 @@
 {"ts": 1791987779.5750403, "bot": "meanrev-30", "symbol": "GBPUSD", "action": "sell", "price": 1.3267, "pnl": -0.46, "reason": "RSI recovered to 56 -- back to normal", "strength_pct": 50.0}
 {"ts": 1791987779.5753691, "bot": "risky-momentum-3/10", "symbol": "GBPUSD", "action": "buy", "price": 1.3267, "usd": 4.07, "reason": "3-bar average is 0.14% above the 10-bar -- uptrend", "strength_pct": 2.7}
 {"ts": 1791987779.575669, "bot": "risky-meanrev-20", "symbol": "GBPUSD", "action": "sell", "price": 1.3267, "pnl": 0.34, "reason": "RSI recovered to 56 -- back to normal", "strength_pct": 50.0}
+{"ts": 1792073351.1543343, "bot": "risky-breakout-10", "symbol": "AUDUSD", "action": "sell", "price": 0.69108, "pnl": -1.33, "reason": "Fell below the 5-bar low -- breakout failed", "strength_pct": 50.0}
