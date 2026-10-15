@@ -87,3 +87,4 @@
 {"ts": 1792014899.8460999, "bot": "momentum-5/20", "symbol": "NVDA", "action": "sell", "price": 221.3, "pnl": -0.49, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1792014899.8467546, "bot": "risky-momentum-5/15", "symbol": "NVDA", "action": "sell", "price": 221.3, "pnl": -0.86, "reason": "5-bar average dropped below the 15-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1792014899.8470836, "bot": "risky-nostop-5/20", "symbol": "NVDA", "action": "sell", "price": 221.3, "pnl": -2.46, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1792031832.3521285, "bot": "risky-breakout-10", "symbol": "SPY", "action": "sell", "price": 769.6, "pnl": -0.48, "reason": "Fell below the 5-bar low -- breakout failed", "strength_pct": 50.0}
