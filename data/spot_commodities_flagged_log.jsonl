@@ -1,5 +1,3 @@
-{"ts": 1789585319.7713401, "bot": "momentum-5/20", "symbol": "PAXGUSDT", "action": "sell", "price": 4286.47, "pnl": -0.01, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
-{"ts": 1789585319.7729018, "bot": "momentum-5/20", "symbol": "XAUTUSDT", "action": "sell", "price": 4282.26, "pnl": -0.01, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1789585319.7735019, "bot": "momentum-20/100", "symbol": "XAUTUSDT", "action": "buy", "price": 4282.26, "usd": 1.12, "reason": "20-bar average is 0.11% above the 100-bar -- uptrend", "strength_pct": 2.2}
 {"ts": 1789641541.3647768, "bot": "momentum-5/20", "symbol": "PAXGUSDT", "action": "buy", "price": 4320.58, "usd": 3.1, "reason": "5-bar average is 0.31% above the 20-bar -- uptrend", "strength_pct": 6.2}
 {"ts": 1789641541.3685088, "bot": "momentum-10/50", "symbol": "PAXGUSDT", "action": "sell", "price": 4320.58, "pnl": -0.07, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
@@ -298,3 +296,5 @@
 {"ts": 1792062468.7443688, "bot": "momentum-10/50", "symbol": "PAXGUSDT", "action": "buy", "price": 4155.46, "usd": 1.3, "reason": "10-bar average is 0.13% above the 50-bar -- uptrend", "strength_pct": 2.6}
 {"ts": 1792062468.7447987, "bot": "vol-momentum", "symbol": "PAXGUSDT", "action": "buy", "price": 4155.46, "usd": 1.3, "reason": "10-bar average is 0.13% above the 50-bar -- uptrend; volatility 0.25% vs 2.00% target -> sizing at 100% (moved +1.7%)", "strength_pct": 2.6}
 {"ts": 1792062468.7453182, "bot": "momentum-tp", "symbol": "PAXGUSDT", "action": "buy", "price": 4155.46, "usd": 1.3, "reason": "10-bar average is 0.13% above the 50-bar -- uptrend", "strength_pct": 2.6}
+{"ts": 1792093975.0450804, "bot": "breakout-20", "symbol": "PAXGUSDT", "action": "buy", "price": 4172.4, "usd": 29.62, "reason": "Broke above its 20-bar high by 0.31%", "strength_pct": 59.4}
+{"ts": 1792093975.0455856, "bot": "breakout-50", "symbol": "PAXGUSDT", "action": "buy", "price": 4172.4, "usd": 27.17, "reason": "Broke above its 50-bar high by 0.15%", "strength_pct": 54.5}
