@@ -1,5 +1,3 @@
-{"ts": 1789646481.804138, "bot": "momentum-10/50", "symbol": "PAXGUSDT", "action": "buy", "price": 4352.35, "usd": 1.87, "reason": "10-bar average is 0.19% above the 50-bar -- uptrend", "strength_pct": 3.7}
-{"ts": 1789646481.805847, "bot": "vol-momentum", "symbol": "PAXGUSDT", "action": "buy", "price": 4352.35, "usd": 1.87, "reason": "10-bar average is 0.19% above the 50-bar -- uptrend; volatility 0.56% vs 2.00% target -> sizing at 100% (moved +0.0%)", "strength_pct": 3.7}
 {"ts": 1789646481.806369, "bot": "momentum-tp", "symbol": "PAXGUSDT", "action": "buy", "price": 4352.35, "usd": 1.87, "reason": "10-bar average is 0.19% above the 50-bar -- uptrend", "strength_pct": 3.7}
 {"ts": 1789646481.8068411, "bot": "momentum-10/50", "symbol": "XAUTUSDT", "action": "buy", "price": 4349.29, "usd": 2.03, "reason": "10-bar average is 0.20% above the 50-bar -- uptrend", "strength_pct": 4.1}
 {"ts": 1789646481.807345, "bot": "vol-momentum", "symbol": "XAUTUSDT", "action": "buy", "price": 4349.29, "usd": 2.03, "reason": "10-bar average is 0.20% above the 50-bar -- uptrend; volatility 0.55% vs 2.00% target -> sizing at 100% (moved +0.1%)", "strength_pct": 4.1}
@@ -298,3 +296,5 @@
 {"ts": 1792157324.1998482, "bot": "momentum-5/20", "symbol": "PAXGUSDT", "action": "sell", "price": 4151.7, "pnl": -0.0, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1792157324.20038, "bot": "breakout-20", "symbol": "PAXGUSDT", "action": "sell", "price": 4151.7, "pnl": -0.18, "reason": "Fell below the 10-bar low -- breakout failed", "strength_pct": 50.0}
 {"ts": 1792157324.2007267, "bot": "breakout-50", "symbol": "PAXGUSDT", "action": "sell", "price": 4151.7, "pnl": -0.16, "reason": "Fell below the 20-bar low -- breakout failed", "strength_pct": 50.0}
+{"ts": 1792161630.2248368, "bot": "breakout-20", "symbol": "PAXGUSDT", "action": "buy", "price": 4181.0, "usd": 25.02, "reason": "Broke above its 20-bar high by 0.01%", "strength_pct": 50.2}
+{"ts": 1792161630.2253041, "bot": "breakout-50", "symbol": "PAXGUSDT", "action": "buy", "price": 4181.0, "usd": 25.01, "reason": "Broke above its 50-bar high by 0.01%", "strength_pct": 50.2}
