@@ -93,3 +93,4 @@
 {"ts": 1792182967.9403465, "bot": "momentum-5/20", "symbol": "TTWO", "action": "sell", "price": 205.28, "pnl": -0.11, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1792182967.941045, "bot": "risky-momentum-5/15", "symbol": "TTWO", "action": "sell", "price": 205.28, "pnl": -0.83, "reason": "5-bar average dropped below the 15-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1792182967.9414775, "bot": "risky-nostop-5/20", "symbol": "TTWO", "action": "sell", "price": 205.28, "pnl": -0.54, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1792184792.8213294, "bot": "breakout-20", "symbol": "SPY", "action": "sell", "price": 763.23, "pnl": -0.34, "reason": "Fell below the 10-bar low -- breakout failed", "strength_pct": 50.0}
