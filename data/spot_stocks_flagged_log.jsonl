@@ -90,3 +90,6 @@
 {"ts": 1792031832.3521285, "bot": "risky-breakout-10", "symbol": "SPY", "action": "sell", "price": 769.6, "pnl": -0.48, "reason": "Fell below the 5-bar low -- breakout failed", "strength_pct": 50.0}
 {"ts": 1792103794.9634118, "bot": "risky-momentum-3/10", "symbol": "SPY", "action": "sell", "price": 771.79, "pnl": -0.03, "reason": "3-bar average dropped below the 10-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1792107998.4996834, "bot": "meanrev-30", "symbol": "TTWO", "action": "sell", "price": 209.38, "pnl": -0.23, "reason": "RSI recovered to 59 -- back to normal", "strength_pct": 50.0}
+{"ts": 1792182967.9403465, "bot": "momentum-5/20", "symbol": "TTWO", "action": "sell", "price": 205.28, "pnl": -0.11, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1792182967.941045, "bot": "risky-momentum-5/15", "symbol": "TTWO", "action": "sell", "price": 205.28, "pnl": -0.83, "reason": "5-bar average dropped below the 15-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1792182967.9414775, "bot": "risky-nostop-5/20", "symbol": "TTWO", "action": "sell", "price": 205.28, "pnl": -0.54, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
