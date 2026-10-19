@@ -90,3 +90,7 @@
 {"ts": 1792159498.4641962, "bot": "risky-breakout-10", "symbol": "GBPUSD", "action": "buy", "price": 1.3335, "usd": 94.87, "reason": "Broke above its 10-bar high by 0.44%", "strength_pct": 63.3}
 {"ts": 1792159498.4645033, "bot": "risky-nostop-5/20", "symbol": "GBPUSD", "action": "buy", "price": 1.3335, "usd": 2.31, "reason": "5-bar average is 0.05% above the 20-bar -- uptrend", "strength_pct": 0.9}
 {"ts": 1792159498.464992, "bot": "risky-momentum-3/10", "symbol": "JPYUSD", "action": "buy", "price": 0.00633, "usd": 1.11, "reason": "3-bar average is 0.04% above the 10-bar -- uptrend", "strength_pct": 0.7}
+{"ts": 1792438432.5088475, "bot": "risky-momentum-5/15", "symbol": "AUDUSD", "action": "buy", "price": 0.69859, "usd": 1.23, "reason": "5-bar average is 0.03% above the 15-bar -- uptrend", "strength_pct": 0.6}
+{"ts": 1792438432.5091922, "bot": "momentum-5/20", "symbol": "CHFUSD", "action": "buy", "price": 1.2121, "usd": 1.05, "reason": "5-bar average is 0.10% above the 20-bar -- uptrend", "strength_pct": 2.1}
+{"ts": 1792438432.5095522, "bot": "risky-nostop-5/20", "symbol": "CHFUSD", "action": "buy", "price": 1.2121, "usd": 5.24, "reason": "5-bar average is 0.10% above the 20-bar -- uptrend", "strength_pct": 2.1}
+{"ts": 1792438432.509904, "bot": "momentum-5/20", "symbol": "GBPUSD", "action": "buy", "price": 1.3331, "usd": 2.15, "reason": "5-bar average is 0.22% above the 20-bar -- uptrend", "strength_pct": 4.3}
