@@ -94,3 +94,5 @@
 {"ts": 1792438432.5091922, "bot": "momentum-5/20", "symbol": "CHFUSD", "action": "buy", "price": 1.2121, "usd": 1.05, "reason": "5-bar average is 0.10% above the 20-bar -- uptrend", "strength_pct": 2.1}
 {"ts": 1792438432.5095522, "bot": "risky-nostop-5/20", "symbol": "CHFUSD", "action": "buy", "price": 1.2121, "usd": 5.24, "reason": "5-bar average is 0.10% above the 20-bar -- uptrend", "strength_pct": 2.1}
 {"ts": 1792438432.509904, "bot": "momentum-5/20", "symbol": "GBPUSD", "action": "buy", "price": 1.3331, "usd": 2.15, "reason": "5-bar average is 0.22% above the 20-bar -- uptrend", "strength_pct": 4.3}
+{"ts": 1792516999.2827678, "bot": "risky-momentum-3/10", "symbol": "AUDUSD", "action": "buy", "price": 0.69849, "usd": 3.75, "reason": "3-bar average is 0.13% above the 10-bar -- uptrend", "strength_pct": 2.5}
+{"ts": 1792516999.2832723, "bot": "risky-meanrev-20", "symbol": "AUDUSD", "action": "sell", "price": 0.69849, "pnl": -0.59, "reason": "RSI recovered to 52 -- back to normal", "strength_pct": 50.0}
