@@ -101,3 +101,4 @@
 {"ts": 1792460779.592899, "bot": "risky-nostop-5/20", "symbol": "SPY", "action": "sell", "price": 766.48, "pnl": -0.83, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1792460779.5935786, "bot": "catalyst-ttwo-hold-through", "symbol": "TTWO", "action": "buy", "price": 205.28, "usd": 74.35, "reason": "Adding tranche 3/4 -- 30 days to the GTA 6 launch, building into the run-up", "strength_pct": 75.0}
 {"ts": 1792460779.5939069, "bot": "catalyst-ttwo-sell-into", "symbol": "TTWO", "action": "buy", "price": 205.28, "usd": 74.35, "reason": "Adding tranche 3/4 -- 30 days to the GTA 6 launch, building into the run-up", "strength_pct": 75.0}
+{"ts": 1792529078.0617614, "bot": "risky-momentum-3/10", "symbol": "MSFT", "action": "sell", "price": 531.87, "pnl": 0.64, "reason": "3-bar average dropped below the 10-bar -- trend over", "strength_pct": 50.0}
