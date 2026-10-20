@@ -96,3 +96,8 @@
 {"ts": 1792184792.8213294, "bot": "breakout-20", "symbol": "SPY", "action": "sell", "price": 763.23, "pnl": -0.34, "reason": "Fell below the 10-bar low -- breakout failed", "strength_pct": 50.0}
 {"ts": 1792188315.0326536, "bot": "risky-breakout-10", "symbol": "MSFT", "action": "sell", "price": 529.05, "pnl": -2.23, "reason": "Fell below the 5-bar low -- breakout failed", "strength_pct": 50.0}
 {"ts": 1792190175.3194115, "bot": "meanrev-35", "symbol": "NVDA", "action": "buy", "price": 214.13, "usd": 22.91, "reason": "RSI 33 -- oversold below 35", "strength_pct": 45.9}
+{"ts": 1792460779.5918193, "bot": "momentum-5/20", "symbol": "SPY", "action": "sell", "price": 766.48, "pnl": -0.17, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1792460779.5925508, "bot": "risky-momentum-5/15", "symbol": "SPY", "action": "sell", "price": 766.48, "pnl": -0.48, "reason": "5-bar average dropped below the 15-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1792460779.592899, "bot": "risky-nostop-5/20", "symbol": "SPY", "action": "sell", "price": 766.48, "pnl": -0.83, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1792460779.5935786, "bot": "catalyst-ttwo-hold-through", "symbol": "TTWO", "action": "buy", "price": 205.28, "usd": 74.35, "reason": "Adding tranche 3/4 -- 30 days to the GTA 6 launch, building into the run-up", "strength_pct": 75.0}
+{"ts": 1792460779.5939069, "bot": "catalyst-ttwo-sell-into", "symbol": "TTWO", "action": "buy", "price": 205.28, "usd": 74.35, "reason": "Adding tranche 3/4 -- 30 days to the GTA 6 launch, building into the run-up", "strength_pct": 75.0}
