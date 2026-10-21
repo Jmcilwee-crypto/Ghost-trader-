@@ -96,3 +96,11 @@
 {"ts": 1792438432.509904, "bot": "momentum-5/20", "symbol": "GBPUSD", "action": "buy", "price": 1.3331, "usd": 2.15, "reason": "5-bar average is 0.22% above the 20-bar -- uptrend", "strength_pct": 4.3}
 {"ts": 1792516999.2827678, "bot": "risky-momentum-3/10", "symbol": "AUDUSD", "action": "buy", "price": 0.69849, "usd": 3.75, "reason": "3-bar average is 0.13% above the 10-bar -- uptrend", "strength_pct": 2.5}
 {"ts": 1792516999.2832723, "bot": "risky-meanrev-20", "symbol": "AUDUSD", "action": "sell", "price": 0.69849, "pnl": -0.59, "reason": "RSI recovered to 52 -- back to normal", "strength_pct": 50.0}
+{"ts": 1792603692.1318567, "bot": "meanrev-35", "symbol": "GBPUSD", "action": "sell", "price": 1.3402, "pnl": -0.27, "reason": "RSI recovered to 70 -- back to normal", "strength_pct": 50.0}
+{"ts": 1792603692.1321368, "bot": "breakout-20", "symbol": "GBPUSD", "action": "buy", "price": 1.3402, "usd": 31.18, "reason": "Broke above its 20-bar high by 0.41%", "strength_pct": 62.4}
+{"ts": 1792603692.1356807, "bot": "risky-momentum-5/15", "symbol": "JPYUSD", "action": "buy", "price": 0.00633, "usd": 1.68, "reason": "5-bar average is 0.04% above the 15-bar -- uptrend", "strength_pct": 0.8}
+{"ts": 1792603692.1360378, "bot": "meanrev-25", "symbol": "AUDUSD", "action": "sell", "price": 0.7034, "pnl": -0.1, "reason": "RSI recovered to 61 -- back to normal", "strength_pct": 50.0}
+{"ts": 1792603692.1364, "bot": "meanrev-30", "symbol": "AUDUSD", "action": "sell", "price": 0.7034, "pnl": -0.14, "reason": "RSI recovered to 61 -- back to normal", "strength_pct": 50.0}
+{"ts": 1792603692.1367495, "bot": "meanrev-35", "symbol": "AUDUSD", "action": "sell", "price": 0.7034, "pnl": -0.24, "reason": "RSI recovered to 61 -- back to normal", "strength_pct": 50.0}
+{"ts": 1792603692.1371176, "bot": "risky-breakout-10", "symbol": "AUDUSD", "action": "buy", "price": 0.7034, "usd": 90.58, "reason": "Broke above its 10-bar high by 0.35%", "strength_pct": 60.4}
+{"ts": 1792603692.137589, "bot": "risky-momentum-5/15", "symbol": "EURUSD", "action": "buy", "price": 1.1234, "usd": 3.35, "reason": "5-bar average is 0.08% above the 15-bar -- uptrend", "strength_pct": 1.7}
