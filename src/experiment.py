@@ -218,8 +218,14 @@ def _log_trimmed(path: str, entry: dict, max_entries: int) -> None:
     p.write_text("\n".join(lines) + "\n")
 
 
+# Big enough to comfortably outlast one cycle's pull (page size x max pages),
+# so a trade can never be evicted from the dedup window while the feed still
+# lists it -- that would let the fleet bet the same whale twice.
+SEEN_HASHES_MAX = 50_000
+
+
 def save_state(path: str, variants: list[Variant], scorecard: TraderScorecard, last_seen_ts: float,
-               seen_hashes: set[str], research_stats: dict | None = None) -> None:
+               seen_hashes: dict[str, None], research_stats: dict | None = None) -> None:
     Path(path).parent.mkdir(parents=True, exist_ok=True)
     Path(path).write_text(json.dumps({
         "variants": {v.name: {"settings": v.settings, "portfolio": v.portfolio.to_dict()} for v in variants},
@@ -228,21 +234,23 @@ def save_state(path: str, variants: list[Variant], scorecard: TraderScorecard, l
         "last_seen_ts": last_seen_ts,
         # Capped: this is only used to avoid double-processing trades across
         # restarts, and an unbounded list would bloat the state file forever.
-        "seen_hashes": list(seen_hashes)[-5000:],
+        # It is a dict rather than a set purely for the ordering -- trimming a
+        # set keeps an arbitrary 5,000, not the newest 5,000.
+        "seen_hashes": list(seen_hashes)[-SEEN_HASHES_MAX:],
     }, indent=2))
 
 
-def load_state(path: str, variants: list[Variant], scorecard: TraderScorecard) -> tuple[float, set[str]]:
+def load_state(path: str, variants: list[Variant], scorecard: TraderScorecard) -> tuple[float, dict[str, None]]:
     p = Path(path)
     if not p.exists():
-        return 0.0, set()
+        return 0.0, {}
     data = json.loads(p.read_text())
     scorecard.load_dict(data.get("scorecard", {}))
     saved = data.get("variants", {})
     for v in variants:
         if v.name in saved:
             v.portfolio = PaperPortfolio.from_dict(saved[v.name]["portfolio"])
-    return data.get("last_seen_ts", 0.0), set(data.get("seen_hashes", []))
+    return data.get("last_seen_ts", 0.0), dict.fromkeys(data.get("seen_hashes", []))
 
 
 def leaderboard(variants: list[Variant]) -> list[dict]:
@@ -321,7 +329,19 @@ def run_experiment(config_path: str = "config.yaml", once: bool = False) -> int:
 
     while not _STOP:
         try:
-            trades = client.get_trades(limit=live_cfg["trades_lookback_limit"])
+            trades, covered_gap = client.get_trades_since(
+                last_seen_ts,
+                page_size=live_cfg.get("trades_page_size", 500),
+                max_pages=live_cfg.get("trades_max_pages", 40),
+                max_lookback_seconds=live_cfg.get("trades_max_lookback_hours", 6) * 3600.0,
+            )
+            if not covered_gap:
+                # Silence here would read as "a quiet market". It isn't: it
+                # means whales traded in a window we never looked at.
+                print("WARNING: hit the paging cap before reaching the last "
+                      "trade of the previous cycle -- part of the gap was not "
+                      "examined. Raise live.trades_max_pages or run more often.",
+                      file=sys.stderr)
         except RuntimeError as exc:
             print(f"trade fetch failed: {exc}", file=sys.stderr)
             if once:
@@ -337,6 +357,17 @@ def run_experiment(config_path: str = "config.yaml", once: bool = False) -> int:
         new_trades = [t for t in trades if t.get("transactionHash") not in seen_hashes]
         new_trades.sort(key=lambda t: parse_timestamp(t.get("timestamp")) or 0)
 
+        # Coverage is the thing that broke, so state it every cycle rather
+        # than leaving "0 bets" ambiguous between a quiet market and a blind
+        # one. `minutes` is the span actually examined, not the gap length.
+        if new_trades:
+            stamps = [parse_timestamp(t.get("timestamp")) for t in new_trades]
+            stamps = [v for v in stamps if v is not None]
+            minutes = (max(stamps) - min(stamps)) / 60.0 if len(stamps) > 1 else 0.0
+            print(f"feed: {len(trades)} trades fetched, {len(new_trades)} new, "
+                  f"covering {minutes:.0f} min"
+                  + ("" if covered_gap else " [GAP NOT FULLY COVERED]"))
+
         for t in new_trades:
             ts = parse_timestamp(t.get("timestamp"))
             if ts is None or ts < last_seen_ts - 3600:
@@ -349,7 +380,7 @@ def run_experiment(config_path: str = "config.yaml", once: bool = False) -> int:
             size = _safe_float(t.get("size"))
             tx_hash = t.get("transactionHash")
             if tx_hash:
-                seen_hashes.add(tx_hash)
+                seen_hashes[tx_hash] = None
             if not condition_id or not token_id or not wallet or price <= 0 or price >= 1:
                 continue
 

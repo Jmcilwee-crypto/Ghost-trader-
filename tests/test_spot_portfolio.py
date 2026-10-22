@@ -101,4 +101,6 @@ def test_persistence_roundtrip_keeps_fees_and_positions():
     assert restored.fees_paid == pytest.approx(p.fees_paid)
     assert restored.cash == pytest.approx(p.cash)
     assert restored.positions["BTCUSDT"].shares == pytest.approx(p.positions["BTCUSDT"].shares)
-    assert restored.equity_curve == p.equity_curve
+    # The curve itself is no longer persisted; its drawdown is what matters.
+    assert restored.max_drawdown() == pytest.approx(p.max_drawdown())
+    assert restored.peak_equity == pytest.approx(p.peak_equity)

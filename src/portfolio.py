@@ -59,7 +59,16 @@ class PaperPortfolio:
         self.cash = starting_cash
         self.positions: dict[str, Position] = {}  # keyed by token_id
         self.closed_trades: list[ClosedTrade] = []
+        # In-memory only, and no longer persisted. Storing it was 70% of the
+        # experiment state file -- up to 6,814 points per bot, rewritten and
+        # committed on every scheduled run -- while the only thing ever read
+        # back out of it was max_drawdown(), which is a running statistic and
+        # needs two floats rather than the whole series. The curve itself is
+        # still reconstructable from the per-run equity snapshots already in
+        # data/experiment_history.jsonl.
         self.equity_curve: list[tuple[float, float]] = []  # (timestamp, equity)
+        self.peak_equity: float | None = None
+        self.max_dd: float = 0.0
 
     # ---- position management ------------------------------------------------
     def open_or_add(
@@ -162,9 +171,16 @@ class PaperPortfolio:
     def exposure_in_market(self, market_id: str) -> float:
         return sum(p.cost_basis for p in self.positions.values() if p.market_id == market_id)
 
+    def _fold_equity(self, eq: float) -> None:
+        """Advance the running peak and drawdown by one equity observation."""
+        self.peak_equity = eq if self.peak_equity is None else max(self.peak_equity, eq)
+        if self.peak_equity > 0:
+            self.max_dd = max(self.max_dd, (self.peak_equity - eq) / self.peak_equity)
+
     def record_equity(self, timestamp: float, current_prices: dict[str, float] | None = None) -> float:
         eq = self.equity(current_prices)
         self.equity_curve.append((timestamp, eq))
+        self._fold_equity(eq)
         return eq
 
     def realized_pnl(self) -> float:
@@ -177,15 +193,7 @@ class PaperPortfolio:
         return wins / len(self.closed_trades)
 
     def max_drawdown(self) -> float:
-        if not self.equity_curve:
-            return 0.0
-        peak = self.equity_curve[0][1]
-        max_dd = 0.0
-        for _, eq in self.equity_curve:
-            peak = max(peak, eq)
-            if peak > 0:
-                max_dd = max(max_dd, (peak - eq) / peak)
-        return max_dd
+        return self.max_dd
 
     def check_stop_condition(self, *, target: float, ruin: float, current_prices: dict[str, float] | None = None) -> str | None:
         eq = self.equity(current_prices)
@@ -202,7 +210,8 @@ class PaperPortfolio:
             "cash": self.cash,
             "positions": {k: asdict(v) for k, v in self.positions.items()},
             "closed_trades": [asdict(t) for t in self.closed_trades],
-            "equity_curve": self.equity_curve,
+            "peak_equity": self.peak_equity,
+            "max_drawdown": self.max_dd,
         }
 
     @classmethod
@@ -211,7 +220,13 @@ class PaperPortfolio:
         p.cash = data["cash"]
         p.positions = {k: Position(**v) for k, v in data["positions"].items()}
         p.closed_trades = [ClosedTrade(**t) for t in data["closed_trades"]]
-        p.equity_curve = [tuple(row) for row in data["equity_curve"]]
+        p.peak_equity = data.get("peak_equity")
+        p.max_dd = data.get("max_drawdown", 0.0)
+        # State written before the curve was dropped still carries it. Replay
+        # it so the drawdown of a bot that has been running for weeks carries
+        # over exactly, then let the points go -- they are never written again.
+        for row in data.get("equity_curve") or []:
+            p._fold_equity(row[1])
         return p
 
     def save(self, path: str | Path) -> None:

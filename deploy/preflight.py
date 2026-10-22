@@ -18,6 +18,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 import requests
 
 UA = {"User-Agent": "ghost-trader-preflight/1.0"}
+TRADES = "https://data-api.polymarket.com/trades"
 
 CHECKS = [
     ("Polymarket trades", "https://data-api.polymarket.com/trades?limit=1", "Polymarket experiment", ()),
@@ -44,6 +45,40 @@ def check(url: str, also_ok: tuple = ()) -> tuple[bool, str]:
         return False, type(exc).__name__
 
 
+def check_trade_feed_paging() -> bool:
+    """Does /trades honour `offset`, and how much time does one page span?
+
+    The experiment pages the feed backwards to cover the whole gap since its
+    last run, which only works if offset shifts the window. That cannot be
+    tested from a network that blocks Polymarket, so it is verified here --
+    on the machine that actually does the trading -- and printed every run.
+    """
+    try:
+        a = requests.get(f"{TRADES}?limit=100&takerOnly=true", headers=UA, timeout=15).json()
+        b = requests.get(f"{TRADES}?limit=100&takerOnly=true&offset=100", headers=UA, timeout=15).json()
+    except (requests.RequestException, ValueError) as exc:
+        print(f"  SKIP  trade feed paging: {type(exc).__name__}")
+        return False
+    if not isinstance(a, list) or not isinstance(b, list) or not a:
+        print("  FAIL  trade feed paging: unexpected response shape")
+        return False
+
+    ha = {t.get("transactionHash") for t in a}
+    hb = {t.get("transactionHash") for t in b}
+    stamps = [float(t["timestamp"]) for t in a if t.get("timestamp")]
+    span = (max(stamps) - min(stamps)) / 60.0 if len(stamps) > 1 else 0.0
+    print(f"  INFO  one 100-trade page spans {span:.1f} minutes of feed")
+
+    if not hb or hb <= ha:
+        print("  FAIL  offset is ignored -- paging cannot cover a scheduling gap.")
+        print("        The bot will warn and fall back to one page per run.")
+        return False
+    pages_per_hour = 60.0 / span if span > 0 else float("inf")
+    print(f"  PASS  offset works ({len(hb - ha)}/100 new on page 2) -- "
+          f"~{pages_per_hour:.0f} pages per hour of gap at this page size")
+    return True
+
+
 def main() -> int:
     print("Ghost Trader AI preflight -- checking every data source from this machine\n")
     width = max(len(name) for name, *_ in CHECKS)
@@ -53,6 +88,9 @@ def main() -> int:
         print(f"  {'PASS' if ok else 'FAIL'}  {name:<{width}}  {detail:<22} {powers}")
         if not ok:
             blocked.append((name, powers))
+
+    print()
+    check_trade_feed_paging()
 
     print()
     if not blocked:

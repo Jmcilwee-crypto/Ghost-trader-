@@ -22,7 +22,7 @@ concurrency:
 jobs:
   cycle:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     permissions:
       contents: write        # needed to commit the updated state back
 
@@ -53,7 +53,11 @@ jobs:
             echo "::endgroup::"
           done
           echo "::group::polymarket"
-          timeout 200 python3 -m src.experiment --once || echo "polymarket cycle failed, continuing"
+          # Given a longer budget than the spot runs on purpose: this one now
+          # pages the trade feed back to wherever the previous run stopped, so
+          # a long scheduling gap means a genuinely larger pull plus a market
+          # lookup per whale it finds. 200s was sized for a single page.
+          timeout 600 python3 -m src.experiment --once || echo "polymarket cycle failed, continuing"
           echo "::endgroup::"
 
       - name: Commit updated state

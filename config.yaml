@@ -43,7 +43,24 @@ risk:
 
 live:
   poll_interval_seconds: 20
+  # Used by the single-strategy runner (src/live.py), which polls continuously.
   trades_lookback_limit: 100
+
+  # The experiment runner instead pages the feed back to the last trade it
+  # already processed, so its coverage no longer depends on how often the
+  # process starts. This matters because GitHub stopped honouring the
+  # 15-minute cron: runs fell from ~92/day on 10 Oct to ~6/day by 19 Oct, and
+  # since one run only sampled the latest 100 trades (~2 minutes of feed), the
+  # fleet went from seeing ~13% of the day to under 1% of it. New bets fell
+  # from 21/day to 0-3/day, which is what that collapse looks like from the
+  # outside -- nothing had failed; the bot had simply stopped looking.
+  #   page_size x max_pages bounds the worst case at 20,000 trades per cycle.
+  trades_page_size: 500
+  trades_max_pages: 40
+  # A cold start has no last-seen trade to page back to, and neither does a
+  # multi-day outage. Without this the first run would try to pull the entire
+  # feed; six hours is deep enough to cover any realistic scheduling gap.
+  trades_max_lookback_hours: 6
   # How often to re-check an open position's market for resolution. Kept well
   # above poll_interval_seconds on purpose -- checking every cycle burns the
   # ~60 req/min API budget once more than a few positions are open.

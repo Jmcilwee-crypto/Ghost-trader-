@@ -90,5 +90,7 @@ class SpotPortfolio(PaperPortfolio):
         p.positions = base.positions
         p.closed_trades = base.closed_trades
         p.equity_curve = base.equity_curve
+        p.peak_equity = base.peak_equity
+        p.max_dd = base.max_dd
         p.fees_paid = data.get("fees_paid", 0.0)
         return p

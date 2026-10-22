@@ -19,6 +19,8 @@ from typing import Any, Iterable
 
 import requests
 
+from .market_utils import parse_timestamp
+
 GAMMA_BASE = "https://gamma-api.polymarket.com"
 DATA_BASE = "https://data-api.polymarket.com"
 CLOB_BASE = "https://clob.polymarket.com"
@@ -94,6 +96,7 @@ class PolymarketClient:
         user: str | None = None,
         market: str | Iterable[str] | None = None,
         limit: int = 100,
+        offset: int = 0,
         taker_only: bool = True,
         side: str | None = None,
     ) -> list[dict]:
@@ -102,8 +105,11 @@ class PolymarketClient:
         Omitting `user` returns the global public trade feed (used by
         Polymarket's own activity page); passing `market` (a condition id,
         or comma-separated list of them) scopes it to specific market(s).
+        `offset` walks further back through that feed -- see get_trades_since.
         """
         params: dict[str, Any] = {"limit": limit, "takerOnly": str(taker_only).lower()}
+        if offset:
+            params["offset"] = offset
         if user:
             params["user"] = user
         if market:
@@ -111,6 +117,78 @@ class PolymarketClient:
         if side:
             params["side"] = side
         return _get(f"{DATA_BASE}/trades", params=params)
+
+    def get_trades_since(
+        self,
+        since_ts: float,
+        *,
+        page_size: int = 500,
+        max_pages: int = 40,
+        max_lookback_seconds: float = 6 * 3600.0,
+    ) -> tuple[list[dict], bool]:
+        """Walk the global feed backwards until it reaches `since_ts`.
+
+        One get_trades(limit=100) call covers whatever the last hundred trades
+        happen to span -- roughly two minutes of Polymarket's feed. That is
+        plenty when the poller wakes every 20 seconds, and close to useless
+        under a scheduler that wakes it every few hours: everything that
+        traded between two runs is never looked at, so the bot is not
+        rejecting those whales, it simply never sees them. Paging back to the
+        last trade already processed makes coverage depend on what we ask for
+        instead of on how often the process happens to start.
+
+        Returns (trades, reached_floor). A False means the gap was wider than
+        the caps allow and part of it is genuinely lost -- the caller should
+        say so rather than report a quiet cycle.
+        """
+        now = time.time()
+        # Two separate guards. The lookback bound stops a cold start (or a
+        # week-long outage) from trying to pull the entire feed; the page
+        # bound keeps one cycle's HTTP budget finite even if the feed is
+        # unusually busy.
+        floor = max(float(since_ts or 0.0), now - max_lookback_seconds)
+        trades: list[dict] = []
+        hashes: set[str] = set()
+        offset = 0
+        reached = False
+
+        for _ in range(max(1, max_pages)):
+            page = self.get_trades(limit=page_size, offset=offset)
+            if not isinstance(page, list) or not page:
+                # The feed ended before our floor did; nothing older exists.
+                reached = True
+                break
+            fresh = 0
+            for t in page:
+                h = t.get("transactionHash")
+                if h is not None:
+                    if h in hashes:
+                        # The feed shifts under us while we page, so one trade
+                        # can land on two offsets. Deduping here as well as in
+                        # the caller is cheap, and keeps the returned batch
+                        # honest about how much ground it actually covered.
+                        continue
+                    hashes.add(h)
+                trades.append(t)
+                fresh += 1
+            if offset and not fresh:
+                # A whole page we have already seen means `offset` is being
+                # ignored and we are re-reading page one. Walking the full
+                # page budget to rediscover that would multiply the request
+                # count for no extra coverage; stop and let reached=False say
+                # the gap was not closed.
+                break
+            stamps = [parse_timestamp(t.get("timestamp")) for t in page]
+            oldest = min((v for v in stamps if v is not None), default=None)
+            if oldest is None or oldest <= floor:
+                reached = True
+                break
+            # Advance by what the API actually returned, not by page_size: if
+            # it caps the limit lower than we asked for, a fixed stride would
+            # skip over whatever it refused to send.
+            offset += len(page)
+
+        return trades, reached
 
     # ---- CLOB: live order book & price history -----------------------------
     def get_order_book(self, token_id: str) -> dict:
