@@ -104,3 +104,6 @@
 {"ts": 1792529078.0617614, "bot": "risky-momentum-3/10", "symbol": "MSFT", "action": "sell", "price": 531.87, "pnl": 0.64, "reason": "3-bar average dropped below the 10-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1792585588.6324334, "bot": "risky-breakout-10", "symbol": "AAPL", "action": "sell", "price": 339.5, "pnl": -0.35, "reason": "Fell below the 5-bar low -- breakout failed", "strength_pct": 50.0}
 {"ts": 1792615657.3605294, "bot": "risky-breakout-10", "symbol": "AAPL", "action": "buy", "price": 343.99, "usd": 81.49, "reason": "Broke above its 10-bar high by 0.15%", "strength_pct": 54.6}
+{"ts": 1792655232.4141898, "bot": "momentum-10/50", "symbol": "NVDA", "action": "sell", "price": 221.97, "pnl": 0.83, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1792655232.414899, "bot": "vol-momentum", "symbol": "NVDA", "action": "sell", "price": 221.97, "pnl": 0.59, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1792655232.4152093, "bot": "momentum-tp", "symbol": "NVDA", "action": "sell", "price": 221.97, "pnl": 0.83, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
