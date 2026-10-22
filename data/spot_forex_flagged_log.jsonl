@@ -104,3 +104,8 @@
 {"ts": 1792603692.1367495, "bot": "meanrev-35", "symbol": "AUDUSD", "action": "sell", "price": 0.7034, "pnl": -0.24, "reason": "RSI recovered to 61 -- back to normal", "strength_pct": 50.0}
 {"ts": 1792603692.1371176, "bot": "risky-breakout-10", "symbol": "AUDUSD", "action": "buy", "price": 0.7034, "usd": 90.58, "reason": "Broke above its 10-bar high by 0.35%", "strength_pct": 60.4}
 {"ts": 1792603692.137589, "bot": "risky-momentum-5/15", "symbol": "EURUSD", "action": "buy", "price": 1.1234, "usd": 3.35, "reason": "5-bar average is 0.08% above the 15-bar -- uptrend", "strength_pct": 1.7}
+{"ts": 1792692223.482624, "bot": "meanrev-30", "symbol": "JPYUSD", "action": "sell", "price": 0.00637, "pnl": 0.03, "reason": "RSI recovered to 60 -- back to normal", "strength_pct": 50.0}
+{"ts": 1792692223.4831307, "bot": "risky-breakout-10", "symbol": "JPYUSD", "action": "buy", "price": 0.00637, "usd": 99.88, "reason": "Broke above its 10-bar high by 0.63%", "strength_pct": 69.0}
+{"ts": 1792692223.4834676, "bot": "momentum-5/20", "symbol": "AUDUSD", "action": "buy", "price": 0.70119, "usd": 2.29, "reason": "5-bar average is 0.23% above the 20-bar -- uptrend", "strength_pct": 4.6}
+{"ts": 1792692223.483805, "bot": "risky-nostop-5/20", "symbol": "AUDUSD", "action": "buy", "price": 0.70119, "usd": 11.42, "reason": "5-bar average is 0.23% above the 20-bar -- uptrend", "strength_pct": 4.6}
+{"ts": 1792692223.4841437, "bot": "breakout-20", "symbol": "CHFUSD", "action": "buy", "price": 1.2165, "usd": 27.96, "reason": "Broke above its 20-bar high by 0.20%", "strength_pct": 55.9}
