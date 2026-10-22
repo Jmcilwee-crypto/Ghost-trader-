@@ -107,3 +107,6 @@
 {"ts": 1792655232.4141898, "bot": "momentum-10/50", "symbol": "NVDA", "action": "sell", "price": 221.97, "pnl": 0.83, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1792655232.414899, "bot": "vol-momentum", "symbol": "NVDA", "action": "sell", "price": 221.97, "pnl": 0.59, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1792655232.4152093, "bot": "momentum-tp", "symbol": "NVDA", "action": "sell", "price": 221.97, "pnl": 0.83, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1792675065.180298, "bot": "momentum-5/20", "symbol": "TTWO", "action": "buy", "price": 206.16, "usd": 7.49, "reason": "5-bar average is 0.75% above the 20-bar -- uptrend", "strength_pct": 15.0}
+{"ts": 1792675065.18104, "bot": "risky-momentum-5/15", "symbol": "TTWO", "action": "buy", "price": 206.16, "usd": 19.84, "reason": "5-bar average is 0.50% above the 15-bar -- uptrend", "strength_pct": 10.0}
+{"ts": 1792675065.1814237, "bot": "risky-nostop-5/20", "symbol": "TTWO", "action": "buy", "price": 206.16, "usd": 37.23, "reason": "5-bar average is 0.75% above the 20-bar -- uptrend", "strength_pct": 15.0}
