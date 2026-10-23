@@ -112,3 +112,5 @@
 {"ts": 1792675065.1814237, "bot": "risky-nostop-5/20", "symbol": "TTWO", "action": "buy", "price": 206.16, "usd": 37.23, "reason": "5-bar average is 0.75% above the 20-bar -- uptrend", "strength_pct": 15.0}
 {"ts": 1792704644.930438, "bot": "meanrev-30", "symbol": "NVDA", "action": "buy", "price": 212.21, "usd": 20.44, "reason": "RSI 30 -- oversold below 30", "strength_pct": 40.9}
 {"ts": 1792714149.5699897, "bot": "risky-momentum-3/10", "symbol": "TTWO", "action": "buy", "price": 207.81, "usd": 7.0, "reason": "3-bar average is 0.23% above the 10-bar -- uptrend", "strength_pct": 4.7}
+{"ts": 1792748040.827751, "bot": "breakout-20", "symbol": "MSFT", "action": "sell", "price": 521.08, "pnl": -1.56, "reason": "Fell below the 10-bar low -- breakout failed", "strength_pct": 50.0}
+{"ts": 1792748040.8283463, "bot": "risky-momentum-5/15", "symbol": "MSFT", "action": "sell", "price": 521.08, "pnl": -3.71, "reason": "5-bar average dropped below the 15-bar -- trend over", "strength_pct": 50.0}
