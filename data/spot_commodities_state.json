@@ -1523,7 +1523,7 @@
           }
         ],
         "peak_equity": 1000.0334544405594,
-        "max_drawdown": 0.0027748558346711786,
+        "max_drawdown": 0.0028510370320996604,
         "fee_rate": 0.001,
         "fees_paid": 1.438169063769099
       }
@@ -1973,7 +1973,7 @@
           }
         ],
         "peak_equity": 1000.0,
-        "max_drawdown": 0.0031727921223503016,
+        "max_drawdown": 0.003270407349477182,
         "fee_rate": 0.001,
         "fees_paid": 1.6291977317130464
       }
@@ -3186,22 +3186,18 @@
         },
         "closed_trades": [],
         "peak_equity": 1000.818474898815,
-        "max_drawdown": 0.006743638370158982,
+        "max_drawdown": 0.006895920588238975,
         "fee_rate": 0.001,
         "fees_paid": 0.0999975
       }
     }
   },
   "prices": {
-    "PAXGUSDT": 4028.65,
+    "PAXGUSDT": 4015.36,
     "XAUTUSDT": 4169.9
   },
   "bars": {
     "PAXGUSDT": [
-      4162.4,
-      4166.02,
-      4160.98,
-      4160.05,
       4157.67,
       4158.19,
       4157.9,
@@ -3347,7 +3343,11 @@
       4034.89,
       4033.11,
       4030.0,
-      4028.65
+      4037.79,
+      4001.72,
+      4025.77,
+      4026.0,
+      4015.36
     ],
     "XAUTUSDT": [
       4186.17,
@@ -3512,6 +3512,6 @@
     "last_error": "coinbase: 404 Client Error: Not Found for url: https://api.exchange.coinbase.com/products/XAUT-USD/candles?granularity=3600"
   },
   "scorecard": {},
-  "last_seen_ts": 1792714139.3243942,
+  "last_seen_ts": 1792730504.824492,
   "seen_hashes": []
 }
