@@ -3846,7 +3846,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 911.9008191767305,
+        "cash": 820.5878204548159,
         "positions": {
           "BTCUSDT": {
             "market_id": "BTCUSDT",
@@ -3866,6 +3866,26 @@
             "shares": 0.38863101637034175,
             "avg_price": 104.24,
             "opened_at": 1792655228.4209466,
+            "stance": "mean_reversion"
+          },
+          "ETHUSDT": {
+            "market_id": "ETHUSDT",
+            "token_id": "ETHUSDT",
+            "outcome": "long",
+            "title": "ETHUSDT",
+            "shares": 0.018121485383540234,
+            "avg_price": 2309.59,
+            "opened_at": 1792858783.8512375,
+            "stance": "mean_reversion"
+          },
+          "BNBUSDT": {
+            "market_id": "BNBUSDT",
+            "token_id": "BNBUSDT",
+            "outcome": "long",
+            "title": "BNBUSDT",
+            "shares": 0.06843142688302674,
+            "avg_price": 721.43,
+            "opened_at": 1792858783.8522565,
             "stance": "mean_reversion"
           }
         },
@@ -4644,7 +4664,7 @@
         "peak_equity": 1001.3672888310301,
         "max_drawdown": 0.015266974133604354,
         "fee_rate": 0.001,
-        "fees_paid": 3.3137999787623933
+        "fees_paid": 3.405112977484308
       }
     },
     "meanrev-30": {
@@ -4656,7 +4676,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 884.9966858894152,
+        "cash": 788.6589904615191,
         "positions": {
           "BTCUSDT": {
             "market_id": "BTCUSDT",
@@ -4686,6 +4706,26 @@
             "shares": 17.115470165807338,
             "avg_price": 1.2933,
             "opened_at": 1792799942.6076508,
+            "stance": "mean_reversion"
+          },
+          "ETHUSDT": {
+            "market_id": "ETHUSDT",
+            "token_id": "ETHUSDT",
+            "outcome": "long",
+            "title": "ETHUSDT",
+            "shares": 0.02018882464743754,
+            "avg_price": 2309.59,
+            "opened_at": 1792858783.851734,
+            "stance": "mean_reversion"
+          },
+          "BNBUSDT": {
+            "market_id": "BNBUSDT",
+            "token_id": "BNBUSDT",
+            "outcome": "long",
+            "title": "BNBUSDT",
+            "shares": 0.06877098292972685,
+            "avg_price": 721.43,
+            "opened_at": 1792858783.8526573,
             "stance": "mean_reversion"
           }
         },
@@ -5702,7 +5742,7 @@
         "peak_equity": 1001.2622483626571,
         "max_drawdown": 0.010883025202786624,
         "fee_rate": 0.001,
-        "fees_paid": 4.141797629564115
+        "fees_paid": 4.238135324992011
       }
     },
     "meanrev-35": {
@@ -11219,25 +11259,21 @@
         },
         "closed_trades": [],
         "peak_equity": 1042.257734784808,
-        "max_drawdown": 0.04088033700089,
+        "max_drawdown": 0.04225716583233698,
         "fee_rate": 0.001,
         "fees_paid": 0.24997500124996877
       }
     }
   },
   "prices": {
-    "XRPUSDT": 1.284,
-    "BTCUSDT": 80715.34,
-    "ETHUSDT": 2367.76,
-    "SOLUSDT": 101.57,
-    "BNBUSDT": 731.67
+    "XRPUSDT": 1.2701,
+    "BTCUSDT": 79777.7,
+    "ETHUSDT": 2309.59,
+    "SOLUSDT": 100.05,
+    "BNBUSDT": 721.43
   },
   "bars": {
     "BNBUSDT": [
-      720.02,
-      719.49,
-      721.92,
-      722.37,
       722.48,
       722.19,
       717.77,
@@ -11383,13 +11419,13 @@
       731.71,
       731.84,
       730.6,
-      731.67
+      731.18,
+      730.32,
+      726.29,
+      720.7,
+      721.43
     ],
     "XRPUSDT": [
-      1.2911,
-      1.2907,
-      1.298,
-      1.2966,
       1.2962,
       1.2949,
       1.2811,
@@ -11535,13 +11571,13 @@
       1.2753,
       1.2805,
       1.2801,
-      1.284
+      1.2833,
+      1.2821,
+      1.2723,
+      1.2667,
+      1.2701
     ],
     "BTCUSDT": [
-      81566.91,
-      81621.27,
-      82035.64,
-      81982.06,
       81960.17,
       81872.5,
       81428.99,
@@ -11687,13 +11723,13 @@
       80516.01,
       80557.92,
       80487.22,
-      80715.34
+      80676.58,
+      80592.58,
+      80100.26,
+      79691.25,
+      79777.7
     ],
     "ETHUSDT": [
-      2405.54,
-      2407.5,
-      2421.61,
-      2415.98,
       2415.14,
       2415.0,
       2392.93,
@@ -11839,13 +11875,13 @@
       2364.21,
       2366.93,
       2362.08,
-      2367.76
+      2366.19,
+      2365.14,
+      2339.35,
+      2303.28,
+      2309.59
     ],
     "SOLUSDT": [
-      103.18,
-      103.05,
-      103.87,
-      103.88,
       103.86,
       103.92,
       102.81,
@@ -11991,7 +12027,11 @@
       101.28,
       101.6,
       101.4,
-      101.57
+      101.46,
+      101.26,
+      100.27,
+      99.64,
+      100.05
     ]
   },
   "research": {
@@ -12008,6 +12048,6 @@
     "last_error": null
   },
   "scorecard": {},
-  "last_seen_ts": 1792846116.798589,
+  "last_seen_ts": 1792858783.8870687,
   "seen_hashes": []
 }
