@@ -455,8 +455,19 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 999.5419865500926,
-        "positions": {},
+        "cash": 997.9857144150526,
+        "positions": {
+          "PAXGUSDT": {
+            "market_id": "PAXGUSDT",
+            "token_id": "PAXGUSDT",
+            "outcome": "long",
+            "title": "PAXGUSDT",
+            "shares": 0.00038820923255482683,
+            "avg_price": 4004.84,
+            "opened_at": 1792969954.288181,
+            "stance": "momentum"
+          }
+        },
         "closed_trades": [
           {
             "market_id": "PAXGUSDT",
@@ -768,9 +779,9 @@
           }
         ],
         "peak_equity": 1000.0112485853673,
-        "max_drawdown": 0.00046925675680002183,
+        "max_drawdown": 0.0004708130114294349,
         "fee_rate": 0.001,
-        "fees_paid": 0.09850668225159472
+        "fees_paid": 0.10006295438663462
       }
     },
     "momentum-20/100": {
@@ -2344,7 +2355,7 @@
           }
         ],
         "peak_equity": 1000.0,
-        "max_drawdown": 0.003010158905976482,
+        "max_drawdown": 0.0030199766153293697,
         "fee_rate": 0.001,
         "fees_paid": 1.1672910431262253
       }
@@ -2556,7 +2567,7 @@
           }
         ],
         "peak_equity": 1000.0,
-        "max_drawdown": 0.0033791916316929472,
+        "max_drawdown": 0.0033890057070509556,
         "fee_rate": 0.001,
         "fees_paid": 0.694652806362803
       }
@@ -2570,8 +2581,19 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 999.5419865500926,
-        "positions": {},
+        "cash": 997.9857144150526,
+        "positions": {
+          "PAXGUSDT": {
+            "market_id": "PAXGUSDT",
+            "token_id": "PAXGUSDT",
+            "outcome": "long",
+            "title": "PAXGUSDT",
+            "shares": 0.00038820923255482683,
+            "avg_price": 4004.84,
+            "opened_at": 1792969954.288992,
+            "stance": "vol_scaled_momentum"
+          }
+        },
         "closed_trades": [
           {
             "market_id": "PAXGUSDT",
@@ -2883,9 +2905,9 @@
           }
         ],
         "peak_equity": 1000.0112485853673,
-        "max_drawdown": 0.00046925675680002183,
+        "max_drawdown": 0.0004708130114294349,
         "fee_rate": 0.001,
-        "fees_paid": 0.09850668225159472
+        "fees_paid": 0.10006295438663462
       }
     },
     "momentum-tp": {
@@ -2898,8 +2920,19 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 999.5419865500926,
-        "positions": {},
+        "cash": 997.9857144150526,
+        "positions": {
+          "PAXGUSDT": {
+            "market_id": "PAXGUSDT",
+            "token_id": "PAXGUSDT",
+            "outcome": "long",
+            "title": "PAXGUSDT",
+            "shares": 0.00038820923255482683,
+            "avg_price": 4004.84,
+            "opened_at": 1792969954.2894912,
+            "stance": "momentum"
+          }
+        },
         "closed_trades": [
           {
             "market_id": "PAXGUSDT",
@@ -3211,9 +3244,9 @@
           }
         ],
         "peak_equity": 1000.0112485853673,
-        "max_drawdown": 0.00046925675680002183,
+        "max_drawdown": 0.0004708130114294349,
         "fee_rate": 0.001,
-        "fees_paid": 0.09850668225159472
+        "fees_paid": 0.10006295438663462
       }
     },
     "buy-and-hold": {
@@ -3254,14 +3287,11 @@
     }
   },
   "prices": {
-    "PAXGUSDT": 4006.41,
+    "PAXGUSDT": 4004.84,
     "XAUTUSDT": 3993.8
   },
   "bars": {
     "PAXGUSDT": [
-      4137.78,
-      4136.93,
-      4142.86,
       4140.73,
       4135.78,
       4136.95,
@@ -3408,7 +3438,10 @@
       4004.23,
       4005.3,
       4005.04,
-      4006.41
+      4006.95,
+      4008.27,
+      4009.75,
+      4004.84
     ],
     "XAUTUSDT": [
       4152.63,
@@ -3573,6 +3606,6 @@
     "last_error": "coinbase: 404 Client Error: Not Found for url: https://api.exchange.coinbase.com/products/XAUT-USD/candles?granularity=3600"
   },
   "scorecard": {},
-  "last_seen_ts": 1792962020.1750603,
+  "last_seen_ts": 1792969954.3001702,
   "seen_hashes": []
 }
