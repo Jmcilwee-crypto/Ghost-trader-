@@ -113,3 +113,6 @@
 {"ts": 1792765527.6790426, "bot": "meanrev-35", "symbol": "JPYUSD", "action": "sell", "price": 0.00638, "pnl": 0.09, "reason": "RSI recovered to 71 -- back to normal", "strength_pct": 50.0}
 {"ts": 1792765527.6794877, "bot": "breakout-20", "symbol": "JPYUSD", "action": "buy", "price": 0.00638, "usd": 27.35, "reason": "Broke above its 20-bar high by 0.16%", "strength_pct": 54.7}
 {"ts": 1792765527.6798918, "bot": "risky-nostop-5/20", "symbol": "JPYUSD", "action": "buy", "price": 0.00638, "usd": 7.09, "reason": "5-bar average is 0.14% above the 20-bar -- uptrend", "strength_pct": 2.8}
+{"ts": 1793040922.0028858, "bot": "risky-breakout-10", "symbol": "CHFUSD", "action": "sell", "price": 1.2104, "pnl": -0.26, "reason": "Fell below the 5-bar low -- breakout failed", "strength_pct": 50.0}
+{"ts": 1793040922.1142533, "bot": "risky-momentum-3/10", "symbol": "EURUSD", "action": "sell", "price": 1.1188, "pnl": -0.02, "reason": "3-bar average dropped below the 10-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1793040922.1633646, "bot": "risky-momentum-5/15", "symbol": "EURUSD", "action": "sell", "price": 1.1188, "pnl": -0.01, "reason": "5-bar average dropped below the 15-bar -- trend over", "strength_pct": 50.0}
