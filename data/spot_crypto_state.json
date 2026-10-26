@@ -9,28 +9,8 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 985.9113404167193,
+        "cash": 988.9446042820566,
         "positions": {
-          "BTCUSDT": {
-            "market_id": "BTCUSDT",
-            "token_id": "BTCUSDT",
-            "outcome": "long",
-            "title": "BTCUSDT",
-            "shares": 2.0775315279323265e-05,
-            "avg_price": 80282.79,
-            "opened_at": 1793019103.184466,
-            "stance": "momentum"
-          },
-          "SOLUSDT": {
-            "market_id": "SOLUSDT",
-            "token_id": "SOLUSDT",
-            "outcome": "long",
-            "title": "SOLUSDT",
-            "shares": 0.013746314504330134,
-            "avg_price": 101.51,
-            "opened_at": 1793019103.1850514,
-            "stance": "momentum"
-          },
           "BNBUSDT": {
             "market_id": "BNBUSDT",
             "token_id": "BNBUSDT",
@@ -2432,12 +2412,40 @@
             "reason": "5-bar average dropped below the 20-bar -- trend over",
             "pnl": -0.00774828778026033,
             "stance": "momentum"
+          },
+          {
+            "market_id": "BTCUSDT",
+            "token_id": "BTCUSDT",
+            "outcome": "long",
+            "title": "BTCUSDT",
+            "shares": 2.0775315279323265e-05,
+            "avg_price": 80282.79,
+            "exit_price": 79883.59,
+            "opened_at": 1793019103.184466,
+            "closed_at": 1793055362.717482,
+            "reason": "5-bar average dropped below the 20-bar -- trend over",
+            "pnl": -0.00995311262740014,
+            "stance": "momentum"
+          },
+          {
+            "market_id": "SOLUSDT",
+            "token_id": "SOLUSDT",
+            "outcome": "long",
+            "title": "SOLUSDT",
+            "shares": 0.013746314504330134,
+            "avg_price": 101.51,
+            "exit_price": 100.15,
+            "opened_at": 1793019103.1850514,
+            "closed_at": 1793055362.7178738,
+            "reason": "5-bar average dropped below the 20-bar -- trend over",
+            "pnl": -0.02007168112349751,
+            "stance": "momentum"
           }
         ],
         "peak_equity": 1001.1086620565161,
-        "max_drawdown": 0.0021244517322091573,
+        "max_drawdown": 0.0021539849809842086,
         "fee_rate": 0.001,
-        "fees_paid": 0.9173327376323156
+        "fees_paid": 0.9203690377978185
       }
     },
     "momentum-10/50": {
@@ -11579,18 +11587,14 @@
     }
   },
   "prices": {
-    "SOLUSDT": 100.33,
-    "BNBUSDT": 742.28,
-    "XRPUSDT": 1.2926,
-    "BTCUSDT": 79909.08,
-    "ETHUSDT": 2312.55
+    "BNBUSDT": 740.84,
+    "XRPUSDT": 1.289,
+    "BTCUSDT": 79883.59,
+    "ETHUSDT": 2309.9,
+    "SOLUSDT": 100.15
   },
   "bars": {
     "BNBUSDT": [
-      732.26,
-      738.37,
-      733.68,
-      736.61,
       737.91,
       737.3,
       738.34,
@@ -11736,13 +11740,13 @@
       743.35,
       743.66,
       744.27,
-      742.28
+      741.38,
+      741.96,
+      740.01,
+      741.38,
+      740.84
     ],
     "XRPUSDT": [
-      1.3085,
-      1.3423,
-      1.3209,
-      1.3269,
       1.3288,
       1.3231,
       1.3273,
@@ -11888,13 +11892,13 @@
       1.2951,
       1.2941,
       1.2961,
-      1.2926
+      1.2917,
+      1.2911,
+      1.2869,
+      1.2916,
+      1.289
     ],
     "BTCUSDT": [
-      82043.87,
-      83178.97,
-      82514.42,
-      82693.33,
       82731.93,
       82442.4,
       82503.62,
@@ -12040,13 +12044,13 @@
       80298.98,
       80097.95,
       80196.98,
-      79909.08
+      79857.18,
+      79874.53,
+      79719.94,
+      79964.94,
+      79883.59
     ],
     "ETHUSDT": [
-      2408.3,
-      2469.61,
-      2438.7,
-      2449.07,
       2447.99,
       2435.57,
       2434.8,
@@ -12192,13 +12196,13 @@
       2324.36,
       2317.54,
       2322.53,
-      2312.55
+      2310.59,
+      2314.49,
+      2302.35,
+      2307.39,
+      2309.9
     ],
     "SOLUSDT": [
-      105.11,
-      107.65,
-      105.76,
-      106.39,
       106.65,
       105.88,
       105.97,
@@ -12344,7 +12348,11 @@
       101.72,
       101.17,
       101.24,
-      100.33
+      100.28,
+      100.32,
+      100.14,
+      100.37,
+      100.15
     ]
   },
   "research": {
@@ -12352,15 +12360,15 @@
     "symbols_cached": 5,
     "requests_made": 10,
     "sources": {
-      "SOLUSDT": "coinbase",
       "BNBUSDT": "coinbase",
       "XRPUSDT": "coinbase",
       "BTCUSDT": "coinbase",
-      "ETHUSDT": "coinbase"
+      "ETHUSDT": "coinbase",
+      "SOLUSDT": "coinbase"
     },
     "last_error": null
   },
   "scorecard": {},
-  "last_seen_ts": 1793040919.895086,
+  "last_seen_ts": 1793055362.7389824,
   "seen_hashes": []
 }
