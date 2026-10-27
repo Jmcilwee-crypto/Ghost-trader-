@@ -115,3 +115,6 @@
 {"ts": 1792748040.827751, "bot": "breakout-20", "symbol": "MSFT", "action": "sell", "price": 521.08, "pnl": -1.56, "reason": "Fell below the 10-bar low -- breakout failed", "strength_pct": 50.0}
 {"ts": 1792748040.8283463, "bot": "risky-momentum-5/15", "symbol": "MSFT", "action": "sell", "price": 521.08, "pnl": -3.71, "reason": "5-bar average dropped below the 15-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1793105427.7046525, "bot": "risky-momentum-5/15", "symbol": "TTWO", "action": "sell", "price": 203.35, "pnl": -0.27, "reason": "5-bar average dropped below the 15-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1793140076.961045, "bot": "momentum-5/20", "symbol": "TTWO", "action": "sell", "price": 201.28, "pnl": -0.18, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1793140076.961385, "bot": "risky-momentum-3/10", "symbol": "TTWO", "action": "sell", "price": 201.28, "pnl": -0.22, "reason": "3-bar average dropped below the 10-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1793140077.0019078, "bot": "risky-nostop-5/20", "symbol": "TTWO", "action": "sell", "price": 201.28, "pnl": -0.88, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
