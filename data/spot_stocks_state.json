@@ -844,7 +844,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 971.5185709293731,
+        "cash": 991.0893402654034,
         "positions": {
           "AAPL": {
             "market_id": "AAPL",
@@ -854,16 +854,6 @@
             "shares": 0.006907611861059251,
             "avg_price": 336.64,
             "opened_at": 1791577478.2755198,
-            "stance": "momentum"
-          },
-          "TTWO": {
-            "market_id": "TTWO",
-            "token_id": "TTWO",
-            "outcome": "long",
-            "title": "TTWO",
-            "shares": 0.09624179658731354,
-            "avg_price": 206.16,
-            "opened_at": 1792675065.1810021,
             "stance": "momentum"
           }
         },
@@ -937,10 +927,24 @@
             "reason": "5-bar average dropped below the 15-bar -- trend over",
             "pnl": -3.7072458201140677,
             "stance": "momentum"
+          },
+          {
+            "market_id": "TTWO",
+            "token_id": "TTWO",
+            "outcome": "long",
+            "title": "TTWO",
+            "shares": 0.09624179658731354,
+            "avg_price": 206.16,
+            "exit_price": 203.35,
+            "opened_at": 1792675065.1810021,
+            "closed_at": 1793105427.7045722,
+            "reason": "5-bar average dropped below the 15-bar -- trend over",
+            "pnl": -0.2704394484103503,
+            "stance": "momentum"
           }
         ],
         "peak_equity": 1001.2750284028082,
-        "max_drawdown": 0.007741146410634447,
+        "max_drawdown": 0.007773826952854563,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -1262,11 +1266,11 @@
     }
   },
   "prices": {
-    "MSFT": 532.6,
-    "NVDA": 212.21,
-    "TTWO": 203.69,
+    "TTWO": 203.35,
     "SPY": 765.37,
-    "AAPL": 347.725
+    "AAPL": 347.725,
+    "MSFT": 532.6,
+    "NVDA": 212.21
   },
   "bars": {
     "AAPL": [
@@ -1474,7 +1478,6 @@
       765.37
     ],
     "TTWO": [
-      215.8,
       216.65,
       214.39,
       212.55,
@@ -1573,7 +1576,8 @@
       206.7,
       206.16,
       207.81,
-      203.69
+      203.69,
+      203.35
     ],
     "NVDA": [
       222.82,
@@ -1790,6 +1794,6 @@
     "note": null
   },
   "scorecard": {},
-  "last_seen_ts": 1793083850.148104,
+  "last_seen_ts": 1793105427.7094471,
   "seen_hashes": []
 }
