@@ -116,3 +116,5 @@
 {"ts": 1793040922.0028858, "bot": "risky-breakout-10", "symbol": "CHFUSD", "action": "sell", "price": 1.2104, "pnl": -0.26, "reason": "Fell below the 5-bar low -- breakout failed", "strength_pct": 50.0}
 {"ts": 1793040922.1142533, "bot": "risky-momentum-3/10", "symbol": "EURUSD", "action": "sell", "price": 1.1188, "pnl": -0.02, "reason": "3-bar average dropped below the 10-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1793040922.1633646, "bot": "risky-momentum-5/15", "symbol": "EURUSD", "action": "sell", "price": 1.1188, "pnl": -0.01, "reason": "5-bar average dropped below the 15-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1793125675.8305342, "bot": "risky-breakout-10", "symbol": "GBPUSD", "action": "sell", "price": 1.3328, "pnl": -0.07, "reason": "Fell below the 5-bar low -- breakout failed", "strength_pct": 50.0}
+{"ts": 1793125675.8310568, "bot": "risky-momentum-3/10", "symbol": "CHFUSD", "action": "sell", "price": 1.2068, "pnl": -0.04, "reason": "3-bar average dropped below the 10-bar -- trend over", "strength_pct": 50.0}
