@@ -1238,19 +1238,8 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 973.5739514482187,
-        "positions": {
-          "PAXGUSDT": {
-            "market_id": "PAXGUSDT",
-            "token_id": "PAXGUSDT",
-            "outcome": "long",
-            "title": "PAXGUSDT",
-            "shares": 0.005839019311650304,
-            "avg_price": 4034.76,
-            "opened_at": 1793172192.4832597,
-            "stance": "mean_reversion"
-          }
-        },
+        "cash": 997.2193310812428,
+        "positions": {},
         "closed_trades": [
           {
             "market_id": "PAXGUSDT",
@@ -1615,12 +1604,26 @@
             "reason": "RSI recovered to 56 -- back to normal",
             "pnl": 0.10991761694058733,
             "stance": "mean_reversion"
+          },
+          {
+            "market_id": "PAXGUSDT",
+            "token_id": "PAXGUSDT",
+            "outcome": "long",
+            "title": "PAXGUSDT",
+            "shares": 0.005839019311650304,
+            "avg_price": 4034.76,
+            "exit_price": 4053.6,
+            "opened_at": 1793172192.4832597,
+            "closed_at": 1793215892.3735383,
+            "reason": "RSI recovered to 61 -- back to normal",
+            "pnl": 0.08633807514978468,
+            "stance": "mean_reversion"
           }
         ],
         "peak_equity": 1000.0334544405594,
         "max_drawdown": 0.002986696508964103,
         "fee_rate": 0.001,
-        "fees_paid": 1.530837290054145
+        "fees_paid": 1.5545063387358506
       }
     },
     "meanrev-35": {
@@ -1632,19 +1635,8 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 966.7405219571343,
-        "positions": {
-          "PAXGUSDT": {
-            "market_id": "PAXGUSDT",
-            "token_id": "PAXGUSDT",
-            "outcome": "long",
-            "title": "PAXGUSDT",
-            "shares": 0.0074720331712444105,
-            "avg_price": 4034.76,
-            "opened_at": 1793172192.4837418,
-            "stance": "mean_reversion"
-          }
-        },
+        "cash": 996.9988669864277,
+        "positions": {},
         "closed_trades": [
           {
             "market_id": "PAXGUSDT",
@@ -2093,12 +2085,26 @@
             "reason": "RSI recovered to 75 -- back to normal",
             "pnl": 0.3629862319651054,
             "stance": "mean_reversion"
+          },
+          {
+            "market_id": "PAXGUSDT",
+            "token_id": "PAXGUSDT",
+            "outcome": "long",
+            "title": "PAXGUSDT",
+            "shares": 0.0074720331712444105,
+            "avg_price": 4034.76,
+            "exit_price": 4053.6,
+            "opened_at": 1793172192.4837418,
+            "closed_at": 1793215892.3740366,
+            "reason": "RSI recovered to 61 -- back to normal",
+            "pnl": 0.1104844712832885,
+            "stance": "mean_reversion"
           }
         ],
         "peak_equity": 1000.0,
         "max_drawdown": 0.003444425678224093,
         "fee_rate": 0.001,
-        "fees_paid": 1.748498936966414
+        "fees_paid": 1.7787875706293703
       }
     },
     "breakout-20": {
@@ -3370,15 +3376,10 @@
   },
   "prices": {
     "XAUTUSDT": 3993.8,
-    "PAXGUSDT": 4046.49
+    "PAXGUSDT": 4053.6
   },
   "bars": {
     "PAXGUSDT": [
-      4092.35,
-      4083.77,
-      4068.26,
-      4089.49,
-      4066.42,
       4067.75,
       4059.56,
       4045.25,
@@ -3523,7 +3524,12 @@
       4046.4,
       4054.99,
       4047.75,
-      4046.49
+      4039.47,
+      4041.12,
+      4039.81,
+      4046.67,
+      4032.59,
+      4053.6
     ],
     "XAUTUSDT": [
       4152.63,
@@ -3688,6 +3694,6 @@
     "last_error": null
   },
   "scorecard": {},
-  "last_seen_ts": 1793196685.2130303,
+  "last_seen_ts": 1793215892.385152,
   "seen_hashes": []
 }

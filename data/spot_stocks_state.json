@@ -9,7 +9,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 953.7518574995819,
+        "cash": 991.5082238085275,
         "positions": {
           "IBM": {
             "market_id": "IBM",
@@ -29,16 +29,6 @@
             "shares": 0.005852134645245387,
             "avg_price": 336.64,
             "opened_at": 1791577478.274776,
-            "stance": "momentum"
-          },
-          "MSFT": {
-            "market_id": "MSFT",
-            "token_id": "MSFT",
-            "outcome": "long",
-            "title": "MSFT",
-            "shares": 0.07106010635376442,
-            "avg_price": 541.15,
-            "opened_at": 1791901888.9485521,
             "stance": "momentum"
           }
         },
@@ -139,6 +129,20 @@
             "closed_at": 1793140076.9610088,
             "reason": "5-bar average dropped below the 20-bar -- trend over",
             "pnl": -0.1772144232316606,
+            "stance": "momentum"
+          },
+          {
+            "market_id": "MSFT",
+            "token_id": "MSFT",
+            "outcome": "long",
+            "title": "MSFT",
+            "shares": 0.07106010635376442,
+            "avg_price": 541.15,
+            "exit_price": 531.33,
+            "opened_at": 1791901888.9485521,
+            "closed_at": 1793215895.211996,
+            "reason": "5-bar average dropped below the 20-bar -- trend over",
+            "pnl": -0.6978102443939633,
             "stance": "momentum"
           }
         ],
@@ -1087,7 +1091,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 798.3873871028368,
+        "cash": 987.184510498578,
         "positions": {
           "AAPL": {
             "market_id": "AAPL",
@@ -1097,16 +1101,6 @@
             "shares": 0.012682598889495734,
             "avg_price": 340.42,
             "opened_at": 1791491319.5835593,
-            "stance": "momentum"
-          },
-          "MSFT": {
-            "market_id": "MSFT",
-            "token_id": "MSFT",
-            "outcome": "long",
-            "title": "MSFT",
-            "shares": 0.3553293120955736,
-            "avg_price": 541.15,
-            "opened_at": 1791901888.9505086,
             "stance": "momentum"
           }
         },
@@ -1208,6 +1202,20 @@
             "reason": "5-bar average dropped below the 20-bar -- trend over",
             "pnl": -0.8813742017711448,
             "stance": "momentum"
+          },
+          {
+            "market_id": "MSFT",
+            "token_id": "MSFT",
+            "outcome": "long",
+            "title": "MSFT",
+            "shares": 0.3553293120955736,
+            "avg_price": 541.15,
+            "exit_price": 531.33,
+            "opened_at": 1791901888.9505086,
+            "closed_at": 1793215895.212681,
+            "reason": "5-bar average dropped below the 20-bar -- trend over",
+            "pnl": -3.4893338447784856,
+            "stance": "momentum"
           }
         ],
         "peak_equity": 1002.2940668937597,
@@ -1278,11 +1286,11 @@
     }
   },
   "prices": {
+    "MSFT": 531.33,
     "NVDA": 217.94,
     "TTWO": 201.28,
     "SPY": 765.37,
-    "AAPL": 347.1,
-    "MSFT": 532.6
+    "AAPL": 347.1
   },
   "bars": {
     "AAPL": [
@@ -1694,7 +1702,6 @@
       217.94
     ],
     "MSFT": [
-      428.05,
       416.67,
       411.74,
       403.41,
@@ -1793,7 +1800,8 @@
       532.95,
       521.08,
       524.51,
-      532.6
+      532.6,
+      531.33
     ]
   },
   "research": {
@@ -1806,6 +1814,6 @@
     "note": null
   },
   "scorecard": {},
-  "last_seen_ts": 1793196688.3435576,
+  "last_seen_ts": 1793215895.2174492,
   "seen_hashes": []
 }
