@@ -1263,7 +1263,7 @@
   "prices": {
     "CHFUSD": 1.2069,
     "EURUSD": 1.113,
-    "GBPUSD": 1.3288,
+    "GBPUSD": 1.3317,
     "JPYUSD": 0.0063267,
     "AUDUSD": 0.70256
   },
@@ -1725,7 +1725,6 @@
       1.113
     ],
     "GBPUSD": [
-      1.323,
       1.3242,
       1.3322,
       1.3209,
@@ -1874,7 +1873,8 @@
       1.3368,
       1.3348,
       1.3328,
-      1.3288
+      1.3288,
+      1.3317
     ],
     "JPYUSD": [
       0.0062697,
@@ -2031,11 +2031,11 @@
   },
   "research": {
     "enabled": true,
-    "symbols_cached": 4,
-    "requests_made": 4,
+    "symbols_cached": 5,
+    "requests_made": 5,
     "last_error": null
   },
   "scorecard": {},
-  "last_seen_ts": 1793289830.7592514,
+  "last_seen_ts": 1793307845.2159433,
   "seen_hashes": []
 }
