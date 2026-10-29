@@ -375,7 +375,7 @@
         },
         "closed_trades": [],
         "peak_equity": 1000.129903069864,
-        "max_drawdown": 0.0017713925958236251,
+        "max_drawdown": 0.0020452957632572347,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -724,7 +724,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 971.2991300450461,
+        "cash": 964.3568658969713,
         "positions": {
           "AAPL": {
             "market_id": "AAPL",
@@ -744,6 +744,16 @@
             "shares": 0.008163281574063428,
             "avg_price": 772.31,
             "opened_at": 1793230224.9938748,
+            "stance": "momentum"
+          },
+          "NVDA": {
+            "market_id": "NVDA",
+            "token_id": "NVDA",
+            "outcome": "long",
+            "title": "NVDA",
+            "shares": 0.032232631386734524,
+            "avg_price": 215.38,
+            "opened_at": 1793289831.1765425,
             "stance": "momentum"
           }
         },
@@ -1308,11 +1318,11 @@
     }
   },
   "prices": {
+    "NVDA": 215.38,
     "TTWO": 195.29,
     "SPY": 772.31,
     "AAPL": 347.1,
-    "MSFT": 531.33,
-    "NVDA": 217.94
+    "MSFT": 531.33
   },
   "bars": {
     "AAPL": [
@@ -1622,7 +1632,6 @@
       195.29
     ],
     "NVDA": [
-      205.1,
       208.64,
       208.19,
       200.42,
@@ -1721,7 +1730,8 @@
       212.21,
       210.96,
       216.0,
-      217.94
+      217.94,
+      215.38
     ],
     "MSFT": [
       416.67,
@@ -1836,6 +1846,6 @@
     "note": null
   },
   "scorecard": {},
-  "last_seen_ts": 1793264597.8629851,
+  "last_seen_ts": 1793289831.1817164,
   "seen_hashes": []
 }

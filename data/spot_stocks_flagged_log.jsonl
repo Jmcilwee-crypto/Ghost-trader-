@@ -124,3 +124,4 @@
 {"ts": 1793230224.992978, "bot": "vol-momentum", "symbol": "SPY", "action": "sell", "price": 772.31, "pnl": 0.21, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1793230224.993393, "bot": "momentum-tp", "symbol": "SPY", "action": "sell", "price": 772.31, "pnl": 0.21, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1793230224.993911, "bot": "risky-momentum-3/10", "symbol": "SPY", "action": "buy", "price": 772.31, "usd": 6.3, "reason": "3-bar average is 0.21% above the 10-bar -- uptrend", "strength_pct": 4.2}
+{"ts": 1793289831.1766534, "bot": "risky-momentum-3/10", "symbol": "NVDA", "action": "buy", "price": 215.38, "usd": 6.94, "reason": "3-bar average is 0.23% above the 10-bar -- uptrend", "strength_pct": 4.6}
