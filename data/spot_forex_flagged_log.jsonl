@@ -121,3 +121,4 @@
 {"ts": 1793215894.8379786, "bot": "risky-momentum-3/10", "symbol": "JPYUSD", "action": "sell", "price": 0.0063306, "pnl": -0.0, "reason": "3-bar average dropped below the 10-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1793215894.8384073, "bot": "risky-breakout-10", "symbol": "JPYUSD", "action": "sell", "price": 0.0063306, "pnl": -0.64, "reason": "Fell below the 5-bar low -- breakout failed", "strength_pct": 50.0}
 {"ts": 1793215894.8392696, "bot": "risky-momentum-3/10", "symbol": "GBPUSD", "action": "sell", "price": 1.3288, "pnl": 0.01, "reason": "3-bar average dropped below the 10-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1793386210.420966, "bot": "risky-momentum-5/15", "symbol": "CHFUSD", "action": "sell", "price": 1.2151, "pnl": 0.0, "reason": "5-bar average dropped below the 15-bar -- trend over", "strength_pct": 50.0}

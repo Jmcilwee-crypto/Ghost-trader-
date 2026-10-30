@@ -917,18 +917,8 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 984.8113384701566,
+        "cash": 989.7980432752008,
         "positions": {
-          "CHFUSD": {
-            "market_id": "CHFUSD",
-            "token_id": "CHFUSD",
-            "outcome": "long",
-            "title": "CHFUSD",
-            "shares": 4.10476697021921,
-            "avg_price": 1.2137,
-            "opened_at": 1792159498.4624703,
-            "stance": "momentum"
-          },
           "GBPUSD": {
             "market_id": "GBPUSD",
             "token_id": "GBPUSD",
@@ -1002,12 +992,26 @@
             "reason": "5-bar average dropped below the 15-bar -- trend over",
             "pnl": -0.014371764583280508,
             "stance": "momentum"
+          },
+          {
+            "market_id": "CHFUSD",
+            "token_id": "CHFUSD",
+            "outcome": "long",
+            "title": "CHFUSD",
+            "shares": 4.10476697021921,
+            "avg_price": 1.2137,
+            "exit_price": 1.2151,
+            "opened_at": 1792159498.4624703,
+            "closed_at": 1793386210.420885,
+            "reason": "5-bar average dropped below the 15-bar -- trend over",
+            "pnl": 0.004749133289204502,
+            "stance": "momentum"
           }
         ],
         "peak_equity": 999.9847624076245,
         "max_drawdown": 0.001595219446880412,
         "fee_rate": 0.0002,
-        "fees_paid": 0.034335712878457644
+        "fees_paid": 0.035333253347560316
       }
     },
     "risky-meanrev-20": {
@@ -1165,7 +1169,7 @@
           }
         ],
         "peak_equity": 1000.0,
-        "max_drawdown": 0.002495777491796389,
+        "max_drawdown": 0.0025086526811877547,
         "fee_rate": 0.0002,
         "fees_paid": 0.168576744208307
       }
@@ -1261,15 +1265,14 @@
     }
   },
   "prices": {
-    "EURUSD": 1.113,
-    "GBPUSD": 1.3317,
-    "JPYUSD": 0.0063267,
-    "AUDUSD": 0.70256,
-    "CHFUSD": 1.2069
+    "GBPUSD": 1.3399,
+    "JPYUSD": 0.0063593,
+    "AUDUSD": 0.70246,
+    "CHFUSD": 1.2151,
+    "EURUSD": 1.1172
   },
   "bars": {
     "AUDUSD": [
-      0.68879,
       0.69537,
       0.6872,
       0.69349,
@@ -1418,10 +1421,10 @@
       0.70245,
       0.7032,
       0.70328,
-      0.70256
+      0.70256,
+      0.70246
     ],
     "CHFUSD": [
-      1.2506,
       1.2626,
       1.2509,
       1.2505,
@@ -1570,10 +1573,10 @@
       1.2104,
       1.2068,
       1.204,
-      1.2069
+      1.2069,
+      1.2151
     ],
     "EURUSD": [
-      1.1498,
       1.1605,
       1.1525,
       1.1557,
@@ -1722,10 +1725,10 @@
       1.1188,
       1.115,
       1.1133,
-      1.113
+      1.113,
+      1.1172
     ],
     "GBPUSD": [
-      1.3242,
       1.3322,
       1.3209,
       1.3245,
@@ -1874,10 +1877,10 @@
       1.3348,
       1.3328,
       1.3288,
-      1.3317
+      1.3317,
+      1.3399
     ],
     "JPYUSD": [
-      0.0062697,
       0.0063163,
       0.0062656,
       0.0062562,
@@ -2026,7 +2029,8 @@
       0.0063514,
       0.0063363,
       0.0063306,
-      0.0063267
+      0.0063267,
+      0.0063593
     ]
   },
   "research": {
@@ -2036,6 +2040,6 @@
     "last_error": null
   },
   "scorecard": {},
-  "last_seen_ts": 1793367077.1619856,
+  "last_seen_ts": 1793386210.424047,
   "seen_hashes": []
 }
