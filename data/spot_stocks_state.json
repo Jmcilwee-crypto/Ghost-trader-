@@ -306,7 +306,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 979.3337491327588,
+        "cash": 955.5643311100331,
         "positions": {
           "NVDA": {
             "market_id": "NVDA",
@@ -316,6 +316,16 @@
             "shares": 0.09630327027895925,
             "avg_price": 212.21,
             "opened_at": 1792704644.9303365,
+            "stance": "mean_reversion"
+          },
+          "TTWO": {
+            "market_id": "TTWO",
+            "token_id": "TTWO",
+            "outcome": "long",
+            "title": "TTWO",
+            "shares": 0.12290924051256913,
+            "avg_price": 193.39,
+            "opened_at": 1793321682.9029467,
             "stance": "mean_reversion"
           }
         },
@@ -375,7 +385,7 @@
         },
         "closed_trades": [],
         "peak_equity": 1000.129903069864,
-        "max_drawdown": 0.0022293244538767586,
+        "max_drawdown": 0.002463583633134675,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -1281,7 +1291,7 @@
         },
         "closed_trades": [],
         "peak_equity": 1000.0,
-        "max_drawdown": 0.01431715187306304,
+        "max_drawdown": 0.016359071862161043,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -1311,18 +1321,18 @@
         },
         "closed_trades": [],
         "peak_equity": 1000.0,
-        "max_drawdown": 0.01431715187306304,
+        "max_drawdown": 0.016359071862161043,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
     }
   },
   "prices": {
-    "NVDA": 213.66,
-    "TTWO": 195.29,
+    "TTWO": 193.39,
     "SPY": 772.31,
     "AAPL": 347.1,
-    "MSFT": 531.33
+    "MSFT": 531.33,
+    "NVDA": 213.66
   },
   "bars": {
     "AAPL": [
@@ -1530,7 +1540,6 @@
       772.31
     ],
     "TTWO": [
-      212.55,
       212.05,
       210.46,
       212.08,
@@ -1629,7 +1638,8 @@
       203.69,
       203.35,
       201.28,
-      195.29
+      195.29,
+      193.39
     ],
     "NVDA": [
       208.19,
@@ -1846,6 +1856,6 @@
     "note": null
   },
   "scorecard": {},
-  "last_seen_ts": 1793307845.6276715,
+  "last_seen_ts": 1793321682.906214,
   "seen_hashes": []
 }
