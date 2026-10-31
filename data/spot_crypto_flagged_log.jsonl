@@ -1,9 +1,3 @@
-{"ts": 1792516996.5949671, "bot": "momentum-5/20", "symbol": "SOLUSDT", "action": "buy", "price": 106.33, "usd": 12.04, "reason": "5-bar average is 1.21% above the 20-bar -- uptrend", "strength_pct": 24.1}
-{"ts": 1792516996.5954273, "bot": "momentum-5/20", "symbol": "BNBUSDT", "action": "buy", "price": 736.06, "usd": 6.69, "reason": "5-bar average is 0.67% above the 20-bar -- uptrend", "strength_pct": 13.4}
-{"ts": 1792516996.5958698, "bot": "momentum-5/20", "symbol": "XRPUSDT", "action": "buy", "price": 1.3267, "usd": 15.12, "reason": "5-bar average is 1.51% above the 20-bar -- uptrend", "strength_pct": 30.3}
-{"ts": 1792516996.596278, "bot": "momentum-20/100", "symbol": "XRPUSDT", "action": "buy", "price": 1.3267, "usd": 4.29, "reason": "20-bar average is 0.43% above the 100-bar -- uptrend", "strength_pct": 8.6}
-{"ts": 1792516996.5966952, "bot": "momentum-5/20", "symbol": "BTCUSDT", "action": "buy", "price": 82667.51, "usd": 8.87, "reason": "5-bar average is 0.89% above the 20-bar -- uptrend", "strength_pct": 17.8}
-{"ts": 1792529074.7789824, "bot": "meanrev-35", "symbol": "SOLUSDT", "action": "sell", "price": 106.5, "pnl": 0.63, "reason": "RSI recovered to 61 -- back to normal", "strength_pct": 50.0}
 {"ts": 1792529074.7796218, "bot": "momentum-10/50", "symbol": "BTCUSDT", "action": "buy", "price": 82699.67, "usd": 4.0, "reason": "10-bar average is 0.40% above the 50-bar -- uptrend", "strength_pct": 8.0}
 {"ts": 1792529074.780045, "bot": "meanrev-35", "symbol": "BTCUSDT", "action": "sell", "price": 82699.67, "pnl": 0.23, "reason": "RSI recovered to 63 -- back to normal", "strength_pct": 50.0}
 {"ts": 1792529074.7804887, "bot": "vol-momentum", "symbol": "BTCUSDT", "action": "buy", "price": 82699.67, "usd": 4.0, "reason": "10-bar average is 0.40% above the 50-bar -- uptrend; volatility 0.44% vs 2.00% target -> sizing at 100% (moved +1.3%)", "strength_pct": 8.0}
@@ -298,3 +292,9 @@
 {"ts": 1793469691.9114685, "bot": "momentum-5/20", "symbol": "SOLUSDT", "action": "sell", "price": 95.89, "pnl": -0.03, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1793469691.9120007, "bot": "momentum-5/20", "symbol": "XRPUSDT", "action": "buy", "price": 1.2525, "usd": 1.55, "reason": "5-bar average is 0.16% above the 20-bar -- uptrend", "strength_pct": 3.1}
 {"ts": 1793469691.9123752, "bot": "meanrev-35", "symbol": "XRPUSDT", "action": "sell", "price": 1.2525, "pnl": 0.36, "reason": "RSI recovered to 76 -- back to normal", "strength_pct": 50.0}
+{"ts": 1793482097.894121, "bot": "momentum-10/50", "symbol": "XRPUSDT", "action": "buy", "price": 1.2498, "usd": 2.63, "reason": "10-bar average is 0.26% above the 50-bar -- uptrend", "strength_pct": 5.2}
+{"ts": 1793482097.894925, "bot": "vol-momentum", "symbol": "XRPUSDT", "action": "buy", "price": 1.2498, "usd": 2.63, "reason": "10-bar average is 0.26% above the 50-bar -- uptrend; volatility 0.22% vs 2.00% target -> sizing at 100% (moved -0.2%)", "strength_pct": 5.2}
+{"ts": 1793482097.8954654, "bot": "momentum-tp", "symbol": "XRPUSDT", "action": "buy", "price": 1.2498, "usd": 2.63, "reason": "10-bar average is 0.26% above the 50-bar -- uptrend", "strength_pct": 5.2}
+{"ts": 1793482097.8962653, "bot": "momentum-10/50", "symbol": "BNBUSDT", "action": "buy", "price": 701.03, "usd": 1.46, "reason": "10-bar average is 0.15% above the 50-bar -- uptrend", "strength_pct": 2.9}
+{"ts": 1793482097.8968725, "bot": "vol-momentum", "symbol": "BNBUSDT", "action": "buy", "price": 701.03, "usd": 1.46, "reason": "10-bar average is 0.15% above the 50-bar -- uptrend; volatility 0.25% vs 2.00% target -> sizing at 100% (moved -0.7%)", "strength_pct": 2.9}
+{"ts": 1793482097.8974147, "bot": "momentum-tp", "symbol": "BNBUSDT", "action": "buy", "price": 701.03, "usd": 1.46, "reason": "10-bar average is 0.15% above the 50-bar -- uptrend", "strength_pct": 2.9}
