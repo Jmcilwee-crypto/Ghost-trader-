@@ -346,7 +346,7 @@
           }
         ],
         "peak_equity": 1000.3220838573552,
-        "max_drawdown": 0.0012804210917458545,
+        "max_drawdown": 0.0016760614168343279,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -360,18 +360,8 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 950.955831646044,
+        "cash": 974.4057554250899,
         "positions": {
-          "TTWO": {
-            "market_id": "TTWO",
-            "token_id": "TTWO",
-            "outcome": "long",
-            "title": "TTWO",
-            "shares": 0.12331032118129014,
-            "avg_price": 211.91,
-            "opened_at": 1789511818.5859442,
-            "stance": "mean_reversion"
-          },
           "NVDA": {
             "market_id": "NVDA",
             "token_id": "NVDA",
@@ -383,9 +373,24 @@
             "stance": "mean_reversion"
           }
         },
-        "closed_trades": [],
+        "closed_trades": [
+          {
+            "market_id": "TTWO",
+            "token_id": "TTWO",
+            "outcome": "long",
+            "title": "TTWO",
+            "shares": 0.12331032118129014,
+            "avg_price": 211.91,
+            "exit_price": 190.17,
+            "opened_at": 1789511818.5859442,
+            "closed_at": 1793432403.1374016,
+            "reason": "Stop loss hit -- down -10.3% from entry",
+            "pnl": -2.6807663824812487,
+            "stance": "mean_reversion"
+          }
+        ],
         "peak_equity": 1000.129903069864,
-        "max_drawdown": 0.00342866432463928,
+        "max_drawdown": 0.0038256719863290333,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -719,7 +724,7 @@
         },
         "closed_trades": [],
         "peak_equity": 1007.1481383077012,
-        "max_drawdown": 0.009373807370782427,
+        "max_drawdown": 0.01009138979932748,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -1295,7 +1300,7 @@
         },
         "closed_trades": [],
         "peak_equity": 1000.0,
-        "max_drawdown": 0.016359071862161043,
+        "max_drawdown": 0.01981958889631653,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -1325,18 +1330,18 @@
         },
         "closed_trades": [],
         "peak_equity": 1000.0,
-        "max_drawdown": 0.016359071862161043,
+        "max_drawdown": 0.01981958889631653,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
     }
   },
   "prices": {
-    "NVDA": 204.64,
-    "TTWO": 193.39,
+    "TTWO": 190.17,
     "SPY": 769.36,
     "AAPL": 344.63,
-    "MSFT": 531.33
+    "MSFT": 531.33,
+    "NVDA": 204.64
   },
   "bars": {
     "AAPL": [
@@ -1544,7 +1549,6 @@
       769.36
     ],
     "TTWO": [
-      212.05,
       210.46,
       212.08,
       211.75,
@@ -1643,7 +1647,8 @@
       203.35,
       201.28,
       195.29,
-      193.39
+      193.39,
+      190.17
     ],
     "NVDA": [
       200.42,
@@ -1860,6 +1865,6 @@
     "note": null
   },
   "scorecard": {},
-  "last_seen_ts": 1793411342.3984065,
+  "last_seen_ts": 1793432403.1426609,
   "seen_hashes": []
 }
