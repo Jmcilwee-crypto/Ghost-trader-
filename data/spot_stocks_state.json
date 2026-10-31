@@ -360,7 +360,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 974.4057554250899,
+        "cash": 945.4091770502961,
         "positions": {
           "NVDA": {
             "market_id": "NVDA",
@@ -370,6 +370,16 @@
             "shares": 0.10700732355311643,
             "avg_price": 214.13,
             "opened_at": 1792190175.3193629,
+            "stance": "mean_reversion"
+          },
+          "TTWO": {
+            "market_id": "TTWO",
+            "token_id": "TTWO",
+            "outcome": "long",
+            "title": "TTWO",
+            "shares": 0.1524771434758048,
+            "avg_price": 190.17,
+            "opened_at": 1793454756.8600328,
             "stance": "mean_reversion"
           }
         },
@@ -1337,11 +1347,11 @@
     }
   },
   "prices": {
+    "NVDA": 204.64,
     "TTWO": 190.17,
     "SPY": 769.36,
     "AAPL": 344.63,
-    "MSFT": 531.33,
-    "NVDA": 204.64
+    "MSFT": 531.33
   },
   "bars": {
     "AAPL": [
@@ -1865,6 +1875,6 @@
     "note": null
   },
   "scorecard": {},
-  "last_seen_ts": 1793432403.1426609,
+  "last_seen_ts": 1793454756.8657193,
   "seen_hashes": []
 }

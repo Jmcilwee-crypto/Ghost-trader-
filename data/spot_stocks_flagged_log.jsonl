@@ -128,3 +128,4 @@
 {"ts": 1793321682.9030313, "bot": "meanrev-30", "symbol": "TTWO", "action": "buy", "price": 193.39, "usd": 23.77, "reason": "RSI 28 -- oversold below 30", "strength_pct": 47.5}
 {"ts": 1793411342.3932507, "bot": "risky-momentum-3/10", "symbol": "NVDA", "action": "sell", "price": 204.64, "pnl": -0.35, "reason": "3-bar average dropped below the 10-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1793432403.1374803, "bot": "meanrev-35", "symbol": "TTWO", "action": "sell", "price": 190.17, "pnl": -2.68, "reason": "Stop loss hit -- down -10.3% from entry", "strength_pct": 50.0}
+{"ts": 1793454756.8601582, "bot": "meanrev-35", "symbol": "TTWO", "action": "buy", "price": 190.17, "usd": 29.0, "reason": "RSI 29 -- oversold below 35", "strength_pct": 58.2}
