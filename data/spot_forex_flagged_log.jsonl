@@ -122,3 +122,11 @@
 {"ts": 1793215894.8384073, "bot": "risky-breakout-10", "symbol": "JPYUSD", "action": "sell", "price": 0.0063306, "pnl": -0.64, "reason": "Fell below the 5-bar low -- breakout failed", "strength_pct": 50.0}
 {"ts": 1793215894.8392696, "bot": "risky-momentum-3/10", "symbol": "GBPUSD", "action": "sell", "price": 1.3288, "pnl": 0.01, "reason": "3-bar average dropped below the 10-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1793386210.420966, "bot": "risky-momentum-5/15", "symbol": "CHFUSD", "action": "sell", "price": 1.2151, "pnl": 0.0, "reason": "5-bar average dropped below the 15-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1793644565.699747, "bot": "risky-momentum-3/10", "symbol": "AUDUSD", "action": "sell", "price": 0.70082, "pnl": 0.01, "reason": "3-bar average dropped below the 10-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1793644565.700119, "bot": "risky-breakout-10", "symbol": "AUDUSD", "action": "sell", "price": 0.70082, "pnl": -0.35, "reason": "Fell below the 5-bar low -- breakout failed", "strength_pct": 50.0}
+{"ts": 1793644565.700645, "bot": "risky-momentum-3/10", "symbol": "CHFUSD", "action": "buy", "price": 1.2201, "usd": 4.86, "reason": "3-bar average is 0.16% above the 10-bar -- uptrend", "strength_pct": 3.2}
+{"ts": 1793644565.7009804, "bot": "risky-momentum-5/15", "symbol": "CHFUSD", "action": "buy", "price": 1.2201, "usd": 1.39, "reason": "5-bar average is 0.03% above the 15-bar -- uptrend", "strength_pct": 0.7}
+{"ts": 1793644565.7013812, "bot": "risky-breakout-10", "symbol": "CHFUSD", "action": "buy", "price": 1.2201, "usd": 88.08, "reason": "Broke above its 10-bar high by 0.30%", "strength_pct": 58.9}
+{"ts": 1793644565.7017648, "bot": "risky-meanrev-20", "symbol": "EURUSD", "action": "sell", "price": 1.1216, "pnl": -1.35, "reason": "RSI recovered to 54 -- back to normal", "strength_pct": 50.0}
+{"ts": 1793644565.7021906, "bot": "risky-momentum-3/10", "symbol": "GBPUSD", "action": "buy", "price": 1.3419, "usd": 4.3, "reason": "3-bar average is 0.14% above the 10-bar -- uptrend", "strength_pct": 2.9}
+{"ts": 1793644565.7026439, "bot": "risky-breakout-10", "symbol": "GBPUSD", "action": "buy", "price": 1.3419, "usd": 80.49, "reason": "Broke above its 10-bar high by 0.13%", "strength_pct": 53.8}
