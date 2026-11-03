@@ -274,7 +274,7 @@
         },
         "closed_trades": [],
         "peak_equity": 1009.5472366777366,
-        "max_drawdown": 0.007585087527767119,
+        "max_drawdown": 0.008247306611586059,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -424,7 +424,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 926.0326471649637,
+        "cash": 951.6827110520018,
         "positions": {
           "IBM": {
             "market_id": "IBM",
@@ -434,16 +434,6 @@
             "shares": 0.18834095624658445,
             "avg_price": 243.27,
             "opened_at": 1789158632.278962,
-            "stance": "breakout"
-          },
-          "AAPL": {
-            "market_id": "AAPL",
-            "token_id": "AAPL",
-            "outcome": "long",
-            "title": "AAPL",
-            "shares": 0.07581598453250776,
-            "avg_price": 341.27,
-            "opened_at": 1791936065.5854287,
             "stance": "breakout"
           }
         },
@@ -489,10 +479,24 @@
             "reason": "Fell below the 10-bar low -- breakout failed",
             "pnl": -1.5589844145807987,
             "stance": "breakout"
+          },
+          {
+            "market_id": "AAPL",
+            "token_id": "AAPL",
+            "outcome": "long",
+            "title": "AAPL",
+            "shares": 0.07581598453250776,
+            "avg_price": 341.27,
+            "exit_price": 338.32,
+            "opened_at": 1791936065.5854287,
+            "closed_at": 1793692502.9258358,
+            "reason": "Fell below the 10-bar low -- breakout failed",
+            "pnl": -0.22365715437089762,
+            "stance": "breakout"
           }
         ],
         "peak_equity": 1001.2230396975814,
-        "max_drawdown": 0.0032947832152691848,
+        "max_drawdown": 0.003718076863869833,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -531,7 +535,7 @@
         },
         "closed_trades": [],
         "peak_equity": 1000.1959166110237,
-        "max_drawdown": 0.0015035254739059936,
+        "max_drawdown": 0.0019271516038000308,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -744,7 +748,7 @@
         },
         "closed_trades": [],
         "peak_equity": 1007.1481383077012,
-        "max_drawdown": 0.012171758562755049,
+        "max_drawdown": 0.013131003957919794,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -759,19 +763,8 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 977.0925556558058,
-        "positions": {
-          "AAPL": {
-            "market_id": "AAPL",
-            "token_id": "AAPL",
-            "outcome": "long",
-            "title": "AAPL",
-            "shares": 0.05132154043318476,
-            "avg_price": 340.42,
-            "opened_at": 1791491319.5831256,
-            "stance": "momentum"
-          }
-        },
+        "cash": 994.4556592151608,
+        "positions": {},
         "closed_trades": [
           {
             "market_id": "MSFT",
@@ -912,10 +905,24 @@
             "reason": "3-bar average dropped below the 10-bar -- trend over",
             "pnl": -0.1649799206118212,
             "stance": "momentum"
+          },
+          {
+            "market_id": "AAPL",
+            "token_id": "AAPL",
+            "outcome": "long",
+            "title": "AAPL",
+            "shares": 0.05132154043318476,
+            "avg_price": 340.42,
+            "exit_price": 338.32,
+            "opened_at": 1791491319.5831256,
+            "closed_at": 1793692502.926358,
+            "reason": "3-bar average dropped below the 10-bar -- trend over",
+            "pnl": -0.10777523490968832,
+            "stance": "momentum"
           }
         ],
         "peak_equity": 1001.1201260103064,
-        "max_drawdown": 0.006333533519379955,
+        "max_drawdown": 0.006657010104976129,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -1031,7 +1038,7 @@
           }
         ],
         "peak_equity": 1001.2750284028082,
-        "max_drawdown": 0.00780014593465519,
+        "max_drawdown": 0.007838710314279072,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -1065,19 +1072,8 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 913.0105997814234,
-        "positions": {
-          "AAPL": {
-            "market_id": "AAPL",
-            "token_id": "AAPL",
-            "outcome": "long",
-            "title": "AAPL",
-            "shares": 0.23690717811689027,
-            "avg_price": 343.99,
-            "opened_at": 1792615657.3604326,
-            "stance": "breakout"
-          }
-        },
+        "cash": 993.1610362819297,
+        "positions": {},
         "closed_trades": [
           {
             "market_id": "AAPL",
@@ -1148,10 +1144,24 @@
             "reason": "Fell below the 5-bar low -- breakout failed",
             "pnl": -0.3538235259480018,
             "stance": "breakout"
+          },
+          {
+            "market_id": "AAPL",
+            "token_id": "AAPL",
+            "outcome": "long",
+            "title": "AAPL",
+            "shares": 0.23690717811689027,
+            "avg_price": 343.99,
+            "exit_price": 338.32,
+            "opened_at": 1792615657.3604326,
+            "closed_at": 1793692502.9268265,
+            "reason": "Fell below the 5-bar low -- breakout failed",
+            "pnl": -1.3432636999227725,
+            "stance": "breakout"
           }
         ],
         "peak_equity": 1001.7215679772406,
-        "max_drawdown": 0.007223784333853911,
+        "max_drawdown": 0.008545819486144317,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -1361,15 +1371,14 @@
     }
   },
   "prices": {
-    "SPY": 752.1,
-    "AAPL": 344.63,
+    "AAPL": 338.32,
     "MSFT": 521.91,
     "NVDA": 204.64,
-    "TTWO": 190.17
+    "TTWO": 190.17,
+    "SPY": 752.1
   },
   "bars": {
     "AAPL": [
-      291.58,
       295.63,
       291.13,
       296.42,
@@ -1468,7 +1477,8 @@
       347.1,
       343.83,
       348.91,
-      344.63
+      344.63,
+      338.32
     ],
     "SPY": [
       737.76,
@@ -1889,6 +1899,6 @@
     "note": null
   },
   "scorecard": {},
-  "last_seen_ts": 1793668471.9803364,
+  "last_seen_ts": 1793692502.9497898,
   "seen_hashes": []
 }
