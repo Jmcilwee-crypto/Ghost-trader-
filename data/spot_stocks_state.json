@@ -274,7 +274,7 @@
         },
         "closed_trades": [],
         "peak_equity": 1009.5472366777366,
-        "max_drawdown": 0.006966008693335568,
+        "max_drawdown": 0.007585087527767119,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -360,7 +360,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 945.4091770502961,
+        "cash": 922.1322195572956,
         "positions": {
           "NVDA": {
             "market_id": "NVDA",
@@ -380,6 +380,16 @@
             "shares": 0.1524771434758048,
             "avg_price": 190.17,
             "opened_at": 1793454756.8600328,
+            "stance": "mean_reversion"
+          },
+          "SPY": {
+            "market_id": "SPY",
+            "token_id": "SPY",
+            "outcome": "long",
+            "title": "SPY",
+            "shares": 0.03094928532509043,
+            "avg_price": 752.1,
+            "opened_at": 1793668471.9745214,
             "stance": "mean_reversion"
           }
         },
@@ -734,7 +744,7 @@
         },
         "closed_trades": [],
         "peak_equity": 1007.1481383077012,
-        "max_drawdown": 0.01104106310411572,
+        "max_drawdown": 0.012171758562755049,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -749,7 +759,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 970.9529515839527,
+        "cash": 977.0925556558058,
         "positions": {
           "AAPL": {
             "market_id": "AAPL",
@@ -759,16 +769,6 @@
             "shares": 0.05132154043318476,
             "avg_price": 340.42,
             "opened_at": 1791491319.5831256,
-            "stance": "momentum"
-          },
-          "SPY": {
-            "market_id": "SPY",
-            "token_id": "SPY",
-            "outcome": "long",
-            "title": "SPY",
-            "shares": 0.008163281574063428,
-            "avg_price": 772.31,
-            "opened_at": 1793230224.9938748,
             "stance": "momentum"
           }
         },
@@ -898,10 +898,24 @@
             "reason": "3-bar average dropped below the 10-bar -- trend over",
             "pnl": -0.3461784610935297,
             "stance": "momentum"
+          },
+          {
+            "market_id": "SPY",
+            "token_id": "SPY",
+            "outcome": "long",
+            "title": "SPY",
+            "shares": 0.008163281574063428,
+            "avg_price": 772.31,
+            "exit_price": 752.1,
+            "opened_at": 1793230224.9938748,
+            "closed_at": 1793668471.9751542,
+            "reason": "3-bar average dropped below the 10-bar -- trend over",
+            "pnl": -0.1649799206118212,
+            "stance": "momentum"
           }
         ],
         "peak_equity": 1001.1201260103064,
-        "max_drawdown": 0.006192792926610271,
+        "max_drawdown": 0.006333533519379955,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -1347,11 +1361,11 @@
     }
   },
   "prices": {
+    "SPY": 752.1,
     "AAPL": 344.63,
     "MSFT": 521.91,
     "NVDA": 204.64,
-    "TTWO": 190.17,
-    "SPY": 769.36
+    "TTWO": 190.17
   },
   "bars": {
     "AAPL": [
@@ -1457,8 +1471,6 @@
       344.63
     ],
     "SPY": [
-      737.05,
-      725.43,
       737.76,
       741.75,
       754.83,
@@ -1556,7 +1568,9 @@
       765.37,
       769.66,
       772.31,
-      769.36
+      769.36,
+      755.72,
+      752.1
     ],
     "TTWO": [
       210.46,
@@ -1875,6 +1889,6 @@
     "note": null
   },
   "scorecard": {},
-  "last_seen_ts": 1793644565.9683456,
+  "last_seen_ts": 1793668471.9803364,
   "seen_hashes": []
 }
