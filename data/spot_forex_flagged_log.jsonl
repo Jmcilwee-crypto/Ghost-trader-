@@ -130,3 +130,6 @@
 {"ts": 1793644565.7017648, "bot": "risky-meanrev-20", "symbol": "EURUSD", "action": "sell", "price": 1.1216, "pnl": -1.35, "reason": "RSI recovered to 54 -- back to normal", "strength_pct": 50.0}
 {"ts": 1793644565.7021906, "bot": "risky-momentum-3/10", "symbol": "GBPUSD", "action": "buy", "price": 1.3419, "usd": 4.3, "reason": "3-bar average is 0.14% above the 10-bar -- uptrend", "strength_pct": 2.9}
 {"ts": 1793644565.7026439, "bot": "risky-breakout-10", "symbol": "GBPUSD", "action": "buy", "price": 1.3419, "usd": 80.49, "reason": "Broke above its 10-bar high by 0.13%", "strength_pct": 53.8}
+{"ts": 1793720050.7279265, "bot": "breakout-20", "symbol": "JPYUSD", "action": "sell", "price": 0.0063176, "pnl": -0.27, "reason": "Fell below the 10-bar low -- breakout failed", "strength_pct": 50.0}
+{"ts": 1793720050.728141, "bot": "risky-momentum-5/15", "symbol": "JPYUSD", "action": "sell", "price": 0.0063176, "pnl": -0.0, "reason": "5-bar average dropped below the 15-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1793720050.728701, "bot": "risky-momentum-3/10", "symbol": "EURUSD", "action": "buy", "price": 1.1179, "usd": 2.41, "reason": "3-bar average is 0.08% above the 10-bar -- uptrend", "strength_pct": 1.6}

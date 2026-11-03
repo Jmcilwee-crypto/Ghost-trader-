@@ -488,7 +488,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 913.5053784779134,
+        "cash": 940.5772100217072,
         "positions": {
           "GBPUSD": {
             "market_id": "GBPUSD",
@@ -509,23 +509,28 @@
             "avg_price": 1.2165,
             "opened_at": 1792692223.4841251,
             "stance": "breakout"
-          },
-          "JPYUSD": {
+          }
+        },
+        "closed_trades": [
+          {
             "market_id": "JPYUSD",
             "token_id": "JPYUSD",
             "outcome": "long",
             "title": "JPYUSD",
             "shares": 4286.00211998106,
             "avg_price": 0.00638,
+            "exit_price": 0.0063176,
             "opened_at": 1792765527.6794505,
+            "closed_at": 1793720050.7278824,
+            "reason": "Fell below the 10-bar low -- breakout failed",
+            "pnl": -0.27286198168545717,
             "stance": "breakout"
           }
-        },
-        "closed_trades": [],
+        ],
         "peak_equity": 1000.0,
         "max_drawdown": 0.0007814833942494488,
         "fee_rate": 0.0002,
-        "fees_paid": 0.017298924304417346
+        "fees_paid": 0.022714373703055814
       }
     },
     "breakout-50": {
@@ -773,7 +778,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 990.6407970278882,
+        "cash": 988.2262806005153,
         "positions": {
           "CHFUSD": {
             "market_id": "CHFUSD",
@@ -793,6 +798,16 @@
             "shares": 3.2006263344950687,
             "avg_price": 1.3419,
             "opened_at": 1793644565.7021494,
+            "stance": "momentum"
+          },
+          "EURUSD": {
+            "market_id": "EURUSD",
+            "token_id": "EURUSD",
+            "outcome": "long",
+            "title": "EURUSD",
+            "shares": 2.159436017611049,
+            "avg_price": 1.1179,
+            "opened_at": 1793720050.7286606,
             "stance": "momentum"
           }
         },
@@ -925,9 +940,9 @@
           }
         ],
         "peak_equity": 999.9943640043593,
-        "max_drawdown": 0.0002011600254132129,
+        "max_drawdown": 0.00020619406858256038,
         "fee_rate": 0.0002,
-        "fees_paid": 0.026789958515864635
+        "fees_paid": 0.02727286180133921
       }
     },
     "risky-momentum-5/15": {
@@ -941,7 +956,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 988.4115380518117,
+        "cash": 990.0923350681452,
         "positions": {
           "GBPUSD": {
             "market_id": "GBPUSD",
@@ -961,16 +976,6 @@
             "shares": 1.7617277060815102,
             "avg_price": 0.69859,
             "opened_at": 1792438432.5087602,
-            "stance": "momentum"
-          },
-          "JPYUSD": {
-            "market_id": "JPYUSD",
-            "token_id": "JPYUSD",
-            "outcome": "long",
-            "title": "JPYUSD",
-            "shares": 266.10314723662054,
-            "avg_price": 0.00633,
-            "opened_at": 1792603692.1356263,
             "stance": "momentum"
           },
           "CHFUSD": {
@@ -1040,12 +1045,26 @@
             "reason": "5-bar average dropped below the 15-bar -- trend over",
             "pnl": 0.004749133289204502,
             "stance": "momentum"
+          },
+          {
+            "market_id": "JPYUSD",
+            "token_id": "JPYUSD",
+            "outcome": "long",
+            "title": "JPYUSD",
+            "shares": 266.10314723662054,
+            "avg_price": 0.00633,
+            "exit_price": 0.0063176,
+            "opened_at": 1792603692.1356263,
+            "closed_at": 1793720050.7281191,
+            "reason": "5-bar average dropped below the 15-bar -- trend over",
+            "pnl": -0.0036359056743306625,
+            "stance": "momentum"
           }
         ],
         "peak_equity": 999.9847624076245,
         "max_drawdown": 0.001595219446880412,
         "fee_rate": 0.0002,
-        "fees_paid": 0.03561055439223815
+        "fees_paid": 0.03594678104083456
       }
     },
     "risky-meanrev-20": {
@@ -1230,7 +1249,7 @@
           }
         ],
         "peak_equity": 1000.0,
-        "max_drawdown": 0.0027715643294380925,
+        "max_drawdown": 0.0028556240428968065,
         "fee_rate": 0.0002,
         "fees_paid": 0.2203352864401853
       }
@@ -1319,22 +1338,21 @@
           }
         ],
         "peak_equity": 999.9780179539298,
-        "max_drawdown": 0.0024616007914114637,
+        "max_drawdown": 0.0024636146343924494,
         "fee_rate": 0.0002,
         "fees_paid": 0.05369793103876813
       }
     }
   },
   "prices": {
-    "GBPUSD": 1.3419,
-    "JPYUSD": 0.0063331,
-    "AUDUSD": 0.70082,
-    "CHFUSD": 1.2201,
-    "EURUSD": 1.1216
+    "JPYUSD": 0.0063176,
+    "AUDUSD": 0.69838,
+    "CHFUSD": 1.2196,
+    "EURUSD": 1.1179,
+    "GBPUSD": 1.3411
   },
   "bars": {
     "AUDUSD": [
-      0.6872,
       0.69349,
       0.70565,
       0.70421,
@@ -1483,10 +1501,10 @@
       0.70328,
       0.70256,
       0.70246,
-      0.70082
+      0.70082,
+      0.69838
     ],
     "CHFUSD": [
-      1.2509,
       1.2505,
       1.2692,
       1.2646,
@@ -1635,10 +1653,10 @@
       1.204,
       1.2069,
       1.2151,
-      1.2201
+      1.2201,
+      1.2196
     ],
     "EURUSD": [
-      1.1525,
       1.1557,
       1.1706,
       1.1685,
@@ -1787,10 +1805,10 @@
       1.1133,
       1.113,
       1.1172,
-      1.1216
+      1.1216,
+      1.1179
     ],
     "GBPUSD": [
-      1.3209,
       1.3245,
       1.3472,
       1.3423,
@@ -1939,10 +1957,10 @@
       1.3288,
       1.3317,
       1.3399,
-      1.3419
+      1.3419,
+      1.3411
     ],
     "JPYUSD": [
-      0.0062656,
       0.0062562,
       0.0063231,
       0.0062924,
@@ -2091,7 +2109,8 @@
       0.0063306,
       0.0063267,
       0.0063593,
-      0.0063331
+      0.0063331,
+      0.0063176
     ]
   },
   "research": {
@@ -2101,6 +2120,6 @@
     "last_error": null
   },
   "scorecard": {},
-  "last_seen_ts": 1793692502.6780767,
+  "last_seen_ts": 1793720050.7316322,
   "seen_hashes": []
 }

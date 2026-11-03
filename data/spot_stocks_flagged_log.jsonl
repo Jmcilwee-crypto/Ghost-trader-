@@ -134,3 +134,6 @@
 {"ts": 1793692502.9259222, "bot": "breakout-20", "symbol": "AAPL", "action": "sell", "price": 338.32, "pnl": -0.22, "reason": "Fell below the 10-bar low -- breakout failed", "strength_pct": 50.0}
 {"ts": 1793692502.9263818, "bot": "risky-momentum-3/10", "symbol": "AAPL", "action": "sell", "price": 338.32, "pnl": -0.11, "reason": "3-bar average dropped below the 10-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1793692502.9268503, "bot": "risky-breakout-10", "symbol": "AAPL", "action": "sell", "price": 338.32, "pnl": -1.34, "reason": "Fell below the 5-bar low -- breakout failed", "strength_pct": 50.0}
+{"ts": 1793720050.9613461, "bot": "meanrev-30", "symbol": "MSFT", "action": "buy", "price": 507.12, "usd": 23.57, "reason": "RSI 28 -- oversold below 30", "strength_pct": 47.2}
+{"ts": 1793720050.9617217, "bot": "meanrev-35", "symbol": "MSFT", "action": "buy", "price": 507.12, "usd": 30.12, "reason": "RSI 28 -- oversold below 35", "strength_pct": 60.5}
+{"ts": 1793720050.962147, "bot": "breakout-50", "symbol": "MSFT", "action": "sell", "price": 507.12, "pnl": -2.64, "reason": "Fell below the 20-bar low -- breakout failed", "strength_pct": 50.0}
