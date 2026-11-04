@@ -133,3 +133,9 @@
 {"ts": 1793720050.7279265, "bot": "breakout-20", "symbol": "JPYUSD", "action": "sell", "price": 0.0063176, "pnl": -0.27, "reason": "Fell below the 10-bar low -- breakout failed", "strength_pct": 50.0}
 {"ts": 1793720050.728141, "bot": "risky-momentum-5/15", "symbol": "JPYUSD", "action": "sell", "price": 0.0063176, "pnl": -0.0, "reason": "5-bar average dropped below the 15-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1793720050.728701, "bot": "risky-momentum-3/10", "symbol": "EURUSD", "action": "buy", "price": 1.1179, "usd": 2.41, "reason": "3-bar average is 0.08% above the 10-bar -- uptrend", "strength_pct": 1.6}
+{"ts": 1793807094.1848612, "bot": "meanrev-25", "symbol": "EURUSD", "action": "sell", "price": 1.1267, "pnl": -0.35, "reason": "RSI recovered to 57 -- back to normal", "strength_pct": 50.0}
+{"ts": 1793807094.1852324, "bot": "meanrev-30", "symbol": "EURUSD", "action": "sell", "price": 1.1267, "pnl": -0.56, "reason": "RSI recovered to 57 -- back to normal", "strength_pct": 50.0}
+{"ts": 1793807094.1856818, "bot": "breakout-20", "symbol": "EURUSD", "action": "buy", "price": 1.1267, "usd": 26.87, "reason": "Broke above its 20-bar high by 0.12%", "strength_pct": 53.7}
+{"ts": 1793807094.1860785, "bot": "risky-breakout-10", "symbol": "EURUSD", "action": "buy", "price": 1.1267, "usd": 88.06, "reason": "Broke above its 10-bar high by 0.29%", "strength_pct": 58.8}
+{"ts": 1793807094.1865118, "bot": "momentum-5/20", "symbol": "JPYUSD", "action": "sell", "price": 0.0063191, "pnl": -0.01, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1793807094.186898, "bot": "risky-nostop-5/20", "symbol": "JPYUSD", "action": "sell", "price": 0.0063191, "pnl": -0.07, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
