@@ -139,3 +139,8 @@
 {"ts": 1793720050.962147, "bot": "breakout-50", "symbol": "MSFT", "action": "sell", "price": 507.12, "pnl": -2.64, "reason": "Fell below the 20-bar low -- breakout failed", "strength_pct": 50.0}
 {"ts": 1793755307.0668235, "bot": "catalyst-ttwo-hold-through", "symbol": "TTWO", "action": "buy", "price": 190.17, "usd": 69.86, "reason": "Adding tranche 4/4 -- 15 days to the GTA 6 launch, building into the run-up", "strength_pct": 100.0}
 {"ts": 1793755307.0672178, "bot": "catalyst-ttwo-sell-into", "symbol": "TTWO", "action": "buy", "price": 190.17, "usd": 69.86, "reason": "Adding tranche 4/4 -- 15 days to the GTA 6 launch, building into the run-up", "strength_pct": 100.0}
+{"ts": 1793827852.0507882, "bot": "meanrev-30", "symbol": "MSFT", "action": "sell", "price": 555.8, "pnl": 2.26, "reason": "RSI recovered to 57 -- back to normal", "strength_pct": 50.0}
+{"ts": 1793827852.0514276, "bot": "breakout-20", "symbol": "MSFT", "action": "buy", "price": 555.8, "usd": 49.88, "reason": "Broke above its 20-bar high by 2.27%", "strength_pct": 100.0}
+{"ts": 1793827852.0519037, "bot": "breakout-50", "symbol": "MSFT", "action": "buy", "price": 555.8, "usd": 49.86, "reason": "Broke above its 50-bar high by 2.27%", "strength_pct": 100.0}
+{"ts": 1793827852.0522327, "bot": "risky-momentum-3/10", "symbol": "MSFT", "action": "buy", "price": 555.8, "usd": 1.81, "reason": "3-bar average is 0.06% above the 10-bar -- uptrend", "strength_pct": 1.2}
+{"ts": 1793827852.0525494, "bot": "risky-breakout-10", "symbol": "MSFT", "action": "buy", "price": 555.8, "usd": 99.32, "reason": "Broke above its 10-bar high by 4.29%", "strength_pct": 100.0}

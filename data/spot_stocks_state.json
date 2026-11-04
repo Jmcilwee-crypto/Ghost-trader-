@@ -306,7 +306,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 931.9953880519502,
+        "cash": 957.8267860478535,
         "positions": {
           "NVDA": {
             "market_id": "NVDA",
@@ -327,16 +327,6 @@
             "avg_price": 193.39,
             "opened_at": 1793321682.9029467,
             "stance": "mean_reversion"
-          },
-          "MSFT": {
-            "market_id": "MSFT",
-            "token_id": "MSFT",
-            "outcome": "long",
-            "title": "MSFT",
-            "shares": 0.046476066923179765,
-            "avg_price": 507.12,
-            "opened_at": 1793720050.9613094,
-            "stance": "mean_reversion"
           }
         },
         "closed_trades": [
@@ -353,9 +343,23 @@
             "reason": "RSI recovered to 59 -- back to normal",
             "pnl": -0.22973388134330364,
             "stance": "mean_reversion"
+          },
+          {
+            "market_id": "MSFT",
+            "token_id": "MSFT",
+            "outcome": "long",
+            "title": "MSFT",
+            "shares": 0.046476066923179765,
+            "avg_price": 507.12,
+            "exit_price": 555.8,
+            "opened_at": 1793720050.9613094,
+            "closed_at": 1793827852.0507045,
+            "reason": "RSI recovered to 57 -- back to normal",
+            "pnl": 2.26245493782039,
+            "stance": "mean_reversion"
           }
         ],
-        "peak_equity": 1000.3220838573552,
+        "peak_equity": 1000.907937546015,
         "max_drawdown": 0.0016760614168343279,
         "fee_rate": 0.0,
         "fees_paid": 0.0
@@ -444,7 +448,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 951.6827110520018,
+        "cash": 901.8076902780963,
         "positions": {
           "IBM": {
             "market_id": "IBM",
@@ -454,6 +458,16 @@
             "shares": 0.18834095624658445,
             "avg_price": 243.27,
             "opened_at": 1789158632.278962,
+            "stance": "breakout"
+          },
+          "MSFT": {
+            "market_id": "MSFT",
+            "token_id": "MSFT",
+            "outcome": "long",
+            "title": "MSFT",
+            "shares": 0.08973555374938004,
+            "avg_price": 555.8,
+            "opened_at": 1793827852.0513833,
             "stance": "breakout"
           }
         },
@@ -530,7 +544,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 967.9894517536948,
+        "cash": 918.1334871336603,
         "positions": {
           "AAPL": {
             "market_id": "AAPL",
@@ -540,6 +554,16 @@
             "shares": 0.0861014443337533,
             "avg_price": 341.07,
             "opened_at": 1790367711.94849,
+            "stance": "breakout"
+          },
+          "MSFT": {
+            "market_id": "MSFT",
+            "token_id": "MSFT",
+            "outcome": "long",
+            "title": "MSFT",
+            "shares": 0.0897012677582485,
+            "avg_price": 555.8,
+            "opened_at": 1793827852.0518646,
             "stance": "breakout"
           }
         },
@@ -627,7 +651,7 @@
             "stance": "vol_scaled_momentum"
           }
         ],
-        "peak_equity": 1007.6237330443223,
+        "peak_equity": 1007.6283498346705,
         "max_drawdown": 0.0049007552997309125,
         "fee_rate": 0.0,
         "fees_paid": 0.0
@@ -788,8 +812,19 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 994.4556592151608,
-        "positions": {},
+        "cash": 992.6407011657298,
+        "positions": {
+          "MSFT": {
+            "market_id": "MSFT",
+            "token_id": "MSFT",
+            "outcome": "long",
+            "title": "MSFT",
+            "shares": 0.003265487674399273,
+            "avg_price": 555.8,
+            "opened_at": 1793827852.0521963,
+            "stance": "momentum"
+          }
+        },
         "closed_trades": [
           {
             "market_id": "MSFT",
@@ -1097,8 +1132,19 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 993.1610362819297,
-        "positions": {},
+        "cash": 893.8449326537367,
+        "positions": {
+          "MSFT": {
+            "market_id": "MSFT",
+            "token_id": "MSFT",
+            "outcome": "long",
+            "title": "MSFT",
+            "shares": 0.17869036277112807,
+            "avg_price": 555.8,
+            "opened_at": 1793827852.0525157,
+            "stance": "breakout"
+          }
+        },
         "closed_trades": [
           {
             "market_id": "AAPL",
@@ -1396,7 +1442,7 @@
     }
   },
   "prices": {
-    "MSFT": 520.99,
+    "MSFT": 555.8,
     "NVDA": 204.64,
     "TTWO": 190.17,
     "SPY": 754.35,
@@ -1812,7 +1858,6 @@
       204.64
     ],
     "MSFT": [
-      390.74,
       399.76,
       393.83,
       378.91,
@@ -1911,7 +1956,8 @@
       530.14,
       521.91,
       507.12,
-      520.99
+      520.99,
+      555.8
     ]
   },
   "research": {
@@ -1924,6 +1970,6 @@
     "note": null
   },
   "scorecard": {},
-  "last_seen_ts": 1793807094.4983711,
+  "last_seen_ts": 1793827852.0577185,
   "seen_hashes": []
 }
