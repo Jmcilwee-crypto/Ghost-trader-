@@ -137,3 +137,5 @@
 {"ts": 1793720050.9613461, "bot": "meanrev-30", "symbol": "MSFT", "action": "buy", "price": 507.12, "usd": 23.57, "reason": "RSI 28 -- oversold below 30", "strength_pct": 47.2}
 {"ts": 1793720050.9617217, "bot": "meanrev-35", "symbol": "MSFT", "action": "buy", "price": 507.12, "usd": 30.12, "reason": "RSI 28 -- oversold below 35", "strength_pct": 60.5}
 {"ts": 1793720050.962147, "bot": "breakout-50", "symbol": "MSFT", "action": "sell", "price": 507.12, "pnl": -2.64, "reason": "Fell below the 20-bar low -- breakout failed", "strength_pct": 50.0}
+{"ts": 1793755307.0668235, "bot": "catalyst-ttwo-hold-through", "symbol": "TTWO", "action": "buy", "price": 190.17, "usd": 69.86, "reason": "Adding tranche 4/4 -- 15 days to the GTA 6 launch, building into the run-up", "strength_pct": 100.0}
+{"ts": 1793755307.0672178, "bot": "catalyst-ttwo-sell-into", "symbol": "TTWO", "action": "buy", "price": 190.17, "usd": 69.86, "reason": "Adding tranche 4/4 -- 15 days to the GTA 6 launch, building into the run-up", "strength_pct": 100.0}

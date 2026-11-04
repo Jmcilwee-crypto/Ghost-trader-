@@ -9,8 +9,19 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 999.5866479670668,
-        "positions": {},
+        "cash": 996.8171050453757,
+        "positions": {
+          "PAXGUSDT": {
+            "market_id": "PAXGUSDT",
+            "token_id": "PAXGUSDT",
+            "outcome": "long",
+            "title": "PAXGUSDT",
+            "shares": 0.0006998394761952856,
+            "avg_price": 3953.44,
+            "opened_at": 1793755304.8210554,
+            "stance": "momentum"
+          }
+        },
         "closed_trades": [
           {
             "market_id": "PAXGUSDT",
@@ -492,7 +503,7 @@
         "peak_equity": 1000.0655635321914,
         "max_drawdown": 0.0004824836976970137,
         "fee_rate": 0.001,
-        "fees_paid": 0.1441137733672324
+        "fees_paid": 0.1468833162889236
       }
     },
     "momentum-10/50": {
@@ -1786,7 +1797,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 908.7046759931227,
+        "cash": 946.7781284927773,
         "positions": {
           "XAUTUSDT": {
             "market_id": "XAUTUSDT",
@@ -1796,16 +1807,6 @@
             "shares": 0.012803519797797584,
             "avg_price": 3886.52,
             "opened_at": 1793400160.5965042,
-            "stance": "mean_reversion"
-          },
-          "PAXGUSDT": {
-            "market_id": "PAXGUSDT",
-            "token_id": "PAXGUSDT",
-            "outcome": "long",
-            "title": "PAXGUSDT",
-            "shares": 0.009640101800891969,
-            "avg_price": 3915.54,
-            "opened_at": 1793692500.946388,
             "stance": "mean_reversion"
           }
         },
@@ -2285,12 +2286,26 @@
             "reason": "RSI recovered to 77 -- back to normal",
             "pnl": -0.674360555667646,
             "stance": "mean_reversion"
+          },
+          {
+            "market_id": "PAXGUSDT",
+            "token_id": "PAXGUSDT",
+            "outcome": "long",
+            "title": "PAXGUSDT",
+            "shares": 0.009640101800891969,
+            "avg_price": 3915.54,
+            "exit_price": 3953.44,
+            "opened_at": 1793692500.946388,
+            "closed_at": 1793755304.8215024,
+            "reason": "RSI recovered to 66 -- back to normal",
+            "pnl": 0.32724829419009255,
+            "stance": "mean_reversion"
           }
         ],
         "peak_equity": 1000.0,
         "max_drawdown": 0.00391131024097433,
         "fee_rate": 0.001,
-        "fees_paid": 1.9154985354064917
+        "fees_paid": 1.9536100994702101
       }
     },
     "breakout-20": {
@@ -3642,15 +3657,11 @@
     }
   },
   "prices": {
-    "XAUTUSDT": 3886.52,
-    "PAXGUSDT": 3923.99
+    "PAXGUSDT": 3953.44,
+    "XAUTUSDT": 3886.52
   },
   "bars": {
     "PAXGUSDT": [
-      4039.81,
-      4046.67,
-      4032.59,
-      4072.56,
       4062.88,
       4065.08,
       4050.07,
@@ -3796,7 +3807,11 @@
       3930.29,
       3920.49,
       3922.77,
-      3923.99
+      3931.37,
+      3932.53,
+      3941.81,
+      3934.79,
+      3953.44
     ],
     "XAUTUSDT": [
       3990.52,
@@ -3958,9 +3973,9 @@
     "sources": {
       "PAXGUSDT": "coinbase"
     },
-    "last_error": null
+    "last_error": "coinbase: 404 Client Error: Not Found for url: https://api.exchange.coinbase.com/products/XAUT-USD/candles?granularity=3600"
   },
   "scorecard": {},
-  "last_seen_ts": 1793740505.9671938,
+  "last_seen_ts": 1793755304.8281498,
   "seen_hashes": []
 }

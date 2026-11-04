@@ -1344,22 +1344,22 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 775.8057140895997,
+        "cash": 705.9458766688949,
         "positions": {
           "TTWO": {
             "market_id": "TTWO",
             "token_id": "TTWO",
             "outcome": "long",
             "title": "TTWO",
-            "shares": 1.0746947311041897,
-            "avg_price": 208.61206389283493,
+            "shares": 1.4420494001934507,
+            "avg_price": 203.91404295279878,
             "opened_at": 1789867884.19611,
             "stance": "catalyst"
           }
         },
         "closed_trades": [],
         "peak_equity": 1000.0,
-        "max_drawdown": 0.01981958889631653,
+        "max_drawdown": 0.019819588896316645,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -1374,33 +1374,33 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 775.8057140895997,
+        "cash": 705.9458766688949,
         "positions": {
           "TTWO": {
             "market_id": "TTWO",
             "token_id": "TTWO",
             "outcome": "long",
             "title": "TTWO",
-            "shares": 1.0746947311041897,
-            "avg_price": 208.61206389283493,
+            "shares": 1.4420494001934507,
+            "avg_price": 203.91404295279878,
             "opened_at": 1789867884.1977248,
             "stance": "catalyst"
           }
         },
         "closed_trades": [],
         "peak_equity": 1000.0,
-        "max_drawdown": 0.01981958889631653,
+        "max_drawdown": 0.019819588896316645,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
     }
   },
   "prices": {
+    "SPY": 754.35,
     "AAPL": 338.32,
     "MSFT": 507.12,
     "NVDA": 204.64,
-    "TTWO": 190.17,
-    "SPY": 752.1
+    "TTWO": 190.17
   },
   "bars": {
     "AAPL": [
@@ -1506,7 +1506,6 @@
       338.32
     ],
     "SPY": [
-      737.76,
       741.75,
       754.83,
       750.33,
@@ -1605,7 +1604,8 @@
       772.31,
       769.36,
       755.72,
-      752.1
+      752.1,
+      754.35
     ],
     "TTWO": [
       210.46,
@@ -1924,6 +1924,6 @@
     "note": null
   },
   "scorecard": {},
-  "last_seen_ts": 1793740508.9149392,
+  "last_seen_ts": 1793755307.0701454,
   "seen_hashes": []
 }
