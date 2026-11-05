@@ -56,23 +56,29 @@ class EdgeValueStrategy:
         accuracy = self.scorecard.accuracy(event.wallet)
         track_record_count = self.scorecard.resolved_count(event.wallet)
 
-        def _eval(*, outcome, price, action, reason, possibility, signal) -> Evaluation:
+        # Everything this strategy decides belongs to the value arm, so the
+        # stance defaults on rather than being repeated at a dozen returns.
+        # The two pre-intent exits below pass stance=None explicitly: a trade
+        # under the threshold, or one with no outside odds to price against,
+        # never became a value opportunity that capacity could deny.
+        def _eval(*, outcome, price, action, reason, possibility, signal, stance="value") -> Evaluation:
             return Evaluation(
                 wallet=event.wallet, market_id=event.market_id, title=event.title, outcome=outcome,
                 price=price, usd_size=event.usd_size, timestamp=event.timestamp, accuracy=accuracy,
                 track_record_count=track_record_count, action=action, reason=reason,
                 possibility_pct=possibility, importance_pct=importance, signal=signal,
+                intended_stance=stance,
             )
 
         if event.usd_size < self.whale_usd_threshold:
             return _eval(outcome=event.outcome, price=event.price, action="ignored_too_small",
                           reason=f"Only ${event.usd_size:,.0f}, below the ${self.whale_usd_threshold:,.0f} threshold",
-                          possibility=None, signal=None)
+                          possibility=None, signal=None, stance=None)
 
         if estimate is None:
             return _eval(outcome=event.outcome, price=event.price, action="skipped_no_research",
                           reason="No outside odds available for this market, so there's nothing to price it against",
-                          possibility=None, signal=None)
+                          possibility=None, signal=None, stance=None)
 
         if estimate.confidence < self.min_confidence:
             return _eval(outcome=event.outcome, price=event.price, action="skipped_low_confidence",

@@ -20,7 +20,7 @@ import json
 import signal
 import sys
 import time
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path
 
 import yaml
@@ -100,6 +100,8 @@ class Variant:
     strategy: WhaleFollowStrategy
     portfolio: PaperPortfolio
     settings: dict
+    # {stance: {taken, no_slot, no_cash, declined}}, cumulative across runs.
+    capacity: dict = field(default_factory=dict)
 
 
 def build_variants(base_config: dict, scorecard: TraderScorecard, research=None) -> list[Variant]:
@@ -218,6 +220,48 @@ def _log_trimmed(path: str, entry: dict, max_entries: int) -> None:
     p.write_text("\n".join(lines) + "\n")
 
 
+# How a refusal is grouped in the capacity report. The distinction that
+# matters is "we wanted this bet and had no room" versus "we looked and
+# didn't want it": the first is a measurement artefact, the second is the
+# strategy working. Lumping them together is what made explore look like it
+# was simply finding fewer opportunities than copy.
+DENIAL_KINDS = {
+    "skipped_explore_cap": "no_slot",     # the explore sub-cap
+    "skipped_full": "no_slot",            # the fleet-wide position cap
+    "skipped_already_in": "no_slot",      # one position per market
+    "skipped_capital": "no_cash",
+    "skipped_price_bounds": "declined",
+    "skipped_no_edge": "declined",
+    "skipped_unknown_trader": "declined",
+    "skipped_low_confidence": "declined",
+    "skipped_no_research": "declined",
+}
+TAKEN_ACTIONS = ("copy", "fade", "explore", "value")
+# Emitted before any arm had formed an intent, so they are never counted as
+# an opportunity denied: the trade was under the whale threshold, or there
+# were no outside odds to price it against. Listed rather than left implicit
+# so a new action cannot quietly fall through into "other".
+PRE_INTENT_ACTIONS = ("ignored_too_small", "skipped_no_research")
+
+
+def count_decision(counters: dict, evaluation) -> None:
+    """Tally one evaluation under the arm that wanted it.
+
+    Keyed by intended stance rather than by the action, so a refusal lands in
+    the same bucket as the bets that arm did place -- which is the whole point:
+    a denial rate is only meaningful against the arm's own opportunity count.
+    """
+    stance = evaluation.intended_stance
+    if stance is None:
+        return
+    row = counters.setdefault(stance, {})
+    if evaluation.action in TAKEN_ACTIONS:
+        row["taken"] = row.get("taken", 0) + 1
+    else:
+        kind = DENIAL_KINDS.get(evaluation.action, "other")
+        row[kind] = row.get(kind, 0) + 1
+
+
 # Big enough to comfortably outlast one cycle's pull (page size x max pages),
 # so a trade can never be evicted from the dedup window while the feed still
 # lists it -- that would let the fleet bet the same whale twice.
@@ -225,13 +269,21 @@ SEEN_HASHES_MAX = 50_000
 
 
 def save_state(path: str, variants: list[Variant], scorecard: TraderScorecard, last_seen_ts: float,
-               seen_hashes: dict[str, None], research_stats: dict | None = None) -> None:
+               seen_hashes: dict[str, None], research_stats: dict | None = None,
+               capacity_since: float | None = None) -> None:
     Path(path).parent.mkdir(parents=True, exist_ok=True)
     Path(path).write_text(json.dumps({
-        "variants": {v.name: {"settings": v.settings, "portfolio": v.portfolio.to_dict()} for v in variants},
+        "variants": {v.name: {"settings": v.settings, "portfolio": v.portfolio.to_dict(),
+                              "capacity": v.capacity} for v in variants},
         "scorecard": scorecard.to_dict(),
         "research": research_stats or {},
         "last_seen_ts": last_seen_ts,
+        # Counting started when the capacity report was added; before that
+        # nothing recorded which arm a refusal belonged to, so the report
+        # states this date rather than implying the numbers cover the whole
+        # history of the experiment.
+        "capacity_counting_since": capacity_since,
+        "last_seen_ts_iso": time.strftime("%Y-%m-%d %H:%M:%SZ", time.gmtime(last_seen_ts)) if last_seen_ts else None,
         # Capped: this is only used to avoid double-processing trades across
         # restarts, and an unbounded list would bloat the state file forever.
         # It is a dict rather than a set purely for the ordering -- trimming a
@@ -240,17 +292,20 @@ def save_state(path: str, variants: list[Variant], scorecard: TraderScorecard, l
     }, indent=2))
 
 
-def load_state(path: str, variants: list[Variant], scorecard: TraderScorecard) -> tuple[float, dict[str, None]]:
+def load_state(path: str, variants: list[Variant],
+               scorecard: TraderScorecard) -> tuple[float, dict[str, None], float | None]:
     p = Path(path)
     if not p.exists():
-        return 0.0, {}
+        return 0.0, {}, None
     data = json.loads(p.read_text())
     scorecard.load_dict(data.get("scorecard", {}))
     saved = data.get("variants", {})
     for v in variants:
         if v.name in saved:
             v.portfolio = PaperPortfolio.from_dict(saved[v.name]["portfolio"])
-    return data.get("last_seen_ts", 0.0), dict.fromkeys(data.get("seen_hashes", []))
+            v.capacity = saved[v.name].get("capacity") or {}
+    return (data.get("last_seen_ts", 0.0), dict.fromkeys(data.get("seen_hashes", [])),
+            data.get("capacity_counting_since"))
 
 
 def leaderboard(variants: list[Variant]) -> list[dict]:
@@ -304,7 +359,9 @@ def run_experiment(config_path: str = "config.yaml", once: bool = False) -> int:
     scorecard = TraderScorecard()
     research = build_research(config)
     variants = build_variants(config, scorecard, research)
-    last_seen_ts, seen_hashes = load_state(state_path, variants, scorecard)
+    last_seen_ts, seen_hashes, capacity_since = load_state(state_path, variants, scorecard)
+    if capacity_since is None:
+        capacity_since = time.time()
     if getattr(research, "enabled", False):
         print(f"Research enabled: {research.name}")
     else:
@@ -336,11 +393,15 @@ def run_experiment(config_path: str = "config.yaml", once: bool = False) -> int:
                 max_lookback_seconds=live_cfg.get("trades_max_lookback_hours", 6) * 3600.0,
             )
             if not covered_gap:
-                # Silence here would read as "a quiet market". It isn't: it
-                # means whales traded in a window we never looked at.
-                print("WARNING: hit the paging cap before reaching the last "
-                      "trade of the previous cycle -- part of the gap was not "
-                      "examined. Raise live.trades_max_pages or run more often.",
+                # At ~1,150 trades/minute a multi-hour gap cannot be walked
+                # inside any sane page budget, so this is the normal case
+                # rather than a fault. It is still worth saying out loud --
+                # silence would read as "a quiet market" when it means
+                # "whales traded in a window we never looked at" -- but the
+                # cycle below reports the minutes actually covered, which is
+                # the number that matters.
+                print("note: page budget reached before the previous cycle's "
+                      "last trade; the window below is what was examined.",
                       file=sys.stderr)
         except RuntimeError as exc:
             print(f"trade fetch failed: {exc}", file=sys.stderr)
@@ -417,6 +478,7 @@ def run_experiment(config_path: str = "config.yaml", once: bool = False) -> int:
             acted_count = 0
             for v in variants:
                 evaluation = v.strategy.evaluate(event, v.portfolio, None, estimate)
+                count_decision(v.capacity, evaluation)
                 if v is reference_variant:
                     reference_evaluation = evaluation
                 sig = evaluation.signal
@@ -480,7 +542,8 @@ def run_experiment(config_path: str = "config.yaml", once: bool = False) -> int:
             v.portfolio.record_equity(now)
 
         rows = leaderboard(variants)
-        save_state(state_path, variants, scorecard, last_seen_ts, seen_hashes, research.stats())
+        save_state(state_path, variants, scorecard, last_seen_ts, seen_hashes, research.stats(),
+                   capacity_since=capacity_since)
         Path(leaderboard_path).write_text(json.dumps(rows, indent=2))
         append_history(history_path, rows)
         print_leaderboard(rows)
@@ -494,7 +557,8 @@ def run_experiment(config_path: str = "config.yaml", once: bool = False) -> int:
                 break
             time.sleep(1)
 
-    save_state(state_path, variants, scorecard, last_seen_ts, seen_hashes, research.stats())
+    save_state(state_path, variants, scorecard, last_seen_ts, seen_hashes, research.stats(),
+                   capacity_since=capacity_since)
     print("State saved. Bye.")
     return 0
 

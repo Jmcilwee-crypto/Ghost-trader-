@@ -52,3 +52,10 @@ class Evaluation:
     possibility_pct: float | None      # our modeled odds this specific bet pays off, 0-100
     importance_pct: float                # how notable the signal is by dollar size, 0-100
     signal: "Signal | None"              # non-None only when action is copy/fade/explore
+    # Which arm wanted this trade, including when it was refused. A rejection
+    # carries the stance that was denied, so "explore was capped 163 times
+    # while copy was capped twice" is countable instead of inferred from the
+    # action string. None where no arm had formed an intent yet (the trade was
+    # below the whale threshold, or the wallet sat between the copy and fade
+    # accuracy bands).
+    intended_stance: str | None = None

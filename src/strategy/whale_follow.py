@@ -52,14 +52,15 @@ class WhaleFollowStrategy:
         can_open = self.risk.can_open_new_position(portfolio) and not already_in
         can_explore = self.risk.can_open_new_position(portfolio, stance="explore") and not already_in
 
-        def _eval(*, outcome, price, action, reason, possibility, signal) -> Evaluation:
+        def _eval(*, outcome, price, action, reason, possibility, signal, stance=None) -> Evaluation:
             return Evaluation(
                 wallet=event.wallet, market_id=event.market_id, title=event.title, outcome=outcome, price=price,
                 usd_size=event.usd_size, timestamp=event.timestamp, accuracy=accuracy, track_record_count=track_record_count,
                 action=action, reason=reason, possibility_pct=possibility, importance_pct=importance, signal=signal,
+                intended_stance=stance,
             )
 
-        def _priced_out(price: float) -> Evaluation | None:
+        def _priced_out(price: float, stance: str) -> Evaluation | None:
             """Outcome tokens pay a fixed $1, so a share bought at 0.97 can only
             ever gain 3% while still risking the whole stake. Skip both tails
             regardless of how good the signal looks."""
@@ -70,7 +71,7 @@ class WhaleFollowStrategy:
                 outcome=event.outcome, price=price, action="skipped_price_bounds",
                 reason=(f"Entry price {price:.3f} is outside the {self.min_entry_price:g}-{self.max_entry_price:g} range "
                         f"-- a win would pay only {upside_pct:.1f}% while a loss still costs the full stake"),
-                possibility=None, signal=None,
+                possibility=None, signal=None, stance=stance
             )
 
         if event.usd_size < self.whale_usd_threshold:
@@ -81,14 +82,14 @@ class WhaleFollowStrategy:
             )
 
         if not has_record:
-            priced_out = _priced_out(event.price)
+            priced_out = _priced_out(event.price, "explore")
             if priced_out is not None and self.explore_unknown:
                 return priced_out
             if not self.explore_unknown:
                 return _eval(
                     outcome=event.outcome, price=event.price, action="skipped_unknown_trader",
                     reason=f"No track record yet for this trader ({track_record_count}/{self.min_track_record} resolved bets seen)",
-                    possibility=None, signal=None,
+                    possibility=None, signal=None, stance="explore"
                 )
             if not can_explore:
                 held = sum(1 for p in portfolio.positions.values() if p.stance == "explore")
@@ -98,52 +99,52 @@ class WhaleFollowStrategy:
                           f"Holding {held} explore bets already (cap {cap}) -- the remaining slots are "
                           f"kept free for traders with a real track record")
                 return _eval(outcome=event.outcome, price=event.price, action="skipped_explore_cap",
-                              reason=reason, possibility=None, signal=None)
+                              reason=reason, possibility=None, signal=None, stance="explore")
             amount = min(self.explore_size_usd, portfolio.cash)
             if amount <= 0:
                 return _eval(
                     outcome=event.outcome, price=event.price, action="skipped_capital",
-                    reason="Would try a small explore bet, but there's no cash left", possibility=None, signal=None,
+                    reason="Would try a small explore bet, but there's no cash left", possibility=None, signal=None, stance="explore"
                 )
             signal = Signal(stance="explore", token_id=event.token_id, outcome=event.outcome, price=event.price, usd_amount=amount, wallet=event.wallet)
             return _eval(
                 outcome=event.outcome, price=event.price, action="explore",
                 reason="No track record yet for this trader -- placing a small test bet to start scoring them",
-                possibility=None, signal=signal,
+                possibility=None, signal=signal, stance="explore"
             )
 
         if accuracy is not None and accuracy >= self.copy_above:
             possibility = round(accuracy * 100, 1)
             reason_base = f"Copying -- this trader has been right {accuracy:.0%} of the time ({track_record_count} resolved bets)"
-            priced_out = _priced_out(event.price)
+            priced_out = _priced_out(event.price, "copy")
             if priced_out is not None:
                 return priced_out
             if not can_open:
                 return _eval(outcome=event.outcome, price=event.price, action="skipped_full",
-                              reason=f"{reason_base}, but already at the max number of open positions", possibility=possibility, signal=None)
+                              reason=f"{reason_base}, but already at the max number of open positions", possibility=possibility, signal=None, stance="copy")
             amount = self.risk.position_size_usd(portfolio=portfolio, market_id=event.market_id, confidence=_confidence(accuracy), current_prices=current_prices)
             if amount <= 0:
                 return _eval(outcome=event.outcome, price=event.price, action="skipped_capital",
-                              reason=f"{reason_base}, but risk limits / available cash blocked it", possibility=possibility, signal=None)
+                              reason=f"{reason_base}, but risk limits / available cash blocked it", possibility=possibility, signal=None, stance="copy")
             signal = Signal(stance="copy", token_id=event.token_id, outcome=event.outcome, price=event.price, usd_amount=amount, wallet=event.wallet)
-            return _eval(outcome=event.outcome, price=event.price, action="copy", reason=reason_base, possibility=possibility, signal=signal)
+            return _eval(outcome=event.outcome, price=event.price, action="copy", reason=reason_base, possibility=possibility, signal=signal, stance="copy")
 
         if accuracy is not None and accuracy <= self.fade_below:
             possibility = round((1 - accuracy) * 100, 1)
             reason_base = f"Betting against this trader -- they've only been right {accuracy:.0%} of the time ({track_record_count} resolved bets)"
             opp_price = event.opposite_price if event.opposite_price is not None else max(0.01, min(0.99, 1 - event.price))
-            priced_out = _priced_out(opp_price)
+            priced_out = _priced_out(opp_price, "fade")
             if priced_out is not None:
                 return priced_out
             if not can_open:
                 return _eval(outcome=event.opposite_outcome, price=opp_price, action="skipped_full",
-                              reason=f"{reason_base}, but already at the max number of open positions", possibility=possibility, signal=None)
+                              reason=f"{reason_base}, but already at the max number of open positions", possibility=possibility, signal=None, stance="fade")
             amount = self.risk.position_size_usd(portfolio=portfolio, market_id=event.market_id, confidence=_confidence(1 - accuracy), current_prices=current_prices)
             if amount <= 0:
                 return _eval(outcome=event.opposite_outcome, price=opp_price, action="skipped_capital",
-                              reason=f"{reason_base}, but risk limits / available cash blocked it", possibility=possibility, signal=None)
+                              reason=f"{reason_base}, but risk limits / available cash blocked it", possibility=possibility, signal=None, stance="fade")
             signal = Signal(stance="fade", token_id=event.opposite_token_id, outcome=event.opposite_outcome, price=opp_price, usd_amount=amount, wallet=event.wallet)
-            return _eval(outcome=event.opposite_outcome, price=opp_price, action="fade", reason=reason_base, possibility=possibility, signal=signal)
+            return _eval(outcome=event.opposite_outcome, price=opp_price, action="fade", reason=reason_base, possibility=possibility, signal=signal, stance="fade")
 
         possibility = round(accuracy * 100, 1) if accuracy is not None else None
         return _eval(

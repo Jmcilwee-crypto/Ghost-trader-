@@ -10,14 +10,138 @@ Nothing here writes to the live state files; archived runs are read-only too.
 from __future__ import annotations
 
 import argparse
+import calendar
 import json
 import math
+import time
 from pathlib import Path
 from typing import Any
 
 import yaml
 
 from .portfolio import PaperPortfolio
+
+
+# -- regimes ----------------------------------------------------------------
+# How much of the feed the fleet could see has changed twice, and pooling
+# across those changes compares different experiments. The A/B report already
+# refuses to print a number for arms that didn't start together; this is the
+# same guard applied to the fleet's own history.
+#
+# Coverage figures use the feed rate measured on 4 Nov 2026 (~1,150 trades per
+# minute). Before 22 Oct a cycle read only the newest 100 trades, so at ~5
+# scheduled runs a day the fleet saw well under 1% of the day's trading.
+REGIMES = [
+    (calendar.timegm((2026, 10, 22, 0, 0, 0)), "newest page only",
+     "one 100-trade page per run; <1% of the feed seen"),
+    (calendar.timegm((2026, 11, 2, 18, 37, 0)), "feed paging",
+     "walks back to the last trade processed; ~6% of the feed seen"),
+    (calendar.timegm((2026, 11, 5, 0, 0, 0)), "outage",
+     "Data API v1 retired; the Polymarket arm recorded nothing"),
+    (float("inf"), "data API v2",
+     "cursor paging on v2; ~18 min of feed per cycle"),
+]
+
+
+def regime_of(ts: float) -> tuple[str, str]:
+    """Which coverage regime a timestamp falls in."""
+    for boundary, name, detail in REGIMES:
+        if ts < boundary:
+            return name, detail
+    return REGIMES[-1][1], REGIMES[-1][2]
+
+
+def regime_split(portfolio: PaperPortfolio) -> dict[str, dict[str, Any]]:
+    """Settled bets bucketed by the regime they were opened in."""
+    out: dict[str, dict[str, Any]] = {}
+    for t in portfolio.closed_trades:
+        name, _ = regime_of(t.opened_at)
+        row = out.setdefault(name, {"bets": 0, "wins": 0, "pnl": 0.0, "entry": 0.0})
+        row["bets"] += 1
+        row["wins"] += 1 if t.pnl > 0 else 0
+        row["pnl"] += t.pnl
+        row["entry"] += t.avg_price
+    for row in out.values():
+        row["win_rate"] = row["wins"] / row["bets"]
+        row["avg_entry"] = row["entry"] / row["bets"]
+        del row["entry"]
+    return out
+
+
+def print_regimes(runs: list[dict]) -> None:
+    state = runs[0] if runs else None
+    if not state:
+        return
+    print("\n-- settled bets by coverage regime --")
+    print("   Pooling across these compares different experiments, not different strategies:")
+    print("   the fleet's opportunity set changed, so win rates either side are not like for like.\n")
+    totals: dict[str, dict[str, Any]] = {}
+    for row in state["variants"]:
+        for name, bucket in (row.get("regimes") or {}).items():
+            agg = totals.setdefault(name, {"bets": 0, "wins": 0, "pnl": 0.0, "entry": 0.0})
+            agg["bets"] += bucket["bets"]
+            agg["wins"] += bucket["wins"]
+            agg["pnl"] += bucket["pnl"]
+            agg["entry"] += bucket["avg_entry"] * bucket["bets"]
+    order = [name for _, name, _ in REGIMES]
+    print(f"{'regime':<18}{'bets':>8}{'win%':>8}{'avg entry':>11}{'edge':>9}{'P&L':>12}   what changed")
+    for name in order:
+        agg = totals.get(name)
+        detail = next(d for _, n, d in REGIMES if n == name)
+        if not agg or not agg["bets"]:
+            print(f"{name:<18}{'-':>8}{'-':>8}{'-':>11}{'-':>9}{'-':>12}   {detail}")
+            continue
+        win = agg["wins"] / agg["bets"]
+        entry = agg["entry"] / agg["bets"]
+        print(f"{name:<18}{agg['bets']:>8}{win * 100:>7.1f}%{entry:>11.3f}"
+              f"{win - entry:>+9.3f}{agg['pnl']:>12,.2f}   {detail}")
+    print("\n   (bets are counted once per variant, so these are correlated, not independent)")
+
+
+# -- capacity ---------------------------------------------------------------
+DENIAL_LABELS = [("no_slot", "no slot"), ("no_cash", "no cash"), ("declined", "declined")]
+
+
+def print_capacity(runs: list[dict]) -> None:
+    state = runs[0] if runs else None
+    if not state:
+        return
+    since = state.get("capacity_counting_since")
+    totals: dict[str, dict[str, int]] = {}
+    for row in state["variants"]:
+        for stance, counts in (row.get("capacity") or {}).items():
+            agg = totals.setdefault(stance, {})
+            for key, value in counts.items():
+                agg[key] = agg.get(key, 0) + value
+
+    print("\n-- opportunities by arm, and why they were refused --")
+    if not totals:
+        print("   No capacity counts recorded yet -- they start accumulating on the next cycle.")
+        return
+    if since:
+        print(f"   Counting since {time.strftime('%Y-%m-%d %H:%M UTC', time.gmtime(since))}.")
+    print("   'no slot' is the position cap, not the strategy declining: those are bets an arm")
+    print("   wanted and could not place, and they are not in its win rate either way.\n")
+    print(f"{'arm':<10}{'wanted':>9}{'taken':>8}{'no slot':>10}{'no cash':>9}"
+          f"{'declined':>10}{'denied by capacity':>21}")
+    for stance in ("copy", "fade", "explore", "value"):
+        agg = totals.get(stance)
+        if not agg:
+            continue
+        taken = agg.get("taken", 0)
+        no_slot = agg.get("no_slot", 0)
+        no_cash = agg.get("no_cash", 0)
+        declined = agg.get("declined", 0)
+        wanted = taken + no_slot + no_cash
+        rate = (no_slot + no_cash) / wanted if wanted else 0.0
+        print(f"{stance:<10}{wanted:>9,}{taken:>8,}{no_slot:>10,}{no_cash:>9,}"
+              f"{declined:>10,}{rate * 100:>20.1f}%")
+    starved = [st for st in ("copy", "fade", "explore", "value")
+               if (totals.get(st) or {}).get("no_slot", 0) + (totals.get(st) or {}).get("no_cash", 0)
+               > (totals.get(st) or {}).get("taken", 0)]
+    if starved:
+        print(f"\n   {', '.join(starved)} was refused more often than it was filled. Comparing its")
+        print("   returns against an arm that wasn't is comparing capacity, not skill.")
 
 
 def pearson(xs: list[float], ys: list[float]) -> float | None:
@@ -35,7 +159,8 @@ def pearson(xs: list[float], ys: list[float]) -> float | None:
     return sum(a * b for a, b in zip(dx, dy)) / denom
 
 
-def variant_stats(name: str, settings: dict, portfolio: PaperPortfolio) -> dict[str, Any]:
+def variant_stats(name: str, settings: dict, portfolio: PaperPortfolio,
+                  capacity: dict | None = None) -> dict[str, Any]:
     closed = portfolio.closed_trades
     wins = [t for t in closed if t.pnl > 0]
     losses = [t for t in closed if t.pnl <= 0]
@@ -60,6 +185,8 @@ def variant_stats(name: str, settings: dict, portfolio: PaperPortfolio) -> dict[
 
     return {
         "name": name,
+        "capacity": capacity or {},
+        "regimes": regime_split(portfolio),
         "profile": settings.get("profile", "?"),
         "whale_threshold": settings.get("whale_usd_threshold"),
         "min_track_record": settings.get("min_track_record"),
@@ -99,7 +226,8 @@ def load_run(state_path: Path) -> dict[str, Any]:
     data = json.loads(state_path.read_text())
     variants = data.get("variants", {})
     rows = [
-        variant_stats(name, v.get("settings", {}), PaperPortfolio.from_dict(v["portfolio"]))
+        variant_stats(name, v.get("settings", {}), PaperPortfolio.from_dict(v["portfolio"]),
+                      v.get("capacity"))
         for name, v in variants.items()
     ]
     rows.sort(key=lambda r: (-r["equity"], -r["closed_count"], r["name"]))
@@ -108,6 +236,7 @@ def load_run(state_path: Path) -> dict[str, Any]:
         "path": str(state_path),
         "variants": rows,
         "scored_wallets": _scored_wallets(data.get("scorecard")),
+        "capacity_counting_since": data.get("capacity_counting_since"),
     }
 
 
@@ -336,6 +465,10 @@ def main():
     parser.add_argument("--top", type=int, default=None, help="only show the top N variants per run")
     parser.add_argument("--json", action="store_true", help="print machine-readable JSON instead of tables")
     parser.add_argument("--ab", action="store_true", help="report the flat-stake A/B cohort only")
+    parser.add_argument("--caps", action="store_true",
+                        help="report how many opportunities each arm was denied for lack of room")
+    parser.add_argument("--regimes", action="store_true",
+                        help="split settled bets by coverage regime instead of pooling them")
     args = parser.parse_args()
 
     if args.ab:
@@ -349,6 +482,13 @@ def main():
 
     if args.json:
         print(json.dumps(report, indent=2))
+        return
+
+    if args.caps:
+        print_capacity(report["runs"])
+        return
+    if args.regimes:
+        print_regimes(report["runs"])
         return
 
     for run in report["runs"]:
