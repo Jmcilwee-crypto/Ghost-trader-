@@ -46,20 +46,33 @@ live:
   # Used by the single-strategy runner (src/live.py), which polls continuously.
   trades_lookback_limit: 100
 
-  # The experiment runner instead pages the feed back to the last trade it
-  # already processed, so its coverage no longer depends on how often the
-  # process starts. This matters because GitHub stopped honouring the
-  # 15-minute cron: runs fell from ~92/day on 10 Oct to ~6/day by 19 Oct, and
-  # since one run only sampled the latest 100 trades (~2 minutes of feed), the
-  # fleet went from seeing ~13% of the day to under 1% of it. New bets fell
-  # from 21/day to 0-3/day, which is what that collapse looks like from the
-  # outside -- nothing had failed; the bot had simply stopped looking.
-  #   page_size x max_pages bounds the worst case at 20,000 trades per cycle.
-  trades_page_size: 500
-  trades_max_pages: 40
-  # A cold start has no last-seen trade to page back to, and neither does a
-  # multi-day outage. Without this the first run would try to pull the entire
-  # feed; six hours is deep enough to cover any realistic scheduling gap.
+  # The experiment runner instead walks the feed back to the last trade it
+  # already processed, so coverage no longer depends on how often the process
+  # starts. GitHub stopped honouring the 15-minute cron -- runs fell from
+  # ~92/day on 10 Oct to ~5/day -- and a run that samples only the newest
+  # page is then blind to almost the whole day. New bets fell from 21/day to
+  # 0-3/day; nothing had failed, the bot had stopped looking.
+  #
+  # Sized against the feed as measured on 4 Nov 2026: ~1,150 trades/minute,
+  # of which ~27/minute are >= $500. 1,000 is v2's hard limit per page.
+  #
+  # Measured cost per cycle (the feed walk itself is trivial -- 60,000 trades
+  # in 13s; the time goes on evaluating each whale against 30 variants and
+  # querying the research providers):
+  #     pages  feed span  whales>=$500  markets  cycle time
+  #        20       18m            538      151       ~100s
+  #        60       56m           1382      319       ~400s
+  # The runner allows 600s and saves state only if the cycle finishes, so a
+  # cycle that overruns makes no progress at all -- 60 pages left too little
+  # margin. 20 pages still surfaces ~36 times more signal than the fleet's
+  # 15 position slots can hold, so the extra coverage would buy scorecard
+  # depth, not more bets. Capacity is the binding constraint, not discovery;
+  # see max_concurrent_positions and the capacity columns in `stats --caps`.
+  trades_page_size: 1000
+  trades_max_pages: 20
+  # A cold start has no last-seen trade to walk back to, and neither does a
+  # multi-day outage like the v1 retirement. Without this the first run would
+  # try to pull the entire feed.
   trades_max_lookback_hours: 6
   # How often to re-check an open position's market for resolution. Kept well
   # above poll_interval_seconds on purpose -- checking every cycle burns the

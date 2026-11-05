@@ -34,18 +34,27 @@ def _feed(count, *, step=1.0, start=NOW):
 
 
 class FakeClient(PolymarketClient):
-    """Serves a fixed feed, honouring limit/offset, and counts requests."""
+    """Serves a fixed feed through v2's cursor contract, counting requests.
 
-    def __init__(self, feed, *, server_max_limit=None):
+    v2 has no offset: a cursor is opaque and the only way back. The fake
+    encodes the read position in it, which is what the real one does too.
+    """
+
+    def __init__(self, feed, *, server_max_limit=None, stuck_cursor=False):
         self.feed = feed
         self.server_max_limit = server_max_limit
+        self.stuck_cursor = stuck_cursor
         self.calls = []
 
-    def get_trades(self, *, limit=100, offset=0, **kwargs):
+    def _trades_page(self, *, limit=100, cursor=None, **kwargs):
         if self.server_max_limit is not None:
             limit = min(limit, self.server_max_limit)
-        self.calls.append((limit, offset))
-        return self.feed[offset:offset + limit]
+        start = int(cursor) if cursor else 0
+        self.calls.append((limit, start))
+        page = self.feed[start:start + limit]
+        nxt = start + len(page)
+        has_more = nxt < len(self.feed)
+        return page, ("0" if self.stuck_cursor else str(nxt)) if has_more else None, has_more
 
 
 # -- the gap itself ----------------------------------------------------------
@@ -107,23 +116,39 @@ def test_an_exhausted_feed_counts_as_covered():
 
 
 # -- paging mechanics --------------------------------------------------------
-def test_offset_follows_what_the_server_actually_returned():
-    """Striding by the requested page_size would skip whatever a lower
-    server-side cap refused to send."""
+def test_the_walk_follows_the_cursor_and_skips_nothing():
+    """A server-side limit lower than we asked for must not open a hole: the
+    cursor, not our page_size, decides where the next page starts."""
     c = FakeClient(_feed(3000), server_max_limit=100)
     trades, reached = c.get_trades_since(NOW - 900, page_size=500, max_pages=40)
     assert reached
-    assert [off for _, off in c.calls] == list(range(0, len(c.calls) * 100, 100))
+    assert [start for _, start in c.calls] == list(range(0, len(c.calls) * 100, 100))
     hashes = [t["transactionHash"] for t in trades]
     assert len(hashes) == len(set(hashes))
     assert hashes == [t["transactionHash"] for t in c.feed[:len(hashes)]], "a page was skipped"
 
 
-def test_a_trade_seen_on_two_offsets_is_returned_once():
-    """The feed shifts under us while we page, so offsets overlap."""
+def test_has_more_false_ends_the_walk_as_covered():
+    """v2 states when the feed is exhausted, so there is nothing left to miss
+    even if the floor was never reached."""
+    c = FakeClient(_feed(250))
+    trades, reached = c.get_trades_since(NOW - 10 * 3600, page_size=100, max_pages=40)
+    assert reached is True
+    assert len(trades) == 250
+    assert len(c.calls) == 3
+
+
+def test_a_trade_served_on_two_pages_is_returned_once():
+    """Cursors are meant to be stable, but a feed that re-serves rows across
+    page boundaries must not produce duplicate bets."""
     feed = _feed(1000)
     c = FakeClient(feed)
-    c.get_trades = lambda *, limit=100, offset=0, **k: feed[max(0, offset - 20):offset - 20 + limit]
+    def overlapping(*, limit=100, cursor=None, **k):
+        start = int(cursor) if cursor else 0
+        page = feed[max(0, start - 20):start + limit]
+        nxt = start + limit
+        return page, (str(nxt) if nxt < len(feed) else None), nxt < len(feed)
+    c._trades_page = overlapping
     trades, _ = c.get_trades_since(NOW - 600, page_size=100, max_pages=20)
     hashes = [t["transactionHash"] for t in trades]
     assert len(hashes) == len(set(hashes))
@@ -152,19 +177,15 @@ def test_trimming_keeps_the_newest_hashes_not_an_arbitrary_set(tmp_path, monkeyp
     seen = dict.fromkeys(f"0x{i:04x}" for i in range(100))
     experiment.save_state(str(path), [], TraderScorecard(), NOW, seen)
 
-    _, restored = experiment.load_state(str(path), [], TraderScorecard())
+    _, restored, _ = experiment.load_state(str(path), [], TraderScorecard())
     assert len(restored) == 10
     assert list(restored) == [f"0x{i:04x}" for i in range(90, 100)]
 
 
-def test_an_ignored_offset_stops_the_walk_instead_of_burning_the_budget():
-    """If the endpoint ever drops `offset`, every page is page one. That must
-    cost two requests and an honest reached=False, not forty requests."""
-    feed = _feed(5000)
-    c = FakeClient(feed)
-    c.get_trades = lambda *, limit=100, offset=0, **k: (
-        c.calls.append((limit, offset)) or feed[:limit])
-
+def test_a_cursor_that_does_not_advance_stops_the_walk():
+    """A cursor that keeps pointing at page one must cost two requests and an
+    honest reached=False, not the whole page budget."""
+    c = FakeClient(_feed(5000), stuck_cursor=True)
     trades, reached = c.get_trades_since(NOW - 3 * 3600, page_size=100, max_pages=40)
     assert reached is False, "silently claimed to have covered the gap"
     assert len(c.calls) == 2

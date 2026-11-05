@@ -12,16 +12,17 @@ from __future__ import annotations
 
 import os
 import sys
+import time
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 import requests
 
 UA = {"User-Agent": "ghost-trader-preflight/1.0"}
-TRADES = "https://data-api.polymarket.com/trades"
+TRADES = "https://data-api.polymarket.com/v2/trades"
 
 CHECKS = [
-    ("Polymarket trades", "https://data-api.polymarket.com/trades?limit=1", "Polymarket experiment", ()),
+    ("Polymarket trades", "https://data-api.polymarket.com/v2/trades?limit=1", "Polymarket experiment", ()),
     ("Polymarket markets", "https://gamma-api.polymarket.com/markets?limit=1", "Polymarket experiment", ()),
     ("Binance klines", "https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=1h&limit=1", "Crypto + Commodities", ()),
     ("Coinbase candles", "https://api.exchange.coinbase.com/products/BTC-USD/candles?granularity=3600", "Crypto fallback", ()),
@@ -46,36 +47,55 @@ def check(url: str, also_ok: tuple = ()) -> tuple[bool, str]:
 
 
 def check_trade_feed_paging() -> bool:
-    """Does /trades honour `offset`, and how much time does one page span?
+    """Does the feed still answer in the shape we parse, and does the cursor
+    actually advance?
 
-    The experiment pages the feed backwards to cover the whole gap since its
-    last run, which only works if offset shifts the window. That cannot be
-    tested from a network that blocks Polymarket, so it is verified here --
-    on the machine that actually does the trading -- and printed every run.
+    v1 was retired on 2 Nov 2026 and the fleet sat dead for two days, because
+    a failing cycle is indistinguishable from a quiet market from the outside.
+    This asserts the contract the experiment depends on -- the v2 envelope,
+    the snake_case field names, and a cursor that moves -- on the machine that
+    does the trading, every run, so the next such change is visible the same
+    day instead of two days later.
     """
     try:
         a = requests.get(f"{TRADES}?limit=100&takerOnly=true", headers=UA, timeout=15).json()
-        b = requests.get(f"{TRADES}?limit=100&takerOnly=true&offset=100", headers=UA, timeout=15).json()
     except (requests.RequestException, ValueError) as exc:
-        print(f"  SKIP  trade feed paging: {type(exc).__name__}")
+        print(f"  SKIP  trade feed: {type(exc).__name__}")
         return False
-    if not isinstance(a, list) or not isinstance(b, list) or not a:
-        print("  FAIL  trade feed paging: unexpected response shape")
+    if not isinstance(a, dict) or "data" not in a:
+        print(f"  FAIL  trade feed: expected a {{data, pagination}} envelope, got "
+              f"{type(a).__name__} {str(a)[:80]}")
         return False
 
-    ha = {t.get("transactionHash") for t in a}
-    hb = {t.get("transactionHash") for t in b}
-    stamps = [float(t["timestamp"]) for t in a if t.get("timestamp")]
+    rows = a.get("data") or []
+    required = ("transaction_hash", "proxy_wallet", "condition_id", "token_id",
+                "timestamp", "price", "size")
+    missing = [f for f in required if rows and f not in rows[0]]
+    if not rows or missing:
+        print(f"  FAIL  trade feed: fields missing from the response: {missing or 'no rows'}")
+        return False
+
+    stamps = [float(r["timestamp"]) for r in rows if r.get("timestamp")]
     span = (max(stamps) - min(stamps)) / 60.0 if len(stamps) > 1 else 0.0
-    print(f"  INFO  one 100-trade page spans {span:.1f} minutes of feed")
+    rate = (len(rows) / span) if span > 0 else 0.0
+    lag = time.time() - max(stamps) if stamps else 0.0
+    print(f"  INFO  feed runs ~{rate:,.0f} trades/min and is {lag:.0f}s behind now")
 
-    if not hb or hb <= ha:
-        print("  FAIL  offset is ignored -- paging cannot cover a scheduling gap.")
-        print("        The bot will warn and fall back to one page per run.")
+    cursor = (a.get("pagination") or {}).get("next_cursor")
+    if not cursor:
+        print("  FAIL  no next_cursor -- the walk cannot go back beyond one page.")
         return False
-    pages_per_hour = 60.0 / span if span > 0 else float("inf")
-    print(f"  PASS  offset works ({len(hb - ha)}/100 new on page 2) -- "
-          f"~{pages_per_hour:.0f} pages per hour of gap at this page size")
+    try:
+        b = requests.get(f"{TRADES}?limit=100&cursor={cursor}", headers=UA, timeout=15).json()
+    except (requests.RequestException, ValueError) as exc:
+        print(f"  FAIL  cursor page: {type(exc).__name__}")
+        return False
+    ha = {r.get("transaction_hash") for r in rows}
+    hb = {r.get("transaction_hash") for r in (b.get("data") or [])}
+    if not hb - ha:
+        print("  FAIL  the cursor does not advance -- coverage is one page per run.")
+        return False
+    print(f"  PASS  cursor advances ({len(hb - ha)}/100 new on page 2)")
     return True
 
 
