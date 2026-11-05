@@ -139,3 +139,10 @@
 {"ts": 1793807094.1860785, "bot": "risky-breakout-10", "symbol": "EURUSD", "action": "buy", "price": 1.1267, "usd": 88.06, "reason": "Broke above its 10-bar high by 0.29%", "strength_pct": 58.8}
 {"ts": 1793807094.1865118, "bot": "momentum-5/20", "symbol": "JPYUSD", "action": "sell", "price": 0.0063191, "pnl": -0.01, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1793807094.186898, "bot": "risky-nostop-5/20", "symbol": "JPYUSD", "action": "sell", "price": 0.0063191, "pnl": -0.07, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1793917568.4704926, "bot": "momentum-10/50", "symbol": "GBPUSD", "action": "buy", "price": 1.3459, "usd": 1.05, "reason": "10-bar average is 0.11% above the 50-bar -- uptrend", "strength_pct": 2.1}
+{"ts": 1793917568.4709017, "bot": "vol-momentum", "symbol": "GBPUSD", "action": "buy", "price": 1.3459, "usd": 1.05, "reason": "10-bar average is 0.11% above the 50-bar -- uptrend; volatility 0.30% vs 2.00% target -> sizing at 100% (moved +1.9%)", "strength_pct": 2.1}
+{"ts": 1793917568.4852982, "bot": "momentum-tp", "symbol": "GBPUSD", "action": "buy", "price": 1.3459, "usd": 1.05, "reason": "10-bar average is 0.11% above the 50-bar -- uptrend", "strength_pct": 2.1}
+{"ts": 1793917568.4872866, "bot": "risky-momentum-5/15", "symbol": "AUDUSD", "action": "sell", "price": 0.70006, "pnl": 0.0, "reason": "5-bar average dropped below the 15-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1793917568.487713, "bot": "momentum-5/20", "symbol": "EURUSD", "action": "buy", "price": 1.1224, "usd": 1.2, "reason": "5-bar average is 0.12% above the 20-bar -- uptrend", "strength_pct": 2.4}
+{"ts": 1793917568.4880726, "bot": "risky-momentum-5/15", "symbol": "EURUSD", "action": "buy", "price": 1.1224, "usd": 4.52, "reason": "5-bar average is 0.11% above the 15-bar -- uptrend", "strength_pct": 2.3}
+{"ts": 1793917568.4884343, "bot": "risky-nostop-5/20", "symbol": "EURUSD", "action": "buy", "price": 1.1224, "usd": 6.01, "reason": "5-bar average is 0.12% above the 20-bar -- uptrend", "strength_pct": 2.4}
