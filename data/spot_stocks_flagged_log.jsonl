@@ -144,3 +144,8 @@
 {"ts": 1793827852.0519037, "bot": "breakout-50", "symbol": "MSFT", "action": "buy", "price": 555.8, "usd": 49.86, "reason": "Broke above its 50-bar high by 2.27%", "strength_pct": 100.0}
 {"ts": 1793827852.0522327, "bot": "risky-momentum-3/10", "symbol": "MSFT", "action": "buy", "price": 555.8, "usd": 1.81, "reason": "3-bar average is 0.06% above the 10-bar -- uptrend", "strength_pct": 1.2}
 {"ts": 1793827852.0525494, "bot": "risky-breakout-10", "symbol": "MSFT", "action": "buy", "price": 555.8, "usd": 99.32, "reason": "Broke above its 10-bar high by 4.29%", "strength_pct": 100.0}
+{"ts": 1793868045.0056298, "bot": "momentum-5/20", "symbol": "AAPL", "action": "sell", "price": 349.51, "pnl": 0.08, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1793868045.0062497, "bot": "breakout-20", "symbol": "AAPL", "action": "buy", "price": 349.51, "usd": 27.51, "reason": "Broke above its 20-bar high by 0.17%", "strength_pct": 55.2}
+{"ts": 1793868045.0066257, "bot": "risky-momentum-5/15", "symbol": "AAPL", "action": "sell", "price": 349.51, "pnl": 0.09, "reason": "5-bar average dropped below the 15-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1793868045.0070026, "bot": "risky-breakout-10", "symbol": "AAPL", "action": "buy", "price": 349.51, "usd": 82.17, "reason": "Broke above its 10-bar high by 0.17%", "strength_pct": 55.2}
+{"ts": 1793868045.0074055, "bot": "risky-nostop-5/20", "symbol": "AAPL", "action": "sell", "price": 349.51, "pnl": 0.12, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}

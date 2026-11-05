@@ -9,7 +9,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 991.5082238085275,
+        "cash": 993.5536033883873,
         "positions": {
           "IBM": {
             "market_id": "IBM",
@@ -19,16 +19,6 @@
             "shares": 0.019158620349914238,
             "avg_price": 234.02,
             "opened_at": 1789124715.258517,
-            "stance": "momentum"
-          },
-          "AAPL": {
-            "market_id": "AAPL",
-            "token_id": "AAPL",
-            "outcome": "long",
-            "title": "AAPL",
-            "shares": 0.005852134645245387,
-            "avg_price": 336.64,
-            "opened_at": 1791577478.274776,
             "stance": "momentum"
           }
         },
@@ -143,6 +133,20 @@
             "closed_at": 1793215895.211996,
             "reason": "5-bar average dropped below the 20-bar -- trend over",
             "pnl": -0.6978102443939633,
+            "stance": "momentum"
+          },
+          {
+            "market_id": "AAPL",
+            "token_id": "AAPL",
+            "outcome": "long",
+            "title": "AAPL",
+            "shares": 0.005852134645245387,
+            "avg_price": 336.64,
+            "exit_price": 349.51,
+            "opened_at": 1791577478.274776,
+            "closed_at": 1793868045.0055842,
+            "reason": "5-bar average dropped below the 20-bar -- trend over",
+            "pnl": 0.07531697288430794,
             "stance": "momentum"
           }
         ],
@@ -448,7 +452,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 901.8076902780963,
+        "cash": 874.2971657215003,
         "positions": {
           "IBM": {
             "market_id": "IBM",
@@ -468,6 +472,16 @@
             "shares": 0.08973555374938004,
             "avg_price": 555.8,
             "opened_at": 1793827852.0513833,
+            "stance": "breakout"
+          },
+          "AAPL": {
+            "market_id": "AAPL",
+            "token_id": "AAPL",
+            "outcome": "long",
+            "title": "AAPL",
+            "shares": 0.07871169510628027,
+            "avg_price": 349.51,
+            "opened_at": 1793868045.006212,
             "stance": "breakout"
           }
         },
@@ -651,7 +665,7 @@
             "stance": "vol_scaled_momentum"
           }
         ],
-        "peak_equity": 1007.6283498346705,
+        "peak_equity": 1008.010368084646,
         "max_drawdown": 0.0049007552997309125,
         "fee_rate": 0.0,
         "fees_paid": 0.0
@@ -998,19 +1012,8 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 991.0893402654034,
-        "positions": {
-          "AAPL": {
-            "market_id": "AAPL",
-            "token_id": "AAPL",
-            "outcome": "long",
-            "title": "AAPL",
-            "shares": 0.006907611861059251,
-            "avg_price": 336.64,
-            "opened_at": 1791577478.2755198,
-            "stance": "momentum"
-          }
-        },
+        "cash": 993.5036196869622,
+        "positions": {},
         "closed_trades": [
           {
             "market_id": "AAPL",
@@ -1095,6 +1098,20 @@
             "reason": "5-bar average dropped below the 15-bar -- trend over",
             "pnl": -0.2704394484103503,
             "stance": "momentum"
+          },
+          {
+            "market_id": "AAPL",
+            "token_id": "AAPL",
+            "outcome": "long",
+            "title": "AAPL",
+            "shares": 0.006907611861059251,
+            "avg_price": 336.64,
+            "exit_price": 349.51,
+            "opened_at": 1791577478.2755198,
+            "closed_at": 1793868045.0065882,
+            "reason": "5-bar average dropped below the 15-bar -- trend over",
+            "pnl": 0.08890096465183239,
+            "stance": "momentum"
           }
         ],
         "peak_equity": 1001.2750284028082,
@@ -1132,7 +1149,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 893.8449326537367,
+        "cash": 811.672392211658,
         "positions": {
           "MSFT": {
             "market_id": "MSFT",
@@ -1142,6 +1159,16 @@
             "shares": 0.17869036277112807,
             "avg_price": 555.8,
             "opened_at": 1793827852.0525157,
+            "stance": "breakout"
+          },
+          "AAPL": {
+            "market_id": "AAPL",
+            "token_id": "AAPL",
+            "outcome": "long",
+            "title": "AAPL",
+            "shares": 0.23510783795049833,
+            "avg_price": 349.51,
+            "opened_at": 1793868045.0069644,
             "stance": "breakout"
           }
         },
@@ -1247,19 +1274,8 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 987.184510498578,
-        "positions": {
-          "AAPL": {
-            "market_id": "AAPL",
-            "token_id": "AAPL",
-            "outcome": "long",
-            "title": "AAPL",
-            "shares": 0.012682598889495734,
-            "avg_price": 340.42,
-            "opened_at": 1791491319.5835593,
-            "stance": "momentum"
-          }
-        },
+        "cash": 991.6172056364456,
+        "positions": {},
         "closed_trades": [
           {
             "market_id": "MSFT",
@@ -1372,6 +1388,20 @@
             "reason": "5-bar average dropped below the 20-bar -- trend over",
             "pnl": -3.4893338447784856,
             "stance": "momentum"
+          },
+          {
+            "market_id": "AAPL",
+            "token_id": "AAPL",
+            "outcome": "long",
+            "title": "AAPL",
+            "shares": 0.012682598889495734,
+            "avg_price": 340.42,
+            "exit_price": 349.51,
+            "opened_at": 1791491319.5835593,
+            "closed_at": 1793868045.0073693,
+            "reason": "5-bar average dropped below the 20-bar -- trend over",
+            "pnl": 0.1152848239055162,
+            "stance": "momentum"
           }
         ],
         "peak_equity": 1002.2940668937597,
@@ -1442,16 +1472,14 @@
     }
   },
   "prices": {
+    "AAPL": 349.51,
+    "MSFT": 555.8,
     "NVDA": 200.13,
     "TTWO": 190.17,
-    "SPY": 754.35,
-    "AAPL": 338.32,
-    "MSFT": 555.8
+    "SPY": 754.35
   },
   "bars": {
     "AAPL": [
-      295.63,
-      291.13,
       296.42,
       299.24,
       295.95,
@@ -1549,7 +1577,9 @@
       343.83,
       348.91,
       344.63,
-      338.32
+      338.32,
+      331.9,
+      349.51
     ],
     "SPY": [
       741.75,
@@ -1970,6 +2000,6 @@
     "note": null
   },
   "scorecard": {},
-  "last_seen_ts": 1793843197.6496089,
+  "last_seen_ts": 1793868045.0126495,
   "seen_hashes": []
 }

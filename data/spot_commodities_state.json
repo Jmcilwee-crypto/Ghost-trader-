@@ -3657,18 +3657,11 @@
     }
   },
   "prices": {
-    "XAUTUSDT": 3886.52,
-    "PAXGUSDT": 4117.52
+    "PAXGUSDT": 4113.38,
+    "XAUTUSDT": 3886.52
   },
   "bars": {
     "PAXGUSDT": [
-      4016.94,
-      4014.95,
-      4020.1,
-      4006.05,
-      4000.0,
-      4002.98,
-      3996.41,
       3993.88,
       3999.95,
       3993.31,
@@ -3811,7 +3804,14 @@
       4058.41,
       4057.91,
       4082.6,
-      4117.52
+      4116.7,
+      4119.83,
+      4128.29,
+      4127.89,
+      4106.89,
+      4118.72,
+      4112.76,
+      4113.38
     ],
     "XAUTUSDT": [
       3990.52,
@@ -3973,9 +3973,9 @@
     "sources": {
       "PAXGUSDT": "coinbase"
     },
-    "last_error": null
+    "last_error": "coinbase: 404 Client Error: Not Found for url: https://api.exchange.coinbase.com/products/XAUT-USD/candles?granularity=3600"
   },
   "scorecard": {},
-  "last_seen_ts": 1793843194.794255,
+  "last_seen_ts": 1793868043.0424774,
   "seen_hashes": []
 }
