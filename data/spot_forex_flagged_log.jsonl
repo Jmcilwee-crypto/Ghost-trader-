@@ -146,3 +146,8 @@
 {"ts": 1793917568.487713, "bot": "momentum-5/20", "symbol": "EURUSD", "action": "buy", "price": 1.1224, "usd": 1.2, "reason": "5-bar average is 0.12% above the 20-bar -- uptrend", "strength_pct": 2.4}
 {"ts": 1793917568.4880726, "bot": "risky-momentum-5/15", "symbol": "EURUSD", "action": "buy", "price": 1.1224, "usd": 4.52, "reason": "5-bar average is 0.11% above the 15-bar -- uptrend", "strength_pct": 2.3}
 {"ts": 1793917568.4884343, "bot": "risky-nostop-5/20", "symbol": "EURUSD", "action": "buy", "price": 1.1224, "usd": 6.01, "reason": "5-bar average is 0.12% above the 20-bar -- uptrend", "strength_pct": 2.4}
+{"ts": 1793984384.852806, "bot": "risky-breakout-10", "symbol": "EURUSD", "action": "sell", "price": 1.1165, "pnl": -0.81, "reason": "Fell below the 5-bar low -- breakout failed", "strength_pct": 50.0}
+{"ts": 1793984384.8531773, "bot": "risky-breakout-10", "symbol": "GBPUSD", "action": "sell", "price": 1.3385, "pnl": -0.22, "reason": "Fell below the 5-bar low -- breakout failed", "strength_pct": 50.0}
+{"ts": 1793984384.8535662, "bot": "momentum-5/20", "symbol": "AUDUSD", "action": "sell", "price": 0.68708, "pnl": -0.05, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1793984384.853896, "bot": "meanrev-35", "symbol": "AUDUSD", "action": "buy", "price": 0.68708, "usd": 24.41, "reason": "RSI 32 -- oversold below 35", "strength_pct": 48.9}
+{"ts": 1793984384.8541725, "bot": "risky-nostop-5/20", "symbol": "AUDUSD", "action": "sell", "price": 0.68708, "pnl": -0.23, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
