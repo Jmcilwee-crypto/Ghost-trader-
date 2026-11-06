@@ -149,3 +149,6 @@
 {"ts": 1793868045.0066257, "bot": "risky-momentum-5/15", "symbol": "AAPL", "action": "sell", "price": 349.51, "pnl": 0.09, "reason": "5-bar average dropped below the 15-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1793868045.0070026, "bot": "risky-breakout-10", "symbol": "AAPL", "action": "buy", "price": 349.51, "usd": 82.17, "reason": "Broke above its 10-bar high by 0.17%", "strength_pct": 55.2}
 {"ts": 1793868045.0074055, "bot": "risky-nostop-5/20", "symbol": "AAPL", "action": "sell", "price": 349.51, "pnl": 0.12, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1793958689.5182817, "bot": "momentum-20/100", "symbol": "NVDA", "action": "sell", "price": 181.6, "pnl": -7.52, "reason": "Stop loss hit -- down -16.8% from entry", "strength_pct": 50.0}
+{"ts": 1793958689.5189776, "bot": "meanrev-30", "symbol": "NVDA", "action": "sell", "price": 181.6, "pnl": -2.95, "reason": "Stop loss hit -- down -14.4% from entry", "strength_pct": 50.0}
+{"ts": 1793958689.5197396, "bot": "meanrev-35", "symbol": "NVDA", "action": "sell", "price": 181.6, "pnl": -3.48, "reason": "Stop loss hit -- down -15.2% from entry", "strength_pct": 50.0}
