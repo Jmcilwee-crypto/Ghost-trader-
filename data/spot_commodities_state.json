@@ -9,8 +9,19 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 999.6686998644545,
-        "positions": {},
+        "cash": 998.1623843117807,
+        "positions": {
+          "PAXGUSDT": {
+            "market_id": "PAXGUSDT",
+            "token_id": "PAXGUSDT",
+            "outcome": "long",
+            "title": "PAXGUSDT",
+            "shares": 0.00037107681083070534,
+            "avg_price": 4055.25,
+            "opened_at": 1794002232.8231733,
+            "stance": "momentum"
+          }
+        },
         "closed_trades": [
           {
             "market_id": "PAXGUSDT",
@@ -506,7 +517,7 @@
         "peak_equity": 1000.0655635321914,
         "max_drawdown": 0.0004824836976970137,
         "fee_rate": 0.001,
-        "fees_paid": 0.14973776555727084
+        "fees_paid": 0.15124408110994472
       }
     },
     "momentum-10/50": {
@@ -3679,16 +3690,11 @@
     }
   },
   "prices": {
-    "XAUTUSDT": 3886.52,
-    "PAXGUSDT": 4053.01
+    "PAXGUSDT": 4055.25,
+    "XAUTUSDT": 3886.52
   },
   "bars": {
     "PAXGUSDT": [
-      3893.43,
-      3892.69,
-      3891.42,
-      3891.0,
-      3895.03,
       3894.52,
       3890.64,
       3891.23,
@@ -3833,7 +3839,12 @@
       4033.62,
       4035.47,
       4040.73,
-      4053.01
+      4052.99,
+      4045.77,
+      4064.71,
+      4051.12,
+      4051.7,
+      4055.25
     ],
     "XAUTUSDT": [
       3990.52,
@@ -3995,9 +4006,9 @@
     "sources": {
       "PAXGUSDT": "coinbase"
     },
-    "last_error": null
+    "last_error": "coinbase: 404 Client Error: Not Found for url: https://api.exchange.coinbase.com/products/XAUT-USD/candles?granularity=3600"
   },
   "scorecard": {},
-  "last_seen_ts": 1793984382.954939,
+  "last_seen_ts": 1794002232.8330047,
   "seen_hashes": []
 }
