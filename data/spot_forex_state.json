@@ -1472,11 +1472,11 @@
     }
   },
   "prices": {
-    "EURUSD": 1.1165,
     "GBPUSD": 1.3385,
     "JPYUSD": 0.0063161,
     "AUDUSD": 0.68708,
-    "CHFUSD": 1.2212
+    "CHFUSD": 1.2212,
+    "EURUSD": 1.1165
   },
   "bars": {
     "AUDUSD": [
@@ -2247,6 +2247,6 @@
     "last_error": null
   },
   "scorecard": {},
-  "last_seen_ts": 1794037505.5169725,
+  "last_seen_ts": 1794061287.4172337,
   "seen_hashes": []
 }
