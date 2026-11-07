@@ -283,7 +283,7 @@
           }
         ],
         "peak_equity": 1009.5472366777366,
-        "max_drawdown": 0.009734810848148954,
+        "max_drawdown": 0.012221873788486957,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -471,7 +471,7 @@
           }
         ],
         "peak_equity": 1000.129903069864,
-        "max_drawdown": 0.0038256719863290333,
+        "max_drawdown": 0.004571190495151815,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -577,7 +577,7 @@
           }
         ],
         "peak_equity": 1001.2230396975814,
-        "max_drawdown": 0.004279391856409918,
+        "max_drawdown": 0.006537069226309162,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -631,7 +631,7 @@
           }
         ],
         "peak_equity": 1000.1959166110237,
-        "max_drawdown": 0.003076021566612768,
+        "max_drawdown": 0.004986511355206481,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -844,7 +844,7 @@
         },
         "closed_trades": [],
         "peak_equity": 1007.1481383077012,
-        "max_drawdown": 0.014622051535182654,
+        "max_drawdown": 0.016831833902008562,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -1039,7 +1039,7 @@
           }
         ],
         "peak_equity": 1001.1201260103064,
-        "max_drawdown": 0.006657010104976129,
+        "max_drawdown": 0.006739175703669981,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -1055,8 +1055,19 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 993.5036196869622,
-        "positions": {},
+        "cash": 988.5094354973444,
+        "positions": {
+          "MSFT": {
+            "market_id": "MSFT",
+            "token_id": "MSFT",
+            "outcome": "long",
+            "title": "MSFT",
+            "shares": 0.00941215617801745,
+            "avg_price": 530.61,
+            "opened_at": 1794090411.4734275,
+            "stance": "momentum"
+          }
+        },
         "closed_trades": [
           {
             "market_id": "AAPL",
@@ -1302,7 +1313,7 @@
           }
         ],
         "peak_equity": 1001.7215679772406,
-        "max_drawdown": 0.010221604471343581,
+        "max_drawdown": 0.01471507888788626,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -1515,11 +1526,11 @@
     }
   },
   "prices": {
-    "SPY": 735.29,
-    "AAPL": 342.37,
-    "MSFT": 555.8,
+    "MSFT": 530.61,
     "NVDA": 186.64,
-    "TTWO": 190.17
+    "TTWO": 190.17,
+    "SPY": 735.29,
+    "AAPL": 342.37
   },
   "bars": {
     "AAPL": [
@@ -1931,8 +1942,6 @@
       186.64
     ],
     "MSFT": [
-      399.76,
-      393.83,
       378.91,
       379.4,
       367.34,
@@ -2030,7 +2039,9 @@
       521.91,
       507.12,
       520.99,
-      555.8
+      555.8,
+      535.93,
+      530.61
     ]
   },
   "research": {
@@ -2043,6 +2054,6 @@
     "note": null
   },
   "scorecard": {},
-  "last_seen_ts": 1794077783.608686,
+  "last_seen_ts": 1794090411.47679,
   "seen_hashes": []
 }
