@@ -577,7 +577,7 @@
           }
         ],
         "peak_equity": 1001.2230396975814,
-        "max_drawdown": 0.004137883875097275,
+        "max_drawdown": 0.004279391856409918,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -859,7 +859,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 992.6407011657298,
+        "cash": 976.2674265879361,
         "positions": {
           "MSFT": {
             "market_id": "MSFT",
@@ -869,6 +869,16 @@
             "shares": 0.003265487674399273,
             "avg_price": 555.8,
             "opened_at": 1793827852.0521963,
+            "stance": "momentum"
+          },
+          "AAPL": {
+            "market_id": "AAPL",
+            "token_id": "AAPL",
+            "outcome": "long",
+            "title": "AAPL",
+            "shares": 0.04782333317111194,
+            "avg_price": 342.37,
+            "opened_at": 1794015025.7600584,
             "stance": "momentum"
           }
         },
@@ -1292,7 +1302,7 @@
           }
         ],
         "peak_equity": 1001.7215679772406,
-        "max_drawdown": 0.009799137668352163,
+        "max_drawdown": 0.010221604471343581,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -1505,15 +1515,14 @@
     }
   },
   "prices": {
+    "AAPL": 342.37,
+    "MSFT": 555.8,
     "NVDA": 186.64,
     "TTWO": 190.17,
-    "SPY": 754.35,
-    "AAPL": 344.17,
-    "MSFT": 555.8
+    "SPY": 754.35
   },
   "bars": {
     "AAPL": [
-      299.24,
       295.95,
       298.01,
       297.01,
@@ -1612,7 +1621,8 @@
       338.32,
       331.9,
       349.51,
-      344.17
+      344.17,
+      342.37
     ],
     "SPY": [
       741.75,
@@ -2033,6 +2043,6 @@
     "note": null
   },
   "scorecard": {},
-  "last_seen_ts": 1794002234.778721,
+  "last_seen_ts": 1794015025.76472,
   "seen_hashes": []
 }

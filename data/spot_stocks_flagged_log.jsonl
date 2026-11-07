@@ -154,3 +154,4 @@
 {"ts": 1793958689.5197396, "bot": "meanrev-35", "symbol": "NVDA", "action": "sell", "price": 181.6, "pnl": -3.48, "reason": "Stop loss hit -- down -15.2% from entry", "strength_pct": 50.0}
 {"ts": 1793984385.1969829, "bot": "meanrev-30", "symbol": "NVDA", "action": "buy", "price": 181.6, "usd": 23.94, "reason": "RSI 28 -- oversold below 30", "strength_pct": 47.9}
 {"ts": 1793984385.1974592, "bot": "meanrev-35", "symbol": "NVDA", "action": "buy", "price": 181.6, "usd": 30.45, "reason": "RSI 28 -- oversold below 35", "strength_pct": 61.1}
+{"ts": 1794015025.7601302, "bot": "risky-momentum-3/10", "symbol": "AAPL", "action": "buy", "price": 342.37, "usd": 16.37, "reason": "3-bar average is 0.55% above the 10-bar -- uptrend", "strength_pct": 11.0}
