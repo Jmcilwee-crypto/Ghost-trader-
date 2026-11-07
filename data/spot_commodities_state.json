@@ -9,19 +9,8 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 998.1623843117807,
-        "positions": {
-          "PAXGUSDT": {
-            "market_id": "PAXGUSDT",
-            "token_id": "PAXGUSDT",
-            "outcome": "long",
-            "title": "PAXGUSDT",
-            "shares": 0.00037107681083070534,
-            "avg_price": 4055.25,
-            "opened_at": 1794002232.8231733,
-            "stance": "momentum"
-          }
-        },
+        "cash": 999.6677572776606,
+        "positions": {},
         "closed_trades": [
           {
             "market_id": "PAXGUSDT",
@@ -512,12 +501,26 @@
             "reason": "5-bar average dropped below the 20-bar -- trend over",
             "pnl": 0.08482144030939795,
             "stance": "momentum"
+          },
+          {
+            "market_id": "PAXGUSDT",
+            "token_id": "PAXGUSDT",
+            "outcome": "long",
+            "title": "PAXGUSDT",
+            "shares": 0.00037107681083070534,
+            "avg_price": 4055.25,
+            "exit_price": 4060.83,
+            "opened_at": 1794002232.8231733,
+            "closed_at": 1794077781.0245156,
+            "reason": "5-bar average dropped below the 20-bar -- trend over",
+            "pnl": 0.0005637287587096558,
+            "stance": "momentum"
           }
         ],
         "peak_equity": 1000.0655635321914,
         "max_drawdown": 0.0004824836976970137,
         "fee_rate": 0.001,
-        "fees_paid": 0.15124408110994472
+        "fees_paid": 0.15275096095567037
       }
     },
     "momentum-10/50": {
@@ -1814,7 +1817,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 946.7177181209139,
+        "cash": 922.35133305627,
         "positions": {
           "XAUTUSDT": {
             "market_id": "XAUTUSDT",
@@ -1824,6 +1827,16 @@
             "shares": 0.012803519797797584,
             "avg_price": 3886.52,
             "opened_at": 1793400160.5965042,
+            "stance": "mean_reversion"
+          },
+          "PAXGUSDT": {
+            "market_id": "PAXGUSDT",
+            "token_id": "PAXGUSDT",
+            "outcome": "long",
+            "title": "PAXGUSDT",
+            "shares": 0.005994345658296257,
+            "avg_price": 4060.83,
+            "opened_at": 1794077781.0251176,
             "stance": "mean_reversion"
           }
         },
@@ -2336,7 +2349,7 @@
         "peak_equity": 1000.0,
         "max_drawdown": 0.00391131024097433,
         "fee_rate": 0.001,
-        "fees_paid": 1.9982566745741561
+        "fees_paid": 2.0226230596388
       }
     },
     "breakout-20": {
@@ -3694,15 +3707,11 @@
     }
   },
   "prices": {
-    "PAXGUSDT": 4062.01,
+    "PAXGUSDT": 4060.83,
     "XAUTUSDT": 3886.52
   },
   "bars": {
     "PAXGUSDT": [
-      3893.16,
-      3894.08,
-      3893.92,
-      3893.11,
       3893.99,
       3893.57,
       3892.38,
@@ -3848,7 +3857,11 @@
       4061.56,
       4061.17,
       4060.32,
-      4062.01
+      4061.11,
+      4058.97,
+      4059.32,
+      4060.99,
+      4060.83
     ],
     "XAUTUSDT": [
       3990.52,
@@ -4013,6 +4026,6 @@
     "last_error": "coinbase: 404 Client Error: Not Found for url: https://api.exchange.coinbase.com/products/XAUT-USD/candles?granularity=3600"
   },
   "scorecard": {},
-  "last_seen_ts": 1794061285.7608202,
+  "last_seen_ts": 1794077781.0322294,
   "seen_hashes": []
 }
