@@ -1526,11 +1526,11 @@
     }
   },
   "prices": {
+    "SPY": 735.29,
+    "AAPL": 342.37,
     "MSFT": 530.61,
     "NVDA": 186.64,
-    "TTWO": 190.17,
-    "SPY": 735.29,
-    "AAPL": 342.37
+    "TTWO": 190.17
   },
   "bars": {
     "AAPL": [
@@ -2054,6 +2054,6 @@
     "note": null
   },
   "scorecard": {},
-  "last_seen_ts": 1794090411.47679,
+  "last_seen_ts": 1794101987.0760353,
   "seen_hashes": []
 }
