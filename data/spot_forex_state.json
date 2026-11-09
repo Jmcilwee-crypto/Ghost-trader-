@@ -115,7 +115,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 997.8210309847598,
+        "cash": 996.5482509054027,
         "positions": {
           "GBPUSD": {
             "market_id": "GBPUSD",
@@ -125,6 +125,16 @@
             "shares": 0.7825497437342008,
             "avg_price": 1.3459,
             "opened_at": 1793917568.470408,
+            "stance": "momentum"
+          },
+          "CHFUSD": {
+            "market_id": "CHFUSD",
+            "token_id": "CHFUSD",
+            "outcome": "long",
+            "title": "CHFUSD",
+            "shares": 1.0418581327503056,
+            "avg_price": 1.2214,
+            "opened_at": 1794254880.815756,
             "stance": "momentum"
           }
         },
@@ -189,7 +199,7 @@
         "peak_equity": 999.9899374018071,
         "max_drawdown": 0.001162600947132611,
         "fee_rate": 0.0002,
-        "fees_paid": 0.02011274823063767
+        "fees_paid": 0.020367304246509087
       }
     },
     "momentum-20/100": {
@@ -615,7 +625,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 997.8210309847598,
+        "cash": 996.5482509054027,
         "positions": {
           "GBPUSD": {
             "market_id": "GBPUSD",
@@ -625,6 +635,16 @@
             "shares": 0.7825497437342008,
             "avg_price": 1.3459,
             "opened_at": 1793917568.470874,
+            "stance": "vol_scaled_momentum"
+          },
+          "CHFUSD": {
+            "market_id": "CHFUSD",
+            "token_id": "CHFUSD",
+            "outcome": "long",
+            "title": "CHFUSD",
+            "shares": 1.0418581327503056,
+            "avg_price": 1.2214,
+            "opened_at": 1794254880.8162415,
             "stance": "vol_scaled_momentum"
           }
         },
@@ -689,7 +709,7 @@
         "peak_equity": 999.9899374018071,
         "max_drawdown": 0.001162600947132611,
         "fee_rate": 0.0002,
-        "fees_paid": 0.02011274823063767
+        "fees_paid": 0.020367304246509087
       }
     },
     "momentum-tp": {
@@ -702,7 +722,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 997.8210309847598,
+        "cash": 996.5482509054027,
         "positions": {
           "GBPUSD": {
             "market_id": "GBPUSD",
@@ -712,6 +732,16 @@
             "shares": 0.7825497437342008,
             "avg_price": 1.3459,
             "opened_at": 1793917568.4852357,
+            "stance": "momentum"
+          },
+          "CHFUSD": {
+            "market_id": "CHFUSD",
+            "token_id": "CHFUSD",
+            "outcome": "long",
+            "title": "CHFUSD",
+            "shares": 1.0418581327503056,
+            "avg_price": 1.2214,
+            "opened_at": 1794254880.8166988,
             "stance": "momentum"
           }
         },
@@ -776,7 +806,7 @@
         "peak_equity": 999.9899374018071,
         "max_drawdown": 0.001162600947132611,
         "fee_rate": 0.0002,
-        "fees_paid": 0.02011274823063767
+        "fees_paid": 0.020367304246509087
       }
     },
     "buy-and-hold": {
@@ -1472,15 +1502,14 @@
     }
   },
   "prices": {
-    "CHFUSD": 1.2212,
-    "EURUSD": 1.1165,
-    "GBPUSD": 1.3385,
-    "JPYUSD": 0.0063161,
-    "AUDUSD": 0.68708
+    "GBPUSD": 1.3416,
+    "JPYUSD": 0.0063312,
+    "AUDUSD": 0.68939,
+    "CHFUSD": 1.2214,
+    "EURUSD": 1.1193
   },
   "bars": {
     "AUDUSD": [
-      0.70714,
       0.70343,
       0.71222,
       0.71364,
@@ -1629,10 +1658,10 @@
       0.69838,
       0.70151,
       0.70006,
-      0.68708
+      0.68708,
+      0.68939
     ],
     "CHFUSD": [
-      1.2673,
       1.2642,
       1.2805,
       1.2777,
@@ -1781,10 +1810,10 @@
       1.2196,
       1.2263,
       1.2227,
-      1.2212
+      1.2212,
+      1.2214
     ],
     "EURUSD": [
-      1.1711,
       1.1684,
       1.1793,
       1.178,
@@ -1933,10 +1962,10 @@
       1.1179,
       1.1267,
       1.1224,
-      1.1165
+      1.1165,
+      1.1193
     ],
     "GBPUSD": [
-      1.3445,
       1.3421,
       1.3569,
       1.355,
@@ -2085,10 +2114,10 @@
       1.3411,
       1.35,
       1.3459,
-      1.3385
+      1.3385,
+      1.3416
     ],
     "JPYUSD": [
-      0.0062817,
       0.0062565,
       0.0062953,
       0.0062857,
@@ -2237,7 +2266,8 @@
       0.0063176,
       0.0063191,
       0.0063109,
-      0.0063161
+      0.0063161,
+      0.0063312
     ]
   },
   "research": {
@@ -2247,6 +2277,6 @@
     "last_error": null
   },
   "scorecard": {},
-  "last_seen_ts": 1794217444.678027,
+  "last_seen_ts": 1794254880.8222315,
   "seen_hashes": []
 }
