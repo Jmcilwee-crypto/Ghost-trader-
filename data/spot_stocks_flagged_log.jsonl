@@ -162,3 +162,5 @@
 {"ts": 1794278544.9880955, "bot": "risky-nostop-5/20", "symbol": "TTWO", "action": "buy", "price": 207.4, "usd": 119.04, "reason": "5-bar average is 2.40% above the 20-bar -- uptrend", "strength_pct": 48.0}
 {"ts": 1794278544.988479, "bot": "catalyst-ttwo-hold-through", "symbol": "TTWO", "action": "buy", "price": 207.4, "usd": 7.45, "reason": "Adding tranche 4/4 -- 9 days to the GTA 6 launch, building into the run-up", "strength_pct": 100.0}
 {"ts": 1794278544.9888728, "bot": "catalyst-ttwo-sell-into", "symbol": "TTWO", "action": "buy", "price": 207.4, "usd": 7.45, "reason": "Adding tranche 4/4 -- 9 days to the GTA 6 launch, building into the run-up", "strength_pct": 100.0}
+{"ts": 1794306310.291587, "bot": "momentum-5/20", "symbol": "MSFT", "action": "buy", "price": 545.18, "usd": 11.44, "reason": "5-bar average is 1.15% above the 20-bar -- uptrend", "strength_pct": 22.9}
+{"ts": 1794306310.292414, "bot": "risky-nostop-5/20", "symbol": "MSFT", "action": "buy", "price": 545.18, "usd": 56.83, "reason": "5-bar average is 1.15% above the 20-bar -- uptrend", "strength_pct": 22.9}

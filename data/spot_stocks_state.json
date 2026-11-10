@@ -9,7 +9,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 969.591903920595,
+        "cash": 958.1529702814314,
         "positions": {
           "IBM": {
             "market_id": "IBM",
@@ -29,6 +29,16 @@
             "shares": 0.11553374863930695,
             "avg_price": 207.4,
             "opened_at": 1794278544.9866378,
+            "stance": "momentum"
+          },
+          "MSFT": {
+            "market_id": "MSFT",
+            "token_id": "MSFT",
+            "outcome": "long",
+            "title": "MSFT",
+            "shares": 0.020981939247887965,
+            "avg_price": 545.18,
+            "opened_at": 1794306310.291487,
             "stance": "momentum"
           }
         },
@@ -1358,7 +1368,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 872.5793793876786,
+        "cash": 815.7526172942725,
         "positions": {
           "TTWO": {
             "market_id": "TTWO",
@@ -1368,6 +1378,16 @@
             "shares": 0.573952874873515,
             "avg_price": 207.4,
             "opened_at": 1794278544.988059,
+            "stance": "momentum"
+          },
+          "MSFT": {
+            "market_id": "MSFT",
+            "token_id": "MSFT",
+            "outcome": "long",
+            "title": "MSFT",
+            "shares": 0.1042348620518107,
+            "avg_price": 545.18,
+            "opened_at": 1794306310.2923493,
             "stance": "momentum"
           }
         },
@@ -1567,11 +1587,11 @@
     }
   },
   "prices": {
+    "MSFT": 545.18,
+    "NVDA": 186.64,
     "TTWO": 207.4,
     "SPY": 735.29,
-    "AAPL": 342.37,
-    "MSFT": 530.61,
-    "NVDA": 186.64
+    "AAPL": 342.37
   },
   "bars": {
     "AAPL": [
@@ -1983,7 +2003,6 @@
       186.64
     ],
     "MSFT": [
-      378.91,
       379.4,
       367.34,
       373.94,
@@ -2082,7 +2101,8 @@
       520.99,
       555.8,
       535.93,
-      530.61
+      530.61,
+      545.18
     ]
   },
   "research": {
@@ -2095,6 +2115,6 @@
     "note": null
   },
   "scorecard": {},
-  "last_seen_ts": 1794278544.9944565,
+  "last_seen_ts": 1794306310.298518,
   "seen_hashes": []
 }
