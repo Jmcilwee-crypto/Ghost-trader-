@@ -358,8 +358,19 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 998.8624092419045,
-        "positions": {},
+        "cash": 976.0079849531894,
+        "positions": {
+          "AUDUSD": {
+            "market_id": "AUDUSD",
+            "token_id": "AUDUSD",
+            "outcome": "long",
+            "title": "AUDUSD",
+            "shares": 33.098940253287914,
+            "avg_price": 0.69035,
+            "opened_at": 1794333639.1947768,
+            "stance": "mean_reversion"
+          }
+        },
         "closed_trades": [
           {
             "market_id": "GBPUSD",
@@ -435,7 +446,7 @@
         "peak_equity": 999.9951611479029,
         "max_drawdown": 0.0022694318030717486,
         "fee_rate": 0.0002,
-        "fees_paid": 0.05122190595496354
+        "fees_paid": 0.05579279081270655
       }
     },
     "meanrev-35": {
@@ -1274,19 +1285,8 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 908.1189401616537,
-        "positions": {
-          "CHFUSD": {
-            "market_id": "CHFUSD",
-            "token_id": "CHFUSD",
-            "outcome": "long",
-            "title": "CHFUSD",
-            "shares": 72.17234579953823,
-            "avg_price": 1.2201,
-            "opened_at": 1793644565.7013211,
-            "stance": "breakout"
-          }
-        },
+        "cash": 996.0433551177197,
+        "positions": {},
         "closed_trades": [
           {
             "market_id": "AUDUSD",
@@ -1385,12 +1385,26 @@
             "reason": "Fell below the 5-bar low -- breakout failed",
             "pnl": -0.21994069338483793,
             "stance": "breakout"
+          },
+          {
+            "market_id": "CHFUSD",
+            "token_id": "CHFUSD",
+            "outcome": "long",
+            "title": "CHFUSD",
+            "shares": 72.17234579953823,
+            "avg_price": 1.2201,
+            "exit_price": 1.2185,
+            "opened_at": 1793644565.7013211,
+            "closed_at": 1794333639.1941175,
+            "reason": "Fell below the 5-bar low -- breakout failed",
+            "pnl": -0.13306415395061755,
+            "stance": "breakout"
           }
         ],
         "peak_equity": 1000.0,
-        "max_drawdown": 0.0037441911479502324,
+        "max_drawdown": 0.003956644882280329,
         "fee_rate": 0.0002,
-        "fees_paid": 0.2714481557214354
+        "fees_paid": 0.28903655639278286
       }
     },
     "risky-nostop-5/20": {
@@ -1502,15 +1516,14 @@
     }
   },
   "prices": {
-    "AUDUSD": 0.68939,
-    "CHFUSD": 1.2214,
-    "EURUSD": 1.1193,
-    "GBPUSD": 1.3416,
-    "JPYUSD": 0.0063312
+    "CHFUSD": 1.2185,
+    "EURUSD": 1.1214,
+    "GBPUSD": 1.3423,
+    "JPYUSD": 0.006322,
+    "AUDUSD": 0.69035
   },
   "bars": {
     "AUDUSD": [
-      0.70343,
       0.71222,
       0.71364,
       0.71732,
@@ -1659,10 +1672,10 @@
       0.70151,
       0.70006,
       0.68708,
-      0.68939
+      0.68939,
+      0.69035
     ],
     "CHFUSD": [
-      1.2642,
       1.2805,
       1.2777,
       1.2765,
@@ -1811,10 +1824,10 @@
       1.2263,
       1.2227,
       1.2212,
-      1.2214
+      1.2214,
+      1.2185
     ],
     "EURUSD": [
-      1.1684,
       1.1793,
       1.178,
       1.1782,
@@ -1963,10 +1976,10 @@
       1.1267,
       1.1224,
       1.1165,
-      1.1193
+      1.1193,
+      1.1214
     ],
     "GBPUSD": [
-      1.3421,
       1.3569,
       1.355,
       1.3544,
@@ -2115,10 +2128,10 @@
       1.35,
       1.3459,
       1.3385,
-      1.3416
+      1.3416,
+      1.3423
     ],
     "JPYUSD": [
-      0.0062565,
       0.0062953,
       0.0062857,
       0.0062901,
@@ -2267,7 +2280,8 @@
       0.0063191,
       0.0063109,
       0.0063161,
-      0.0063312
+      0.0063312,
+      0.006322
     ]
   },
   "research": {
@@ -2277,6 +2291,6 @@
     "last_error": null
   },
   "scorecard": {},
-  "last_seen_ts": 1794306309.9137044,
+  "last_seen_ts": 1794333639.2002892,
   "seen_hashes": []
 }

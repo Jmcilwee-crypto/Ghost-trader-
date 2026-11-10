@@ -154,3 +154,5 @@
 {"ts": 1794254880.815826, "bot": "momentum-10/50", "symbol": "CHFUSD", "action": "buy", "price": 1.2214, "usd": 1.27, "reason": "10-bar average is 0.13% above the 50-bar -- uptrend", "strength_pct": 2.5}
 {"ts": 1794254880.8162775, "bot": "vol-momentum", "symbol": "CHFUSD", "action": "buy", "price": 1.2214, "usd": 1.27, "reason": "10-bar average is 0.13% above the 50-bar -- uptrend; volatility 0.33% vs 2.00% target -> sizing at 100% (moved +1.7%)", "strength_pct": 2.5}
 {"ts": 1794254880.816735, "bot": "momentum-tp", "symbol": "CHFUSD", "action": "buy", "price": 1.2214, "usd": 1.27, "reason": "10-bar average is 0.13% above the 50-bar -- uptrend", "strength_pct": 2.5}
+{"ts": 1794333639.1941984, "bot": "risky-breakout-10", "symbol": "CHFUSD", "action": "sell", "price": 1.2185, "pnl": -0.13, "reason": "Fell below the 5-bar low -- breakout failed", "strength_pct": 50.0}
+{"ts": 1794333639.194819, "bot": "meanrev-30", "symbol": "AUDUSD", "action": "buy", "price": 0.69035, "usd": 22.85, "reason": "RSI 28 -- oversold below 30", "strength_pct": 45.8}
