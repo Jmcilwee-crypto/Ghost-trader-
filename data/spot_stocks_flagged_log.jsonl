@@ -156,3 +156,9 @@
 {"ts": 1793984385.1974592, "bot": "meanrev-35", "symbol": "NVDA", "action": "buy", "price": 181.6, "usd": 30.45, "reason": "RSI 28 -- oversold below 35", "strength_pct": 61.1}
 {"ts": 1794015025.7601302, "bot": "risky-momentum-3/10", "symbol": "AAPL", "action": "buy", "price": 342.37, "usd": 16.37, "reason": "3-bar average is 0.55% above the 10-bar -- uptrend", "strength_pct": 11.0}
 {"ts": 1794090411.473494, "bot": "risky-momentum-5/15", "symbol": "MSFT", "action": "buy", "price": 530.61, "usd": 4.99, "reason": "5-bar average is 0.13% above the 15-bar -- uptrend", "strength_pct": 2.5}
+{"ts": 1794278544.986696, "bot": "momentum-5/20", "symbol": "TTWO", "action": "buy", "price": 207.4, "usd": 23.96, "reason": "5-bar average is 2.40% above the 20-bar -- uptrend", "strength_pct": 48.0}
+{"ts": 1794278544.987287, "bot": "risky-momentum-3/10", "symbol": "TTWO", "action": "buy", "price": 207.4, "usd": 99.44, "reason": "3-bar average is 5.32% above the 10-bar -- uptrend", "strength_pct": 100.0}
+{"ts": 1794278544.9877048, "bot": "risky-momentum-5/15", "symbol": "TTWO", "action": "buy", "price": 207.4, "usd": 99.35, "reason": "5-bar average is 2.60% above the 15-bar -- uptrend", "strength_pct": 52.0}
+{"ts": 1794278544.9880955, "bot": "risky-nostop-5/20", "symbol": "TTWO", "action": "buy", "price": 207.4, "usd": 119.04, "reason": "5-bar average is 2.40% above the 20-bar -- uptrend", "strength_pct": 48.0}
+{"ts": 1794278544.988479, "bot": "catalyst-ttwo-hold-through", "symbol": "TTWO", "action": "buy", "price": 207.4, "usd": 7.45, "reason": "Adding tranche 4/4 -- 9 days to the GTA 6 launch, building into the run-up", "strength_pct": 100.0}
+{"ts": 1794278544.9888728, "bot": "catalyst-ttwo-sell-into", "symbol": "TTWO", "action": "buy", "price": 207.4, "usd": 7.45, "reason": "Adding tranche 4/4 -- 9 days to the GTA 6 launch, building into the run-up", "strength_pct": 100.0}
