@@ -317,8 +317,19 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 1000.0,
-        "positions": {},
+        "cash": 968.5505904144477,
+        "positions": {
+          "NVDA": {
+            "market_id": "NVDA",
+            "token_id": "NVDA",
+            "outcome": "long",
+            "title": "NVDA",
+            "shares": 0.18621238430666262,
+            "avg_price": 168.89,
+            "opened_at": 1794365194.1855438,
+            "stance": "mean_reversion"
+          }
+        },
         "closed_trades": [],
         "peak_equity": 1000.0,
         "max_drawdown": 0.0,
@@ -403,7 +414,7 @@
           }
         ],
         "peak_equity": 1001.4712110818862,
-        "max_drawdown": 0.0022168146180030213,
+        "max_drawdown": 0.002336374282791042,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -1224,8 +1235,19 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 1000.0,
-        "positions": {},
+        "cash": 912.7529520722387,
+        "positions": {
+          "NVDA": {
+            "market_id": "NVDA",
+            "token_id": "NVDA",
+            "outcome": "long",
+            "title": "NVDA",
+            "shares": 0.5165909641054014,
+            "avg_price": 168.89,
+            "opened_at": 1794365194.1860387,
+            "stance": "mean_reversion"
+          }
+        },
         "closed_trades": [],
         "peak_equity": 1000.0,
         "max_drawdown": 0.0,
@@ -1587,11 +1609,11 @@
     }
   },
   "prices": {
+    "NVDA": 168.89,
+    "TTWO": 207.4,
     "SPY": 750.02,
     "AAPL": 342.37,
-    "MSFT": 545.18,
-    "NVDA": 178.67,
-    "TTWO": 207.4
+    "MSFT": 545.18
   },
   "bars": {
     "AAPL": [
@@ -1901,7 +1923,6 @@
       207.4
     ],
     "NVDA": [
-      210.69,
       208.65,
       200.04,
       199.0,
@@ -2000,7 +2021,8 @@
       200.13,
       181.6,
       186.64,
-      178.67
+      178.67,
+      168.89
     ],
     "MSFT": [
       379.4,
@@ -2115,6 +2137,6 @@
     "note": null
   },
   "scorecard": {},
-  "last_seen_ts": 1794352462.4031305,
+  "last_seen_ts": 1794365194.1903489,
   "seen_hashes": []
 }

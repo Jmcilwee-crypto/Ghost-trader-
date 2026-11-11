@@ -164,3 +164,5 @@
 {"ts": 1794278544.9888728, "bot": "catalyst-ttwo-sell-into", "symbol": "TTWO", "action": "buy", "price": 207.4, "usd": 7.45, "reason": "Adding tranche 4/4 -- 9 days to the GTA 6 launch, building into the run-up", "strength_pct": 100.0}
 {"ts": 1794306310.291587, "bot": "momentum-5/20", "symbol": "MSFT", "action": "buy", "price": 545.18, "usd": 11.44, "reason": "5-bar average is 1.15% above the 20-bar -- uptrend", "strength_pct": 22.9}
 {"ts": 1794306310.292414, "bot": "risky-nostop-5/20", "symbol": "MSFT", "action": "buy", "price": 545.18, "usd": 56.83, "reason": "5-bar average is 1.15% above the 20-bar -- uptrend", "strength_pct": 22.9}
+{"ts": 1794365194.1855967, "bot": "meanrev-25", "symbol": "NVDA", "action": "buy", "price": 168.89, "usd": 31.45, "reason": "RSI 19 -- oversold below 25", "strength_pct": 62.9}
+{"ts": 1794365194.1860683, "bot": "risky-meanrev-20", "symbol": "NVDA", "action": "buy", "price": 168.89, "usd": 87.25, "reason": "RSI 19 -- oversold below 20", "strength_pct": 43.6}
