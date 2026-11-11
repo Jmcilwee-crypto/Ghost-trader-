@@ -156,3 +156,11 @@
 {"ts": 1794254880.816735, "bot": "momentum-tp", "symbol": "CHFUSD", "action": "buy", "price": 1.2214, "usd": 1.27, "reason": "10-bar average is 0.13% above the 50-bar -- uptrend", "strength_pct": 2.5}
 {"ts": 1794333639.1941984, "bot": "risky-breakout-10", "symbol": "CHFUSD", "action": "sell", "price": 1.2185, "pnl": -0.13, "reason": "Fell below the 5-bar low -- breakout failed", "strength_pct": 50.0}
 {"ts": 1794333639.194819, "bot": "meanrev-30", "symbol": "AUDUSD", "action": "buy", "price": 0.69035, "usd": 22.85, "reason": "RSI 28 -- oversold below 30", "strength_pct": 45.8}
+{"ts": 1794418753.796382, "bot": "risky-momentum-3/10", "symbol": "CHFUSD", "action": "sell", "price": 1.205, "pnl": -0.06, "reason": "3-bar average dropped below the 10-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1794418753.7967985, "bot": "momentum-5/20", "symbol": "EURUSD", "action": "sell", "price": 1.1127, "pnl": -0.01, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1794418753.7972846, "bot": "breakout-20", "symbol": "EURUSD", "action": "sell", "price": 1.1127, "pnl": -0.34, "reason": "Fell below the 10-bar low -- breakout failed", "strength_pct": 50.0}
+{"ts": 1794418753.797768, "bot": "risky-momentum-3/10", "symbol": "EURUSD", "action": "sell", "price": 1.1127, "pnl": -0.01, "reason": "3-bar average dropped below the 10-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1794418753.798177, "bot": "risky-nostop-5/20", "symbol": "EURUSD", "action": "sell", "price": 1.1127, "pnl": -0.05, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1794418753.7986042, "bot": "risky-momentum-3/10", "symbol": "GBPUSD", "action": "sell", "price": 1.3307, "pnl": -0.04, "reason": "3-bar average dropped below the 10-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1794418753.7989764, "bot": "meanrev-30", "symbol": "JPYUSD", "action": "buy", "price": 0.0062801, "usd": 20.41, "reason": "RSI 30 -- oversold below 30", "strength_pct": 40.9}
+{"ts": 1794418753.7993343, "bot": "meanrev-35", "symbol": "JPYUSD", "action": "buy", "price": 0.0062801, "usd": 27.47, "reason": "RSI 30 -- oversold below 35", "strength_pct": 55.0}
