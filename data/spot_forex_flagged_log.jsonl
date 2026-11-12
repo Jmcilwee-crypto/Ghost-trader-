@@ -164,3 +164,14 @@
 {"ts": 1794418753.7986042, "bot": "risky-momentum-3/10", "symbol": "GBPUSD", "action": "sell", "price": 1.3307, "pnl": -0.04, "reason": "3-bar average dropped below the 10-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1794418753.7989764, "bot": "meanrev-30", "symbol": "JPYUSD", "action": "buy", "price": 0.0062801, "usd": 20.41, "reason": "RSI 30 -- oversold below 30", "strength_pct": 40.9}
 {"ts": 1794418753.7993343, "bot": "meanrev-35", "symbol": "JPYUSD", "action": "buy", "price": 0.0062801, "usd": 27.47, "reason": "RSI 30 -- oversold below 35", "strength_pct": 55.0}
+{"ts": 1794515251.2476332, "bot": "risky-momentum-5/15", "symbol": "EURUSD", "action": "sell", "price": 1.1081, "pnl": -0.06, "reason": "5-bar average dropped below the 15-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1794515251.247987, "bot": "momentum-5/20", "symbol": "GBPUSD", "action": "sell", "price": 1.3256, "pnl": -0.01, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1794515251.2484612, "bot": "breakout-20", "symbol": "GBPUSD", "action": "sell", "price": 1.3256, "pnl": -0.35, "reason": "Fell below the 10-bar low -- breakout failed", "strength_pct": 50.0}
+{"ts": 1794515251.2488458, "bot": "risky-momentum-5/15", "symbol": "GBPUSD", "action": "sell", "price": 1.3256, "pnl": -0.04, "reason": "5-bar average dropped below the 15-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1794515251.2492087, "bot": "risky-nostop-5/20", "symbol": "GBPUSD", "action": "sell", "price": 1.3256, "pnl": -0.01, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1794515251.2496583, "bot": "meanrev-25", "symbol": "JPYUSD", "action": "buy", "price": 0.0062619, "usd": 21.48, "reason": "RSI 24 -- oversold below 25", "strength_pct": 43.0}
+{"ts": 1794515251.2500796, "bot": "meanrev-25", "symbol": "AUDUSD", "action": "buy", "price": 0.68208, "usd": 27.52, "reason": "RSI 21 -- oversold below 25", "strength_pct": 55.1}
+{"ts": 1794515251.250462, "bot": "momentum-5/20", "symbol": "CHFUSD", "action": "sell", "price": 1.2003, "pnl": -0.01, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1794515251.2508447, "bot": "breakout-20", "symbol": "CHFUSD", "action": "sell", "price": 1.2003, "pnl": -0.38, "reason": "Fell below the 10-bar low -- breakout failed", "strength_pct": 50.0}
+{"ts": 1794515251.2511764, "bot": "risky-momentum-5/15", "symbol": "CHFUSD", "action": "sell", "price": 1.2003, "pnl": -0.02, "reason": "5-bar average dropped below the 15-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1794515251.251556, "bot": "risky-nostop-5/20", "symbol": "CHFUSD", "action": "sell", "price": 1.2003, "pnl": -0.05, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
