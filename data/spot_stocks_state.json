@@ -341,7 +341,7 @@
           }
         },
         "closed_trades": [],
-        "peak_equity": 1000.0,
+        "peak_equity": 1000.9012679400441,
         "max_drawdown": 0.0,
         "fee_rate": 0.0,
         "fees_paid": 0.0
@@ -427,7 +427,7 @@
             "stance": "mean_reversion"
           }
         ],
-        "peak_equity": 1001.4712110818862,
+        "peak_equity": 1001.8883654006931,
         "max_drawdown": 0.002336374282791042,
         "fee_rate": 0.0,
         "fees_paid": 0.0
@@ -1134,7 +1134,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 975.2030063243507,
+        "cash": 874.6935754175497,
         "positions": {
           "MSFT": {
             "market_id": "MSFT",
@@ -1154,6 +1154,16 @@
             "shares": 0.0710452596439892,
             "avg_price": 348.51,
             "opened_at": 1794418754.1838293,
+            "stance": "momentum"
+          },
+          "TTWO": {
+            "market_id": "TTWO",
+            "token_id": "TTWO",
+            "outcome": "long",
+            "title": "TTWO",
+            "shares": 0.4345226358860443,
+            "avg_price": 231.31,
+            "opened_at": 1794456891.7912445,
             "stance": "momentum"
           }
         },
@@ -1301,7 +1311,7 @@
           }
         },
         "closed_trades": [],
-        "peak_equity": 1000.0,
+        "peak_equity": 1002.5003002662701,
         "max_drawdown": 0.0,
         "fee_rate": 0.0,
         "fees_paid": 0.0
@@ -1681,11 +1691,11 @@
     }
   },
   "prices": {
+    "NVDA": 173.73,
     "TTWO": 231.31,
     "SPY": 750.02,
     "AAPL": 348.51,
-    "MSFT": 545.18,
-    "NVDA": 168.89
+    "MSFT": 545.18
   },
   "bars": {
     "AAPL": [
@@ -1995,7 +2005,6 @@
       231.31
     ],
     "NVDA": [
-      208.65,
       200.04,
       199.0,
       195.74,
@@ -2094,7 +2103,8 @@
       181.6,
       186.64,
       178.67,
-      168.89
+      168.89,
+      173.73
     ],
     "MSFT": [
       379.4,
@@ -2209,6 +2219,6 @@
     "note": null
   },
   "scorecard": {},
-  "last_seen_ts": 1794440541.104232,
+  "last_seen_ts": 1794456891.794805,
   "seen_hashes": []
 }

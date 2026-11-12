@@ -179,3 +179,4 @@
 {"ts": 1794440541.0979748, "bot": "risky-momentum-5/15", "symbol": "TTWO", "action": "sell", "price": 231.31, "pnl": 11.45, "reason": "Take profit hit -- up 11.5% from entry", "strength_pct": 50.0}
 {"ts": 1794440541.098445, "bot": "catalyst-ttwo-hold-through", "symbol": "TTWO", "action": "buy", "price": 231.31, "usd": 3.03, "reason": "Adding tranche 4/4 -- 8 days to the GTA 6 launch, building into the run-up", "strength_pct": 100.0}
 {"ts": 1794440541.1008043, "bot": "catalyst-ttwo-sell-into", "symbol": "TTWO", "action": "buy", "price": 231.31, "usd": 3.03, "reason": "Adding tranche 4/4 -- 8 days to the GTA 6 launch, building into the run-up", "strength_pct": 100.0}
+{"ts": 1794456891.7913296, "bot": "risky-momentum-5/15", "symbol": "TTWO", "action": "buy", "price": 231.31, "usd": 100.51, "reason": "5-bar average is 6.23% above the 15-bar -- uptrend", "strength_pct": 100.0}
