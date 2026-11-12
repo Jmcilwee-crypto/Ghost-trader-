@@ -519,7 +519,7 @@
             "stance": "mean_reversion"
           }
         ],
-        "peak_equity": 1000.129903069864,
+        "peak_equity": 1000.2736344163451,
         "max_drawdown": 0.004571190495151815,
         "fee_rate": 0.0,
         "fees_paid": 0.0
@@ -928,7 +928,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 876.8300864298719,
+        "cash": 871.8787443375224,
         "positions": {
           "MSFT": {
             "market_id": "MSFT",
@@ -958,6 +958,16 @@
             "shares": 0.47944715601766763,
             "avg_price": 207.4,
             "opened_at": 1794278544.9872494,
+            "stance": "momentum"
+          },
+          "SPY": {
+            "market_id": "SPY",
+            "token_id": "SPY",
+            "outcome": "long",
+            "title": "SPY",
+            "shares": 0.006516552943958955,
+            "avg_price": 759.81,
+            "opened_at": 1794487412.6936538,
             "stance": "momentum"
           }
         },
@@ -1691,11 +1701,11 @@
     }
   },
   "prices": {
-    "NVDA": 173.73,
-    "TTWO": 231.31,
-    "SPY": 750.02,
+    "SPY": 759.81,
     "AAPL": 348.51,
-    "MSFT": 545.18
+    "MSFT": 545.18,
+    "NVDA": 173.73,
+    "TTWO": 231.31
   },
   "bars": {
     "AAPL": [
@@ -1801,7 +1811,6 @@
       348.51
     ],
     "SPY": [
-      744.39,
       733.58,
       733.24,
       734.3,
@@ -1900,7 +1909,8 @@
       733.0,
       735.29,
       752.69,
-      750.02
+      749.92,
+      759.81
     ],
     "TTWO": [
       242.64,
@@ -2219,6 +2229,6 @@
     "note": null
   },
   "scorecard": {},
-  "last_seen_ts": 1794456891.794805,
+  "last_seen_ts": 1794487412.6987183,
   "seen_hashes": []
 }
