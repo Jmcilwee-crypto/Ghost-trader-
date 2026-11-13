@@ -263,7 +263,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 880.4340906504532,
+        "cash": 907.8496131849172,
         "positions": {
           "MSFT": {
             "market_id": "MSFT",
@@ -284,16 +284,6 @@
             "avg_price": 326.57,
             "opened_at": 1789124946.834697,
             "stance": "momentum"
-          },
-          "SPY": {
-            "market_id": "SPY",
-            "token_id": "SPY",
-            "outcome": "long",
-            "title": "SPY",
-            "shares": 0.03621027384623837,
-            "avg_price": 757.83,
-            "opened_at": 1789126152.642645,
-            "stance": "momentum"
           }
         },
         "closed_trades": [
@@ -309,6 +299,20 @@
             "closed_at": 1793958689.5181906,
             "reason": "Stop loss hit -- down -16.8% from entry",
             "pnl": -7.52474407097592,
+            "stance": "momentum"
+          },
+          {
+            "market_id": "SPY",
+            "token_id": "SPY",
+            "outcome": "long",
+            "title": "SPY",
+            "shares": 0.03621027384623837,
+            "avg_price": 757.83,
+            "exit_price": 757.12,
+            "opened_at": 1789126152.642645,
+            "closed_at": 1794557716.1359017,
+            "reason": "20-bar average dropped below the 100-bar -- trend over",
+            "pnl": -0.025709294430832585,
             "stance": "momentum"
           }
         ],
@@ -1701,11 +1705,11 @@
     }
   },
   "prices": {
+    "SPY": 757.12,
     "AAPL": 354.88,
     "MSFT": 545.18,
     "NVDA": 173.73,
-    "TTWO": 231.31,
-    "SPY": 759.81
+    "TTWO": 231.31
   },
   "bars": {
     "AAPL": [
@@ -1811,7 +1815,6 @@
       354.88
     ],
     "SPY": [
-      733.58,
       733.24,
       734.3,
       728.99,
@@ -1910,7 +1913,8 @@
       735.29,
       752.69,
       749.92,
-      759.81
+      759.81,
+      757.12
     ],
     "TTWO": [
       242.64,
@@ -2229,6 +2233,6 @@
     "note": null
   },
   "scorecard": {},
-  "last_seen_ts": 1794532717.667899,
+  "last_seen_ts": 1794557716.1431117,
   "seen_hashes": []
 }
