@@ -186,3 +186,5 @@
 {"ts": 1794622920.7218635, "bot": "risky-momentum-3/10", "symbol": "MSFT", "action": "sell", "price": 523.88, "pnl": -0.1, "reason": "3-bar average dropped below the 10-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1794622920.7220438, "bot": "risky-momentum-5/15", "symbol": "MSFT", "action": "sell", "price": 523.88, "pnl": -0.06, "reason": "5-bar average dropped below the 15-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1794622920.7223816, "bot": "risky-nostop-5/20", "symbol": "MSFT", "action": "sell", "price": 523.88, "pnl": -2.22, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1794647384.7275157, "bot": "meanrev-30", "symbol": "NVDA", "action": "sell", "price": 162.85, "pnl": -2.47, "reason": "Stop loss hit -- down -10.3% from entry", "strength_pct": 50.0}
+{"ts": 1794647384.7280345, "bot": "meanrev-35", "symbol": "NVDA", "action": "sell", "price": 162.85, "pnl": -3.14, "reason": "Stop loss hit -- down -10.3% from entry", "strength_pct": 50.0}
