@@ -1,11 +1,3 @@
-{"ts": 1793571858.0648272, "bot": "momentum-5/20", "symbol": "ETHUSDT", "action": "sell", "price": 2249.65, "pnl": 0.0, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
-{"ts": 1793571858.0652618, "bot": "meanrev-35", "symbol": "ETHUSDT", "action": "buy", "price": 2249.65, "usd": 26.93, "reason": "RSI 30 -- oversold below 35", "strength_pct": 53.8}
-{"ts": 1793571858.0658045, "bot": "breakout-20", "symbol": "ETHUSDT", "action": "sell", "price": 2249.65, "pnl": -0.03, "reason": "Fell below the 10-bar low -- breakout failed", "strength_pct": 50.0}
-{"ts": 1793571858.0661306, "bot": "breakout-50", "symbol": "ETHUSDT", "action": "sell", "price": 2249.65, "pnl": -0.23, "reason": "Fell below the 20-bar low -- breakout failed", "strength_pct": 50.0}
-{"ts": 1793583473.7724302, "bot": "breakout-20", "symbol": "XRPUSDT", "action": "buy", "price": 1.2563, "usd": 27.1, "reason": "Broke above its 20-bar high by 0.14%", "strength_pct": 54.1}
-{"ts": 1793583473.7728992, "bot": "momentum-5/20", "symbol": "BTCUSDT", "action": "buy", "price": 78375.97, "usd": 1.47, "reason": "5-bar average is 0.15% above the 20-bar -- uptrend", "strength_pct": 3.0}
-{"ts": 1793583473.7733853, "bot": "meanrev-35", "symbol": "BTCUSDT", "action": "sell", "price": 78375.97, "pnl": 0.24, "reason": "RSI recovered to 63 -- back to normal", "strength_pct": 50.0}
-{"ts": 1793583473.7737808, "bot": "breakout-20", "symbol": "BTCUSDT", "action": "buy", "price": 78375.97, "usd": 27.85, "reason": "Broke above its 20-bar high by 0.19%", "strength_pct": 55.6}
 {"ts": 1793583473.7741888, "bot": "breakout-50", "symbol": "BTCUSDT", "action": "buy", "price": 78375.97, "usd": 27.83, "reason": "Broke above its 50-bar high by 0.19%", "strength_pct": 55.6}
 {"ts": 1793583473.7745748, "bot": "momentum-5/20", "symbol": "ETHUSDT", "action": "buy", "price": 2287.99, "usd": 1.68, "reason": "5-bar average is 0.17% above the 20-bar -- uptrend", "strength_pct": 3.4}
 {"ts": 1793583473.7750044, "bot": "meanrev-35", "symbol": "ETHUSDT", "action": "sell", "price": 2287.99, "pnl": 0.43, "reason": "RSI recovered to 63 -- back to normal", "strength_pct": 50.0}
@@ -298,3 +290,11 @@
 {"ts": 1794687168.9329123, "bot": "meanrev-25", "symbol": "BNBUSDT", "action": "sell", "price": 589.4, "pnl": -4.44, "reason": "Stop loss hit -- down -10.6% from entry", "strength_pct": 50.0}
 {"ts": 1794687168.9333763, "bot": "meanrev-30", "symbol": "BNBUSDT", "action": "sell", "price": 589.4, "pnl": -4.98, "reason": "Stop loss hit -- down -10.6% from entry", "strength_pct": 50.0}
 {"ts": 1794687168.933806, "bot": "meanrev-35", "symbol": "BNBUSDT", "action": "sell", "price": 589.4, "pnl": -5.32, "reason": "Stop loss hit -- down -10.6% from entry", "strength_pct": 50.0}
+{"ts": 1794700468.3895006, "bot": "meanrev-25", "symbol": "BNBUSDT", "action": "buy", "price": 581.08, "usd": 30.33, "reason": "RSI 19 -- oversold below 25", "strength_pct": 62.2}
+{"ts": 1794700468.389906, "bot": "meanrev-30", "symbol": "BNBUSDT", "action": "buy", "price": 581.08, "usd": 36.78, "reason": "RSI 19 -- oversold below 30", "strength_pct": 75.2}
+{"ts": 1794700468.3902128, "bot": "meanrev-35", "symbol": "BNBUSDT", "action": "buy", "price": 581.08, "usd": 41.08, "reason": "RSI 19 -- oversold below 35", "strength_pct": 84.4}
+{"ts": 1794700468.390514, "bot": "meanrev-25", "symbol": "BTCUSDT", "action": "sell", "price": 64143.76, "pnl": -3.31, "reason": "Stop loss hit -- down -12.0% from entry", "strength_pct": 50.0}
+{"ts": 1794700468.390768, "bot": "meanrev-30", "symbol": "BTCUSDT", "action": "sell", "price": 64143.76, "pnl": -4.18, "reason": "Stop loss hit -- down -12.0% from entry", "strength_pct": 50.0}
+{"ts": 1794700468.3909929, "bot": "meanrev-35", "symbol": "BTCUSDT", "action": "sell", "price": 64143.76, "pnl": -4.77, "reason": "Stop loss hit -- down -12.0% from entry", "strength_pct": 50.0}
+{"ts": 1794700468.391306, "bot": "meanrev-30", "symbol": "ETHUSDT", "action": "sell", "price": 1770.19, "pnl": -3.34, "reason": "Stop loss hit -- down -12.4% from entry", "strength_pct": 50.0}
+{"ts": 1794700468.3915267, "bot": "meanrev-35", "symbol": "ETHUSDT", "action": "sell", "price": 1770.19, "pnl": -4.09, "reason": "Stop loss hit -- down -12.4% from entry", "strength_pct": 50.0}
