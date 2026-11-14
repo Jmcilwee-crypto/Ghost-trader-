@@ -182,3 +182,7 @@
 {"ts": 1794456891.7913296, "bot": "risky-momentum-5/15", "symbol": "TTWO", "action": "buy", "price": 231.31, "usd": 100.51, "reason": "5-bar average is 6.23% above the 15-bar -- uptrend", "strength_pct": 100.0}
 {"ts": 1794487412.6937504, "bot": "risky-momentum-3/10", "symbol": "SPY", "action": "buy", "price": 759.81, "usd": 4.95, "reason": "3-bar average is 0.16% above the 10-bar -- uptrend", "strength_pct": 3.3}
 {"ts": 1794557716.1359897, "bot": "momentum-20/100", "symbol": "SPY", "action": "sell", "price": 757.12, "pnl": -0.03, "reason": "20-bar average dropped below the 100-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1794622920.721201, "bot": "momentum-5/20", "symbol": "MSFT", "action": "sell", "price": 523.88, "pnl": -0.45, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1794622920.7218635, "bot": "risky-momentum-3/10", "symbol": "MSFT", "action": "sell", "price": 523.88, "pnl": -0.1, "reason": "3-bar average dropped below the 10-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1794622920.7220438, "bot": "risky-momentum-5/15", "symbol": "MSFT", "action": "sell", "price": 523.88, "pnl": -0.06, "reason": "5-bar average dropped below the 15-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1794622920.7223816, "bot": "risky-nostop-5/20", "symbol": "MSFT", "action": "sell", "price": 523.88, "pnl": -2.22, "reason": "5-bar average dropped below the 20-bar -- trend over", "strength_pct": 50.0}
