@@ -185,7 +185,7 @@
           }
         ],
         "peak_equity": 1000.949134961587,
-        "max_drawdown": 0.0030740500459437393,
+        "max_drawdown": 0.003656084273223526,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -199,7 +199,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 908.9939083908745,
+        "cash": 936.6440541890111,
         "positions": {
           "MSFT": {
             "market_id": "MSFT",
@@ -219,16 +219,6 @@
             "shares": 0.034139253795833734,
             "avg_price": 326.57,
             "opened_at": 1789124946.83426,
-            "stance": "momentum"
-          },
-          "TTWO": {
-            "market_id": "TTWO",
-            "token_id": "TTWO",
-            "outcome": "long",
-            "title": "TTWO",
-            "shares": 0.13558645514704334,
-            "avg_price": 227.82,
-            "opened_at": 1794742118.9282892,
             "stance": "momentum"
           }
         },
@@ -260,10 +250,24 @@
             "reason": "10-bar average dropped below the 50-bar -- trend over",
             "pnl": 0.20545411813323788,
             "stance": "momentum"
+          },
+          {
+            "market_id": "TTWO",
+            "token_id": "TTWO",
+            "outcome": "long",
+            "title": "TTWO",
+            "shares": 0.13558645514704334,
+            "avg_price": 227.82,
+            "exit_price": 203.93,
+            "opened_at": 1794742118.9282892,
+            "closed_at": 1794966943.0432937,
+            "reason": "Stop loss hit -- down -10.5% from entry",
+            "pnl": -3.2391604134628658,
+            "stance": "momentum"
           }
         ],
         "peak_equity": 1008.2939220225483,
-        "max_drawdown": 0.005326004690073473,
+        "max_drawdown": 0.0063611955414294595,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -682,7 +686,7 @@
           }
         ],
         "peak_equity": 1001.2230396975814,
-        "max_drawdown": 0.006537069226309162,
+        "max_drawdown": 0.010907347724031834,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -746,7 +750,7 @@
           }
         ],
         "peak_equity": 1000.1959166110237,
-        "max_drawdown": 0.004986511355206481,
+        "max_drawdown": 0.008059560155915534,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -760,7 +764,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 918.7289354915682,
+        "cash": 937.4517458738643,
         "positions": {
           "MSFT": {
             "market_id": "MSFT",
@@ -780,16 +784,6 @@
             "shares": 0.034139253795833734,
             "avg_price": 326.57,
             "opened_at": 1789124946.835156,
-            "stance": "vol_scaled_momentum"
-          },
-          "TTWO": {
-            "market_id": "TTWO",
-            "token_id": "TTWO",
-            "outcome": "long",
-            "title": "TTWO",
-            "shares": 0.09180998569262042,
-            "avg_price": 227.82,
-            "opened_at": 1794742118.9288733,
             "stance": "vol_scaled_momentum"
           }
         },
@@ -821,10 +815,24 @@
             "reason": "10-bar average dropped below the 50-bar -- trend over",
             "pnl": 0.20545411813323788,
             "stance": "vol_scaled_momentum"
+          },
+          {
+            "market_id": "TTWO",
+            "token_id": "TTWO",
+            "outcome": "long",
+            "title": "TTWO",
+            "shares": 0.09180998569262042,
+            "avg_price": 227.82,
+            "exit_price": 203.93,
+            "opened_at": 1794742118.9288733,
+            "closed_at": 1794966943.0438354,
+            "reason": "Stop loss hit -- down -10.5% from entry",
+            "pnl": -2.1933405581967023,
+            "stance": "vol_scaled_momentum"
           }
         ],
         "peak_equity": 1008.010368084646,
-        "max_drawdown": 0.0049007552997309125,
+        "max_drawdown": 0.00528041114158238,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -839,7 +847,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 908.9939083908745,
+        "cash": 936.6440541890111,
         "positions": {
           "MSFT": {
             "market_id": "MSFT",
@@ -859,16 +867,6 @@
             "shares": 0.034139253795833734,
             "avg_price": 326.57,
             "opened_at": 1789124946.8354719,
-            "stance": "momentum"
-          },
-          "TTWO": {
-            "market_id": "TTWO",
-            "token_id": "TTWO",
-            "outcome": "long",
-            "title": "TTWO",
-            "shares": 0.13558645514704334,
-            "avg_price": 227.82,
-            "opened_at": 1794742118.9292214,
             "stance": "momentum"
           }
         },
@@ -900,10 +898,24 @@
             "reason": "10-bar average dropped below the 50-bar -- trend over",
             "pnl": 0.20545411813323788,
             "stance": "momentum"
+          },
+          {
+            "market_id": "TTWO",
+            "token_id": "TTWO",
+            "outcome": "long",
+            "title": "TTWO",
+            "shares": 0.13558645514704334,
+            "avg_price": 227.82,
+            "exit_price": 203.93,
+            "opened_at": 1794742118.9292214,
+            "closed_at": 1794966943.044273,
+            "reason": "Stop loss hit -- down -10.5% from entry",
+            "pnl": -3.2391604134628658,
+            "stance": "momentum"
           }
         ],
         "peak_equity": 1008.2939220225483,
-        "max_drawdown": 0.005326004690073473,
+        "max_drawdown": 0.0063611955414294595,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -979,7 +991,7 @@
         },
         "closed_trades": [],
         "peak_equity": 1007.1481383077012,
-        "max_drawdown": 0.016831833902008562,
+        "max_drawdown": 0.01796483893349907,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -994,7 +1006,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 873.5894680203868,
+        "cash": 971.3631265470698,
         "positions": {
           "AAPL": {
             "market_id": "AAPL",
@@ -1004,16 +1016,6 @@
             "shares": 0.04782333317111194,
             "avg_price": 342.37,
             "opened_at": 1794015025.7600584,
-            "stance": "momentum"
-          },
-          "TTWO": {
-            "market_id": "TTWO",
-            "token_id": "TTWO",
-            "outcome": "long",
-            "title": "TTWO",
-            "shares": 0.47944715601766763,
-            "avg_price": 207.4,
-            "opened_at": 1794278544.9872494,
             "stance": "momentum"
           },
           "SPY": {
@@ -1195,10 +1197,24 @@
             "reason": "3-bar average dropped below the 10-bar -- trend over",
             "pnl": -0.10423436656682461,
             "stance": "momentum"
+          },
+          {
+            "market_id": "TTWO",
+            "token_id": "TTWO",
+            "outcome": "long",
+            "title": "TTWO",
+            "shares": 0.47944715601766763,
+            "avg_price": 207.4,
+            "exit_price": 203.93,
+            "opened_at": 1794278544.9872494,
+            "closed_at": 1794966943.065261,
+            "reason": "3-bar average dropped below the 10-bar -- trend over",
+            "pnl": -1.6636816313813085,
+            "stance": "momentum"
           }
         ],
         "peak_equity": 1006.4828311344118,
-        "max_drawdown": 0.006739175703669981,
+        "max_drawdown": 0.013340183602755979,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -1214,7 +1230,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 879.6244157960895,
+        "cash": 968.2366169323304,
         "positions": {
           "AAPL": {
             "market_id": "AAPL",
@@ -1224,16 +1240,6 @@
             "shares": 0.0710452596439892,
             "avg_price": 348.51,
             "opened_at": 1794418754.1838293,
-            "stance": "momentum"
-          },
-          "TTWO": {
-            "market_id": "TTWO",
-            "token_id": "TTWO",
-            "outcome": "long",
-            "title": "TTWO",
-            "shares": 0.4345226358860443,
-            "avg_price": 231.31,
-            "opened_at": 1794456891.7912445,
             "stance": "momentum"
           }
         },
@@ -1363,10 +1369,24 @@
             "reason": "5-bar average dropped below the 15-bar -- trend over",
             "pnl": -0.06334381107805775,
             "stance": "momentum"
+          },
+          {
+            "market_id": "TTWO",
+            "token_id": "TTWO",
+            "outcome": "long",
+            "title": "TTWO",
+            "shares": 0.4345226358860443,
+            "avg_price": 231.31,
+            "exit_price": 203.93,
+            "opened_at": 1794456891.7912445,
+            "closed_at": 1794966943.1275513,
+            "reason": "Stop loss hit -- down -11.8% from entry",
+            "pnl": -11.897229770559889,
+            "stance": "momentum"
           }
         ],
         "peak_equity": 1005.5468673719411,
-        "max_drawdown": 0.007838710314279072,
+        "max_drawdown": 0.012179346522566541,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -1411,7 +1431,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 712.7139247450247,
+        "cash": 802.5492179718344,
         "positions": {
           "MSFT": {
             "market_id": "MSFT",
@@ -1431,16 +1451,6 @@
             "shares": 0.23510783795049833,
             "avg_price": 349.51,
             "opened_at": 1793868045.0069644,
-            "stance": "breakout"
-          },
-          "TTWO": {
-            "market_id": "TTWO",
-            "token_id": "TTWO",
-            "outcome": "long",
-            "title": "TTWO",
-            "shares": 0.44052024335217854,
-            "avg_price": 224.64,
-            "opened_at": 1794391058.5416646,
             "stance": "breakout"
           }
         },
@@ -1528,10 +1538,24 @@
             "reason": "Fell below the 5-bar low -- breakout failed",
             "pnl": -1.3432636999227725,
             "stance": "breakout"
+          },
+          {
+            "market_id": "TTWO",
+            "token_id": "TTWO",
+            "outcome": "long",
+            "title": "TTWO",
+            "shares": 0.44052024335217854,
+            "avg_price": 224.64,
+            "exit_price": 203.93,
+            "opened_at": 1794391058.5416646,
+            "closed_at": 1794966943.1291702,
+            "reason": "Stop loss hit -- down -9.2% from entry",
+            "pnl": -9.123174239823612,
+            "stance": "breakout"
           }
         ],
         "peak_equity": 1001.7215679772406,
-        "max_drawdown": 0.01471507888788626,
+        "max_drawdown": 0.022579826977634467,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -1712,7 +1736,7 @@
           }
         ],
         "peak_equity": 1006.089624999775,
-        "max_drawdown": 0.01317938044852486,
+        "max_drawdown": 0.018071971774878806,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -1742,7 +1766,7 @@
         },
         "closed_trades": [],
         "peak_equity": 1040.5926185835908,
-        "max_drawdown": 0.019819588896316645,
+        "max_drawdown": 0.04012826999817565,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -1783,11 +1807,11 @@
     }
   },
   "prices": {
+    "TTWO": 203.93,
     "SPY": 739.95,
     "AAPL": 352.78,
     "MSFT": 523.88,
-    "NVDA": 162.85,
-    "TTWO": 227.82
+    "NVDA": 162.85
   },
   "bars": {
     "AAPL": [
@@ -1995,8 +2019,6 @@
       739.95
     ],
     "TTWO": [
-      238.72,
-      238.53,
       247.15,
       249.98,
       250.32,
@@ -2094,7 +2116,9 @@
       224.64,
       231.31,
       226.95,
-      227.82
+      227.82,
+      213.47,
+      203.93
     ],
     "NVDA": [
       195.74,
@@ -2311,6 +2335,6 @@
     "note": null
   },
   "scorecard": {},
-  "last_seen_ts": 1794944906.835974,
+  "last_seen_ts": 1794966943.1342163,
   "seen_hashes": []
 }

@@ -194,3 +194,9 @@
 {"ts": 1794742118.9288962, "bot": "vol-momentum", "symbol": "TTWO", "action": "buy", "price": 227.82, "usd": 20.92, "reason": "10-bar average is 3.07% above the 50-bar -- uptrend; volatility 2.95% vs 2.00% target -> sizing at 68% (moved +11.0%)", "strength_pct": 41.6}
 {"ts": 1794742118.9292424, "bot": "momentum-tp", "symbol": "TTWO", "action": "buy", "price": 227.82, "usd": 30.89, "reason": "10-bar average is 3.07% above the 50-bar -- uptrend", "strength_pct": 61.5}
 {"ts": 1794794745.2511902, "bot": "catalyst-ttwo-sell-into", "symbol": "TTWO", "action": "sell", "price": 227.82, "pnl": 35.27, "reason": "the GTA 6 launch is 3 days away -- selling into the anticipation before the news lands", "strength_pct": 50.0}
+{"ts": 1794966943.043364, "bot": "momentum-10/50", "symbol": "TTWO", "action": "sell", "price": 203.93, "pnl": -3.24, "reason": "Stop loss hit -- down -10.5% from entry", "strength_pct": 50.0}
+{"ts": 1794966943.0438645, "bot": "vol-momentum", "symbol": "TTWO", "action": "sell", "price": 203.93, "pnl": -2.19, "reason": "Stop loss hit -- down -10.5% from entry", "strength_pct": 50.0}
+{"ts": 1794966943.0443044, "bot": "momentum-tp", "symbol": "TTWO", "action": "sell", "price": 203.93, "pnl": -3.24, "reason": "Stop loss hit -- down -10.5% from entry", "strength_pct": 50.0}
+{"ts": 1794966943.0653098, "bot": "risky-momentum-3/10", "symbol": "TTWO", "action": "sell", "price": 203.93, "pnl": -1.66, "reason": "3-bar average dropped below the 10-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1794966943.1276197, "bot": "risky-momentum-5/15", "symbol": "TTWO", "action": "sell", "price": 203.93, "pnl": -11.9, "reason": "Stop loss hit -- down -11.8% from entry", "strength_pct": 50.0}
+{"ts": 1794966943.1292024, "bot": "risky-breakout-10", "symbol": "TTWO", "action": "sell", "price": 203.93, "pnl": -9.12, "reason": "Stop loss hit -- down -9.2% from entry", "strength_pct": 50.0}
