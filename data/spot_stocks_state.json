@@ -199,7 +199,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 936.6440541890111,
+        "cash": 890.1804277378577,
         "positions": {
           "MSFT": {
             "market_id": "MSFT",
@@ -219,6 +219,16 @@
             "shares": 0.034139253795833734,
             "avg_price": 326.57,
             "opened_at": 1789124946.83426,
+            "stance": "momentum"
+          },
+          "TTWO": {
+            "market_id": "TTWO",
+            "token_id": "TTWO",
+            "outcome": "long",
+            "title": "TTWO",
+            "shares": 0.2278410555148988,
+            "avg_price": 203.93,
+            "opened_at": 1794994066.243655,
             "stance": "momentum"
           }
         },
@@ -764,7 +774,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 937.4517458738643,
+        "cash": 910.7714199305218,
         "positions": {
           "MSFT": {
             "market_id": "MSFT",
@@ -784,6 +794,16 @@
             "shares": 0.034139253795833734,
             "avg_price": 326.57,
             "opened_at": 1789124946.835156,
+            "stance": "vol_scaled_momentum"
+          },
+          "TTWO": {
+            "market_id": "TTWO",
+            "token_id": "TTWO",
+            "outcome": "long",
+            "title": "TTWO",
+            "shares": 0.13083080441005485,
+            "avg_price": 203.93,
+            "opened_at": 1794994066.244308,
             "stance": "vol_scaled_momentum"
           }
         },
@@ -847,7 +867,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 936.6440541890111,
+        "cash": 890.1804277378577,
         "positions": {
           "MSFT": {
             "market_id": "MSFT",
@@ -867,6 +887,16 @@
             "shares": 0.034139253795833734,
             "avg_price": 326.57,
             "opened_at": 1789124946.8354719,
+            "stance": "momentum"
+          },
+          "TTWO": {
+            "market_id": "TTWO",
+            "token_id": "TTWO",
+            "outcome": "long",
+            "title": "TTWO",
+            "shares": 0.2278410555148988,
+            "avg_price": 203.93,
+            "opened_at": 1794994066.24467,
             "stance": "momentum"
           }
         },
@@ -1230,7 +1260,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 968.2366169323304,
+        "cash": 868.9066205693767,
         "positions": {
           "AAPL": {
             "market_id": "AAPL",
@@ -1240,6 +1270,16 @@
             "shares": 0.0710452596439892,
             "avg_price": 348.51,
             "opened_at": 1794418754.1838293,
+            "stance": "momentum"
+          },
+          "TTWO": {
+            "market_id": "TTWO",
+            "token_id": "TTWO",
+            "outcome": "long",
+            "title": "TTWO",
+            "shares": 0.4870788817876413,
+            "avg_price": 203.93,
+            "opened_at": 1794994066.245059,
             "stance": "momentum"
           }
         },
@@ -2335,6 +2375,6 @@
     "note": null
   },
   "scorecard": {},
-  "last_seen_ts": 1794966943.1342163,
+  "last_seen_ts": 1794994066.2502124,
   "seen_hashes": []
 }
