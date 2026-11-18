@@ -179,3 +179,7 @@
 {"ts": 1794944906.5375347, "bot": "momentum-10/50", "symbol": "CHFUSD", "action": "sell", "price": 1.1902, "pnl": -0.03, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1794944906.5378413, "bot": "vol-momentum", "symbol": "CHFUSD", "action": "sell", "price": 1.1902, "pnl": -0.03, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1794944906.5382786, "bot": "momentum-tp", "symbol": "CHFUSD", "action": "sell", "price": 1.1902, "pnl": -0.03, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1795025804.404003, "bot": "meanrev-35", "symbol": "CHFUSD", "action": "buy", "price": 1.1866, "usd": 22.48, "reason": "RSI 33 -- oversold below 35", "strength_pct": 45.1}
+{"ts": 1795025804.404415, "bot": "momentum-10/50", "symbol": "GBPUSD", "action": "sell", "price": 1.3168, "pnl": -0.02, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1795025804.404882, "bot": "vol-momentum", "symbol": "GBPUSD", "action": "sell", "price": 1.3168, "pnl": -0.02, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1795025804.4052286, "bot": "momentum-tp", "symbol": "GBPUSD", "action": "sell", "price": 1.3168, "pnl": -0.02, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}

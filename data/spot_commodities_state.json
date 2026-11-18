@@ -1548,7 +1548,7 @@
           }
         ],
         "peak_equity": 1000.0,
-        "max_drawdown": 0.003729543777809795,
+        "max_drawdown": 0.003957514643602167,
         "fee_rate": 0.001,
         "fees_paid": 1.324778752766545
       }
@@ -2036,7 +2036,7 @@
           }
         ],
         "peak_equity": 1000.0334544405594,
-        "max_drawdown": 0.004984507440026114,
+        "max_drawdown": 0.005228593866917128,
         "fee_rate": 0.001,
         "fees_paid": 1.9626530493951098
       }
@@ -2622,7 +2622,7 @@
           }
         ],
         "peak_equity": 1000.0,
-        "max_drawdown": 0.005762866016097291,
+        "max_drawdown": 0.0060587853508567375,
         "fee_rate": 0.001,
         "fees_paid": 2.252793987110505
       }
@@ -4107,27 +4107,18 @@
         },
         "closed_trades": [],
         "peak_equity": 1000.818474898815,
-        "max_drawdown": 0.013049567655650478,
+        "max_drawdown": 0.013429757572572547,
         "fee_rate": 0.001,
         "fees_paid": 0.0999975
       }
     }
   },
   "prices": {
-    "XAUTUSDT": 3886.52,
-    "PAXGUSDT": 3761.98
+    "PAXGUSDT": 3728.8,
+    "XAUTUSDT": 3886.52
   },
   "bars": {
     "PAXGUSDT": [
-      3970.21,
-      3969.05,
-      3956.25,
-      3954.35,
-      3920.11,
-      3935.24,
-      3944.09,
-      3932.5,
-      3929.26,
       3885.64,
       3864.25,
       3864.96,
@@ -4268,7 +4259,16 @@
       3768.28,
       3764.54,
       3760.14,
-      3761.98
+      3770.47,
+      3764.14,
+      3755.77,
+      3738.04,
+      3776.22,
+      3759.73,
+      3746.12,
+      3736.51,
+      3725.99,
+      3728.8
     ],
     "XAUTUSDT": [
       3990.52,
@@ -4430,9 +4430,9 @@
     "sources": {
       "PAXGUSDT": "coinbase"
     },
-    "last_error": null
+    "last_error": "coinbase: 404 Client Error: Not Found for url: https://api.exchange.coinbase.com/products/XAUT-USD/candles?granularity=3600"
   },
   "scorecard": {},
-  "last_seen_ts": 1794994063.8478832,
+  "last_seen_ts": 1795025802.2254024,
   "seen_hashes": []
 }
