@@ -210,3 +210,5 @@
 {"ts": 1795074871.9011574, "bot": "risky-meanrev-20", "symbol": "NVDA", "action": "sell", "price": 150.96, "pnl": -9.26, "reason": "Stop loss hit -- down -10.6% from entry", "strength_pct": 50.0}
 {"ts": 1795107253.1402128, "bot": "meanrev-25", "symbol": "NVDA", "action": "buy", "price": 150.96, "usd": 38.23, "reason": "RSI 16 -- oversold below 25", "strength_pct": 76.7}
 {"ts": 1795107253.1406262, "bot": "risky-meanrev-20", "symbol": "NVDA", "action": "buy", "price": 150.96, "usd": 99.07, "reason": "RSI 16 -- oversold below 20", "strength_pct": 60.9}
+{"ts": 1795130353.0498886, "bot": "meanrev-30", "symbol": "NVDA", "action": "sell", "price": 145.98, "pnl": -3.95, "reason": "Stop loss hit -- down -10.4% from entry", "strength_pct": 50.0}
+{"ts": 1795130353.0502295, "bot": "meanrev-35", "symbol": "NVDA", "action": "sell", "price": 145.98, "pnl": -4.41, "reason": "Stop loss hit -- down -10.4% from entry", "strength_pct": 50.0}
