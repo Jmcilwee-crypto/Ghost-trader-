@@ -301,7 +301,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 950.3261528829555,
+        "cash": 926.4493014728671,
         "positions": {
           "JPYUSD": {
             "market_id": "JPYUSD",
@@ -321,6 +321,16 @@
             "shares": 40.33238880296944,
             "avg_price": 0.68208,
             "opened_at": 1794515251.2500513,
+            "stance": "mean_reversion"
+          },
+          "CHFUSD": {
+            "market_id": "CHFUSD",
+            "token_id": "CHFUSD",
+            "outcome": "long",
+            "title": "CHFUSD",
+            "shares": 20.114657937147324,
+            "avg_price": 1.1868,
+            "opened_at": 1795107252.9408472,
             "stance": "mean_reversion"
           }
         },
@@ -385,7 +395,7 @@
         "peak_equity": 1000.1025288216516,
         "max_drawdown": 0.001575468858881456,
         "fee_rate": 0.0002,
-        "fees_paid": 0.04731559664966472
+        "fees_paid": 0.052090966931682414
       }
     },
     "meanrev-30": {
@@ -397,7 +407,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 955.594309316514,
+        "cash": 899.3159112943802,
         "positions": {
           "AUDUSD": {
             "market_id": "AUDUSD",
@@ -417,6 +427,26 @@
             "shares": 3249.8834256696728,
             "avg_price": 0.0062801,
             "opened_at": 1794418753.798938,
+            "stance": "mean_reversion"
+          },
+          "CHFUSD": {
+            "market_id": "CHFUSD",
+            "token_id": "CHFUSD",
+            "outcome": "long",
+            "title": "CHFUSD",
+            "shares": 26.560269668911623,
+            "avg_price": 1.1868,
+            "opened_at": 1795107252.9412916,
+            "stance": "mean_reversion"
+          },
+          "GBPUSD": {
+            "market_id": "GBPUSD",
+            "token_id": "GBPUSD",
+            "outcome": "long",
+            "title": "GBPUSD",
+            "shares": 18.816374647908994,
+            "avg_price": 1.3151,
+            "opened_at": 1795107252.941761,
             "stance": "mean_reversion"
           }
         },
@@ -495,7 +525,7 @@
         "peak_equity": 999.9951611479029,
         "max_drawdown": 0.0022694318030717486,
         "fee_rate": 0.0002,
-        "fees_paid": 0.05987552594004164
+        "fees_paid": 0.07113120554446842
       }
     },
     "meanrev-35": {
@@ -507,7 +537,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 903.5436169262257,
+        "cash": 872.3721245912147,
         "positions": {
           "EURUSD": {
             "market_id": "EURUSD",
@@ -547,6 +577,16 @@
             "shares": 18.942096522869768,
             "avg_price": 1.1866,
             "opened_at": 1795025804.4039233,
+            "stance": "mean_reversion"
+          },
+          "GBPUSD": {
+            "market_id": "GBPUSD",
+            "token_id": "GBPUSD",
+            "outcome": "long",
+            "title": "GBPUSD",
+            "shares": 23.698013867039744,
+            "avg_price": 1.3151,
+            "opened_at": 1795107252.9420083,
             "stance": "mean_reversion"
           }
         },
@@ -611,7 +651,7 @@
         "peak_equity": 999.9846264367197,
         "max_drawdown": 0.002843054990342845,
         "fee_rate": 0.0002,
-        "fees_paid": 0.06156671224424117
+        "fees_paid": 0.06780101071124336
       }
     },
     "breakout-20": {
@@ -975,7 +1015,7 @@
         },
         "closed_trades": [],
         "peak_equity": 999.9500009999899,
-        "max_drawdown": 0.01074671227816122,
+        "max_drawdown": 0.011003773655004124,
         "fee_rate": 0.0002,
         "fees_paid": 0.049999000009999954
       }
@@ -1654,15 +1694,14 @@
     }
   },
   "prices": {
-    "JPYUSD": 0.0062728,
-    "AUDUSD": 0.67313,
-    "CHFUSD": 1.1866,
-    "EURUSD": 1.0968,
-    "GBPUSD": 1.3168
+    "AUDUSD": 0.67114,
+    "CHFUSD": 1.1868,
+    "EURUSD": 1.0992,
+    "GBPUSD": 1.3151,
+    "JPYUSD": 0.0062511
   },
   "bars": {
     "AUDUSD": [
-      0.71525,
       0.71536,
       0.71445,
       0.71917,
@@ -1811,10 +1850,10 @@
       0.67854,
       0.67566,
       0.67351,
-      0.67313
+      0.67313,
+      0.67114
     ],
     "CHFUSD": [
-      1.2788,
       1.2743,
       1.2732,
       1.2757,
@@ -1963,10 +2002,10 @@
       1.1927,
       1.1915,
       1.1902,
-      1.1866
+      1.1866,
+      1.1868
     ],
     "EURUSD": [
-      1.1733,
       1.1694,
       1.1712,
       1.1749,
@@ -2115,10 +2154,10 @@
       1.1052,
       1.1014,
       1.0989,
-      1.0968
+      1.0968,
+      1.0992
     ],
     "GBPUSD": [
-      1.3501,
       1.3507,
       1.3493,
       1.357,
@@ -2267,10 +2306,10 @@
       1.3227,
       1.3198,
       1.3191,
-      1.3168
+      1.3168,
+      1.3151
     ],
     "JPYUSD": [
-      0.0062807,
       0.0062702,
       0.0062728,
       0.0062809,
@@ -2419,7 +2458,8 @@
       0.0062501,
       0.0062658,
       0.0062776,
-      0.0062728
+      0.0062728,
+      0.0062511
     ]
   },
   "research": {
@@ -2429,6 +2469,6 @@
     "last_error": null
   },
   "scorecard": {},
-  "last_seen_ts": 1795074871.478278,
+  "last_seen_ts": 1795107252.9460409,
   "seen_hashes": []
 }

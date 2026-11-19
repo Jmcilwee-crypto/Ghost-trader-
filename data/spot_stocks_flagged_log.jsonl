@@ -208,3 +208,5 @@
 {"ts": 1795048476.4301188, "bot": "catalyst-ttwo-hold-through", "symbol": "TTWO", "action": "sell", "price": 203.93, "pnl": -1.16, "reason": "the GTA 6 launch is 0 days away -- selling into the anticipation before the news lands", "strength_pct": 50.0}
 {"ts": 1795074871.900853, "bot": "meanrev-25", "symbol": "NVDA", "action": "sell", "price": 150.96, "pnl": -3.34, "reason": "Stop loss hit -- down -10.6% from entry", "strength_pct": 50.0}
 {"ts": 1795074871.9011574, "bot": "risky-meanrev-20", "symbol": "NVDA", "action": "sell", "price": 150.96, "pnl": -9.26, "reason": "Stop loss hit -- down -10.6% from entry", "strength_pct": 50.0}
+{"ts": 1795107253.1402128, "bot": "meanrev-25", "symbol": "NVDA", "action": "buy", "price": 150.96, "usd": 38.23, "reason": "RSI 16 -- oversold below 25", "strength_pct": 76.7}
+{"ts": 1795107253.1406262, "bot": "risky-meanrev-20", "symbol": "NVDA", "action": "buy", "price": 150.96, "usd": 99.07, "reason": "RSI 16 -- oversold below 20", "strength_pct": 60.9}

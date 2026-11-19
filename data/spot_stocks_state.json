@@ -185,7 +185,7 @@
           }
         ],
         "peak_equity": 1000.949134961587,
-        "max_drawdown": 0.003656084273223526,
+        "max_drawdown": 0.003663828002179156,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -277,7 +277,7 @@
           }
         ],
         "peak_equity": 1008.2939220225483,
-        "max_drawdown": 0.0063611955414294595,
+        "max_drawdown": 0.006372368824840737,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -359,8 +359,19 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 996.6612119493815,
-        "positions": {},
+        "cash": 958.4290618390162,
+        "positions": {
+          "NVDA": {
+            "market_id": "NVDA",
+            "token_id": "NVDA",
+            "outcome": "long",
+            "title": "NVDA",
+            "shares": 0.25326013586622464,
+            "avg_price": 150.96,
+            "opened_at": 1795107253.140138,
+            "stance": "mean_reversion"
+          }
+        },
         "closed_trades": [
           {
             "market_id": "NVDA",
@@ -700,7 +711,7 @@
           }
         ],
         "peak_equity": 1001.2230396975814,
-        "max_drawdown": 0.010907347724031834,
+        "max_drawdown": 0.010933290853939166,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -764,7 +775,7 @@
           }
         ],
         "peak_equity": 1000.1959166110237,
-        "max_drawdown": 0.008059560155915534,
+        "max_drawdown": 0.00808796806696401,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -856,7 +867,7 @@
           }
         ],
         "peak_equity": 1008.010368084646,
-        "max_drawdown": 0.00528041114158238,
+        "max_drawdown": 0.005291587568045169,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -949,7 +960,7 @@
           }
         ],
         "peak_equity": 1008.2939220225483,
-        "max_drawdown": 0.0063611955414294595,
+        "max_drawdown": 0.006372368824840737,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -1025,7 +1036,7 @@
         },
         "closed_trades": [],
         "peak_equity": 1007.1481383077012,
-        "max_drawdown": 0.021306802465743204,
+        "max_drawdown": 0.021356969023652042,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -1252,7 +1263,7 @@
           }
         ],
         "peak_equity": 1006.4828311344118,
-        "max_drawdown": 0.013388807693595154,
+        "max_drawdown": 0.013404487742432749,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -1434,7 +1445,7 @@
           }
         ],
         "peak_equity": 1005.5468673719411,
-        "max_drawdown": 0.012179346522566541,
+        "max_drawdown": 0.012202662129668754,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -1449,8 +1460,19 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 990.7375240135901,
-        "positions": {},
+        "cash": 891.6637716122311,
+        "positions": {
+          "NVDA": {
+            "market_id": "NVDA",
+            "token_id": "NVDA",
+            "outcome": "long",
+            "title": "NVDA",
+            "shares": 0.6562914176030671,
+            "avg_price": 150.96,
+            "opened_at": 1795107253.1405976,
+            "stance": "mean_reversion"
+          }
+        },
         "closed_trades": [
           {
             "market_id": "NVDA",
@@ -1607,7 +1629,7 @@
           }
         ],
         "peak_equity": 1001.7215679772406,
-        "max_drawdown": 0.022579826977634467,
+        "max_drawdown": 0.022657279224849478,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -1788,7 +1810,7 @@
           }
         ],
         "peak_equity": 1006.089624999775,
-        "max_drawdown": 0.018071971774878806,
+        "max_drawdown": 0.01811054972580715,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -1863,16 +1885,14 @@
     }
   },
   "prices": {
+    "AAPL": 352.45,
+    "MSFT": 523.88,
     "NVDA": 150.96,
     "TTWO": 203.93,
-    "SPY": 730.2,
-    "AAPL": 352.78,
-    "MSFT": 523.88
+    "SPY": 730.2
   },
   "bars": {
     "AAPL": [
-      283.78,
-      281.74,
       289.36,
       294.38,
       308.63,
@@ -1970,7 +1990,9 @@
       355.63,
       354.88,
       356.27,
-      352.78
+      352.78,
+      351.91,
+      352.45
     ],
     "SPY": [
       746.77,
@@ -2391,6 +2413,6 @@
     "note": null
   },
   "scorecard": {},
-  "last_seen_ts": 1795074871.9065144,
+  "last_seen_ts": 1795107253.145039,
   "seen_hashes": []
 }
