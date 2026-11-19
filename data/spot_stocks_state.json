@@ -1021,7 +1021,7 @@
         },
         "closed_trades": [],
         "peak_equity": 1007.1481383077012,
-        "max_drawdown": 0.01845681592622101,
+        "max_drawdown": 0.01860355739941635,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -1795,20 +1795,24 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 687.8222144249228,
-        "positions": {
-          "TTWO": {
+        "cash": 998.8354370269599,
+        "positions": {},
+        "closed_trades": [
+          {
             "market_id": "TTWO",
             "token_id": "TTWO",
             "outcome": "long",
             "title": "TTWO",
             "shares": 1.5250979385183006,
             "avg_price": 204.6935988113469,
+            "exit_price": 203.93,
             "opened_at": 1789867884.19611,
+            "closed_at": 1795048476.4300504,
+            "reason": "the GTA 6 launch is 0 days away -- selling into the anticipation before the news lands",
+            "pnl": -1.1645629730401765,
             "stance": "catalyst"
           }
-        },
-        "closed_trades": [],
+        ],
         "peak_equity": 1040.5926185835908,
         "max_drawdown": 0.04012826999817565,
         "fee_rate": 0.0,
@@ -1851,7 +1855,7 @@
     }
   },
   "prices": {
-    "SPY": 732.44,
+    "SPY": 730.2,
     "AAPL": 352.78,
     "MSFT": 523.88,
     "NVDA": 162.85,
@@ -1961,7 +1965,6 @@
       352.78
     ],
     "SPY": [
-      741.0,
       746.77,
       745.76,
       744.78,
@@ -2060,7 +2063,8 @@
       757.12,
       754.37,
       739.95,
-      732.44
+      732.44,
+      730.2
     ],
     "TTWO": [
       247.15,
@@ -2379,6 +2383,6 @@
     "note": null
   },
   "scorecard": {},
-  "last_seen_ts": 1795025804.6912808,
+  "last_seen_ts": 1795048476.4350936,
   "seen_hashes": []
 }

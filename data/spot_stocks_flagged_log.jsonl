@@ -205,3 +205,4 @@
 {"ts": 1794994066.244698, "bot": "momentum-tp", "symbol": "TTWO", "action": "buy", "price": 203.93, "usd": 46.46, "reason": "10-bar average is 4.64% above the 50-bar -- uptrend", "strength_pct": 92.8}
 {"ts": 1794994066.2450871, "bot": "risky-momentum-5/15", "symbol": "TTWO", "action": "buy", "price": 203.93, "usd": 99.33, "reason": "5-bar average is 5.48% above the 15-bar -- uptrend", "strength_pct": 100.0}
 {"ts": 1795025804.6861823, "bot": "risky-momentum-3/10", "symbol": "SPY", "action": "sell", "price": 732.44, "pnl": -0.18, "reason": "3-bar average dropped below the 10-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1795048476.4301188, "bot": "catalyst-ttwo-hold-through", "symbol": "TTWO", "action": "sell", "price": 203.93, "pnl": -1.16, "reason": "the GTA 6 launch is 0 days away -- selling into the anticipation before the news lands", "strength_pct": 50.0}
