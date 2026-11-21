@@ -216,3 +216,9 @@
 {"ts": 1795147527.9252095, "bot": "risky-breakout-10", "symbol": "AAPL", "action": "sell", "price": 349.21, "pnl": -0.07, "reason": "Fell below the 5-bar low -- breakout failed", "strength_pct": 50.0}
 {"ts": 1795147527.925709, "bot": "meanrev-30", "symbol": "NVDA", "action": "buy", "price": 145.98, "usd": 42.27, "reason": "RSI 17 -- oversold below 30", "strength_pct": 84.8}
 {"ts": 1795147527.926063, "bot": "meanrev-35", "symbol": "NVDA", "action": "buy", "price": 145.98, "usd": 45.98, "reason": "RSI 17 -- oversold below 35", "strength_pct": 92.7}
+{"ts": 1795225902.2308345, "bot": "momentum-10/50", "symbol": "MSFT", "action": "sell", "price": 484.52, "pnl": -0.8, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1795225902.2313077, "bot": "breakout-20", "symbol": "MSFT", "action": "sell", "price": 484.52, "pnl": -6.4, "reason": "Stop loss hit -- down -12.8% from entry", "strength_pct": 50.0}
+{"ts": 1795225902.231731, "bot": "breakout-50", "symbol": "MSFT", "action": "sell", "price": 484.52, "pnl": -6.39, "reason": "Stop loss hit -- down -12.8% from entry", "strength_pct": 50.0}
+{"ts": 1795225902.232049, "bot": "vol-momentum", "symbol": "MSFT", "action": "sell", "price": 484.52, "pnl": -0.8, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1795225902.2323508, "bot": "momentum-tp", "symbol": "MSFT", "action": "sell", "price": 484.52, "pnl": -0.8, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1795225902.232689, "bot": "risky-breakout-10", "symbol": "MSFT", "action": "sell", "price": 484.52, "pnl": -12.74, "reason": "Stop loss hit -- down -12.8% from entry", "strength_pct": 50.0}
