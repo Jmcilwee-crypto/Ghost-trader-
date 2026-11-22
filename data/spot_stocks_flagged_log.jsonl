@@ -222,3 +222,7 @@
 {"ts": 1795225902.232049, "bot": "vol-momentum", "symbol": "MSFT", "action": "sell", "price": 484.52, "pnl": -0.8, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1795225902.2323508, "bot": "momentum-tp", "symbol": "MSFT", "action": "sell", "price": 484.52, "pnl": -0.8, "reason": "10-bar average dropped below the 50-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1795225902.232689, "bot": "risky-breakout-10", "symbol": "MSFT", "action": "sell", "price": 484.52, "pnl": -12.74, "reason": "Stop loss hit -- down -12.8% from entry", "strength_pct": 50.0}
+{"ts": 1795311889.887402, "bot": "meanrev-25", "symbol": "NVDA", "action": "sell", "price": 125.53, "pnl": -6.44, "reason": "Stop loss hit -- down -16.8% from entry", "strength_pct": 50.0}
+{"ts": 1795311889.8877847, "bot": "meanrev-30", "symbol": "NVDA", "action": "sell", "price": 125.53, "pnl": -5.92, "reason": "Stop loss hit -- down -14.0% from entry", "strength_pct": 50.0}
+{"ts": 1795311889.887982, "bot": "meanrev-35", "symbol": "NVDA", "action": "sell", "price": 125.53, "pnl": -6.44, "reason": "Stop loss hit -- down -14.0% from entry", "strength_pct": 50.0}
+{"ts": 1795311889.888175, "bot": "risky-meanrev-20", "symbol": "NVDA", "action": "sell", "price": 125.53, "pnl": -16.69, "reason": "Stop loss hit -- down -16.8% from entry", "strength_pct": 50.0}

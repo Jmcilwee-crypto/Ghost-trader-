@@ -363,19 +363,8 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 958.4290618390162,
-        "positions": {
-          "NVDA": {
-            "market_id": "NVDA",
-            "token_id": "NVDA",
-            "outcome": "long",
-            "title": "NVDA",
-            "shares": 0.25326013586622464,
-            "avg_price": 150.96,
-            "opened_at": 1795107253.140138,
-            "stance": "mean_reversion"
-          }
-        },
+        "cash": 990.2208066943034,
+        "positions": {},
         "closed_trades": [
           {
             "market_id": "NVDA",
@@ -390,10 +379,24 @@
             "reason": "Stop loss hit -- down -10.6% from entry",
             "pnl": -3.3387880506184544,
             "stance": "mean_reversion"
+          },
+          {
+            "market_id": "NVDA",
+            "token_id": "NVDA",
+            "outcome": "long",
+            "title": "NVDA",
+            "shares": 0.25326013586622464,
+            "avg_price": 150.96,
+            "exit_price": 125.53,
+            "opened_at": 1795107253.140138,
+            "closed_at": 1795311889.8873196,
+            "reason": "Stop loss hit -- down -16.8% from entry",
+            "pnl": -6.440405255078094,
+            "stance": "mean_reversion"
           }
         ],
         "peak_equity": 1000.9012679400441,
-        "max_drawdown": 0.005496337794234877,
+        "max_drawdown": 0.010670843956189802,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -407,19 +410,8 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 954.231251726982,
-        "positions": {
-          "NVDA": {
-            "market_id": "NVDA",
-            "token_id": "NVDA",
-            "outcome": "long",
-            "title": "NVDA",
-            "shares": 0.28956186906951026,
-            "avg_price": 145.98,
-            "opened_at": 1795147527.9256775,
-            "stance": "mean_reversion"
-          }
-        },
+        "cash": 990.5799531512777,
+        "positions": {},
         "closed_trades": [
           {
             "market_id": "TTWO",
@@ -504,10 +496,24 @@
             "reason": "Stop loss hit -- down -10.4% from entry",
             "pnl": -3.9526663921329686,
             "stance": "mean_reversion"
+          },
+          {
+            "market_id": "NVDA",
+            "token_id": "NVDA",
+            "outcome": "long",
+            "title": "NVDA",
+            "shares": 0.28956186906951026,
+            "avg_price": 145.98,
+            "exit_price": 125.53,
+            "opened_at": 1795147527.9256775,
+            "closed_at": 1795311889.887699,
+            "reason": "Stop loss hit -- down -14.0% from entry",
+            "pnl": -5.921540222471478,
+            "stance": "mean_reversion"
           }
         ],
         "peak_equity": 1001.8883654006931,
-        "max_drawdown": 0.005376718817160466,
+        "max_drawdown": 0.011287098083919579,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -521,7 +527,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 892.1652919841158,
+        "cash": 931.7052847928832,
         "positions": {
           "SPY": {
             "market_id": "SPY",
@@ -541,16 +547,6 @@
             "shares": 0.05938952610588334,
             "avg_price": 507.12,
             "opened_at": 1793720050.9616988,
-            "stance": "mean_reversion"
-          },
-          "NVDA": {
-            "market_id": "NVDA",
-            "token_id": "NVDA",
-            "outcome": "long",
-            "title": "NVDA",
-            "shares": 0.31498440857776905,
-            "avg_price": 145.98,
-            "opened_at": 1795147527.9260347,
             "stance": "mean_reversion"
           }
         },
@@ -624,10 +620,24 @@
             "reason": "Stop loss hit -- down -10.4% from entry",
             "pnl": -4.409166456516644,
             "stance": "mean_reversion"
+          },
+          {
+            "market_id": "NVDA",
+            "token_id": "NVDA",
+            "outcome": "long",
+            "title": "NVDA",
+            "shares": 0.31498440857776905,
+            "avg_price": 145.98,
+            "exit_price": 125.53,
+            "opened_at": 1795147527.9260347,
+            "closed_at": 1795311889.8879364,
+            "reason": "Stop loss hit -- down -14.0% from entry",
+            "pnl": -6.441431155415373,
+            "stance": "mean_reversion"
           }
         ],
         "peak_equity": 1000.2736344163451,
-        "max_drawdown": 0.011192777664367937,
+        "max_drawdown": 0.017632446704704072,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -1084,7 +1094,7 @@
         },
         "closed_trades": [],
         "peak_equity": 1007.1481383077012,
-        "max_drawdown": 0.02889948507544039,
+        "max_drawdown": 0.033548884705918665,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -1511,19 +1521,8 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 891.6637716122311,
-        "positions": {
-          "NVDA": {
-            "market_id": "NVDA",
-            "token_id": "NVDA",
-            "outcome": "long",
-            "title": "NVDA",
-            "shares": 0.6562914176030671,
-            "avg_price": 150.96,
-            "opened_at": 1795107253.1405976,
-            "stance": "mean_reversion"
-          }
-        },
+        "cash": 974.0480332639441,
+        "positions": {},
         "closed_trades": [
           {
             "market_id": "NVDA",
@@ -1538,10 +1537,24 @@
             "reason": "Stop loss hit -- down -10.6% from entry",
             "pnl": -9.262475986409825,
             "stance": "mean_reversion"
+          },
+          {
+            "market_id": "NVDA",
+            "token_id": "NVDA",
+            "outcome": "long",
+            "title": "NVDA",
+            "shares": 0.6562914176030671,
+            "avg_price": 150.96,
+            "exit_price": 125.53,
+            "opened_at": 1795107253.1405976,
+            "closed_at": 1795311889.88815,
+            "reason": "Stop loss hit -- down -16.8% from entry",
+            "pnl": -16.689490749645998,
+            "stance": "mean_reversion"
           }
         ],
         "peak_equity": 1002.5003002662701,
-        "max_drawdown": 0.014993618962857983,
+        "max_drawdown": 0.028381305217333935,
         "fee_rate": 0.0,
         "fees_paid": 0.0
       }
@@ -1943,11 +1956,11 @@
     }
   },
   "prices": {
-    "AAPL": 342.56,
-    "MSFT": 484.52,
-    "NVDA": 145.98,
+    "NVDA": 125.53,
     "TTWO": 203.93,
-    "SPY": 715.87
+    "SPY": 715.87,
+    "AAPL": 342.56,
+    "MSFT": 484.52
   },
   "bars": {
     "AAPL": [
@@ -2257,7 +2270,6 @@
       203.93
     ],
     "NVDA": [
-      197.58,
       194.83,
       195.55,
       196.93,
@@ -2356,7 +2368,8 @@
       156.14,
       155.46,
       150.96,
-      145.98
+      145.98,
+      125.53
     ],
     "MSFT": [
       390.49,
@@ -2471,6 +2484,6 @@
     "note": null
   },
   "scorecard": {},
-  "last_seen_ts": 1795297703.496691,
+  "last_seen_ts": 1795311889.8926551,
   "seen_hashes": []
 }
