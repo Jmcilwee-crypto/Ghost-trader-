@@ -406,7 +406,7 @@
             "stance": "mean_reversion"
           }
         ],
-        "peak_equity": 1000.9012679400441,
+        "peak_equity": 1003.4718748914556,
         "max_drawdown": 0.010670843956189802,
         "fee_rate": 0.0,
         "fees_paid": 0.0
@@ -534,7 +534,7 @@
             "stance": "mean_reversion"
           }
         ],
-        "peak_equity": 1001.8883654006931,
+        "peak_equity": 1005.2648755715616,
         "max_drawdown": 0.011287098083919579,
         "fee_rate": 0.0,
         "fees_paid": 0.0
@@ -1600,7 +1600,7 @@
             "stance": "mean_reversion"
           }
         ],
-        "peak_equity": 1002.5003002662701,
+        "peak_equity": 1004.7135142442604,
         "max_drawdown": 0.028381305217334046,
         "fee_rate": 0.0,
         "fees_paid": 0.0
@@ -2003,11 +2003,11 @@
     }
   },
   "prices": {
-    "MSFT": 492.5,
-    "NVDA": 125.53,
+    "NVDA": 165.05,
     "TTWO": 210.0,
     "SPY": 715.87,
-    "AAPL": 342.56
+    "AAPL": 342.56,
+    "MSFT": 492.5
   },
   "bars": {
     "AAPL": [
@@ -2317,7 +2317,6 @@
       210.0
     ],
     "NVDA": [
-      194.83,
       195.55,
       196.93,
       204.12,
@@ -2416,7 +2415,8 @@
       155.46,
       150.96,
       145.98,
-      125.53
+      125.53,
+      165.05
     ],
     "MSFT": [
       386.74,
@@ -2531,6 +2531,6 @@
     "note": null
   },
   "scorecard": {},
-  "last_seen_ts": 1795502065.4527407,
+  "last_seen_ts": 1795544250.474335,
   "seen_hashes": []
 }
