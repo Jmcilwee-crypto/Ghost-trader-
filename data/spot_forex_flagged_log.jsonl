@@ -194,3 +194,5 @@
 {"ts": 1795544250.2723877, "bot": "meanrev-25", "symbol": "EURUSD", "action": "buy", "price": 1.0963, "usd": 31.01, "reason": "RSI 19 -- oversold below 25", "strength_pct": 62.1}
 {"ts": 1795544250.2727225, "bot": "risky-meanrev-20", "symbol": "EURUSD", "action": "buy", "price": 1.0963, "usd": 85.0, "reason": "RSI 19 -- oversold below 20", "strength_pct": 42.6}
 {"ts": 1795544250.2729993, "bot": "risky-meanrev-20", "symbol": "GBPUSD", "action": "buy", "price": 1.3098, "usd": 99.74, "reason": "RSI 12 -- oversold below 20", "strength_pct": 81.1}
+{"ts": 1795639145.3377976, "bot": "risky-momentum-3/10", "symbol": "CHFUSD", "action": "buy", "price": 1.2036, "usd": 8.24, "reason": "3-bar average is 0.27% above the 10-bar -- uptrend", "strength_pct": 5.5}
+{"ts": 1795639145.3383439, "bot": "momentum-20/100", "symbol": "JPYUSD", "action": "sell", "price": 0.0062765, "pnl": -0.37, "reason": "20-bar average dropped below the 100-bar -- trend over", "strength_pct": 50.0}
