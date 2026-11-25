@@ -421,7 +421,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 943.9352590364439,
+        "cash": 916.3437224475861,
         "positions": {
           "NVDA": {
             "market_id": "NVDA",
@@ -431,6 +431,16 @@
             "shares": 0.3715820450476684,
             "avg_price": 125.53,
             "opened_at": 1795337543.7162464,
+            "stance": "mean_reversion"
+          },
+          "MSFT": {
+            "market_id": "MSFT",
+            "token_id": "MSFT",
+            "outcome": "long",
+            "title": "MSFT",
+            "shares": 0.0556135218367319,
+            "avg_price": 496.13,
+            "opened_at": 1795606940.036538,
             "stance": "mean_reversion"
           }
         },
@@ -2003,11 +2013,11 @@
     }
   },
   "prices": {
+    "MSFT": 496.13,
     "NVDA": 155.38,
     "TTWO": 210.0,
     "SPY": 715.87,
-    "AAPL": 342.56,
-    "MSFT": 492.5
+    "AAPL": 342.56
   },
   "bars": {
     "AAPL": [
@@ -2419,7 +2429,6 @@
       155.38
     ],
     "MSFT": [
-      386.74,
       388.84,
       383.34,
       384.36,
@@ -2518,7 +2527,8 @@
       508.29,
       498.3,
       484.52,
-      492.5
+      492.5,
+      496.13
     ]
   },
   "research": {
@@ -2531,6 +2541,6 @@
     "note": null
   },
   "scorecard": {},
-  "last_seen_ts": 1795574341.3470902,
+  "last_seen_ts": 1795606940.0435262,
   "seen_hashes": []
 }
