@@ -197,3 +197,5 @@
 {"ts": 1795639145.3377976, "bot": "risky-momentum-3/10", "symbol": "CHFUSD", "action": "buy", "price": 1.2036, "usd": 8.24, "reason": "3-bar average is 0.27% above the 10-bar -- uptrend", "strength_pct": 5.5}
 {"ts": 1795639145.3383439, "bot": "momentum-20/100", "symbol": "JPYUSD", "action": "sell", "price": 0.0062765, "pnl": -0.37, "reason": "20-bar average dropped below the 100-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1795729562.9599516, "bot": "risky-momentum-5/15", "symbol": "JPYUSD", "action": "buy", "price": 0.006279, "usd": 1.48, "reason": "5-bar average is 0.04% above the 15-bar -- uptrend", "strength_pct": 0.7}
+{"ts": 1795817418.4981976, "bot": "risky-momentum-3/10", "symbol": "JPYUSD", "action": "sell", "price": 0.0062679, "pnl": -0.0, "reason": "3-bar average dropped below the 10-bar -- trend over", "strength_pct": 50.0}
+{"ts": 1795817418.4985795, "bot": "risky-momentum-5/15", "symbol": "JPYUSD", "action": "sell", "price": 0.0062679, "pnl": -0.0, "reason": "5-bar average dropped below the 15-bar -- trend over", "strength_pct": 50.0}

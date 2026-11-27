@@ -1403,8 +1403,19 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 996.4554591689911,
-        "positions": {},
+        "cash": 973.3051578792769,
+        "positions": {
+          "TTWO": {
+            "market_id": "TTWO",
+            "token_id": "TTWO",
+            "outcome": "long",
+            "title": "TTWO",
+            "shares": 0.10055729862615849,
+            "avg_price": 230.22,
+            "opened_at": 1795817418.7594423,
+            "stance": "momentum"
+          }
+        },
         "closed_trades": [
           {
             "market_id": "AAPL",
@@ -1650,8 +1661,19 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 971.2302806323949,
-        "positions": {},
+        "cash": 874.1072525691553,
+        "positions": {
+          "TTWO": {
+            "market_id": "TTWO",
+            "token_id": "TTWO",
+            "outcome": "long",
+            "title": "TTWO",
+            "shares": 0.42187050674676174,
+            "avg_price": 230.22,
+            "opened_at": 1795817418.7598617,
+            "stance": "breakout"
+          }
+        },
         "closed_trades": [
           {
             "market_id": "AAPL",
@@ -2037,11 +2059,11 @@
     }
   },
   "prices": {
-    "MSFT": 489.93,
-    "NVDA": 155.38,
-    "TTWO": 227.34,
+    "TTWO": 230.22,
     "SPY": 715.87,
-    "AAPL": 355.58
+    "AAPL": 355.58,
+    "MSFT": 489.93,
+    "NVDA": 155.38
   },
   "bars": {
     "AAPL": [
@@ -2249,7 +2271,6 @@
       715.87
     ],
     "TTWO": [
-      251.38,
       246.1,
       243.2,
       244.095,
@@ -2348,7 +2369,8 @@
       210.0,
       209.36,
       220.41,
-      227.34
+      227.34,
+      230.22
     ],
     "NVDA": [
       196.93,
@@ -2565,6 +2587,6 @@
     "note": null
   },
   "scorecard": {},
-  "last_seen_ts": 1795785414.67923,
+  "last_seen_ts": 1795817418.7667594,
   "seen_hashes": []
 }

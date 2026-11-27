@@ -235,3 +235,5 @@
 {"ts": 1795729563.2026381, "bot": "risky-momentum-3/10", "symbol": "AAPL", "action": "buy", "price": 355.58, "usd": 8.73, "reason": "3-bar average is 0.29% above the 10-bar -- uptrend", "strength_pct": 5.9}
 {"ts": 1795729563.2031178, "bot": "risky-momentum-5/15", "symbol": "AAPL", "action": "sell", "price": 355.58, "pnl": 0.5, "reason": "5-bar average dropped below the 15-bar -- trend over", "strength_pct": 50.0}
 {"ts": 1795751478.6273916, "bot": "risky-momentum-3/10", "symbol": "TTWO", "action": "buy", "price": 227.34, "usd": 35.54, "reason": "3-bar average is 1.19% above the 10-bar -- uptrend", "strength_pct": 23.9}
+{"ts": 1795817418.759494, "bot": "risky-momentum-5/15", "symbol": "TTWO", "action": "buy", "price": 230.22, "usd": 23.15, "reason": "5-bar average is 0.58% above the 15-bar -- uptrend", "strength_pct": 11.6}
+{"ts": 1795817418.759897, "bot": "risky-breakout-10", "symbol": "TTWO", "action": "buy", "price": 230.22, "usd": 97.12, "reason": "Broke above its 10-bar high by 1.05%", "strength_pct": 81.6}
