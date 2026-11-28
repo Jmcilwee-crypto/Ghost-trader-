@@ -1403,7 +1403,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 973.3051578792769,
+        "cash": 969.5570179862602,
         "positions": {
           "TTWO": {
             "market_id": "TTWO",
@@ -1413,6 +1413,16 @@
             "shares": 0.10055729862615849,
             "avg_price": 230.22,
             "opened_at": 1795817418.7594423,
+            "stance": "momentum"
+          },
+          "AAPL": {
+            "market_id": "AAPL",
+            "token_id": "AAPL",
+            "outcome": "long",
+            "title": "AAPL",
+            "shares": 0.010453896059063586,
+            "avg_price": 358.54,
+            "opened_at": 1795869107.152426,
             "stance": "momentum"
           }
         },
@@ -1661,7 +1671,7 @@
       },
       "portfolio": {
         "starting_cash": 1000.0,
-        "cash": 874.1072525691553,
+        "cash": 776.9842245059158,
         "positions": {
           "TTWO": {
             "market_id": "TTWO",
@@ -1671,6 +1681,16 @@
             "shares": 0.42187050674676174,
             "avg_price": 230.22,
             "opened_at": 1795817418.7598617,
+            "stance": "breakout"
+          },
+          "AAPL": {
+            "market_id": "AAPL",
+            "token_id": "AAPL",
+            "outcome": "long",
+            "title": "AAPL",
+            "shares": 0.2708847773281628,
+            "avg_price": 358.54,
+            "opened_at": 1795869107.1528594,
             "stance": "breakout"
           }
         },
@@ -2059,15 +2079,14 @@
     }
   },
   "prices": {
+    "AAPL": 358.54,
     "MSFT": 492.85,
     "NVDA": 155.38,
     "TTWO": 230.22,
-    "SPY": 715.87,
-    "AAPL": 355.58
+    "SPY": 715.87
   },
   "bars": {
     "AAPL": [
-      313.39,
       316.22,
       315.32,
       317.31,
@@ -2166,7 +2185,8 @@
       342.56,
       349.08,
       354.07,
-      355.58
+      355.58,
+      358.54
     ],
     "SPY": [
       745.76,
@@ -2587,6 +2607,6 @@
     "note": null
   },
   "scorecard": {},
-  "last_seen_ts": 1795837963.3015072,
+  "last_seen_ts": 1795869107.1587071,
   "seen_hashes": []
 }
